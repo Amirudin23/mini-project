@@ -14,21 +14,33 @@ class TextPalette {
     fontSize: 12,
   );
 
-  static TextStyle fieldStyle = TextStyle(
-    color: ColorPalette.black,
-    fontWeight: FontWeight.bold,
-    fontSize: 16,
-  );
-
   static TextStyle titleTextFieldStyle = TextStyle(
     color: ColorPalette.black,
     fontWeight: FontWeight.bold,
-    fontSize: 15,
+    fontSize: 14,
   );
 
   static TextStyle checkInputText = TextStyle(
     color: ColorPalette.black,
     fontWeight: FontWeight.normal,
     fontSize: 11,
+  );
+
+  static TextStyle textDataStyle = TextStyle(
+    color: ColorPalette.black,
+    fontWeight: FontWeight.bold,
+    fontSize: 16,
+  );
+
+  static TextStyle biodataTextStyle = TextStyle(
+    color: ColorPalette.black,
+    fontWeight: FontWeight.w500,
+    fontSize: 14,
+  );
+
+  static TextStyle poptext = TextStyle(
+    color: ColorPalette.black,
+    fontWeight: FontWeight.w600,
+    fontSize: 13,
   );
 }

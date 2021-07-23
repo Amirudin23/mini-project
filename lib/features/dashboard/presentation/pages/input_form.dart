@@ -14,6 +14,22 @@ class InputForm extends StatefulWidget {
 class _InputFormState extends State<InputForm> {
   final _formKey = GlobalKey<FormBuilderState>();
 
+  TextEditingController name = new TextEditingController();
+  TextEditingController place = new TextEditingController();
+  TextEditingController bdate = new TextEditingController();
+  TextEditingController street = new TextEditingController();
+  TextEditingController jalan = new TextEditingController();
+
+  String jenkel = "";
+  String provinsi = "";
+  String kabupaten = "";
+  String kecamatan = "";
+  String kelurahan = "";
+  String ert = "";
+  String erw = "";
+
+  late var pvc = [];
+
   var provMenu = ["Jawa Tengah", "Jawa Timur", "Jawa Barat"];
   var kabMenu = ["Purbalingga", "Banyumas", "Cilacap"];
   var kecMenu = ["Kutasari", "Bojongsari", "Padamara"];
@@ -124,6 +140,7 @@ class _InputFormState extends State<InputForm> {
               // padding: const EdgeInsets.fromLTRB(left, top, right, bottom),
               child: FormBuilderTextField(
                 name: 'nama',
+                controller: name,
                 decoration: new InputDecoration(
                   focusedBorder: OutlineInputBorder(
                     borderSide: BorderSide(
@@ -194,6 +211,11 @@ class _InputFormState extends State<InputForm> {
                 options: ['Laki - Laki', 'Perempuan']
                     .map((lang) => FormBuilderFieldOption(value: lang))
                     .toList(growable: false),
+                onChanged: (lang) {
+                  setState(() {
+                    jenkel = lang.toString();
+                  });
+                },
               ),
             ),
           ),
@@ -220,6 +242,7 @@ class _InputFormState extends State<InputForm> {
                 ),
                 FormBuilderTextField(
                   name: 'tempatLhr',
+                  controller: place,
                   decoration: new InputDecoration(
                     focusedBorder: OutlineInputBorder(
                       borderSide: BorderSide(
@@ -264,6 +287,7 @@ class _InputFormState extends State<InputForm> {
                 ),
                 FormBuilderDateTimePicker(
                   name: 'tglLahir',
+                  controller: bdate,
                   // onChanged: _onChanged,
                   inputType: InputType.date,
                   decoration: InputDecoration(
@@ -308,21 +332,15 @@ class _InputFormState extends State<InputForm> {
               style: TextPalette.titleTextFieldStyle,
             ),
           ),
-          SizedBox(
-            width: 20.0,
-            // height: 20.0,
-          ),
-          Flexible(
-            child: FormBuilderTextField(
-              name: 'alamat_ktp',
-              // onChanged: _onChanged,
-              // valueTransformer: (text) => num.tryParse(text),
-              validator: FormBuilderValidators.compose([
-                FormBuilderValidators.required(context),
-              ]),
-              keyboardType: TextInputType.text,
+          Expanded(
+              child: Center(
+            child: Divider(
+              color: ColorPalette.grayline,
+              thickness: 2,
+              indent: 20,
+              endIndent: 0,
             ),
-          ),
+          ))
         ],
       ),
     );
@@ -346,6 +364,7 @@ class _InputFormState extends State<InputForm> {
               // padding: const EdgeInsets.fromLTRB(left, top, right, bottom),
               child: FormBuilderTextField(
                 name: 'jalan',
+                controller: street,
                 decoration: new InputDecoration(
                   focusedBorder: OutlineInputBorder(
                     borderSide: BorderSide(
@@ -395,6 +414,9 @@ class _InputFormState extends State<InputForm> {
               // padding: const EdgeInsets.fromLTRB(left, top, right, bottom),
               child: FormBuilderDropdown(
                 name: 'province',
+                onChanged: (provMenu) {
+                  provinsi = provMenu.toString();
+                },
                 decoration: InputDecoration(
                   focusedBorder: OutlineInputBorder(
                     borderSide: BorderSide(
@@ -447,6 +469,9 @@ class _InputFormState extends State<InputForm> {
               // padding: const EdgeInsets.fromLTRB(left, top, right, bottom),
               child: FormBuilderDropdown(
                 name: 'city',
+                onChanged: (kabMenu) {
+                  kabupaten = kabMenu.toString();
+                },
                 decoration: InputDecoration(
                   focusedBorder: OutlineInputBorder(
                     borderSide: BorderSide(
@@ -499,6 +524,9 @@ class _InputFormState extends State<InputForm> {
               // padding: const EdgeInsets.fromLTRB(left, top, right, bottom),
               child: FormBuilderDropdown(
                 name: 'subdistrict',
+                onChanged: (kecMenu) {
+                  kecamatan = kecMenu.toString();
+                },
                 decoration: InputDecoration(
                   focusedBorder: OutlineInputBorder(
                     borderSide: BorderSide(
@@ -551,6 +579,9 @@ class _InputFormState extends State<InputForm> {
               // padding: const EdgeInsets.fromLTRB(left, top, right, bottom),
               child: FormBuilderDropdown(
                 name: 'village',
+                onChanged: (desMenu) {
+                  kelurahan = desMenu.toString();
+                },
                 decoration: InputDecoration(
                   focusedBorder: OutlineInputBorder(
                     borderSide: BorderSide(
@@ -603,6 +634,9 @@ class _InputFormState extends State<InputForm> {
                 ),
                 FormBuilderDropdown(
                   name: 'rt',
+                  onChanged: (rtMenu) {
+                    ert = rtMenu.toString();
+                  },
                   decoration: InputDecoration(
                     focusedBorder: OutlineInputBorder(
                       borderSide: BorderSide(
@@ -650,6 +684,9 @@ class _InputFormState extends State<InputForm> {
                 ),
                 FormBuilderDropdown(
                   name: 'rw',
+                  onChanged: (rwMenu) {
+                    erw = rwMenu.toString();
+                  },
                   decoration: InputDecoration(
                     focusedBorder: OutlineInputBorder(
                       borderSide: BorderSide(
@@ -732,11 +769,17 @@ class _InputFormState extends State<InputForm> {
             text: TextSpan(
               children: [
                 TextSpan(
-                    text: 'Samakan dengan Alamat KTP',
+                    text: 'Samakan Dengan Alamat KTP',
                     style: TextPalette.checkInputText),
               ],
             ),
           ),
+          onChanged: (checkalamat) {
+            if (checkalamat == true) {
+              jalan.text = street.text;
+              
+            }
+          },
         ),
       ),
     );
@@ -759,7 +802,8 @@ class _InputFormState extends State<InputForm> {
               padding: const EdgeInsets.fromLTRB(20, 10, 20, 10),
               // padding: const EdgeInsets.fromLTRB(left, top, right, bottom),
               child: FormBuilderTextField(
-                name: 'jln',
+                name: 'jln_baru',
+                controller: jalan,
                 decoration: new InputDecoration(
                   focusedBorder: OutlineInputBorder(
                     borderSide: BorderSide(
@@ -1105,16 +1149,195 @@ class _InputFormState extends State<InputForm> {
   Widget simpan() {
     return Padding(
       padding: const EdgeInsets.fromLTRB(10, 10, 20, 50),
-      child: Expanded(
-        child: MaterialButton(
-          color: ColorPalette.redBtn,
-          child: Text(
-            "Simpan",
-            style: TextStyle(color: Colors.white),
+      child: SizedBox(
+        height: 55,
+        child: Container(
+          child: Material(
+            borderRadius: BorderRadius.circular(20),
+            color: Colors.transparent,
+            child: InkWell(
+              borderRadius: BorderRadius.circular(20),
+              splashColor: Colors.amber,
+              onTap: () {
+                showDialog(
+                    context: context,
+                    builder: (context) {
+                      return AlertDialog(
+                          content: SizedBox(
+                        height: 400,
+                        child: Column(
+                          children: [
+                            Text(
+                              "Data Diri",
+                              style: TextPalette.textDataStyle,
+                            ),
+                            Column(
+                              children: [
+                                Row(
+                                  children: [
+                                    Text(
+                                      "Nama : ",
+                                      style: TextPalette.biodataTextStyle,
+                                    ),
+                                    Text(
+                                      name.text,
+                                      style: TextPalette.biodataTextStyle,
+                                    ),
+                                  ],
+                                ),
+                                Row(
+                                  children: [
+                                    Text(
+                                      "Tempat Lahir : ",
+                                      style: TextPalette.biodataTextStyle,
+                                    ),
+                                    Text(
+                                      place.text,
+                                      style: TextPalette.biodataTextStyle,
+                                    ),
+                                  ],
+                                ),
+                                Row(
+                                  children: [
+                                    Text(
+                                      "Tanggal Lahir : ",
+                                      style: TextPalette.biodataTextStyle,
+                                    ),
+                                    Text(
+                                      bdate.text,
+                                      style: TextPalette.biodataTextStyle,
+                                    ),
+                                  ],
+                                ),
+                                Row(
+                                  children: [
+                                    Text(
+                                      "Jenis Kelamin : ",
+                                      style: TextPalette.biodataTextStyle,
+                                    ),
+                                    Text(
+                                      jenkel,
+                                      style: TextPalette.biodataTextStyle,
+                                    ),
+                                  ],
+                                )
+                              ],
+                            ),
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                SizedBox(
+                                  height: 10,
+                                ),
+                                Text("Alamat KTP", style: TextPalette.poptext),
+                                Row(
+                                  children: [
+                                    Text(
+                                      "Jalan : ",
+                                      style: TextPalette.biodataTextStyle,
+                                    ),
+                                    Text(
+                                      street.text,
+                                      style: TextPalette.biodataTextStyle,
+                                    ),
+                                  ],
+                                ),
+                                Row(
+                                  children: [
+                                    Text(
+                                      "Provinsi : ",
+                                      style: TextPalette.biodataTextStyle,
+                                    ),
+                                    Text(
+                                      provinsi,
+                                      style: TextPalette.biodataTextStyle,
+                                    ),
+                                  ],
+                                ),
+                                Row(
+                                  children: [
+                                    Text(
+                                      "Kabupaten : ",
+                                      style: TextPalette.biodataTextStyle,
+                                    ),
+                                    Text(
+                                      kabupaten,
+                                      style: TextPalette.biodataTextStyle,
+                                    ),
+                                  ],
+                                ),
+                                Row(
+                                  children: [
+                                    Text(
+                                      "Kecamatan : ",
+                                      style: TextPalette.biodataTextStyle,
+                                    ),
+                                    Text(
+                                      kecamatan,
+                                      style: TextPalette.biodataTextStyle,
+                                    ),
+                                  ],
+                                ),
+                                Row(
+                                  children: [
+                                    Text(
+                                      "Kelurahan : ",
+                                      style: TextPalette.biodataTextStyle,
+                                    ),
+                                    Text(
+                                      kelurahan,
+                                      style: TextPalette.biodataTextStyle,
+                                    ),
+                                  ],
+                                ),
+                                Row(
+                                  children: [
+                                    Text(
+                                      "RT : ",
+                                      style: TextPalette.biodataTextStyle,
+                                    ),
+                                    Text(
+                                      ert,
+                                      style: TextPalette.biodataTextStyle,
+                                    ),
+                                  ],
+                                ),
+                                Row(
+                                  children: [
+                                    Text(
+                                      "RW : ",
+                                      style: TextPalette.biodataTextStyle,
+                                    ),
+                                    Text(
+                                      erw,
+                                      style: TextPalette.biodataTextStyle,
+                                    ),
+                                  ],
+                                )
+                              ],
+                            ),
+                          ],
+                        ),
+                      ));
+                    });
+              },
+              child: Center(
+                child: Text(
+                  "Simpan",
+                  style: TextStyle(
+                      fontSize: 18,
+                      color: Colors.white,
+                      fontWeight: FontWeight.w700),
+                ),
+              ),
+            ),
           ),
-          onPressed: () {
-            
-          },
+          decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(20),
+              gradient: LinearGradient(colors: [
+                ColorPalette.redBtn,
+                ColorPalette.btnRed,
+              ], begin: Alignment.topCenter, end: Alignment.bottomCenter)),
         ),
       ),
     );

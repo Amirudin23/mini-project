@@ -9,5 +9,10 @@ class ColorPalette {
   static const black = Colors.black;
   static const gray = Color(0xFFF0F0F0);
 
-  static const redBtn = Color(0xFFEF5350);
+  static const grayline = Color(0xFF757575);
+
+
+   static const redBtn = Color(0xFFE57373);
+   static const btnRed = Colors.red;
+
 }
