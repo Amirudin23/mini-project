@@ -1,34 +1,41 @@
-define(['dart_sdk', 'packages/flutter/src/widgets/widget_span.dart', 'packages/flutter/src/services/mouse_cursor.dart', 'packages/flutter/src/material/material_state.dart', 'packages/flutter/src/material/icon_button.dart', 'packages/flutter/src/material/toggleable.dart', 'packages/flutter/src/foundation/change_notifier.dart', 'packages/flutter/src/rendering/custom_paint.dart'], (function load__packages__flutter__src__material__radio_dart(dart_sdk, packages__flutter__src__widgets__widget_span$46dart, packages__flutter__src__services__mouse_cursor$46dart, packages__flutter__src__material__material_state$46dart, packages__flutter__src__material__icon_button$46dart, packages__flutter__src__material__toggleable$46dart, packages__flutter__src__foundation__change_notifier$46dart, packages__flutter__src__rendering__custom_paint$46dart) {
+define(['dart_sdk', 'packages/flutter/src/widgets/widget_span.dart', 'packages/flutter/src/animation/animation_controller.dart', 'packages/flutter/src/animation/listener_helpers.dart', 'packages/flutter/src/animation/curves.dart', 'packages/flutter/src/material/constants.dart', 'packages/flutter/src/semantics/semantics_event.dart', 'packages/flutter/src/material/material_state.dart', 'packages/flutter/src/gestures/tap.dart', 'packages/flutter/src/services/mouse_cursor.dart', 'packages/flutter/src/rendering/custom_paint.dart', 'packages/flutter/src/foundation/change_notifier.dart'], (function load__packages__flutter__src__material__toggleable_dart(dart_sdk, packages__flutter__src__widgets__widget_span$46dart, packages__flutter__src__animation__animation_controller$46dart, packages__flutter__src__animation__listener_helpers$46dart, packages__flutter__src__animation__curves$46dart, packages__flutter__src__material__constants$46dart, packages__flutter__src__semantics__semantics_event$46dart, packages__flutter__src__material__material_state$46dart, packages__flutter__src__gestures__tap$46dart, packages__flutter__src__services__mouse_cursor$46dart, packages__flutter__src__rendering__custom_paint$46dart, packages__flutter__src__foundation__change_notifier$46dart) {
   'use strict';
   const core = dart_sdk.core;
-  const ui = dart_sdk.ui;
+  const _internal = dart_sdk._internal;
   const _js_helper = dart_sdk._js_helper;
+  const collection = dart_sdk.collection;
+  const ui = dart_sdk.ui;
   const dart = dart_sdk.dart;
   const dartx = dart_sdk.dartx;
-  const framework = packages__flutter__src__widgets__widget_span$46dart.src__widgets__framework;
-  const focus_manager = packages__flutter__src__widgets__widget_span$46dart.src__widgets__focus_manager;
+  const actions = packages__flutter__src__widgets__widget_span$46dart.src__widgets__actions;
+  const gesture_detector = packages__flutter__src__widgets__widget_span$46dart.src__widgets__gesture_detector;
   const basic = packages__flutter__src__widgets__widget_span$46dart.src__widgets__basic;
   const widget_inspector = packages__flutter__src__widgets__widget_span$46dart.src__widgets__widget_inspector;
   const ticker_provider = packages__flutter__src__widgets__widget_span$46dart.src__widgets__ticker_provider;
-  const mouse_cursor = packages__flutter__src__services__mouse_cursor$46dart.src__services__mouse_cursor;
+  const framework = packages__flutter__src__widgets__widget_span$46dart.src__widgets__framework;
+  const focus_manager = packages__flutter__src__widgets__widget_span$46dart.src__widgets__focus_manager;
+  const animation_controller = packages__flutter__src__animation__animation_controller$46dart.src__animation__animation_controller;
+  const animations = packages__flutter__src__animation__listener_helpers$46dart.src__animation__animations;
+  const animation = packages__flutter__src__animation__listener_helpers$46dart.src__animation__animation;
+  const tween = packages__flutter__src__animation__listener_helpers$46dart.src__animation__tween;
+  const curves = packages__flutter__src__animation__curves$46dart.src__animation__curves;
+  const constants = packages__flutter__src__material__constants$46dart.src__material__constants;
+  const semantics_event = packages__flutter__src__semantics__semantics_event$46dart.src__semantics__semantics_event;
   const material_state = packages__flutter__src__material__material_state$46dart.src__material__material_state;
-  const theme_data = packages__flutter__src__material__icon_button$46dart.src__material__theme_data;
-  const theme = packages__flutter__src__material__icon_button$46dart.src__material__theme;
-  const debug = packages__flutter__src__material__icon_button$46dart.src__material__debug;
-  const toggleable = packages__flutter__src__material__toggleable$46dart.src__material__toggleable;
-  const change_notifier = packages__flutter__src__foundation__change_notifier$46dart.src__foundation__change_notifier;
+  const tap = packages__flutter__src__gestures__tap$46dart.src__gestures__tap;
+  const mouse_cursor = packages__flutter__src__services__mouse_cursor$46dart.src__services__mouse_cursor;
   const custom_paint = packages__flutter__src__rendering__custom_paint$46dart.src__rendering__custom_paint;
-  var radio = Object.create(dart.library);
-  var $noSuchMethod = dartx.noSuchMethod;
+  const change_notifier = packages__flutter__src__foundation__change_notifier$46dart.src__foundation__change_notifier;
+  var toggleable = Object.create(dart.library);
+  var $_equals = dartx._equals;
   dart._checkModuleNullSafetyMode(true);
-  var T$ = {
-    ColorN: () => (T$.ColorN = dart.constFn(dart.nullable(ui.Color)))(),
-    SetOfMaterialState: () => (T$.SetOfMaterialState = dart.constFn(core.Set$(material_state.MaterialState)))(),
-    SetOfMaterialStateToColorN: () => (T$.SetOfMaterialStateToColorN = dart.constFn(dart.fnType(T$.ColorN(), [T$.SetOfMaterialState()])))(),
-    SetOfMaterialStateToColor: () => (T$.SetOfMaterialStateToColor = dart.constFn(dart.fnType(ui.Color, [T$.SetOfMaterialState()])))(),
-    MouseCursorN: () => (T$.MouseCursorN = dart.constFn(dart.nullable(mouse_cursor.MouseCursor)))(),
-    SetOfMaterialStateToMouseCursor: () => (T$.SetOfMaterialStateToMouseCursor = dart.constFn(dart.fnType(mouse_cursor.MouseCursor, [T$.SetOfMaterialState()])))(),
-    ListenableN: () => (T$.ListenableN = dart.constFn(dart.nullable(change_notifier.Listenable)))()
+  var T = {
+    CallbackActionOfActivateIntent: () => (T.CallbackActionOfActivateIntent = dart.constFn(actions.CallbackAction$(actions.ActivateIntent)))(),
+    ActionOfIntent: () => (T.ActionOfIntent = dart.constFn(actions.Action$(actions.Intent)))(),
+    LinkedMapOfType$ActionOfIntent: () => (T.LinkedMapOfType$ActionOfIntent = dart.constFn(_js_helper.LinkedMap$(core.Type, T.ActionOfIntent())))(),
+    VoidTovoid: () => (T.VoidTovoid = dart.constFn(dart.fnType(dart.void, [])))(),
+    LinkedHashSetOfMaterialState: () => (T.LinkedHashSetOfMaterialState = dart.constFn(collection.LinkedHashSet$(material_state.MaterialState)))(),
+    TweenOfdouble: () => (T.TweenOfdouble = dart.constFn(tween.Tween$(core.double)))()
   };
   const CT = Object.create({
     _: () => (C, CT)
@@ -36,49 +43,50 @@ define(['dart_sdk', 'packages/flutter/src/widgets/widget_span.dart', 'packages/f
   dart.defineLazy(CT, {
     get C0() {
       return C[0] = dart.const({
-        __proto__: ui.Size.prototype,
-        [OffsetBase__dy]: 48,
-        [OffsetBase__dx]: 48
-      });
-    },
-    get C1() {
-      return C[1] = dart.const({
-        __proto__: theme_data.MaterialTapTargetSize.prototype,
-        [_name]: "MaterialTapTargetSize.padded",
-        index: 0
-      });
-    },
-    get C2() {
-      return C[2] = dart.const({
-        __proto__: ui.Size.prototype,
-        [OffsetBase__dy]: 40,
-        [OffsetBase__dx]: 40
+        __proto__: semantics_event.TapSemanticEvent.prototype,
+        [SemanticsEvent_type]: "tap"
       });
     },
     get C3() {
       return C[3] = dart.const({
-        __proto__: theme_data.MaterialTapTargetSize.prototype,
-        [_name]: "MaterialTapTargetSize.shrinkWrap",
-        index: 1
-      });
-    },
-    get C6() {
-      return C[6] = dart.const({
         __proto__: widget_inspector._Location.prototype,
         [_Location_parameterLocations]: null,
-        [_Location_name]: "inMutuallyExclusiveGroup",
-        [_Location_column]: 7,
-        [_Location_line]: 486,
+        [_Location_name]: "size",
+        [_Location_column]: 13,
+        [_Location_line]: 325,
         [_Location_file]: null
+      });
+    },
+    get C4() {
+      return C[4] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "painter",
+        [_Location_column]: 13,
+        [_Location_line]: 326,
+        [_Location_file]: null
+      });
+    },
+    get C2() {
+      return C[2] = dart.constList([C[3] || CT.C3, C[4] || CT.C4], widget_inspector._Location);
+    },
+    get C1() {
+      return C[1] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[2] || CT.C2,
+        [_Location_name]: null,
+        [_Location_column]: 18,
+        [_Location_line]: 324,
+        [_Location_file]: "file:///G:/Nitoza/SDK/flutter/packages/flutter/lib/src/material/toggleable.dart"
       });
     },
     get C7() {
       return C[7] = dart.const({
         __proto__: widget_inspector._Location.prototype,
         [_Location_parameterLocations]: null,
-        [_Location_name]: "checked",
-        [_Location_column]: 7,
-        [_Location_line]: 487,
+        [_Location_name]: "enabled",
+        [_Location_column]: 11,
+        [_Location_line]: 323,
         [_Location_file]: null
       });
     },
@@ -87,463 +95,844 @@ define(['dart_sdk', 'packages/flutter/src/widgets/widget_span.dart', 'packages/f
         __proto__: widget_inspector._Location.prototype,
         [_Location_parameterLocations]: null,
         [_Location_name]: "child",
-        [_Location_column]: 7,
-        [_Location_line]: 488,
+        [_Location_column]: 11,
+        [_Location_line]: 324,
         [_Location_file]: null
       });
     },
-    get C5() {
-      return C[5] = dart.constList([C[6] || CT.C6, C[7] || CT.C7, C[8] || CT.C8], widget_inspector._Location);
+    get C6() {
+      return C[6] = dart.constList([C[7] || CT.C7, C[8] || CT.C8], widget_inspector._Location);
     },
-    get C4() {
-      return C[4] = dart.const({
+    get C5() {
+      return C[5] = dart.const({
         __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: C[5] || CT.C5,
+        [_Location_parameterLocations]: C[6] || CT.C6,
         [_Location_name]: null,
-        [_Location_column]: 12,
-        [_Location_line]: 485,
-        [_Location_file]: "file:///G:/Nitoza/SDK/flutter/packages/flutter/lib/src/material/radio.dart"
+        [_Location_column]: 16,
+        [_Location_line]: 322,
+        [_Location_file]: "file:///G:/Nitoza/SDK/flutter/packages/flutter/lib/src/material/toggleable.dart"
       });
     },
+    get C11() {
+      return C[11] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "excludeFromSemantics",
+        [_Location_column]: 9,
+        [_Location_line]: 317,
+        [_Location_file]: null
+      });
+    },
+    get C12() {
+      return C[12] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "onTapDown",
+        [_Location_column]: 9,
+        [_Location_line]: 318,
+        [_Location_file]: null
+      });
+    },
+    get C13() {
+      return C[13] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "onTap",
+        [_Location_column]: 9,
+        [_Location_line]: 319,
+        [_Location_file]: null
+      });
+    },
+    get C14() {
+      return C[14] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "onTapUp",
+        [_Location_column]: 9,
+        [_Location_line]: 320,
+        [_Location_file]: null
+      });
+    },
+    get C15() {
+      return C[15] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "onTapCancel",
+        [_Location_column]: 9,
+        [_Location_line]: 321,
+        [_Location_file]: null
+      });
+    },
+    get C16() {
+      return C[16] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 9,
+        [_Location_line]: 322,
+        [_Location_file]: null
+      });
+    },
+    get C10() {
+      return C[10] = dart.constList([C[11] || CT.C11, C[12] || CT.C12, C[13] || CT.C13, C[14] || CT.C14, C[15] || CT.C15, C[16] || CT.C16], widget_inspector._Location);
+    },
     get C9() {
-      return C[9] = dart.const(new _js_helper.PrivateSymbol.new('_repaint', _repaint));
+      return C[9] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[10] || CT.C10,
+        [_Location_name]: null,
+        [_Location_column]: 14,
+        [_Location_line]: 316,
+        [_Location_file]: "file:///G:/Nitoza/SDK/flutter/packages/flutter/lib/src/material/toggleable.dart"
+      });
+    },
+    get C19() {
+      return C[19] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "actions",
+        [_Location_column]: 7,
+        [_Location_line]: 309,
+        [_Location_file]: null
+      });
+    },
+    get C20() {
+      return C[20] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "focusNode",
+        [_Location_column]: 7,
+        [_Location_line]: 310,
+        [_Location_file]: null
+      });
+    },
+    get C21() {
+      return C[21] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "autofocus",
+        [_Location_column]: 7,
+        [_Location_line]: 311,
+        [_Location_file]: null
+      });
+    },
+    get C22() {
+      return C[22] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "enabled",
+        [_Location_column]: 7,
+        [_Location_line]: 312,
+        [_Location_file]: null
+      });
+    },
+    get C23() {
+      return C[23] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "onShowFocusHighlight",
+        [_Location_column]: 7,
+        [_Location_line]: 313,
+        [_Location_file]: null
+      });
+    },
+    get C24() {
+      return C[24] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "onShowHoverHighlight",
+        [_Location_column]: 7,
+        [_Location_line]: 314,
+        [_Location_file]: null
+      });
+    },
+    get C25() {
+      return C[25] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "mouseCursor",
+        [_Location_column]: 7,
+        [_Location_line]: 315,
+        [_Location_file]: null
+      });
+    },
+    get C26() {
+      return C[26] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 7,
+        [_Location_line]: 316,
+        [_Location_file]: null
+      });
+    },
+    get C18() {
+      return C[18] = dart.constList([C[19] || CT.C19, C[20] || CT.C20, C[21] || CT.C21, C[22] || CT.C22, C[23] || CT.C23, C[24] || CT.C24, C[25] || CT.C25, C[26] || CT.C26], widget_inspector._Location);
+    },
+    get C17() {
+      return C[17] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[18] || CT.C18,
+        [_Location_name]: null,
+        [_Location_column]: 12,
+        [_Location_line]: 308,
+        [_Location_file]: "file:///G:/Nitoza/SDK/flutter/packages/flutter/lib/src/material/toggleable.dart"
+      });
+    },
+    get C27() {
+      return C[27] = dart.const({
+        __proto__: ui.Offset.prototype,
+        [OffsetBase__dy]: 0,
+        [OffsetBase__dx]: 0
+      });
+    },
+    get C28() {
+      return C[28] = dart.const({
+        __proto__: core.Duration.prototype,
+        [Duration__duration]: 200000
+      });
+    },
+    get C29() {
+      return C[29] = dart.const({
+        __proto__: core.Duration.prototype,
+        [Duration__duration]: 50000
+      });
     }
   }, false);
-  var C = Array(10).fill(void 0);
-  var I = [
-    "file:///G:/Nitoza/SDK/flutter/packages/flutter/lib/src/material/radio.dart",
-    "package:flutter/src/material/radio.dart"
-  ];
-  var value$ = dart.privateName(radio, "Radio.value");
-  var groupValue$ = dart.privateName(radio, "Radio.groupValue");
-  var onChanged$ = dart.privateName(radio, "Radio.onChanged");
-  var mouseCursor$ = dart.privateName(radio, "Radio.mouseCursor");
-  var toggleable$ = dart.privateName(radio, "Radio.toggleable");
-  var activeColor$ = dart.privateName(radio, "Radio.activeColor");
-  var fillColor$ = dart.privateName(radio, "Radio.fillColor");
-  var materialTapTargetSize$ = dart.privateName(radio, "Radio.materialTapTargetSize");
-  var visualDensity$ = dart.privateName(radio, "Radio.visualDensity");
-  var focusColor$ = dart.privateName(radio, "Radio.focusColor");
-  var hoverColor$ = dart.privateName(radio, "Radio.hoverColor");
-  var overlayColor$ = dart.privateName(radio, "Radio.overlayColor");
-  var splashRadius$ = dart.privateName(radio, "Radio.splashRadius");
-  var focusNode$ = dart.privateName(radio, "Radio.focusNode");
-  var autofocus$ = dart.privateName(radio, "Radio.autofocus");
-  var _selected = dart.privateName(radio, "_selected");
-  const _is_Radio_default = Symbol('_is_Radio_default');
-  radio.Radio$ = dart.generic(T => {
-    var _RadioStateOfT = () => (_RadioStateOfT = dart.constFn(radio._RadioState$(T)))();
-    class Radio extends framework.StatefulWidget {
-      get value() {
-        return this[value$];
-      }
-      set value(value) {
-        super.value = value;
-      }
-      get groupValue() {
-        return this[groupValue$];
-      }
-      set groupValue(value) {
-        super.groupValue = value;
-      }
-      get onChanged() {
-        return this[onChanged$];
-      }
-      set onChanged(value) {
-        super.onChanged = value;
-      }
-      get mouseCursor() {
-        return this[mouseCursor$];
-      }
-      set mouseCursor(value) {
-        super.mouseCursor = value;
-      }
-      get toggleable() {
-        return this[toggleable$];
-      }
-      set toggleable(value) {
-        super.toggleable = value;
-      }
-      get activeColor() {
-        return this[activeColor$];
-      }
-      set activeColor(value) {
-        super.activeColor = value;
-      }
-      get fillColor() {
-        return this[fillColor$];
-      }
-      set fillColor(value) {
-        super.fillColor = value;
-      }
-      get materialTapTargetSize() {
-        return this[materialTapTargetSize$];
-      }
-      set materialTapTargetSize(value) {
-        super.materialTapTargetSize = value;
-      }
-      get visualDensity() {
-        return this[visualDensity$];
-      }
-      set visualDensity(value) {
-        super.visualDensity = value;
-      }
-      get focusColor() {
-        return this[focusColor$];
-      }
-      set focusColor(value) {
-        super.focusColor = value;
-      }
-      get hoverColor() {
-        return this[hoverColor$];
-      }
-      set hoverColor(value) {
-        super.hoverColor = value;
-      }
-      get overlayColor() {
-        return this[overlayColor$];
-      }
-      set overlayColor(value) {
-        super.overlayColor = value;
-      }
-      get splashRadius() {
-        return this[splashRadius$];
-      }
-      set splashRadius(value) {
-        super.splashRadius = value;
-      }
-      get focusNode() {
-        return this[focusNode$];
-      }
-      set focusNode(value) {
-        super.focusNode = value;
-      }
-      get autofocus() {
-        return this[autofocus$];
-      }
-      set autofocus(value) {
-        super.autofocus = value;
-      }
-      get [_selected]() {
-        return dart.equals(this.value, this.groupValue);
-      }
-      createState() {
-        return new (_RadioStateOfT()).new();
-      }
-    }
-    (Radio.new = function(opts) {
-      let key = opts && 'key' in opts ? opts.key : null;
-      let value = opts && 'value' in opts ? opts.value : null;
-      let groupValue = opts && 'groupValue' in opts ? opts.groupValue : null;
-      let onChanged = opts && 'onChanged' in opts ? opts.onChanged : null;
-      let mouseCursor = opts && 'mouseCursor' in opts ? opts.mouseCursor : null;
-      let toggleable = opts && 'toggleable' in opts ? opts.toggleable : false;
-      let activeColor = opts && 'activeColor' in opts ? opts.activeColor : null;
-      let fillColor = opts && 'fillColor' in opts ? opts.fillColor : null;
-      let focusColor = opts && 'focusColor' in opts ? opts.focusColor : null;
-      let hoverColor = opts && 'hoverColor' in opts ? opts.hoverColor : null;
-      let overlayColor = opts && 'overlayColor' in opts ? opts.overlayColor : null;
-      let splashRadius = opts && 'splashRadius' in opts ? opts.splashRadius : null;
-      let materialTapTargetSize = opts && 'materialTapTargetSize' in opts ? opts.materialTapTargetSize : null;
-      let visualDensity = opts && 'visualDensity' in opts ? opts.visualDensity : null;
-      let focusNode = opts && 'focusNode' in opts ? opts.focusNode : null;
-      let autofocus = opts && 'autofocus' in opts ? opts.autofocus : false;
-      let $36creationLocationd_0dea112b090073317d4 = opts && '$creationLocationd_0dea112b090073317d4' in opts ? opts.$creationLocationd_0dea112b090073317d4 : null;
-      this[value$] = value;
-      this[groupValue$] = groupValue;
-      this[onChanged$] = onChanged;
-      this[mouseCursor$] = mouseCursor;
-      this[toggleable$] = toggleable;
-      this[activeColor$] = activeColor;
-      this[fillColor$] = fillColor;
-      this[focusColor$] = focusColor;
-      this[hoverColor$] = hoverColor;
-      this[overlayColor$] = overlayColor;
-      this[splashRadius$] = splashRadius;
-      this[materialTapTargetSize$] = materialTapTargetSize;
-      this[visualDensity$] = visualDensity;
-      this[focusNode$] = focusNode;
-      this[autofocus$] = autofocus;
-      if (!(autofocus !== null)) dart.assertFailed(null, I[0], 122, 15, "autofocus != null");
-      if (!(toggleable !== null)) dart.assertFailed(null, I[0], 123, 15, "toggleable != null");
-      Radio.__proto__.new.call(this, {key: key, $creationLocationd_0dea112b090073317d4: $36creationLocationd_0dea112b090073317d4});
-      ;
-    }).prototype = Radio.prototype;
-    dart.addTypeTests(Radio);
-    Radio.prototype[_is_Radio_default] = true;
-    dart.addTypeCaches(Radio);
-    dart.setMethodSignature(Radio, () => ({
-      __proto__: dart.getMethods(Radio.__proto__),
-      createState: dart.fnType(radio._RadioState$(T), [])
-    }));
-    dart.setGetterSignature(Radio, () => ({
-      __proto__: dart.getGetters(Radio.__proto__),
-      [_selected]: core.bool
-    }));
-    dart.setLibraryUri(Radio, I[1]);
-    dart.setFieldSignature(Radio, () => ({
-      __proto__: dart.getFields(Radio.__proto__),
-      value: dart.finalFieldType(T),
-      groupValue: dart.finalFieldType(dart.nullable(T)),
-      onChanged: dart.finalFieldType(dart.nullable(dart.fnType(dart.void, [dart.nullable(T)]))),
-      mouseCursor: dart.finalFieldType(dart.nullable(mouse_cursor.MouseCursor)),
-      toggleable: dart.finalFieldType(core.bool),
-      activeColor: dart.finalFieldType(dart.nullable(ui.Color)),
-      fillColor: dart.finalFieldType(dart.nullable(material_state.MaterialStateProperty$(dart.nullable(ui.Color)))),
-      materialTapTargetSize: dart.finalFieldType(dart.nullable(theme_data.MaterialTapTargetSize)),
-      visualDensity: dart.finalFieldType(dart.nullable(theme_data.VisualDensity)),
-      focusColor: dart.finalFieldType(dart.nullable(ui.Color)),
-      hoverColor: dart.finalFieldType(dart.nullable(ui.Color)),
-      overlayColor: dart.finalFieldType(dart.nullable(material_state.MaterialStateProperty$(dart.nullable(ui.Color)))),
-      splashRadius: dart.finalFieldType(dart.nullable(core.double)),
-      focusNode: dart.finalFieldType(dart.nullable(focus_manager.FocusNode)),
-      autofocus: dart.finalFieldType(core.bool)
-    }));
-    return Radio;
-  });
-  radio.Radio = radio.Radio$();
-  dart.addTypeTests(radio.Radio, _is_Radio_default);
-  var _painter = dart.privateName(radio, "_painter");
-  var _handleChanged = dart.privateName(radio, "_handleChanged");
-  var _widgetFillColor = dart.privateName(radio, "_widgetFillColor");
-  var _defaultFillColor = dart.privateName(radio, "_defaultFillColor");
-  var OffsetBase__dy = dart.privateName(ui, "OffsetBase._dy");
-  var OffsetBase__dx = dart.privateName(ui, "OffsetBase._dx");
-  var _name = dart.privateName(theme_data, "_name");
+  var C = Array(30).fill(void 0);
+  var I = ["package:flutter/src/material/toggleable.dart"];
+  var __ToggleableStateMixin__positionController = dart.privateName(toggleable, "_#ToggleableStateMixin#_positionController");
+  var __ToggleableStateMixin__position = dart.privateName(toggleable, "_#ToggleableStateMixin#_position");
+  var __ToggleableStateMixin__reactionController = dart.privateName(toggleable, "_#ToggleableStateMixin#_reactionController");
+  var __ToggleableStateMixin__reaction = dart.privateName(toggleable, "_#ToggleableStateMixin#_reaction");
+  var __ToggleableStateMixin__reactionHoverFade = dart.privateName(toggleable, "_#ToggleableStateMixin#_reactionHoverFade");
+  var __ToggleableStateMixin__reactionHoverFadeController = dart.privateName(toggleable, "_#ToggleableStateMixin#_reactionHoverFadeController");
+  var __ToggleableStateMixin__reactionFocusFade = dart.privateName(toggleable, "_#ToggleableStateMixin#_reactionFocusFade");
+  var __ToggleableStateMixin__reactionFocusFadeController = dart.privateName(toggleable, "_#ToggleableStateMixin#_reactionFocusFadeController");
+  var __ToggleableStateMixin__actionMap = dart.privateName(toggleable, "_#ToggleableStateMixin#_actionMap");
+  var _downPosition = dart.privateName(toggleable, "_downPosition");
+  var _focused = dart.privateName(toggleable, "_focused");
+  var _hovering = dart.privateName(toggleable, "_hovering");
+  var _positionController = dart.privateName(toggleable, "_positionController");
+  var _position = dart.privateName(toggleable, "_position");
+  var _reactionController = dart.privateName(toggleable, "_reactionController");
+  var _reaction = dart.privateName(toggleable, "_reaction");
+  var _reactionHoverFade = dart.privateName(toggleable, "_reactionHoverFade");
+  var _reactionHoverFadeController = dart.privateName(toggleable, "_reactionHoverFadeController");
+  var _reactionFocusFade = dart.privateName(toggleable, "_reactionFocusFade");
+  var _reactionFocusFadeController = dart.privateName(toggleable, "_reactionFocusFadeController");
+  var _handleTap = dart.privateName(toggleable, "_handleTap");
+  var _actionMap = dart.privateName(toggleable, "_actionMap");
+  var _handleTapDown = dart.privateName(toggleable, "_handleTapDown");
+  var SemanticsEvent_type = dart.privateName(semantics_event, "SemanticsEvent.type");
+  var _handleTapEnd = dart.privateName(toggleable, "_handleTapEnd");
+  var _handleFocusHighlightChanged = dart.privateName(toggleable, "_handleFocusHighlightChanged");
+  var _handleHoverChanged = dart.privateName(toggleable, "_handleHoverChanged");
   var _Location_parameterLocations = dart.privateName(widget_inspector, "_Location.parameterLocations");
   var _Location_name = dart.privateName(widget_inspector, "_Location.name");
   var _Location_column = dart.privateName(widget_inspector, "_Location.column");
   var _Location_line = dart.privateName(widget_inspector, "_Location.line");
   var _Location_file = dart.privateName(widget_inspector, "_Location.file");
-  const _is__RadioState_default = Symbol('_is__RadioState_default');
-  radio._RadioState$ = dart.generic(T => {
-    var TN = () => (TN = dart.constFn(dart.nullable(T)))();
-    var TNTovoid = () => (TNTovoid = dart.constFn(dart.fnType(dart.void, [TN()])))();
-    var TNToNvoid = () => (TNToNvoid = dart.constFn(dart.nullable(TNTovoid())))();
-    var RadioOfT = () => (RadioOfT = dart.constFn(radio.Radio$(T)))();
-    const State_TickerProviderStateMixin$36 = class State_TickerProviderStateMixin extends framework.State$(radio.Radio$(T)) {};
-    (State_TickerProviderStateMixin$36.new = function() {
-      ticker_provider.TickerProviderStateMixin$(radio.Radio$(T))[dart.mixinNew].call(this);
-      State_TickerProviderStateMixin$36.__proto__.new.call(this);
-    }).prototype = State_TickerProviderStateMixin$36.prototype;
-    dart.applyMixin(State_TickerProviderStateMixin$36, ticker_provider.TickerProviderStateMixin$(radio.Radio$(T)));
-    const State_ToggleableStateMixin$36 = class State_ToggleableStateMixin extends State_TickerProviderStateMixin$36 {};
-    (State_ToggleableStateMixin$36.new = function() {
-      toggleable.ToggleableStateMixin$(radio.Radio$(T))[dart.mixinNew].call(this);
-      State_ToggleableStateMixin$36.__proto__.new.call(this);
-    }).prototype = State_ToggleableStateMixin$36.prototype;
-    dart.applyMixin(State_ToggleableStateMixin$36, toggleable.ToggleableStateMixin$(radio.Radio$(T)));
-    class _RadioState extends State_ToggleableStateMixin$36 {
-      [_handleChanged](selected) {
-        if (selected == null) {
-          dart.nullCheck(TNToNvoid().as(this.widget.onChanged))(null);
-          return;
-        }
-        if (dart.test(selected)) {
-          dart.nullCheck(TNToNvoid().as(this.widget.onChanged))(this.widget.value);
-        }
+  const _is_ToggleableStateMixin_default = Symbol('_is_ToggleableStateMixin_default');
+  toggleable.ToggleableStateMixin$ = dart.generic(S => {
+    class ToggleableStateMixin extends ticker_provider.TickerProviderStateMixin$(S) {}
+    ToggleableStateMixin[dart.mixinOn] = TickerProviderStateMixin => class ToggleableStateMixin extends TickerProviderStateMixin {
+      get positionController() {
+        return this[_positionController];
       }
-      didUpdateWidget(oldWidget) {
-        RadioOfT().as(oldWidget);
-        super.didUpdateWidget(oldWidget);
-        if (this.widget[_selected] !== oldWidget[_selected]) {
-          this.animateToValue();
+      get [_positionController]() {
+        let t0;
+        t0 = this[__ToggleableStateMixin__positionController];
+        return t0 == null ? dart.throw(new _internal.LateError.fieldNI("_positionController")) : t0;
+      }
+      set [_positionController](t0) {
+        this[__ToggleableStateMixin__positionController] = t0;
+      }
+      get position() {
+        return this[_position];
+      }
+      get [_position]() {
+        let t1;
+        t1 = this[__ToggleableStateMixin__position];
+        return t1 == null ? dart.throw(new _internal.LateError.fieldNI("_position")) : t1;
+      }
+      set [_position](t1) {
+        this[__ToggleableStateMixin__position] = t1;
+      }
+      get reactionController() {
+        return this[_reactionController];
+      }
+      get [_reactionController]() {
+        let t2;
+        t2 = this[__ToggleableStateMixin__reactionController];
+        return t2 == null ? dart.throw(new _internal.LateError.fieldNI("_reactionController")) : t2;
+      }
+      set [_reactionController](t2) {
+        this[__ToggleableStateMixin__reactionController] = t2;
+      }
+      get reaction() {
+        return this[_reaction];
+      }
+      get [_reaction]() {
+        let t3;
+        t3 = this[__ToggleableStateMixin__reaction];
+        return t3 == null ? dart.throw(new _internal.LateError.fieldNI("_reaction")) : t3;
+      }
+      set [_reaction](t3) {
+        this[__ToggleableStateMixin__reaction] = t3;
+      }
+      get reactionHoverFade() {
+        return this[_reactionHoverFade];
+      }
+      get [_reactionHoverFade]() {
+        let t4;
+        t4 = this[__ToggleableStateMixin__reactionHoverFade];
+        return t4 == null ? dart.throw(new _internal.LateError.fieldNI("_reactionHoverFade")) : t4;
+      }
+      set [_reactionHoverFade](t4) {
+        this[__ToggleableStateMixin__reactionHoverFade] = t4;
+      }
+      get [_reactionHoverFadeController]() {
+        let t5;
+        t5 = this[__ToggleableStateMixin__reactionHoverFadeController];
+        return t5 == null ? dart.throw(new _internal.LateError.fieldNI("_reactionHoverFadeController")) : t5;
+      }
+      set [_reactionHoverFadeController](t5) {
+        this[__ToggleableStateMixin__reactionHoverFadeController] = t5;
+      }
+      get reactionFocusFade() {
+        return this[_reactionFocusFade];
+      }
+      get [_reactionFocusFade]() {
+        let t6;
+        t6 = this[__ToggleableStateMixin__reactionFocusFade];
+        return t6 == null ? dart.throw(new _internal.LateError.fieldNI("_reactionFocusFade")) : t6;
+      }
+      set [_reactionFocusFade](t6) {
+        this[__ToggleableStateMixin__reactionFocusFade] = t6;
+      }
+      get [_reactionFocusFadeController]() {
+        let t7;
+        t7 = this[__ToggleableStateMixin__reactionFocusFadeController];
+        return t7 == null ? dart.throw(new _internal.LateError.fieldNI("_reactionFocusFadeController")) : t7;
+      }
+      set [_reactionFocusFadeController](t7) {
+        this[__ToggleableStateMixin__reactionFocusFadeController] = t7;
+      }
+      get isInteractive() {
+        return this.onChanged != null;
+      }
+      get [_actionMap]() {
+        let t9, t8;
+        t8 = this[__ToggleableStateMixin__actionMap];
+        return t8 == null ? (t9 = new (T.LinkedMapOfType$ActionOfIntent()).from([dart.wrapType(actions.ActivateIntent), new (T.CallbackActionOfActivateIntent()).new({onInvoke: dart.bind(this, _handleTap)})]), this[__ToggleableStateMixin__actionMap] == null ? this[__ToggleableStateMixin__actionMap] = t9 : dart.throw(new _internal.LateError.fieldADI("_actionMap"))) : t8;
+      }
+      initState() {
+        super.initState();
+        this[_positionController] = new animation_controller.AnimationController.new({duration: toggleable._kToggleDuration, value: this.value === false ? 0.0 : 1.0, vsync: this});
+        this[_position] = new animations.CurvedAnimation.new({parent: this[_positionController], curve: curves.Curves.easeIn, reverseCurve: curves.Curves.easeOut});
+        this[_reactionController] = new animation_controller.AnimationController.new({duration: constants.kRadialReactionDuration, vsync: this});
+        this[_reaction] = new animations.CurvedAnimation.new({parent: this[_reactionController], curve: curves.Curves.fastOutSlowIn});
+        this[_reactionHoverFadeController] = new animation_controller.AnimationController.new({duration: toggleable._kReactionFadeDuration, value: this[_hovering] || this[_focused] ? 1.0 : 0.0, vsync: this});
+        this[_reactionHoverFade] = new animations.CurvedAnimation.new({parent: this[_reactionHoverFadeController], curve: curves.Curves.fastOutSlowIn});
+        this[_reactionFocusFadeController] = new animation_controller.AnimationController.new({duration: toggleable._kReactionFadeDuration, value: this[_hovering] || this[_focused] ? 1.0 : 0.0, vsync: this});
+        this[_reactionFocusFade] = new animations.CurvedAnimation.new({parent: this[_reactionFocusFadeController], curve: curves.Curves.fastOutSlowIn});
+      }
+      animateToValue() {
+        if (this.tristate) {
+          if (this.value == null) this[_positionController].value = 0.0;
+          if (this.value !== false)
+            this[_positionController].forward();
+          else
+            this[_positionController].reverse();
+        } else {
+          if (this.value === true)
+            this[_positionController].forward();
+          else
+            this[_positionController].reverse();
         }
       }
       dispose() {
-        this[_painter].dispose();
+        this[_positionController].dispose();
+        this[_reactionController].dispose();
+        this[_reactionHoverFadeController].dispose();
+        this[_reactionFocusFadeController].dispose();
         super.dispose();
       }
-      get onChanged() {
-        return TNToNvoid().as(this.widget.onChanged) != null ? dart.bind(this, _handleChanged) : null;
+      get downPosition() {
+        return this[_downPosition];
       }
-      get tristate() {
-        return this.widget.toggleable;
+      [_handleTapDown](details) {
+        if (this.isInteractive) {
+          this.setState(dart.fn(() => {
+            this[_downPosition] = details.localPosition;
+          }, T.VoidTovoid()));
+          this[_reactionController].forward();
+        }
       }
-      get value() {
-        return this.widget[_selected];
-      }
-      get [_widgetFillColor]() {
-        return material_state.MaterialStateProperty.resolveWith(T$.ColorN(), dart.fn(states => {
-          if (states.contains(material_state.MaterialState.disabled)) {
-            return null;
-          }
-          if (states.contains(material_state.MaterialState.selected)) {
-            return this.widget.activeColor;
-          }
-          return null;
-        }, T$.SetOfMaterialStateToColorN()));
-      }
-      get [_defaultFillColor]() {
-        let themeData = theme.Theme.of(this.context);
-        return material_state.MaterialStateProperty.resolveWith(ui.Color, dart.fn(states => {
-          if (states.contains(material_state.MaterialState.disabled)) {
-            return themeData.disabledColor;
-          }
-          if (states.contains(material_state.MaterialState.selected)) {
-            return themeData.toggleableActiveColor;
-          }
-          return themeData.unselectedWidgetColor;
-        }, T$.SetOfMaterialStateToColor()));
-      }
-      build(context) {
-        let t0, t0$, t0$0, t0$1, t0$2, t0$3, t0$4, t0$5, t1, t0$6, t0$7, t0$8, t0$9, t1$, t0$10, t0$11, t0$12, t0$13, t0$14, t1$0, t0$15, t0$16, t0$17, t0$18, t0$19, t1$1, t0$20, t0$21, t0$22, t0$23, t1$2, t0$24, t0$25, t0$26, t0$27, t1$3, t0$28, t0$29, t1$4, t1$5, t0$30;
-        if (!debug.debugCheckHasMaterial(context)) dart.assertFailed(null, I[0], 425, 12, "debugCheckHasMaterial(context)");
-        let themeData = theme.Theme.of(context);
-        let effectiveMaterialTapTargetSize = (t0$ = (t0 = this.widget.materialTapTargetSize, t0 == null ? themeData.radioTheme.materialTapTargetSize : t0), t0$ == null ? themeData.materialTapTargetSize : t0$);
-        let effectiveVisualDensity = (t0$1 = (t0$0 = this.widget.visualDensity, t0$0 == null ? themeData.radioTheme.visualDensity : t0$0), t0$1 == null ? themeData.visualDensity : t0$1);
-        let size = null;
-        switch (effectiveMaterialTapTargetSize) {
-          case C[1] || CT.C1:
+      [_handleTap](_ = null) {
+        if (!this.isInteractive) return;
+        switch (this.value) {
+          case false:
           {
-            size = C[0] || CT.C0;
+            dart.nullCheck(this.onChanged)(true);
             break;
           }
-          case C[3] || CT.C3:
+          case true:
           {
-            size = C[2] || CT.C2;
+            dart.nullCheck(this.onChanged)(this.tristate ? null : false);
+            break;
+          }
+          case null:
+          {
+            dart.nullCheck(this.onChanged)(false);
             break;
           }
         }
-        size = size['+'](effectiveVisualDensity.baseSizeAdjustment);
-        let effectiveMouseCursor = material_state.MaterialStateProperty.resolveWith(mouse_cursor.MouseCursor, dart.fn(states => {
-          let t1, t0, t0$;
-          t0$ = (t0 = material_state.MaterialStateProperty.resolveAs(T$.MouseCursorN(), this.widget.mouseCursor, states), t0 == null ? (t1 = themeData.radioTheme.mouseCursor, t1 == null ? null : t1.resolve(states)) : t0);
-          return t0$ == null ? material_state.MaterialStateProperty.resolveAs(mouse_cursor.MouseCursor, material_state.MaterialStateMouseCursor.clickable, states) : t0$;
-        }, T$.SetOfMaterialStateToMouseCursor()));
-        let activeStates = (t0$2 = this.states, (() => {
-          t0$2.add(material_state.MaterialState.selected);
-          return t0$2;
-        })());
-        let inactiveStates = (t0$3 = this.states, (() => {
-          t0$3.remove(material_state.MaterialState.selected);
-          return t0$3;
-        })());
-        let effectiveActiveColor = (t0$7 = (t0$6 = (t0$5 = (t0$4 = this.widget.fillColor, t0$4 == null ? null : t0$4.resolve(activeStates)), t0$5 == null ? this[_widgetFillColor].resolve(activeStates) : t0$5), t0$6 == null ? (t1 = themeData.radioTheme.fillColor, t1 == null ? null : t1.resolve(activeStates)) : t0$6), t0$7 == null ? this[_defaultFillColor].resolve(activeStates) : t0$7);
-        let effectiveInactiveColor = (t0$11 = (t0$10 = (t0$9 = (t0$8 = this.widget.fillColor, t0$8 == null ? null : t0$8.resolve(inactiveStates)), t0$9 == null ? this[_widgetFillColor].resolve(inactiveStates) : t0$9), t0$10 == null ? (t1$ = themeData.radioTheme.fillColor, t1$ == null ? null : t1$.resolve(inactiveStates)) : t0$10), t0$11 == null ? this[_defaultFillColor].resolve(inactiveStates) : t0$11);
-        let focusedStates = (t0$12 = this.states, (() => {
-          t0$12.add(material_state.MaterialState.focused);
-          return t0$12;
-        })());
-        let effectiveFocusOverlayColor = (t0$16 = (t0$15 = (t0$14 = (t0$13 = this.widget.overlayColor, t0$13 == null ? null : t0$13.resolve(focusedStates)), t0$14 == null ? this.widget.focusColor : t0$14), t0$15 == null ? (t1$0 = themeData.radioTheme.overlayColor, t1$0 == null ? null : t1$0.resolve(focusedStates)) : t0$15), t0$16 == null ? themeData.focusColor : t0$16);
-        let hoveredStates = (t0$17 = this.states, (() => {
-          t0$17.add(material_state.MaterialState.hovered);
-          return t0$17;
-        })());
-        let effectiveHoverOverlayColor = (t0$21 = (t0$20 = (t0$19 = (t0$18 = this.widget.overlayColor, t0$18 == null ? null : t0$18.resolve(hoveredStates)), t0$19 == null ? this.widget.hoverColor : t0$19), t0$20 == null ? (t1$1 = themeData.radioTheme.overlayColor, t1$1 == null ? null : t1$1.resolve(hoveredStates)) : t0$20), t0$21 == null ? themeData.hoverColor : t0$21);
-        let activePressedStates = (t0$22 = activeStates, (() => {
-          t0$22.add(material_state.MaterialState.pressed);
-          return t0$22;
-        })());
-        let effectiveActivePressedOverlayColor = (t0$25 = (t0$24 = (t0$23 = this.widget.overlayColor, t0$23 == null ? null : t0$23.resolve(activePressedStates)), t0$24 == null ? (t1$2 = themeData.radioTheme.overlayColor, t1$2 == null ? null : t1$2.resolve(activePressedStates)) : t0$24), t0$25 == null ? effectiveActiveColor.withAlpha(31) : t0$25);
-        let inactivePressedStates = (t0$26 = inactiveStates, (() => {
-          t0$26.add(material_state.MaterialState.pressed);
-          return t0$26;
-        })());
-        let effectiveInactivePressedOverlayColor = (t0$29 = (t0$28 = (t0$27 = this.widget.overlayColor, t0$27 == null ? null : t0$27.resolve(inactivePressedStates)), t0$28 == null ? (t1$3 = themeData.radioTheme.overlayColor, t1$3 == null ? null : t1$3.resolve(inactivePressedStates)) : t0$28), t0$29 == null ? effectiveActiveColor.withAlpha(31) : t0$29);
-        return new basic.Semantics.new({inMutuallyExclusiveGroup: true, checked: this.widget[_selected], child: this.buildToggleable({focusNode: this.widget.focusNode, autofocus: this.widget.autofocus, mouseCursor: effectiveMouseCursor, size: size, painter: (t0$30 = this[_painter], (() => {
-              t0$30.position = this.position;
-              t0$30.reaction = this.reaction;
-              t0$30.reactionFocusFade = this.reactionFocusFade;
-              t0$30.reactionHoverFade = this.reactionHoverFade;
-              t0$30.inactiveReactionColor = effectiveInactivePressedOverlayColor;
-              t0$30.reactionColor = effectiveActivePressedOverlayColor;
-              t0$30.hoverColor = effectiveHoverOverlayColor;
-              t0$30.focusColor = effectiveFocusOverlayColor;
-              t0$30.splashRadius = (t1$5 = (t1$4 = this.widget.splashRadius, t1$4 == null ? themeData.radioTheme.splashRadius : t1$4), t1$5 == null ? 20 : t1$5);
-              t0$30.downPosition = this.downPosition;
-              t0$30.isFocused = this.states.contains(material_state.MaterialState.focused);
-              t0$30.isHovered = this.states.contains(material_state.MaterialState.hovered);
-              t0$30.activeColor = effectiveActiveColor;
-              t0$30.inactiveColor = effectiveInactiveColor;
-              return t0$30;
-            })())}), $creationLocationd_0dea112b090073317d4: C[4] || CT.C4});
+        dart.nullCheck(this.context.findRenderObject()).sendSemanticsEvent(C[0] || CT.C0);
       }
-    }
-    (_RadioState.new = function() {
-      this[_painter] = new radio._RadioPainter.new();
-      _RadioState.__proto__.new.call(this);
-      ;
-    }).prototype = _RadioState.prototype;
-    dart.addTypeTests(_RadioState);
-    _RadioState.prototype[_is__RadioState_default] = true;
-    dart.addTypeCaches(_RadioState);
-    dart.setMethodSignature(_RadioState, () => ({
-      __proto__: dart.getMethods(_RadioState.__proto__),
-      [_handleChanged]: dart.fnType(dart.void, [dart.nullable(core.bool)]),
-      build: dart.fnType(framework.Widget, [framework.BuildContext])
+      [_handleTapEnd](_ = null) {
+        if (this[_downPosition] != null) {
+          this.setState(dart.fn(() => {
+            this[_downPosition] = null;
+          }, T.VoidTovoid()));
+        }
+        this[_reactionController].reverse();
+      }
+      [_handleFocusHighlightChanged](focused) {
+        if (focused !== this[_focused]) {
+          this.setState(dart.fn(() => {
+            this[_focused] = focused;
+          }, T.VoidTovoid()));
+          if (focused) {
+            this[_reactionFocusFadeController].forward();
+          } else {
+            this[_reactionFocusFadeController].reverse();
+          }
+        }
+      }
+      [_handleHoverChanged](hovering) {
+        if (hovering !== this[_hovering]) {
+          this.setState(dart.fn(() => {
+            this[_hovering] = hovering;
+          }, T.VoidTovoid()));
+          if (hovering) {
+            this[_reactionHoverFadeController].forward();
+          } else {
+            this[_reactionHoverFadeController].reverse();
+          }
+        }
+      }
+      get states() {
+        return (() => {
+          let t8 = T.LinkedHashSetOfMaterialState().new();
+          if (!this.isInteractive) t8.add(material_state.MaterialState.disabled);
+          if (this[_hovering]) t8.add(material_state.MaterialState.hovered);
+          if (this[_focused]) t8.add(material_state.MaterialState.focused);
+          if (this.value !== false) t8.add(material_state.MaterialState.selected);
+          return t8;
+        })();
+      }
+      buildToggleable(opts) {
+        let focusNode = opts && 'focusNode' in opts ? opts.focusNode : null;
+        let autofocus = opts && 'autofocus' in opts ? opts.autofocus : false;
+        let mouseCursor = opts && 'mouseCursor' in opts ? opts.mouseCursor : null;
+        let size = opts && 'size' in opts ? opts.size : null;
+        let painter = opts && 'painter' in opts ? opts.painter : null;
+        return new actions.FocusableActionDetector.new({actions: this[_actionMap], focusNode: focusNode, autofocus: autofocus, enabled: this.isInteractive, onShowFocusHighlight: dart.bind(this, _handleFocusHighlightChanged), onShowHoverHighlight: dart.bind(this, _handleHoverChanged), mouseCursor: mouseCursor.resolve(this.states), child: new gesture_detector.GestureDetector.new({excludeFromSemantics: !this.isInteractive, onTapDown: dart.bind(this, _handleTapDown), onTap: dart.bind(this, _handleTap), onTapUp: dart.bind(this, _handleTapEnd), onTapCancel: dart.bind(this, _handleTapEnd), child: new basic.Semantics.new({enabled: this.isInteractive, child: new basic.CustomPaint.new({size: size, painter: painter, $creationLocationd_0dea112b090073317d4: C[1] || CT.C1}), $creationLocationd_0dea112b090073317d4: C[5] || CT.C5}), $creationLocationd_0dea112b090073317d4: C[9] || CT.C9}), $creationLocationd_0dea112b090073317d4: C[17] || CT.C17});
+      }
+    };
+    (ToggleableStateMixin[dart.mixinNew] = function() {
+      this[__ToggleableStateMixin__positionController] = null;
+      this[__ToggleableStateMixin__position] = null;
+      this[__ToggleableStateMixin__reactionController] = null;
+      this[__ToggleableStateMixin__reaction] = null;
+      this[__ToggleableStateMixin__reactionHoverFade] = null;
+      this[__ToggleableStateMixin__reactionHoverFadeController] = null;
+      this[__ToggleableStateMixin__reactionFocusFade] = null;
+      this[__ToggleableStateMixin__reactionFocusFadeController] = null;
+      this[__ToggleableStateMixin__actionMap] = null;
+      this[_downPosition] = null;
+      this[_focused] = false;
+      this[_hovering] = false;
+    }).prototype = ToggleableStateMixin.prototype;
+    dart.addTypeTests(ToggleableStateMixin);
+    ToggleableStateMixin.prototype[_is_ToggleableStateMixin_default] = true;
+    dart.addTypeCaches(ToggleableStateMixin);
+    ToggleableStateMixin[dart.implements] = () => [ticker_provider.TickerProviderStateMixin$(S)];
+    dart.setMethodSignature(ToggleableStateMixin, () => ({
+      __proto__: dart.getMethods(ToggleableStateMixin.__proto__),
+      animateToValue: dart.fnType(dart.void, []),
+      [_handleTapDown]: dart.fnType(dart.void, [tap.TapDownDetails]),
+      [_handleTap]: dart.fnType(dart.void, [], [dart.nullable(actions.Intent)]),
+      [_handleTapEnd]: dart.fnType(dart.void, [], [dart.nullable(tap.TapUpDetails)]),
+      [_handleFocusHighlightChanged]: dart.fnType(dart.void, [core.bool]),
+      [_handleHoverChanged]: dart.fnType(dart.void, [core.bool]),
+      buildToggleable: dart.fnType(framework.Widget, [], {autofocus: core.bool, focusNode: dart.nullable(focus_manager.FocusNode)}, {mouseCursor: material_state.MaterialStateProperty$(mouse_cursor.MouseCursor), painter: custom_paint.CustomPainter, size: ui.Size})
     }));
-    dart.setGetterSignature(_RadioState, () => ({
-      __proto__: dart.getGetters(_RadioState.__proto__),
-      onChanged: dart.nullable(dart.fnType(dart.void, [dart.nullable(core.bool)])),
-      tristate: core.bool,
-      value: dart.nullable(core.bool),
-      [_widgetFillColor]: material_state.MaterialStateProperty$(dart.nullable(ui.Color)),
-      [_defaultFillColor]: material_state.MaterialStateProperty$(ui.Color)
+    dart.setGetterSignature(ToggleableStateMixin, () => ({
+      __proto__: dart.getGetters(ToggleableStateMixin.__proto__),
+      positionController: animation_controller.AnimationController,
+      [_positionController]: animation_controller.AnimationController,
+      position: animations.CurvedAnimation,
+      [_position]: animations.CurvedAnimation,
+      reactionController: animation_controller.AnimationController,
+      [_reactionController]: animation_controller.AnimationController,
+      reaction: animation.Animation$(core.double),
+      [_reaction]: animation.Animation$(core.double),
+      reactionHoverFade: animation.Animation$(core.double),
+      [_reactionHoverFade]: animation.Animation$(core.double),
+      [_reactionHoverFadeController]: animation_controller.AnimationController,
+      reactionFocusFade: animation.Animation$(core.double),
+      [_reactionFocusFade]: animation.Animation$(core.double),
+      [_reactionFocusFadeController]: animation_controller.AnimationController,
+      isInteractive: core.bool,
+      [_actionMap]: core.Map$(core.Type, actions.Action$(actions.Intent)),
+      downPosition: dart.nullable(ui.Offset),
+      states: core.Set$(material_state.MaterialState)
     }));
-    dart.setLibraryUri(_RadioState, I[1]);
-    dart.setFieldSignature(_RadioState, () => ({
-      __proto__: dart.getFields(_RadioState.__proto__),
-      [_painter]: dart.finalFieldType(radio._RadioPainter)
+    dart.setSetterSignature(ToggleableStateMixin, () => ({
+      __proto__: dart.getSetters(ToggleableStateMixin.__proto__),
+      [_positionController]: animation_controller.AnimationController,
+      [_position]: animations.CurvedAnimation,
+      [_reactionController]: animation_controller.AnimationController,
+      [_reaction]: animation.Animation$(core.double),
+      [_reactionHoverFade]: animation.Animation$(core.double),
+      [_reactionHoverFadeController]: animation_controller.AnimationController,
+      [_reactionFocusFade]: animation.Animation$(core.double),
+      [_reactionFocusFadeController]: animation_controller.AnimationController
     }));
-    return _RadioState;
+    dart.setLibraryUri(ToggleableStateMixin, I[0]);
+    dart.setFieldSignature(ToggleableStateMixin, () => ({
+      __proto__: dart.getFields(ToggleableStateMixin.__proto__),
+      [__ToggleableStateMixin__positionController]: dart.fieldType(dart.nullable(animation_controller.AnimationController)),
+      [__ToggleableStateMixin__position]: dart.fieldType(dart.nullable(animations.CurvedAnimation)),
+      [__ToggleableStateMixin__reactionController]: dart.fieldType(dart.nullable(animation_controller.AnimationController)),
+      [__ToggleableStateMixin__reaction]: dart.fieldType(dart.nullable(animation.Animation$(core.double))),
+      [__ToggleableStateMixin__reactionHoverFade]: dart.fieldType(dart.nullable(animation.Animation$(core.double))),
+      [__ToggleableStateMixin__reactionHoverFadeController]: dart.fieldType(dart.nullable(animation_controller.AnimationController)),
+      [__ToggleableStateMixin__reactionFocusFade]: dart.fieldType(dart.nullable(animation.Animation$(core.double))),
+      [__ToggleableStateMixin__reactionFocusFadeController]: dart.fieldType(dart.nullable(animation_controller.AnimationController)),
+      [__ToggleableStateMixin__actionMap]: dart.fieldType(dart.nullable(core.Map$(core.Type, actions.Action$(actions.Intent)))),
+      [_downPosition]: dart.fieldType(dart.nullable(ui.Offset)),
+      [_focused]: dart.fieldType(core.bool),
+      [_hovering]: dart.fieldType(core.bool)
+    }));
+    return ToggleableStateMixin;
   });
-  radio._RadioState = radio._RadioState$();
-  dart.addTypeTests(radio._RadioState, _is__RadioState_default);
-  var _repaint = dart.privateName(radio, "_repaint");
-  var _repaint$ = dart.privateName(custom_paint, "_repaint");
-  radio._RadioPainter = class _RadioPainter extends toggleable.ToggleablePainter {
-    paint(canvas, size) {
-      let t0;
-      this.paintRadialReaction({canvas: canvas, origin: size.center(ui.Offset.zero)});
-      let center = ui.Offset.zero['&'](size).center;
-      let paint = (t0 = ui.Paint.new(), (() => {
-        t0.color = dart.nullCheck(ui.Color.lerp(this.inactiveColor, this.activeColor, this.position.value));
-        t0.style = ui.PaintingStyle.stroke;
-        t0.strokeWidth = 2.0;
-        return t0;
-      })());
-      canvas.drawCircle(center, 8, paint);
-      if (!this.position.isDismissed) {
-        paint.style = ui.PaintingStyle.fill;
-        canvas.drawCircle(center, 4.5 * this.position.value, paint);
+  toggleable.ToggleableStateMixin = toggleable.ToggleableStateMixin$();
+  dart.addTypeTests(toggleable.ToggleableStateMixin, _is_ToggleableStateMixin_default);
+  var _activeColor = dart.privateName(toggleable, "_activeColor");
+  var _inactiveColor = dart.privateName(toggleable, "_inactiveColor");
+  var _inactiveReactionColor = dart.privateName(toggleable, "_inactiveReactionColor");
+  var _reactionColor = dart.privateName(toggleable, "_reactionColor");
+  var _hoverColor = dart.privateName(toggleable, "_hoverColor");
+  var _focusColor = dart.privateName(toggleable, "_focusColor");
+  var _splashRadius = dart.privateName(toggleable, "_splashRadius");
+  var _isFocused = dart.privateName(toggleable, "_isFocused");
+  var _isHovered = dart.privateName(toggleable, "_isHovered");
+  var OffsetBase__dy = dart.privateName(ui, "OffsetBase._dy");
+  var OffsetBase__dx = dart.privateName(ui, "OffsetBase._dx");
+  toggleable.ToggleablePainter = class ToggleablePainter extends change_notifier.ChangeNotifier {
+    get position() {
+      return dart.nullCheck(this[_position]);
+    }
+    set position(value) {
+      let t9;
+      if (value[$_equals](this[_position])) {
+        return;
+      }
+      t9 = this[_position];
+      t9 == null ? null : t9.removeListener(dart.bind(this, 'notifyListeners'));
+      value.addListener(dart.bind(this, 'notifyListeners'));
+      this[_position] = value;
+      this.notifyListeners();
+    }
+    get reaction() {
+      return dart.nullCheck(this[_reaction]);
+    }
+    set reaction(value) {
+      let t9;
+      if (value[$_equals](this[_reaction])) {
+        return;
+      }
+      t9 = this[_reaction];
+      t9 == null ? null : t9.removeListener(dart.bind(this, 'notifyListeners'));
+      value.addListener(dart.bind(this, 'notifyListeners'));
+      this[_reaction] = value;
+      this.notifyListeners();
+    }
+    get reactionFocusFade() {
+      return dart.nullCheck(this[_reactionFocusFade]);
+    }
+    set reactionFocusFade(value) {
+      let t9;
+      if (value[$_equals](this[_reactionFocusFade])) {
+        return;
+      }
+      t9 = this[_reactionFocusFade];
+      t9 == null ? null : t9.removeListener(dart.bind(this, 'notifyListeners'));
+      value.addListener(dart.bind(this, 'notifyListeners'));
+      this[_reactionFocusFade] = value;
+      this.notifyListeners();
+    }
+    get reactionHoverFade() {
+      return dart.nullCheck(this[_reactionHoverFade]);
+    }
+    set reactionHoverFade(value) {
+      let t9;
+      if (value[$_equals](this[_reactionHoverFade])) {
+        return;
+      }
+      t9 = this[_reactionHoverFade];
+      t9 == null ? null : t9.removeListener(dart.bind(this, 'notifyListeners'));
+      value.addListener(dart.bind(this, 'notifyListeners'));
+      this[_reactionHoverFade] = value;
+      this.notifyListeners();
+    }
+    get activeColor() {
+      return dart.nullCheck(this[_activeColor]);
+    }
+    set activeColor(value) {
+      if (dart.equals(this[_activeColor], value)) {
+        return;
+      }
+      this[_activeColor] = value;
+      this.notifyListeners();
+    }
+    get inactiveColor() {
+      return dart.nullCheck(this[_inactiveColor]);
+    }
+    set inactiveColor(value) {
+      if (dart.equals(this[_inactiveColor], value)) {
+        return;
+      }
+      this[_inactiveColor] = value;
+      this.notifyListeners();
+    }
+    get inactiveReactionColor() {
+      return dart.nullCheck(this[_inactiveReactionColor]);
+    }
+    set inactiveReactionColor(value) {
+      if (value._equals(this[_inactiveReactionColor])) {
+        return;
+      }
+      this[_inactiveReactionColor] = value;
+      this.notifyListeners();
+    }
+    get reactionColor() {
+      return dart.nullCheck(this[_reactionColor]);
+    }
+    set reactionColor(value) {
+      if (value._equals(this[_reactionColor])) {
+        return;
+      }
+      this[_reactionColor] = value;
+      this.notifyListeners();
+    }
+    get hoverColor() {
+      return dart.nullCheck(this[_hoverColor]);
+    }
+    set hoverColor(value) {
+      if (value._equals(this[_hoverColor])) {
+        return;
+      }
+      this[_hoverColor] = value;
+      this.notifyListeners();
+    }
+    get focusColor() {
+      return dart.nullCheck(this[_focusColor]);
+    }
+    set focusColor(value) {
+      if (value._equals(this[_focusColor])) {
+        return;
+      }
+      this[_focusColor] = value;
+      this.notifyListeners();
+    }
+    get splashRadius() {
+      return dart.nullCheck(this[_splashRadius]);
+    }
+    set splashRadius(value) {
+      if (value === this[_splashRadius]) {
+        return;
+      }
+      this[_splashRadius] = value;
+      this.notifyListeners();
+    }
+    get downPosition() {
+      return this[_downPosition];
+    }
+    set downPosition(value) {
+      if (dart.equals(value, this[_downPosition])) {
+        return;
+      }
+      this[_downPosition] = value;
+      this.notifyListeners();
+    }
+    get isFocused() {
+      return dart.nullCheck(this[_isFocused]);
+    }
+    set isFocused(value) {
+      if (value == this[_isFocused]) {
+        return;
+      }
+      this[_isFocused] = value;
+      this.notifyListeners();
+    }
+    get isHovered() {
+      return dart.nullCheck(this[_isHovered]);
+    }
+    set isHovered(value) {
+      if (value == this[_isHovered]) {
+        return;
+      }
+      this[_isHovered] = value;
+      this.notifyListeners();
+    }
+    paintRadialReaction(opts) {
+      let t9, t9$;
+      let canvas = opts && 'canvas' in opts ? opts.canvas : null;
+      let offset = opts && 'offset' in opts ? opts.offset : C[27] || CT.C27;
+      let origin = opts && 'origin' in opts ? opts.origin : null;
+      if (!this.reaction.isDismissed || !this.reactionFocusFade.isDismissed || !this.reactionHoverFade.isDismissed) {
+        let reactionPaint = (t9 = ui.Paint.new(), (() => {
+          t9.color = dart.nullCheck(ui.Color.lerp(ui.Color.lerp(ui.Color.lerp(this.inactiveReactionColor, this.reactionColor, this.position.value), this.hoverColor, this.reactionHoverFade.value), this.focusColor, this.reactionFocusFade.value));
+          return t9;
+        })());
+        let center = dart.nullCheck(ui.Offset.lerp((t9$ = this.downPosition, t9$ == null ? origin : t9$), origin, this.reaction.value));
+        let radialReactionRadiusTween = new (T.TweenOfdouble()).new({begin: 0.0, end: this.splashRadius});
+        let reactionRadius = this.isFocused || this.isHovered ? this.splashRadius : radialReactionRadiusTween.evaluate(this.reaction);
+        if (reactionRadius > 0.0) {
+          canvas.drawCircle(center['+'](offset), reactionRadius, reactionPaint);
+        }
       }
     }
-    get [_repaint$]() {
-      return T$.ListenableN().as(this[$noSuchMethod](new core._Invocation.getter(C[9] || CT.C9)));
+    dispose() {
+      let t9, t9$, t9$0, t9$1;
+      t9 = this[_position];
+      t9 == null ? null : t9.removeListener(dart.bind(this, 'notifyListeners'));
+      t9$ = this[_reaction];
+      t9$ == null ? null : t9$.removeListener(dart.bind(this, 'notifyListeners'));
+      t9$0 = this[_reactionFocusFade];
+      t9$0 == null ? null : t9$0.removeListener(dart.bind(this, 'notifyListeners'));
+      t9$1 = this[_reactionHoverFade];
+      t9$1 == null ? null : t9$1.removeListener(dart.bind(this, 'notifyListeners'));
+      super.dispose();
+    }
+    shouldRepaint(oldDelegate) {
+      custom_paint.CustomPainter.as(oldDelegate);
+      return true;
+    }
+    hitTest(position) {
+      return null;
+    }
+    get semanticsBuilder() {
+      return null;
+    }
+    shouldRebuildSemantics(oldDelegate) {
+      custom_paint.CustomPainter.as(oldDelegate);
+      return false;
     }
   };
-  (radio._RadioPainter.new = function() {
-    radio._RadioPainter.__proto__.new.call(this);
+  (toggleable.ToggleablePainter.new = function() {
+    this[_position] = null;
+    this[_reaction] = null;
+    this[_reactionFocusFade] = null;
+    this[_reactionHoverFade] = null;
+    this[_activeColor] = null;
+    this[_inactiveColor] = null;
+    this[_inactiveReactionColor] = null;
+    this[_reactionColor] = null;
+    this[_hoverColor] = null;
+    this[_focusColor] = null;
+    this[_splashRadius] = null;
+    this[_downPosition] = null;
+    this[_isFocused] = null;
+    this[_isHovered] = null;
+    toggleable.ToggleablePainter.__proto__.new.call(this);
     ;
-  }).prototype = radio._RadioPainter.prototype;
-  dart.addTypeTests(radio._RadioPainter);
-  dart.addTypeCaches(radio._RadioPainter);
-  dart.setMethodSignature(radio._RadioPainter, () => ({
-    __proto__: dart.getMethods(radio._RadioPainter.__proto__),
-    paint: dart.fnType(dart.void, [ui.Canvas, ui.Size])
+  }).prototype = toggleable.ToggleablePainter.prototype;
+  dart.addTypeTests(toggleable.ToggleablePainter);
+  dart.addTypeCaches(toggleable.ToggleablePainter);
+  toggleable.ToggleablePainter[dart.implements] = () => [custom_paint.CustomPainter];
+  dart.setMethodSignature(toggleable.ToggleablePainter, () => ({
+    __proto__: dart.getMethods(toggleable.ToggleablePainter.__proto__),
+    paintRadialReaction: dart.fnType(dart.void, [], {offset: ui.Offset}, {canvas: ui.Canvas, origin: ui.Offset}),
+    shouldRepaint: dart.fnType(core.bool, [dart.nullable(core.Object)]),
+    hitTest: dart.fnType(dart.nullable(core.bool), [ui.Offset]),
+    shouldRebuildSemantics: dart.fnType(core.bool, [dart.nullable(core.Object)])
   }));
-  dart.setGetterSignature(radio._RadioPainter, () => ({
-    __proto__: dart.getGetters(radio._RadioPainter.__proto__),
-    [_repaint$]: dart.nullable(change_notifier.Listenable)
+  dart.setGetterSignature(toggleable.ToggleablePainter, () => ({
+    __proto__: dart.getGetters(toggleable.ToggleablePainter.__proto__),
+    position: animation.Animation$(core.double),
+    reaction: animation.Animation$(core.double),
+    reactionFocusFade: animation.Animation$(core.double),
+    reactionHoverFade: animation.Animation$(core.double),
+    activeColor: ui.Color,
+    inactiveColor: ui.Color,
+    inactiveReactionColor: ui.Color,
+    reactionColor: ui.Color,
+    hoverColor: ui.Color,
+    focusColor: ui.Color,
+    splashRadius: core.double,
+    downPosition: dart.nullable(ui.Offset),
+    isFocused: core.bool,
+    isHovered: core.bool,
+    semanticsBuilder: dart.nullable(dart.fnType(core.List$(custom_paint.CustomPainterSemantics), [ui.Size]))
   }));
-  dart.setLibraryUri(radio._RadioPainter, I[1]);
-  dart.defineLazy(radio, {
-    /*radio._kOuterRadius*/get _kOuterRadius() {
-      return 8;
+  dart.setSetterSignature(toggleable.ToggleablePainter, () => ({
+    __proto__: dart.getSetters(toggleable.ToggleablePainter.__proto__),
+    position: animation.Animation$(core.double),
+    reaction: animation.Animation$(core.double),
+    reactionFocusFade: animation.Animation$(core.double),
+    reactionHoverFade: animation.Animation$(core.double),
+    activeColor: ui.Color,
+    inactiveColor: ui.Color,
+    inactiveReactionColor: ui.Color,
+    reactionColor: ui.Color,
+    hoverColor: ui.Color,
+    focusColor: ui.Color,
+    splashRadius: core.double,
+    downPosition: dart.nullable(ui.Offset),
+    isFocused: dart.nullable(core.bool),
+    isHovered: dart.nullable(core.bool)
+  }));
+  dart.setLibraryUri(toggleable.ToggleablePainter, I[0]);
+  dart.setFieldSignature(toggleable.ToggleablePainter, () => ({
+    __proto__: dart.getFields(toggleable.ToggleablePainter.__proto__),
+    [_position]: dart.fieldType(dart.nullable(animation.Animation$(core.double))),
+    [_reaction]: dart.fieldType(dart.nullable(animation.Animation$(core.double))),
+    [_reactionFocusFade]: dart.fieldType(dart.nullable(animation.Animation$(core.double))),
+    [_reactionHoverFade]: dart.fieldType(dart.nullable(animation.Animation$(core.double))),
+    [_activeColor]: dart.fieldType(dart.nullable(ui.Color)),
+    [_inactiveColor]: dart.fieldType(dart.nullable(ui.Color)),
+    [_inactiveReactionColor]: dart.fieldType(dart.nullable(ui.Color)),
+    [_reactionColor]: dart.fieldType(dart.nullable(ui.Color)),
+    [_hoverColor]: dart.fieldType(dart.nullable(ui.Color)),
+    [_focusColor]: dart.fieldType(dart.nullable(ui.Color)),
+    [_splashRadius]: dart.fieldType(dart.nullable(core.double)),
+    [_downPosition]: dart.fieldType(dart.nullable(ui.Offset)),
+    [_isFocused]: dart.fieldType(dart.nullable(core.bool)),
+    [_isHovered]: dart.fieldType(dart.nullable(core.bool))
+  }));
+  var Duration__duration = dart.privateName(core, "Duration._duration");
+  dart.defineLazy(toggleable, {
+    /*toggleable._kToggleDuration*/get _kToggleDuration() {
+      return C[28] || CT.C28;
     },
-    /*radio._kInnerRadius*/get _kInnerRadius() {
-      return 4.5;
+    /*toggleable._kReactionFadeDuration*/get _kReactionFadeDuration() {
+      return C[29] || CT.C29;
     }
   }, false);
-  dart.trackLibraries("packages/flutter/src/material/radio.dart", {
-    "package:flutter/src/material/radio.dart": radio
+  dart.trackLibraries("packages/flutter/src/material/toggleable.dart", {
+    "package:flutter/src/material/toggleable.dart": toggleable
   }, {
-  }, '{"version":3,"sourceRoot":"","sources":["radio.dart"],"names":[],"mappings":"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","file":"../../../../../../../../packages/flutter/src/material/radio.dart.lib.js"}');
+  }, '{"version":3,"sourceRoot":"","sources":["toggleable.dart"],"names":[],"mappings":"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","file":"../../../../../../../../packages/flutter/src/material/toggleable.dart.lib.js"}');
   // Exports:
   return {
-    src__material__radio: radio
+    src__material__toggleable: toggleable
   };
 }));
 
-//# sourceMappingURL=radio.dart.lib.js.map
+//# sourceMappingURL=toggleable.dart.lib.js.map

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mini_project/config/stringresource.dart';
 import 'package:mini_project/features/dashboard/presentation/pages/formdata.dart';
+import 'package:mini_project/features/dashboard/presentation/pages/input_form.dart';
 import 'package:mini_project/theme/color.dart';
 
 void main() {
@@ -17,7 +18,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: ColorPalette.red,
       ),
       debugShowCheckedModeBanner: false,
-      home: Formdata(),
+      home: InputForm(),
     );
   }
 }

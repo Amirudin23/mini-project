@@ -1,438 +1,539 @@
-define(['dart_sdk', 'packages/collection/src/utils.dart'], (function load__packages__collection__src__priority_queue_dart(dart_sdk, packages__collection__src__utils$46dart) {
+define(['dart_sdk'], (function load__packages__intl__src__plural_rules_dart(dart_sdk) {
   'use strict';
   const core = dart_sdk.core;
-  const collection = dart_sdk.collection;
-  const _interceptors = dart_sdk._interceptors;
+  const math = dart_sdk.math;
+  const _js_helper = dart_sdk._js_helper;
   const dart = dart_sdk.dart;
   const dartx = dart_sdk.dartx;
-  const utils = packages__collection__src__utils$46dart.src__utils;
-  var priority_queue = Object.create(dart.library);
-  var $_get = dartx._get;
-  var $take = dartx.take;
-  var $cast = dartx.cast;
-  var $sort = dartx.sort;
-  var $add = dartx.add;
-  var $toString = dartx.toString;
-  var $length = dartx.length;
-  var $isOdd = dartx.isOdd;
-  var $rightShift = dartx['>>'];
-  var $_set = dartx._set;
-  var $truncate = dartx.truncate;
-  var $setRange = dartx.setRange;
-  var $iterator = dartx.iterator;
+  var plural_rules = Object.create(dart.library);
+  var $round = dartx.round;
+  var $toStringAsFixed = dartx.toStringAsFixed;
+  var $indexOf = dartx.indexOf;
+  var $modulo = dartx['%'];
+  var $floor = dartx.floor;
+  var $containsKey = dartx.containsKey;
   dart._checkModuleNullSafetyMode(true);
   var T = {
-    ObjectN: () => (T.ObjectN = dart.constFn(dart.nullable(core.Object)))(),
-    ObjectNAndObjectNToint: () => (T.ObjectNAndObjectNToint = dart.constFn(dart.fnType(core.int, [T.ObjectN(), T.ObjectN()])))()
+    VoidToPluralCase: () => (T.VoidToPluralCase = dart.constFn(dart.fnType(plural_rules.PluralCase, [])))(),
+    IdentityMapOfString$VoidToPluralCase: () => (T.IdentityMapOfString$VoidToPluralCase = dart.constFn(_js_helper.IdentityMap$(core.String, T.VoidToPluralCase())))()
   };
   const CT = Object.create({
     _: () => (C, CT)
   });
   dart.defineLazy(CT, {
     get C0() {
-      return C[0] = dart.fn(utils.defaultCompare, T.ObjectNAndObjectNToint());
+      return C[0] = dart.const({
+        __proto__: plural_rules.PluralCase.prototype,
+        [_name$]: "PluralCase.ZERO",
+        index: 0
+      });
     },
     get C1() {
-      return C[1] = dart.constList([], core.Null);
+      return C[1] = dart.const({
+        __proto__: plural_rules.PluralCase.prototype,
+        [_name$]: "PluralCase.ONE",
+        index: 1
+      });
+    },
+    get C2() {
+      return C[2] = dart.const({
+        __proto__: plural_rules.PluralCase.prototype,
+        [_name$]: "PluralCase.TWO",
+        index: 2
+      });
+    },
+    get C3() {
+      return C[3] = dart.const({
+        __proto__: plural_rules.PluralCase.prototype,
+        [_name$]: "PluralCase.FEW",
+        index: 3
+      });
+    },
+    get C4() {
+      return C[4] = dart.const({
+        __proto__: plural_rules.PluralCase.prototype,
+        [_name$]: "PluralCase.MANY",
+        index: 4
+      });
+    },
+    get C5() {
+      return C[5] = dart.const({
+        __proto__: plural_rules.PluralCase.prototype,
+        [_name$]: "PluralCase.OTHER",
+        index: 5
+      });
+    },
+    get C6() {
+      return C[6] = dart.constList([C[0] || CT.C0, C[1] || CT.C1, C[2] || CT.C2, C[3] || CT.C3, C[4] || CT.C4, C[5] || CT.C5], plural_rules.PluralCase);
+    },
+    get C7() {
+      return C[7] = dart.fn(plural_rules._es_rule, T.VoidToPluralCase());
+    },
+    get C8() {
+      return C[8] = dart.fn(plural_rules._hi_rule, T.VoidToPluralCase());
+    },
+    get C9() {
+      return C[9] = dart.fn(plural_rules._ar_rule, T.VoidToPluralCase());
+    },
+    get C10() {
+      return C[10] = dart.fn(plural_rules._be_rule, T.VoidToPluralCase());
+    },
+    get C11() {
+      return C[11] = dart.fn(plural_rules._br_rule, T.VoidToPluralCase());
+    },
+    get C12() {
+      return C[12] = dart.fn(plural_rules._sr_rule, T.VoidToPluralCase());
+    },
+    get C13() {
+      return C[13] = dart.fn(plural_rules._en_rule, T.VoidToPluralCase());
+    },
+    get C14() {
+      return C[14] = dart.fn(plural_rules._cs_rule, T.VoidToPluralCase());
+    },
+    get C15() {
+      return C[15] = dart.fn(plural_rules._cy_rule, T.VoidToPluralCase());
+    },
+    get C16() {
+      return C[16] = dart.fn(plural_rules._da_rule, T.VoidToPluralCase());
+    },
+    get C17() {
+      return C[17] = dart.fn(plural_rules._fil_rule, T.VoidToPluralCase());
+    },
+    get C18() {
+      return C[18] = dart.fn(plural_rules._fr_rule, T.VoidToPluralCase());
+    },
+    get C19() {
+      return C[19] = dart.fn(plural_rules._ga_rule, T.VoidToPluralCase());
+    },
+    get C20() {
+      return C[20] = dart.fn(plural_rules._he_rule, T.VoidToPluralCase());
+    },
+    get C21() {
+      return C[21] = dart.fn(plural_rules._default_rule, T.VoidToPluralCase());
+    },
+    get C22() {
+      return C[22] = dart.fn(plural_rules._is_rule, T.VoidToPluralCase());
+    },
+    get C23() {
+      return C[23] = dart.fn(plural_rules._ak_rule, T.VoidToPluralCase());
+    },
+    get C24() {
+      return C[24] = dart.fn(plural_rules._lt_rule, T.VoidToPluralCase());
+    },
+    get C25() {
+      return C[25] = dart.fn(plural_rules._lv_rule, T.VoidToPluralCase());
+    },
+    get C26() {
+      return C[26] = dart.fn(plural_rules._mk_rule, T.VoidToPluralCase());
+    },
+    get C27() {
+      return C[27] = dart.fn(plural_rules._ro_rule, T.VoidToPluralCase());
+    },
+    get C28() {
+      return C[28] = dart.fn(plural_rules._mt_rule, T.VoidToPluralCase());
+    },
+    get C29() {
+      return C[29] = dart.fn(plural_rules._pl_rule, T.VoidToPluralCase());
+    },
+    get C30() {
+      return C[30] = dart.fn(plural_rules._pt_rule, T.VoidToPluralCase());
+    },
+    get C31() {
+      return C[31] = dart.fn(plural_rules._pt_PT_rule, T.VoidToPluralCase());
+    },
+    get C32() {
+      return C[32] = dart.fn(plural_rules._ru_rule, T.VoidToPluralCase());
+    },
+    get C33() {
+      return C[33] = dart.fn(plural_rules._si_rule, T.VoidToPluralCase());
+    },
+    get C34() {
+      return C[34] = dart.fn(plural_rules._sl_rule, T.VoidToPluralCase());
     }
   }, false);
-  var C = Array(2).fill(void 0);
-  var I = ["package:collection/src/priority_queue.dart"];
-  const _is_PriorityQueue_default = Symbol('_is_PriorityQueue_default');
-  priority_queue.PriorityQueue$ = dart.generic(E => {
-    class PriorityQueue extends core.Object {}
-    (PriorityQueue[dart.mixinNew] = function() {
-    }).prototype = PriorityQueue.prototype;
-    dart.addTypeTests(PriorityQueue);
-    PriorityQueue.prototype[_is_PriorityQueue_default] = true;
-    dart.addTypeCaches(PriorityQueue);
-    dart.setLibraryUri(PriorityQueue, I[0]);
-    return PriorityQueue;
-  });
-  priority_queue.PriorityQueue = priority_queue.PriorityQueue$();
-  dart.addTypeTests(priority_queue.PriorityQueue, _is_PriorityQueue_default);
-  var comparison$ = dart.privateName(priority_queue, "HeapPriorityQueue.comparison");
-  var _queue$ = dart.privateName(priority_queue, "_queue");
-  var _length = dart.privateName(priority_queue, "_length");
-  var _modificationCount = dart.privateName(priority_queue, "_modificationCount");
-  var _elementAt = dart.privateName(priority_queue, "_elementAt");
-  var _add = dart.privateName(priority_queue, "_add");
-  var _locate = dart.privateName(priority_queue, "_locate");
-  var _removeLast = dart.privateName(priority_queue, "_removeLast");
-  var _bubbleUp = dart.privateName(priority_queue, "_bubbleUp");
-  var _bubbleDown = dart.privateName(priority_queue, "_bubbleDown");
-  var _toUnorderedList = dart.privateName(priority_queue, "_toUnorderedList");
-  var _grow = dart.privateName(priority_queue, "_grow");
-  const _is_HeapPriorityQueue_default = Symbol('_is_HeapPriorityQueue_default');
-  priority_queue.HeapPriorityQueue$ = dart.generic(E => {
-    var EN = () => (EN = dart.constFn(dart.nullable(E)))();
-    var ListOfEN = () => (ListOfEN = dart.constFn(core.List$(EN())))();
-    var IterableOfE = () => (IterableOfE = dart.constFn(core.Iterable$(E)))();
-    var _UnorderedElementsIterableOfE = () => (_UnorderedElementsIterableOfE = dart.constFn(priority_queue._UnorderedElementsIterable$(E)))();
-    var SplayTreeSetOfE = () => (SplayTreeSetOfE = dart.constFn(collection.SplayTreeSet$(E)))();
-    var JSArrayOfE = () => (JSArrayOfE = dart.constFn(_interceptors.JSArray$(E)))();
-    class HeapPriorityQueue extends core.Object {
-      get comparison() {
-        return this[comparison$];
-      }
-      set comparison(value) {
-        super.comparison = value;
-      }
-      [_elementAt](index) {
-        let t0;
-        t0 = this[_queue$][$_get](index);
-        return t0 == null ? E.as(null) : t0;
-      }
-      add(element) {
-        E.as(element);
-        this[_modificationCount] = this[_modificationCount] + 1;
-        this[_add](element);
-      }
-      addAll(elements) {
-        IterableOfE().as(elements);
-        let modified = 0;
-        for (let element of elements) {
-          modified = 1;
-          this[_add](element);
-        }
-        this[_modificationCount] = this[_modificationCount] + modified;
-      }
-      clear() {
-        this[_modificationCount] = this[_modificationCount] + 1;
-        this[_queue$] = C[1] || CT.C1;
-        this[_length] = 0;
-      }
-      contains(object) {
-        E.as(object);
-        return this[_locate](object) >= 0;
-      }
-      get unorderedElements() {
-        return new (_UnorderedElementsIterableOfE()).new(this);
-      }
-      get first() {
-        if (this[_length] === 0) dart.throw(new core.StateError.new("No element"));
-        return this[_elementAt](0);
-      }
-      get isEmpty() {
-        return this[_length] === 0;
-      }
-      get isNotEmpty() {
-        return this[_length] !== 0;
-      }
-      get length() {
-        return this[_length];
-      }
-      remove(element) {
-        let t1, t0;
-        E.as(element);
-        let index = this[_locate](element);
-        if (index < 0) return false;
-        this[_modificationCount] = this[_modificationCount] + 1;
-        let last = this[_removeLast]();
-        if (index < this[_length]) {
-          let comp = (t0 = last, t1 = element, this.comparison(t0, t1));
-          if (comp <= 0) {
-            this[_bubbleUp](last, index);
-          } else {
-            this[_bubbleDown](last, index);
-          }
-        }
-        return true;
-      }
-      removeAll() {
-        this[_modificationCount] = this[_modificationCount] + 1;
-        let result = this[_queue$];
-        let length = this[_length];
-        this[_queue$] = C[1] || CT.C1;
-        this[_length] = 0;
-        return result[$take](length)[$cast](E);
-      }
-      removeFirst() {
-        if (this[_length] === 0) dart.throw(new core.StateError.new("No element"));
-        this[_modificationCount] = this[_modificationCount] + 1;
-        let result = this[_elementAt](0);
-        let last = this[_removeLast]();
-        if (this[_length] > 0) {
-          this[_bubbleDown](last, 0);
-        }
-        return result;
-      }
-      toList() {
-        let t0;
-        t0 = this[_toUnorderedList]();
-        return (() => {
-          t0[$sort](this.comparison);
-          return t0;
-        })();
-      }
-      toSet() {
-        let set = new (SplayTreeSetOfE()).new(this.comparison);
-        for (let i = 0; i < this[_length]; i = i + 1) {
-          set.add(this[_elementAt](i));
-        }
-        return set;
-      }
-      toUnorderedList() {
-        return this[_toUnorderedList]();
-      }
-      [_toUnorderedList]() {
-        return (() => {
-          let t0 = JSArrayOfE().of([]);
-          for (let i = 0; i < this[_length]; i = i + 1)
-            t0[$add](this[_elementAt](i));
-          return t0;
-        })();
-      }
-      toString() {
-        return this[_queue$][$take](this[_length])[$toString]();
-      }
-      [_add](element) {
-        let t1;
-        if (this[_length] === this[_queue$][$length]) this[_grow]();
-        this[_bubbleUp](element, (t1 = this[_length], this[_length] = t1 + 1, t1));
-      }
-      [_locate](object) {
-        let t2, t1;
-        if (this[_length] === 0) return -1;
-        let position = 1;
-        do {
-          let index = position - 1;
-          let element = this[_elementAt](index);
-          let comp = (t1 = element, t2 = object, this.comparison(t1, t2));
-          if (comp <= 0) {
-            if (comp === 0 && dart.equals(element, object)) return index;
-            let leftChildPosition = position * 2;
-            if (leftChildPosition <= this[_length]) {
-              position = leftChildPosition;
-              continue;
-            }
-          }
-          do {
-            while (position[$isOdd]) {
-              position = position[$rightShift](1);
-            }
-            position = position + 1;
-          } while (position > this[_length]);
-        } while (position !== 1);
-        return -1;
-      }
-      [_removeLast]() {
-        let newLength = this[_length] - 1;
-        let last = this[_elementAt](newLength);
-        this[_queue$][$_set](newLength, null);
-        this[_length] = newLength;
-        return last;
-      }
-      [_bubbleUp](element, index) {
-        let t2, t1;
-        while (index > 0) {
-          let parentIndex = ((index - 1) / 2)[$truncate]();
-          let parent = this[_elementAt](parentIndex);
-          if ((t1 = element, t2 = parent, this.comparison(t1, t2)) > 0) break;
-          this[_queue$][$_set](index, parent);
-          index = parentIndex;
-        }
-        this[_queue$][$_set](index, element);
-      }
-      [_bubbleDown](element, index) {
-        let t2, t1, t2$, t1$, t2$0, t1$0;
-        let rightChildIndex = index * 2 + 2;
-        while (rightChildIndex < this[_length]) {
-          let leftChildIndex = rightChildIndex - 1;
-          let leftChild = this[_elementAt](leftChildIndex);
-          let rightChild = this[_elementAt](rightChildIndex);
-          let comp = (t1 = leftChild, t2 = rightChild, this.comparison(t1, t2));
-          let minChildIndex = null;
-          let minChild = null;
-          if (comp < 0) {
-            minChild = leftChild;
-            minChildIndex = leftChildIndex;
-          } else {
-            minChild = rightChild;
-            minChildIndex = rightChildIndex;
-          }
-          comp = (t1$ = element, t2$ = minChild, this.comparison(t1$, t2$));
-          if (comp <= 0) {
-            this[_queue$][$_set](index, element);
-            return;
-          }
-          this[_queue$][$_set](index, minChild);
-          index = minChildIndex;
-          rightChildIndex = index * 2 + 2;
-        }
-        let leftChildIndex = rightChildIndex - 1;
-        if (leftChildIndex < this[_length]) {
-          let child = this[_elementAt](leftChildIndex);
-          let comp = (t1$0 = element, t2$0 = child, this.comparison(t1$0, t2$0));
-          if (comp > 0) {
-            this[_queue$][$_set](index, child);
-            index = leftChildIndex;
-          }
-        }
-        this[_queue$][$_set](index, element);
-      }
-      [_grow]() {
-        let newCapacity = this[_queue$][$length] * 2 + 1;
-        if (newCapacity < 7) newCapacity = 7;
-        let newQueue = ListOfEN().filled(newCapacity, null);
-        newQueue[$setRange](0, this[_length], this[_queue$]);
-        this[_queue$] = newQueue;
-      }
+  var C = Array(35).fill(void 0);
+  var I = ["package:intl/src/plural_rules.dart"];
+  var _name$ = dart.privateName(plural_rules, "_name");
+  plural_rules.PluralCase = class PluralCase extends core.Object {
+    toString() {
+      return this[_name$];
     }
-    (HeapPriorityQueue.new = function(comparison = null) {
-      let t0;
-      this[_queue$] = ListOfEN().filled(7, null);
-      this[_length] = 0;
-      this[_modificationCount] = 0;
-      this[comparison$] = (t0 = comparison, t0 == null ? C[0] || CT.C0 : t0);
-      ;
-    }).prototype = HeapPriorityQueue.prototype;
-    dart.addTypeTests(HeapPriorityQueue);
-    HeapPriorityQueue.prototype[_is_HeapPriorityQueue_default] = true;
-    dart.addTypeCaches(HeapPriorityQueue);
-    HeapPriorityQueue[dart.implements] = () => [priority_queue.PriorityQueue$(E)];
-    dart.setMethodSignature(HeapPriorityQueue, () => ({
-      __proto__: dart.getMethods(HeapPriorityQueue.__proto__),
-      [_elementAt]: dart.fnType(E, [core.int]),
-      add: dart.fnType(dart.void, [dart.nullable(core.Object)]),
-      addAll: dart.fnType(dart.void, [dart.nullable(core.Object)]),
-      clear: dart.fnType(dart.void, []),
-      contains: dart.fnType(core.bool, [dart.nullable(core.Object)]),
-      remove: dart.fnType(core.bool, [dart.nullable(core.Object)]),
-      removeAll: dart.fnType(core.Iterable$(E), []),
-      removeFirst: dart.fnType(E, []),
-      toList: dart.fnType(core.List$(E), []),
-      toSet: dart.fnType(core.Set$(E), []),
-      toUnorderedList: dart.fnType(core.List$(E), []),
-      [_toUnorderedList]: dart.fnType(core.List$(E), []),
-      [_add]: dart.fnType(dart.void, [E]),
-      [_locate]: dart.fnType(core.int, [E]),
-      [_removeLast]: dart.fnType(E, []),
-      [_bubbleUp]: dart.fnType(dart.void, [E, core.int]),
-      [_bubbleDown]: dart.fnType(dart.void, [E, core.int]),
-      [_grow]: dart.fnType(dart.void, [])
-    }));
-    dart.setGetterSignature(HeapPriorityQueue, () => ({
-      __proto__: dart.getGetters(HeapPriorityQueue.__proto__),
-      unorderedElements: core.Iterable$(E),
-      first: E,
-      isEmpty: core.bool,
-      isNotEmpty: core.bool,
-      length: core.int
-    }));
-    dart.setLibraryUri(HeapPriorityQueue, I[0]);
-    dart.setFieldSignature(HeapPriorityQueue, () => ({
-      __proto__: dart.getFields(HeapPriorityQueue.__proto__),
-      comparison: dart.finalFieldType(dart.fnType(core.int, [E, E])),
-      [_queue$]: dart.fieldType(core.List$(dart.nullable(E))),
-      [_length]: dart.fieldType(core.int),
-      [_modificationCount]: dart.fieldType(core.int)
-    }));
-    dart.defineExtensionMethods(HeapPriorityQueue, ['toString']);
-    return HeapPriorityQueue;
+  };
+  (plural_rules.PluralCase.new = function(index, _name) {
+    this.index = index;
+    this[_name$] = _name;
+    ;
+  }).prototype = plural_rules.PluralCase.prototype;
+  dart.addTypeTests(plural_rules.PluralCase);
+  dart.addTypeCaches(plural_rules.PluralCase);
+  dart.setLibraryUri(plural_rules.PluralCase, I[0]);
+  dart.setFieldSignature(plural_rules.PluralCase, () => ({
+    __proto__: dart.getFields(plural_rules.PluralCase.__proto__),
+    index: dart.finalFieldType(core.int),
+    [_name$]: dart.finalFieldType(core.String)
+  }));
+  dart.defineExtensionMethods(plural_rules.PluralCase, ['toString']);
+  plural_rules.PluralCase.ZERO = C[0] || CT.C0;
+  plural_rules.PluralCase.ONE = C[1] || CT.C1;
+  plural_rules.PluralCase.TWO = C[2] || CT.C2;
+  plural_rules.PluralCase.FEW = C[3] || CT.C3;
+  plural_rules.PluralCase.MANY = C[4] || CT.C4;
+  plural_rules.PluralCase.OTHER = C[5] || CT.C5;
+  plural_rules.PluralCase.values = C[6] || CT.C6;
+  plural_rules._default_rule = function _default_rule() {
+    return plural_rules.OTHER;
+  };
+  plural_rules.startRuleEvaluation = function startRuleEvaluation(howMany, precision = 0) {
+    plural_rules._n = howMany;
+    plural_rules._precision = precision;
+    plural_rules._i = plural_rules._n[$round]();
+    plural_rules._updateVF(plural_rules._n);
+    plural_rules._updateWT(plural_rules._f, plural_rules._v);
+  };
+  plural_rules._decimals = function _decimals(n) {
+    let str = plural_rules._precision == null ? dart.str(n) : n[$toStringAsFixed](dart.nullCheck(plural_rules._precision));
+    let result = str[$indexOf](".");
+    return result === -1 ? 0 : str.length - result - 1;
+  };
+  plural_rules._updateVF = function _updateVF(n) {
+    let t0;
+    let defaultDigits = 3;
+    plural_rules._v = (t0 = plural_rules._precision, t0 == null ? math.min(core.int, plural_rules._decimals(n), defaultDigits) : t0);
+    let base = dart.asInt(math.pow(10, plural_rules._v));
+    plural_rules._f = (n * base)[$floor]()[$modulo](base);
+  };
+  plural_rules._updateWT = function _updateWT(v, f) {
+    if (f === 0) {
+      plural_rules._t = 0;
+      return;
+    }
+    while (f[$modulo](10) === 0) {
+      f = (f / 10)[$floor]();
+      v = v - 1;
+    }
+    plural_rules._t = f;
+  };
+  plural_rules._fil_rule = function _fil_rule() {
+    if (plural_rules._v === 0 && (plural_rules._i === 1 || plural_rules._i === 2 || plural_rules._i === 3) || plural_rules._v === 0 && plural_rules._i[$modulo](10) !== 4 && plural_rules._i[$modulo](10) !== 6 && plural_rules._i[$modulo](10) !== 9 || plural_rules._v !== 0 && plural_rules._f[$modulo](10) !== 4 && plural_rules._f[$modulo](10) !== 6 && plural_rules._f[$modulo](10) !== 9) {
+      return plural_rules.ONE;
+    }
+    return plural_rules.OTHER;
+  };
+  plural_rules._pt_PT_rule = function _pt_PT_rule() {
+    if (plural_rules._n === 1 && plural_rules._v === 0) {
+      return plural_rules.ONE;
+    }
+    return plural_rules.OTHER;
+  };
+  plural_rules._br_rule = function _br_rule() {
+    if (plural_rules._n[$modulo](10) === 1 && plural_rules._n[$modulo](100) !== 11 && plural_rules._n[$modulo](100) !== 71 && plural_rules._n[$modulo](100) !== 91) {
+      return plural_rules.ONE;
+    }
+    if (plural_rules._n[$modulo](10) === 2 && plural_rules._n[$modulo](100) !== 12 && plural_rules._n[$modulo](100) !== 72 && plural_rules._n[$modulo](100) !== 92) {
+      return plural_rules.TWO;
+    }
+    if ((plural_rules._n[$modulo](10) >= 3 && plural_rules._n[$modulo](10) <= 4 || plural_rules._n[$modulo](10) === 9) && (plural_rules._n[$modulo](100) < 10 || plural_rules._n[$modulo](100) > 19) && (plural_rules._n[$modulo](100) < 70 || plural_rules._n[$modulo](100) > 79) && (plural_rules._n[$modulo](100) < 90 || plural_rules._n[$modulo](100) > 99)) {
+      return plural_rules.FEW;
+    }
+    if (plural_rules._n !== 0 && plural_rules._n[$modulo](1000000) === 0) {
+      return plural_rules.MANY;
+    }
+    return plural_rules.OTHER;
+  };
+  plural_rules._sr_rule = function _sr_rule() {
+    if (plural_rules._v === 0 && plural_rules._i[$modulo](10) === 1 && plural_rules._i[$modulo](100) !== 11 || plural_rules._f[$modulo](10) === 1 && plural_rules._f[$modulo](100) !== 11) {
+      return plural_rules.ONE;
+    }
+    if (plural_rules._v === 0 && plural_rules._i[$modulo](10) >= 2 && plural_rules._i[$modulo](10) <= 4 && (plural_rules._i[$modulo](100) < 12 || plural_rules._i[$modulo](100) > 14) || plural_rules._f[$modulo](10) >= 2 && plural_rules._f[$modulo](10) <= 4 && (plural_rules._f[$modulo](100) < 12 || plural_rules._f[$modulo](100) > 14)) {
+      return plural_rules.FEW;
+    }
+    return plural_rules.OTHER;
+  };
+  plural_rules._ro_rule = function _ro_rule() {
+    if (plural_rules._i === 1 && plural_rules._v === 0) {
+      return plural_rules.ONE;
+    }
+    if (plural_rules._v !== 0 || plural_rules._n === 0 || plural_rules._n !== 1 && plural_rules._n[$modulo](100) >= 1 && plural_rules._n[$modulo](100) <= 19) {
+      return plural_rules.FEW;
+    }
+    return plural_rules.OTHER;
+  };
+  plural_rules._hi_rule = function _hi_rule() {
+    if (plural_rules._i === 0 || plural_rules._n === 1) {
+      return plural_rules.ONE;
+    }
+    return plural_rules.OTHER;
+  };
+  plural_rules._fr_rule = function _fr_rule() {
+    if (plural_rules._i === 0 || plural_rules._i === 1) {
+      return plural_rules.ONE;
+    }
+    return plural_rules.OTHER;
+  };
+  plural_rules._cs_rule = function _cs_rule() {
+    if (plural_rules._i === 1 && plural_rules._v === 0) {
+      return plural_rules.ONE;
+    }
+    if (plural_rules._i >= 2 && plural_rules._i <= 4 && plural_rules._v === 0) {
+      return plural_rules.FEW;
+    }
+    if (plural_rules._v !== 0) {
+      return plural_rules.MANY;
+    }
+    return plural_rules.OTHER;
+  };
+  plural_rules._pl_rule = function _pl_rule() {
+    if (plural_rules._i === 1 && plural_rules._v === 0) {
+      return plural_rules.ONE;
+    }
+    if (plural_rules._v === 0 && plural_rules._i[$modulo](10) >= 2 && plural_rules._i[$modulo](10) <= 4 && (plural_rules._i[$modulo](100) < 12 || plural_rules._i[$modulo](100) > 14)) {
+      return plural_rules.FEW;
+    }
+    if (plural_rules._v === 0 && plural_rules._i !== 1 && plural_rules._i[$modulo](10) >= 0 && plural_rules._i[$modulo](10) <= 1 || plural_rules._v === 0 && plural_rules._i[$modulo](10) >= 5 && plural_rules._i[$modulo](10) <= 9 || plural_rules._v === 0 && plural_rules._i[$modulo](100) >= 12 && plural_rules._i[$modulo](100) <= 14) {
+      return plural_rules.MANY;
+    }
+    return plural_rules.OTHER;
+  };
+  plural_rules._lv_rule = function _lv_rule() {
+    if (plural_rules._n[$modulo](10) === 0 || plural_rules._n[$modulo](100) >= 11 && plural_rules._n[$modulo](100) <= 19 || plural_rules._v === 2 && plural_rules._f[$modulo](100) >= 11 && plural_rules._f[$modulo](100) <= 19) {
+      return plural_rules.ZERO;
+    }
+    if (plural_rules._n[$modulo](10) === 1 && plural_rules._n[$modulo](100) !== 11 || plural_rules._v === 2 && plural_rules._f[$modulo](10) === 1 && plural_rules._f[$modulo](100) !== 11 || plural_rules._v !== 2 && plural_rules._f[$modulo](10) === 1) {
+      return plural_rules.ONE;
+    }
+    return plural_rules.OTHER;
+  };
+  plural_rules._he_rule = function _he_rule() {
+    if (plural_rules._i === 1 && plural_rules._v === 0) {
+      return plural_rules.ONE;
+    }
+    if (plural_rules._i === 2 && plural_rules._v === 0) {
+      return plural_rules.TWO;
+    }
+    if (plural_rules._v === 0 && (plural_rules._n < 0 || plural_rules._n > 10) && plural_rules._n[$modulo](10) === 0) {
+      return plural_rules.MANY;
+    }
+    return plural_rules.OTHER;
+  };
+  plural_rules._mt_rule = function _mt_rule() {
+    if (plural_rules._n === 1) {
+      return plural_rules.ONE;
+    }
+    if (plural_rules._n === 0 || plural_rules._n[$modulo](100) >= 2 && plural_rules._n[$modulo](100) <= 10) {
+      return plural_rules.FEW;
+    }
+    if (plural_rules._n[$modulo](100) >= 11 && plural_rules._n[$modulo](100) <= 19) {
+      return plural_rules.MANY;
+    }
+    return plural_rules.OTHER;
+  };
+  plural_rules._si_rule = function _si_rule() {
+    if (plural_rules._n === 0 || plural_rules._n === 1 || plural_rules._i === 0 && plural_rules._f === 1) {
+      return plural_rules.ONE;
+    }
+    return plural_rules.OTHER;
+  };
+  plural_rules._cy_rule = function _cy_rule() {
+    if (plural_rules._n === 0) {
+      return plural_rules.ZERO;
+    }
+    if (plural_rules._n === 1) {
+      return plural_rules.ONE;
+    }
+    if (plural_rules._n === 2) {
+      return plural_rules.TWO;
+    }
+    if (plural_rules._n === 3) {
+      return plural_rules.FEW;
+    }
+    if (plural_rules._n === 6) {
+      return plural_rules.MANY;
+    }
+    return plural_rules.OTHER;
+  };
+  plural_rules._da_rule = function _da_rule() {
+    if (plural_rules._n === 1 || plural_rules._t !== 0 && (plural_rules._i === 0 || plural_rules._i === 1)) {
+      return plural_rules.ONE;
+    }
+    return plural_rules.OTHER;
+  };
+  plural_rules._ru_rule = function _ru_rule() {
+    if (plural_rules._v === 0 && plural_rules._i[$modulo](10) === 1 && plural_rules._i[$modulo](100) !== 11) {
+      return plural_rules.ONE;
+    }
+    if (plural_rules._v === 0 && plural_rules._i[$modulo](10) >= 2 && plural_rules._i[$modulo](10) <= 4 && (plural_rules._i[$modulo](100) < 12 || plural_rules._i[$modulo](100) > 14)) {
+      return plural_rules.FEW;
+    }
+    if (plural_rules._v === 0 && plural_rules._i[$modulo](10) === 0 || plural_rules._v === 0 && plural_rules._i[$modulo](10) >= 5 && plural_rules._i[$modulo](10) <= 9 || plural_rules._v === 0 && plural_rules._i[$modulo](100) >= 11 && plural_rules._i[$modulo](100) <= 14) {
+      return plural_rules.MANY;
+    }
+    return plural_rules.OTHER;
+  };
+  plural_rules._be_rule = function _be_rule() {
+    if (plural_rules._n[$modulo](10) === 1 && plural_rules._n[$modulo](100) !== 11) {
+      return plural_rules.ONE;
+    }
+    if (plural_rules._n[$modulo](10) >= 2 && plural_rules._n[$modulo](10) <= 4 && (plural_rules._n[$modulo](100) < 12 || plural_rules._n[$modulo](100) > 14)) {
+      return plural_rules.FEW;
+    }
+    if (plural_rules._n[$modulo](10) === 0 || plural_rules._n[$modulo](10) >= 5 && plural_rules._n[$modulo](10) <= 9 || plural_rules._n[$modulo](100) >= 11 && plural_rules._n[$modulo](100) <= 14) {
+      return plural_rules.MANY;
+    }
+    return plural_rules.OTHER;
+  };
+  plural_rules._mk_rule = function _mk_rule() {
+    if (plural_rules._v === 0 && plural_rules._i[$modulo](10) === 1 || plural_rules._f[$modulo](10) === 1) {
+      return plural_rules.ONE;
+    }
+    return plural_rules.OTHER;
+  };
+  plural_rules._ga_rule = function _ga_rule() {
+    if (plural_rules._n === 1) {
+      return plural_rules.ONE;
+    }
+    if (plural_rules._n === 2) {
+      return plural_rules.TWO;
+    }
+    if (plural_rules._n >= 3 && plural_rules._n <= 6) {
+      return plural_rules.FEW;
+    }
+    if (plural_rules._n >= 7 && plural_rules._n <= 10) {
+      return plural_rules.MANY;
+    }
+    return plural_rules.OTHER;
+  };
+  plural_rules._pt_rule = function _pt_rule() {
+    if (plural_rules._n >= 0 && plural_rules._n <= 2 && plural_rules._n !== 2) {
+      return plural_rules.ONE;
+    }
+    return plural_rules.OTHER;
+  };
+  plural_rules._es_rule = function _es_rule() {
+    if (plural_rules._n === 1) {
+      return plural_rules.ONE;
+    }
+    return plural_rules.OTHER;
+  };
+  plural_rules._is_rule = function _is_rule() {
+    if (plural_rules._t === 0 && plural_rules._i[$modulo](10) === 1 && plural_rules._i[$modulo](100) !== 11 || plural_rules._t !== 0) {
+      return plural_rules.ONE;
+    }
+    return plural_rules.OTHER;
+  };
+  plural_rules._ar_rule = function _ar_rule() {
+    if (plural_rules._n === 0) {
+      return plural_rules.ZERO;
+    }
+    if (plural_rules._n === 1) {
+      return plural_rules.ONE;
+    }
+    if (plural_rules._n === 2) {
+      return plural_rules.TWO;
+    }
+    if (plural_rules._n[$modulo](100) >= 3 && plural_rules._n[$modulo](100) <= 10) {
+      return plural_rules.FEW;
+    }
+    if (plural_rules._n[$modulo](100) >= 11 && plural_rules._n[$modulo](100) <= 99) {
+      return plural_rules.MANY;
+    }
+    return plural_rules.OTHER;
+  };
+  plural_rules._sl_rule = function _sl_rule() {
+    if (plural_rules._v === 0 && plural_rules._i[$modulo](100) === 1) {
+      return plural_rules.ONE;
+    }
+    if (plural_rules._v === 0 && plural_rules._i[$modulo](100) === 2) {
+      return plural_rules.TWO;
+    }
+    if (plural_rules._v === 0 && plural_rules._i[$modulo](100) >= 3 && plural_rules._i[$modulo](100) <= 4 || plural_rules._v !== 0) {
+      return plural_rules.FEW;
+    }
+    return plural_rules.OTHER;
+  };
+  plural_rules._lt_rule = function _lt_rule() {
+    if (plural_rules._n[$modulo](10) === 1 && (plural_rules._n[$modulo](100) < 11 || plural_rules._n[$modulo](100) > 19)) {
+      return plural_rules.ONE;
+    }
+    if (plural_rules._n[$modulo](10) >= 2 && plural_rules._n[$modulo](10) <= 9 && (plural_rules._n[$modulo](100) < 11 || plural_rules._n[$modulo](100) > 19)) {
+      return plural_rules.FEW;
+    }
+    if (plural_rules._f !== 0) {
+      return plural_rules.MANY;
+    }
+    return plural_rules.OTHER;
+  };
+  plural_rules._en_rule = function _en_rule() {
+    if (plural_rules._i === 1 && plural_rules._v === 0) {
+      return plural_rules.ONE;
+    }
+    return plural_rules.OTHER;
+  };
+  plural_rules._ak_rule = function _ak_rule() {
+    if (plural_rules._n >= 0 && plural_rules._n <= 1) {
+      return plural_rules.ONE;
+    }
+    return plural_rules.OTHER;
+  };
+  plural_rules.localeHasPluralRules = function localeHasPluralRules(locale) {
+    return plural_rules.pluralRules[$containsKey](locale);
+  };
+  dart.copyProperties(plural_rules, {
+    get ZERO() {
+      return plural_rules.PluralCase.ZERO;
+    },
+    get ONE() {
+      return plural_rules.PluralCase.ONE;
+    },
+    get TWO() {
+      return plural_rules.PluralCase.TWO;
+    },
+    get FEW() {
+      return plural_rules.PluralCase.FEW;
+    },
+    get MANY() {
+      return plural_rules.PluralCase.MANY;
+    },
+    get OTHER() {
+      return plural_rules.PluralCase.OTHER;
+    }
   });
-  priority_queue.HeapPriorityQueue = priority_queue.HeapPriorityQueue$();
-  dart.defineLazy(priority_queue.HeapPriorityQueue, {
-    /*priority_queue.HeapPriorityQueue._INITIAL_CAPACITY*/get _INITIAL_CAPACITY() {
-      return 7;
+  dart.defineLazy(plural_rules, {
+    /*plural_rules._n*/get _n() {
+      return 0;
+    },
+    set _n(_) {},
+    /*plural_rules._i*/get _i() {
+      return 0;
+    },
+    set _i(_) {},
+    /*plural_rules._precision*/get _precision() {
+      return null;
+    },
+    set _precision(_) {},
+    /*plural_rules._v*/get _v() {
+      return 0;
+    },
+    set _v(_) {},
+    /*plural_rules._f*/get _f() {
+      return 0;
+    },
+    set _f(_) {},
+    /*plural_rules._t*/get _t() {
+      return 0;
+    },
+    set _t(_) {},
+    /*plural_rules.pluralRules*/get pluralRules() {
+      return new (T.IdentityMapOfString$VoidToPluralCase()).from(["af", C[7] || CT.C7, "am", C[8] || CT.C8, "ar", C[9] || CT.C9, "az", C[7] || CT.C7, "be", C[10] || CT.C10, "bg", C[7] || CT.C7, "bn", C[8] || CT.C8, "br", C[11] || CT.C11, "bs", C[12] || CT.C12, "ca", C[13] || CT.C13, "chr", C[7] || CT.C7, "cs", C[14] || CT.C14, "cy", C[15] || CT.C15, "da", C[16] || CT.C16, "de", C[13] || CT.C13, "de_AT", C[13] || CT.C13, "de_CH", C[13] || CT.C13, "el", C[7] || CT.C7, "en", C[13] || CT.C13, "en_AU", C[13] || CT.C13, "en_CA", C[13] || CT.C13, "en_GB", C[13] || CT.C13, "en_IE", C[13] || CT.C13, "en_IN", C[13] || CT.C13, "en_SG", C[13] || CT.C13, "en_US", C[13] || CT.C13, "en_ZA", C[13] || CT.C13, "es", C[7] || CT.C7, "es_419", C[7] || CT.C7, "es_ES", C[7] || CT.C7, "es_MX", C[7] || CT.C7, "es_US", C[7] || CT.C7, "et", C[13] || CT.C13, "eu", C[7] || CT.C7, "fa", C[8] || CT.C8, "fi", C[13] || CT.C13, "fil", C[17] || CT.C17, "fr", C[18] || CT.C18, "fr_CA", C[18] || CT.C18, "ga", C[19] || CT.C19, "gl", C[13] || CT.C13, "gsw", C[7] || CT.C7, "gu", C[8] || CT.C8, "haw", C[7] || CT.C7, "he", C[20] || CT.C20, "hi", C[8] || CT.C8, "hr", C[12] || CT.C12, "hu", C[7] || CT.C7, "hy", C[18] || CT.C18, "id", C[21] || CT.C21, "in", C[21] || CT.C21, "is", C[22] || CT.C22, "it", C[13] || CT.C13, "iw", C[20] || CT.C20, "ja", C[21] || CT.C21, "ka", C[7] || CT.C7, "kk", C[7] || CT.C7, "km", C[21] || CT.C21, "kn", C[8] || CT.C8, "ko", C[21] || CT.C21, "ky", C[7] || CT.C7, "ln", C[23] || CT.C23, "lo", C[21] || CT.C21, "lt", C[24] || CT.C24, "lv", C[25] || CT.C25, "mk", C[26] || CT.C26, "ml", C[7] || CT.C7, "mn", C[7] || CT.C7, "mo", C[27] || CT.C27, "mr", C[8] || CT.C8, "ms", C[21] || CT.C21, "mt", C[28] || CT.C28, "my", C[21] || CT.C21, "nb", C[7] || CT.C7, "ne", C[7] || CT.C7, "nl", C[13] || CT.C13, "no", C[7] || CT.C7, "no_NO", C[7] || CT.C7, "or", C[7] || CT.C7, "pa", C[23] || CT.C23, "pl", C[29] || CT.C29, "pt", C[30] || CT.C30, "pt_BR", C[30] || CT.C30, "pt_PT", C[31] || CT.C31, "ro", C[27] || CT.C27, "ru", C[32] || CT.C32, "sh", C[12] || CT.C12, "si", C[33] || CT.C33, "sk", C[14] || CT.C14, "sl", C[34] || CT.C34, "sq", C[7] || CT.C7, "sr", C[12] || CT.C12, "sr_Latn", C[12] || CT.C12, "sv", C[13] || CT.C13, "sw", C[13] || CT.C13, "ta", C[7] || CT.C7, "te", C[7] || CT.C7, "th", C[21] || CT.C21, "tl", C[17] || CT.C17, "tr", C[7] || CT.C7, "uk", C[32] || CT.C32, "ur", C[13] || CT.C13, "uz", C[7] || CT.C7, "vi", C[21] || CT.C21, "zh", C[21] || CT.C21, "zh_CN", C[21] || CT.C21, "zh_HK", C[21] || CT.C21, "zh_TW", C[21] || CT.C21, "zu", C[8] || CT.C8, "default", C[21] || CT.C21]);
     }
   }, false);
-  dart.addTypeTests(priority_queue.HeapPriorityQueue, _is_HeapPriorityQueue_default);
-  const _is__UnorderedElementsIterable_default = Symbol('_is__UnorderedElementsIterable_default');
-  priority_queue._UnorderedElementsIterable$ = dart.generic(E => {
-    var _UnorderedElementsIteratorOfE = () => (_UnorderedElementsIteratorOfE = dart.constFn(priority_queue._UnorderedElementsIterator$(E)))();
-    class _UnorderedElementsIterable extends core.Iterable$(E) {
-      get iterator() {
-        return new (_UnorderedElementsIteratorOfE()).new(this[_queue$]);
-      }
-    }
-    (_UnorderedElementsIterable.new = function(_queue) {
-      this[_queue$] = _queue;
-      _UnorderedElementsIterable.__proto__.new.call(this);
-      ;
-    }).prototype = _UnorderedElementsIterable.prototype;
-    dart.addTypeTests(_UnorderedElementsIterable);
-    _UnorderedElementsIterable.prototype[_is__UnorderedElementsIterable_default] = true;
-    dart.addTypeCaches(_UnorderedElementsIterable);
-    dart.setGetterSignature(_UnorderedElementsIterable, () => ({
-      __proto__: dart.getGetters(_UnorderedElementsIterable.__proto__),
-      iterator: core.Iterator$(E),
-      [$iterator]: core.Iterator$(E)
-    }));
-    dart.setLibraryUri(_UnorderedElementsIterable, I[0]);
-    dart.setFieldSignature(_UnorderedElementsIterable, () => ({
-      __proto__: dart.getFields(_UnorderedElementsIterable.__proto__),
-      [_queue$]: dart.finalFieldType(priority_queue.HeapPriorityQueue$(E))
-    }));
-    dart.defineExtensionAccessors(_UnorderedElementsIterable, ['iterator']);
-    return _UnorderedElementsIterable;
-  });
-  priority_queue._UnorderedElementsIterable = priority_queue._UnorderedElementsIterable$();
-  dart.addTypeTests(priority_queue._UnorderedElementsIterable, _is__UnorderedElementsIterable_default);
-  var _current = dart.privateName(priority_queue, "_current");
-  var _index = dart.privateName(priority_queue, "_index");
-  var _initialModificationCount = dart.privateName(priority_queue, "_initialModificationCount");
-  const _is__UnorderedElementsIterator_default = Symbol('_is__UnorderedElementsIterator_default');
-  priority_queue._UnorderedElementsIterator$ = dart.generic(E => {
-    class _UnorderedElementsIterator extends core.Object {
-      moveNext() {
-        if (this[_initialModificationCount] !== this[_queue$][_modificationCount]) {
-          dart.throw(new core.ConcurrentModificationError.new(this[_queue$]));
-        }
-        let nextIndex = this[_index] + 1;
-        if (0 <= nextIndex && nextIndex < this[_queue$].length) {
-          this[_current] = this[_queue$][_queue$][$_get](nextIndex);
-          this[_index] = nextIndex;
-          return true;
-        }
-        this[_current] = null;
-        this[_index] = -2;
-        return false;
-      }
-      get current() {
-        let t1;
-        return this[_index] < 0 ? dart.throw(new core.StateError.new("No element")) : (t1 = this[_current], t1 == null ? E.as(null) : t1);
-      }
-    }
-    (_UnorderedElementsIterator.new = function(_queue) {
-      this[_current] = null;
-      this[_index] = -1;
-      this[_queue$] = _queue;
-      this[_initialModificationCount] = _queue[_modificationCount];
-      ;
-    }).prototype = _UnorderedElementsIterator.prototype;
-    dart.addTypeTests(_UnorderedElementsIterator);
-    _UnorderedElementsIterator.prototype[_is__UnorderedElementsIterator_default] = true;
-    dart.addTypeCaches(_UnorderedElementsIterator);
-    _UnorderedElementsIterator[dart.implements] = () => [core.Iterator$(E)];
-    dart.setMethodSignature(_UnorderedElementsIterator, () => ({
-      __proto__: dart.getMethods(_UnorderedElementsIterator.__proto__),
-      moveNext: dart.fnType(core.bool, [])
-    }));
-    dart.setGetterSignature(_UnorderedElementsIterator, () => ({
-      __proto__: dart.getGetters(_UnorderedElementsIterator.__proto__),
-      current: E
-    }));
-    dart.setLibraryUri(_UnorderedElementsIterator, I[0]);
-    dart.setFieldSignature(_UnorderedElementsIterator, () => ({
-      __proto__: dart.getFields(_UnorderedElementsIterator.__proto__),
-      [_queue$]: dart.finalFieldType(priority_queue.HeapPriorityQueue$(E)),
-      [_initialModificationCount]: dart.finalFieldType(core.int),
-      [_current]: dart.fieldType(dart.nullable(E)),
-      [_index]: dart.fieldType(core.int)
-    }));
-    return _UnorderedElementsIterator;
-  });
-  priority_queue._UnorderedElementsIterator = priority_queue._UnorderedElementsIterator$();
-  dart.addTypeTests(priority_queue._UnorderedElementsIterator, _is__UnorderedElementsIterator_default);
-  dart.trackLibraries("packages/collection/src/priority_queue.dart", {
-    "package:collection/src/priority_queue.dart": priority_queue
+  dart.trackLibraries("packages/intl/src/plural_rules.dart", {
+    "package:intl/src/plural_rules.dart": plural_rules
   }, {
-  }, '{"version":3,"sourceRoot":"","sources":["priority_queue.dart"],"names":[],"mappings":"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","file":"../../../../../../../../../packages/collection/src/priority_queue.dart.lib.js"}');
+  }, '{"version":3,"sourceRoot":"","sources":["plural_rules.dart"],"names":[],"mappings":"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yBAAH,OAAM,KAAK,AAAG,AAAK,yBAAH,OAAM,MAAM,AAAG,AAAM,yBAAJ,OAAM,MAAM,AAAG,AAAM,yBAAJ,OAAM;AAC/D,YAAO;;AAET,QAAI,oBAAM;AACR,YAAO;;AAET,UAAO;EACT;;AAGE,QAAI,AAAG,oBAAG,KAAK,AAAG,oBAAG;AACnB,YAAO;;AAET,UAAO;EACT;;AAGE,QAAI,AAAG,mBAAG,KAAK,AAAG,mBAAG;AACnB,YAAO;;AAET,UAAO;EACT;oEAqHiC;AAAW,UAAA,AAAY,wCAAY,MAAM;EAAC;;;AApbpD,YAAW;IAAI;;AAChB,YAAW;IAAG;;AACd,YAAW;IAAG;;AACd,YAAW;IAAG;;AACb,YAAW;IAAI;;AACd,YAAW;IAAK;;;MAjFpC,eAAE;YAAG;;;MAGL,eAAE;YAAG;;;MACJ,uBAAU;;;;MAoDX,eAAE;YAAG;;;MAML,eAAE;YAAG;;;MAGL,eAAE;YAAG;;;MA6UH,wBAAW;YAAG,sDAClB,qBACA,qBACA,qBACA,qBACA,uBACA,qBACA,qBACA,uBACA,uBACA,uBACA,sBACA,uBACA,uBACA,uBACA,uBACA,0BACA,0BACA,qBACA,uBACA,0BACA,0BACA,0BACA,0BACA,0BACA,0BACA,0BACA,0BACA,qBACA,yBACA,wBACA,wBACA,wBACA,uBACA,qBACA,qBACA,uBACA,wBACA,uBACA,0BACA,uBACA,uBACA,sBACA,qBACA,sBACA,uBACA,qBACA,uBACA,qBACA,uBACA,uBACA,uBACA,uBACA,uBACA,uBACA,uBACA,qBACA,qBACA,uBACA,qBACA,uBACA,qBACA,uBACA,uBACA,uBACA,uBACA,uBACA,qBACA,qBACA,uBACA,qBACA,uBACA,uBACA,uBACA,qBACA,qBACA,uBACA,qBACA,wBACA,qBACA,uBACA,uBACA,uBACA,0BACA,0BACA,uBACA,uBACA,uBACA,uBACA,uBACA,uBACA,qBACA,uBACA,4BACA,uBACA,uBACA,qBACA,qBACA,uBACA,uBACA,qBACA,uBACA,uBACA,qBACA,uBACA,uBACA,0BACA,0BACA,0BACA,qBACA","file":"../../../../../../../../../packages/intl/src/plural_rules.dart.lib.js"}');
   // Exports:
   return {
-    src__priority_queue: priority_queue
+    src__plural_rules: plural_rules
   };
 }));
 
-//# sourceMappingURL=priority_queue.dart.lib.js.map
+//# sourceMappingURL=plural_rules.dart.lib.js.map

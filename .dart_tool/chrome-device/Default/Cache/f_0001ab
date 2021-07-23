@@ -1,831 +1,204 @@
-define(['dart_sdk', 'packages/flutter/src/material/icon_button.dart', 'packages/flutter/src/material/switch.dart', 'packages/flutter/src/widgets/widget_span.dart', 'packages/flutter/src/painting/_network_image_web.dart', 'packages/flutter/src/painting/edge_insets.dart', 'packages/flutter/src/painting/borders.dart'], (function load__packages__flutter__src__material__switch_list_tile_dart(dart_sdk, packages__flutter__src__material__icon_button$46dart, packages__flutter__src__material__switch$46dart, packages__flutter__src__widgets__widget_span$46dart, packages__flutter__src__painting___network_image_web$46dart, packages__flutter__src__painting__edge_insets$46dart, packages__flutter__src__painting__borders$46dart) {
+define(['dart_sdk', 'packages/flutter/src/rendering/sliver.dart', 'packages/flutter/src/rendering/sliver_multi_box_adaptor.dart'], (function load__packages__flutter__src__rendering__sliver_list_dart(dart_sdk, packages__flutter__src__rendering__sliver$46dart, packages__flutter__src__rendering__sliver_multi_box_adaptor$46dart) {
   'use strict';
   const core = dart_sdk.core;
-  const ui = dart_sdk.ui;
   const dart = dart_sdk.dart;
   const dartx = dart_sdk.dartx;
-  const list_tile = packages__flutter__src__material__icon_button$46dart.src__material__list_tile;
-  const theme_data = packages__flutter__src__material__icon_button$46dart.src__material__theme_data;
-  const theme = packages__flutter__src__material__icon_button$46dart.src__material__theme;
-  const $switch = packages__flutter__src__material__switch$46dart.src__material__switch;
-  const widget_inspector = packages__flutter__src__widgets__widget_span$46dart.src__widgets__widget_inspector;
-  const basic = packages__flutter__src__widgets__widget_span$46dart.src__widgets__basic;
-  const framework = packages__flutter__src__widgets__widget_span$46dart.src__widgets__framework;
-  const image_provider = packages__flutter__src__painting___network_image_web$46dart.src__painting__image_provider;
-  const edge_insets = packages__flutter__src__painting__edge_insets$46dart.src__painting__edge_insets;
-  const borders = packages__flutter__src__painting__borders$46dart.src__painting__borders;
-  var switch_list_tile = Object.create(dart.library);
+  const sliver = packages__flutter__src__rendering__sliver$46dart.src__rendering__sliver;
+  const sliver_multi_box_adaptor = packages__flutter__src__rendering__sliver_multi_box_adaptor$46dart.src__rendering__sliver_multi_box_adaptor;
+  var sliver_list = Object.create(dart.library);
   dart._checkModuleNullSafetyMode(true);
   var T = {
-    VoidTovoid: () => (T.VoidTovoid = dart.constFn(dart.fnType(dart.void, [])))()
+    VoidTobool: () => (T.VoidTobool = dart.constFn(dart.fnType(core.bool, [])))()
   };
   const CT = Object.create({
     _: () => (C, CT)
   });
-  dart.defineLazy(CT, {
-    get C0() {
-      return C[0] = dart.const({
-        __proto__: switch_list_tile._SwitchListTileType.prototype,
-        [_name$]: "_SwitchListTileType.material",
-        index: 0
-      });
-    },
-    get C1() {
-      return C[1] = dart.const({
-        __proto__: switch_list_tile._SwitchListTileType.prototype,
-        [_name$]: "_SwitchListTileType.adaptive",
-        index: 1
-      });
-    },
-    get C2() {
-      return C[2] = dart.constList([C[0] || CT.C0, C[1] || CT.C1], switch_list_tile._SwitchListTileType);
-    },
-    get C3() {
-      return C[3] = dart.const({
-        __proto__: list_tile.ListTileControlAffinity.prototype,
-        [_name]: "ListTileControlAffinity.platform",
-        index: 2
-      });
-    },
-    get C6() {
-      return C[6] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "value",
-        [_Location_column]: 11,
-        [_Location_line]: 467,
-        [_Location_file]: null
-      });
-    },
-    get C7() {
-      return C[7] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "onChanged",
-        [_Location_column]: 11,
-        [_Location_line]: 468,
-        [_Location_file]: null
-      });
-    },
-    get C8() {
-      return C[8] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "activeColor",
-        [_Location_column]: 11,
-        [_Location_line]: 469,
-        [_Location_file]: null
-      });
-    },
-    get C9() {
-      return C[9] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "activeThumbImage",
-        [_Location_column]: 11,
-        [_Location_line]: 470,
-        [_Location_file]: null
-      });
-    },
-    get C10() {
-      return C[10] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "inactiveThumbImage",
-        [_Location_column]: 11,
-        [_Location_line]: 471,
-        [_Location_file]: null
-      });
-    },
-    get C11() {
-      return C[11] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "materialTapTargetSize",
-        [_Location_column]: 11,
-        [_Location_line]: 472,
-        [_Location_file]: null
-      });
-    },
-    get C12() {
-      return C[12] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "activeTrackColor",
-        [_Location_column]: 11,
-        [_Location_line]: 473,
-        [_Location_file]: null
-      });
-    },
-    get C13() {
-      return C[13] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "inactiveTrackColor",
-        [_Location_column]: 11,
-        [_Location_line]: 474,
-        [_Location_file]: null
-      });
-    },
-    get C14() {
-      return C[14] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "inactiveThumbColor",
-        [_Location_column]: 11,
-        [_Location_line]: 475,
-        [_Location_file]: null
-      });
-    },
-    get C15() {
-      return C[15] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "autofocus",
-        [_Location_column]: 11,
-        [_Location_line]: 476,
-        [_Location_file]: null
-      });
-    },
-    get C5() {
-      return C[5] = dart.constList([C[6] || CT.C6, C[7] || CT.C7, C[8] || CT.C8, C[9] || CT.C9, C[10] || CT.C10, C[11] || CT.C11, C[12] || CT.C12, C[13] || CT.C13, C[14] || CT.C14, C[15] || CT.C15], widget_inspector._Location);
-    },
-    get C4() {
-      return C[4] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: C[5] || CT.C5,
-        [_Location_name]: null,
-        [_Location_column]: 26,
-        [_Location_line]: 466,
-        [_Location_file]: "file:///G:/Nitoza/SDK/flutter/packages/flutter/lib/src/material/switch_list_tile.dart"
-      });
-    },
-    get C18() {
-      return C[18] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "value",
-        [_Location_column]: 11,
-        [_Location_line]: 482,
-        [_Location_file]: null
-      });
-    },
-    get C19() {
-      return C[19] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "onChanged",
-        [_Location_column]: 11,
-        [_Location_line]: 483,
-        [_Location_file]: null
-      });
-    },
-    get C20() {
-      return C[20] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "activeColor",
-        [_Location_column]: 11,
-        [_Location_line]: 484,
-        [_Location_file]: null
-      });
-    },
-    get C21() {
-      return C[21] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "activeThumbImage",
-        [_Location_column]: 11,
-        [_Location_line]: 485,
-        [_Location_file]: null
-      });
-    },
-    get C22() {
-      return C[22] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "inactiveThumbImage",
-        [_Location_column]: 11,
-        [_Location_line]: 486,
-        [_Location_file]: null
-      });
-    },
-    get C23() {
-      return C[23] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "materialTapTargetSize",
-        [_Location_column]: 11,
-        [_Location_line]: 487,
-        [_Location_file]: null
-      });
-    },
-    get C24() {
-      return C[24] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "activeTrackColor",
-        [_Location_column]: 11,
-        [_Location_line]: 488,
-        [_Location_file]: null
-      });
-    },
-    get C25() {
-      return C[25] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "inactiveTrackColor",
-        [_Location_column]: 11,
-        [_Location_line]: 489,
-        [_Location_file]: null
-      });
-    },
-    get C26() {
-      return C[26] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "inactiveThumbColor",
-        [_Location_column]: 11,
-        [_Location_line]: 490,
-        [_Location_file]: null
-      });
-    },
-    get C27() {
-      return C[27] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "autofocus",
-        [_Location_column]: 11,
-        [_Location_line]: 491,
-        [_Location_file]: null
-      });
-    },
-    get C17() {
-      return C[17] = dart.constList([C[18] || CT.C18, C[19] || CT.C19, C[20] || CT.C20, C[21] || CT.C21, C[22] || CT.C22, C[23] || CT.C23, C[24] || CT.C24, C[25] || CT.C25, C[26] || CT.C26, C[27] || CT.C27], widget_inspector._Location);
-    },
-    get C16() {
-      return C[16] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: C[17] || CT.C17,
-        [_Location_name]: null,
-        [_Location_column]: 19,
-        [_Location_line]: 481,
-        [_Location_file]: "file:///G:/Nitoza/SDK/flutter/packages/flutter/lib/src/material/switch_list_tile.dart"
-      });
-    },
-    get C28() {
-      return C[28] = dart.const({
-        __proto__: list_tile.ListTileControlAffinity.prototype,
-        [_name]: "ListTileControlAffinity.leading",
-        index: 0
-      });
-    },
-    get C29() {
-      return C[29] = dart.const({
-        __proto__: list_tile.ListTileControlAffinity.prototype,
-        [_name]: "ListTileControlAffinity.trailing",
-        index: 1
-      });
-    },
-    get C32() {
-      return C[32] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "leading",
-        [_Location_column]: 11,
-        [_Location_line]: 512,
-        [_Location_file]: null
-      });
-    },
-    get C33() {
-      return C[33] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "title",
-        [_Location_column]: 11,
-        [_Location_line]: 513,
-        [_Location_file]: null
-      });
-    },
-    get C34() {
-      return C[34] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "subtitle",
-        [_Location_column]: 11,
-        [_Location_line]: 514,
-        [_Location_file]: null
-      });
-    },
-    get C35() {
-      return C[35] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "trailing",
-        [_Location_column]: 11,
-        [_Location_line]: 515,
-        [_Location_file]: null
-      });
-    },
-    get C36() {
-      return C[36] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "isThreeLine",
-        [_Location_column]: 11,
-        [_Location_line]: 516,
-        [_Location_file]: null
-      });
-    },
-    get C37() {
-      return C[37] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "dense",
-        [_Location_column]: 11,
-        [_Location_line]: 517,
-        [_Location_file]: null
-      });
-    },
-    get C38() {
-      return C[38] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "contentPadding",
-        [_Location_column]: 11,
-        [_Location_line]: 518,
-        [_Location_file]: null
-      });
-    },
-    get C39() {
-      return C[39] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "enabled",
-        [_Location_column]: 11,
-        [_Location_line]: 519,
-        [_Location_file]: null
-      });
-    },
-    get C40() {
-      return C[40] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "onTap",
-        [_Location_column]: 11,
-        [_Location_line]: 520,
-        [_Location_file]: null
-      });
-    },
-    get C41() {
-      return C[41] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "selected",
-        [_Location_column]: 11,
-        [_Location_line]: 521,
-        [_Location_file]: null
-      });
-    },
-    get C42() {
-      return C[42] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "selectedTileColor",
-        [_Location_column]: 11,
-        [_Location_line]: 522,
-        [_Location_file]: null
-      });
-    },
-    get C43() {
-      return C[43] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "autofocus",
-        [_Location_column]: 11,
-        [_Location_line]: 523,
-        [_Location_file]: null
-      });
-    },
-    get C44() {
-      return C[44] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "shape",
-        [_Location_column]: 11,
-        [_Location_line]: 524,
-        [_Location_file]: null
-      });
-    },
-    get C45() {
-      return C[45] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "tileColor",
-        [_Location_column]: 11,
-        [_Location_line]: 525,
-        [_Location_file]: null
-      });
-    },
-    get C31() {
-      return C[31] = dart.constList([C[32] || CT.C32, C[33] || CT.C33, C[34] || CT.C34, C[35] || CT.C35, C[36] || CT.C36, C[37] || CT.C37, C[38] || CT.C38, C[39] || CT.C39, C[40] || CT.C40, C[41] || CT.C41, C[42] || CT.C42, C[43] || CT.C43, C[44] || CT.C44, C[45] || CT.C45], widget_inspector._Location);
-    },
-    get C30() {
-      return C[30] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: C[31] || CT.C31,
-        [_Location_name]: null,
-        [_Location_column]: 16,
-        [_Location_line]: 511,
-        [_Location_file]: "file:///G:/Nitoza/SDK/flutter/packages/flutter/lib/src/material/switch_list_tile.dart"
-      });
-    },
-    get C48() {
-      return C[48] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: null,
-        [_Location_name]: "child",
-        [_Location_column]: 7,
-        [_Location_line]: 509,
-        [_Location_file]: null
-      });
-    },
-    get C47() {
-      return C[47] = dart.constList([C[48] || CT.C48], widget_inspector._Location);
-    },
-    get C46() {
-      return C[46] = dart.const({
-        __proto__: widget_inspector._Location.prototype,
-        [_Location_parameterLocations]: C[47] || CT.C47,
-        [_Location_name]: null,
-        [_Location_column]: 12,
-        [_Location_line]: 508,
-        [_Location_file]: "file:///G:/Nitoza/SDK/flutter/packages/flutter/lib/src/material/switch_list_tile.dart"
-      });
-    }
-  }, false);
-  var C = Array(49).fill(void 0);
   var I = [
-    "package:flutter/src/material/switch_list_tile.dart",
-    "file:///G:/Nitoza/SDK/flutter/packages/flutter/lib/src/material/switch_list_tile.dart"
+    "file:///G:/Nitoza/SDK/flutter/packages/flutter/lib/src/rendering/sliver_list.dart",
+    "package:flutter/src/rendering/sliver_list.dart"
   ];
-  var _name$ = dart.privateName(switch_list_tile, "_name");
-  switch_list_tile._SwitchListTileType = class _SwitchListTileType extends core.Object {
-    toString() {
-      return this[_name$];
-    }
-  };
-  (switch_list_tile._SwitchListTileType.new = function(index, _name) {
-    this.index = index;
-    this[_name$] = _name;
-    ;
-  }).prototype = switch_list_tile._SwitchListTileType.prototype;
-  dart.addTypeTests(switch_list_tile._SwitchListTileType);
-  dart.addTypeCaches(switch_list_tile._SwitchListTileType);
-  dart.setLibraryUri(switch_list_tile._SwitchListTileType, I[0]);
-  dart.setFieldSignature(switch_list_tile._SwitchListTileType, () => ({
-    __proto__: dart.getFields(switch_list_tile._SwitchListTileType.__proto__),
-    index: dart.finalFieldType(core.int),
-    [_name$]: dart.finalFieldType(core.String)
-  }));
-  dart.defineExtensionMethods(switch_list_tile._SwitchListTileType, ['toString']);
-  switch_list_tile._SwitchListTileType.material = C[0] || CT.C0;
-  switch_list_tile._SwitchListTileType.adaptive = C[1] || CT.C1;
-  switch_list_tile._SwitchListTileType.values = C[2] || CT.C2;
-  var value$ = dart.privateName(switch_list_tile, "SwitchListTile.value");
-  var onChanged$ = dart.privateName(switch_list_tile, "SwitchListTile.onChanged");
-  var activeColor$ = dart.privateName(switch_list_tile, "SwitchListTile.activeColor");
-  var activeTrackColor$ = dart.privateName(switch_list_tile, "SwitchListTile.activeTrackColor");
-  var inactiveThumbColor$ = dart.privateName(switch_list_tile, "SwitchListTile.inactiveThumbColor");
-  var inactiveTrackColor$ = dart.privateName(switch_list_tile, "SwitchListTile.inactiveTrackColor");
-  var tileColor$ = dart.privateName(switch_list_tile, "SwitchListTile.tileColor");
-  var activeThumbImage$ = dart.privateName(switch_list_tile, "SwitchListTile.activeThumbImage");
-  var inactiveThumbImage$ = dart.privateName(switch_list_tile, "SwitchListTile.inactiveThumbImage");
-  var title$ = dart.privateName(switch_list_tile, "SwitchListTile.title");
-  var subtitle$ = dart.privateName(switch_list_tile, "SwitchListTile.subtitle");
-  var secondary$ = dart.privateName(switch_list_tile, "SwitchListTile.secondary");
-  var isThreeLine$ = dart.privateName(switch_list_tile, "SwitchListTile.isThreeLine");
-  var dense$ = dart.privateName(switch_list_tile, "SwitchListTile.dense");
-  var contentPadding$ = dart.privateName(switch_list_tile, "SwitchListTile.contentPadding");
-  var selected$ = dart.privateName(switch_list_tile, "SwitchListTile.selected");
-  var autofocus$ = dart.privateName(switch_list_tile, "SwitchListTile.autofocus");
-  var _switchListTileType = dart.privateName(switch_list_tile, "SwitchListTile._switchListTileType");
-  var controlAffinity$ = dart.privateName(switch_list_tile, "SwitchListTile.controlAffinity");
-  var shape$ = dart.privateName(switch_list_tile, "SwitchListTile.shape");
-  var selectedTileColor$ = dart.privateName(switch_list_tile, "SwitchListTile.selectedTileColor");
-  var _name = dart.privateName(list_tile, "_name");
-  var _switchListTileType$ = dart.privateName(switch_list_tile, "_switchListTileType");
-  var _Location_parameterLocations = dart.privateName(widget_inspector, "_Location.parameterLocations");
-  var _Location_name = dart.privateName(widget_inspector, "_Location.name");
-  var _Location_column = dart.privateName(widget_inspector, "_Location.column");
-  var _Location_line = dart.privateName(widget_inspector, "_Location.line");
-  var _Location_file = dart.privateName(widget_inspector, "_Location.file");
-  switch_list_tile.SwitchListTile = class SwitchListTile extends framework.StatelessWidget {
-    get value() {
-      return this[value$];
-    }
-    set value(value) {
-      super.value = value;
-    }
-    get onChanged() {
-      return this[onChanged$];
-    }
-    set onChanged(value) {
-      super.onChanged = value;
-    }
-    get activeColor() {
-      return this[activeColor$];
-    }
-    set activeColor(value) {
-      super.activeColor = value;
-    }
-    get activeTrackColor() {
-      return this[activeTrackColor$];
-    }
-    set activeTrackColor(value) {
-      super.activeTrackColor = value;
-    }
-    get inactiveThumbColor() {
-      return this[inactiveThumbColor$];
-    }
-    set inactiveThumbColor(value) {
-      super.inactiveThumbColor = value;
-    }
-    get inactiveTrackColor() {
-      return this[inactiveTrackColor$];
-    }
-    set inactiveTrackColor(value) {
-      super.inactiveTrackColor = value;
-    }
-    get tileColor() {
-      return this[tileColor$];
-    }
-    set tileColor(value) {
-      super.tileColor = value;
-    }
-    get activeThumbImage() {
-      return this[activeThumbImage$];
-    }
-    set activeThumbImage(value) {
-      super.activeThumbImage = value;
-    }
-    get inactiveThumbImage() {
-      return this[inactiveThumbImage$];
-    }
-    set inactiveThumbImage(value) {
-      super.inactiveThumbImage = value;
-    }
-    get title() {
-      return this[title$];
-    }
-    set title(value) {
-      super.title = value;
-    }
-    get subtitle() {
-      return this[subtitle$];
-    }
-    set subtitle(value) {
-      super.subtitle = value;
-    }
-    get secondary() {
-      return this[secondary$];
-    }
-    set secondary(value) {
-      super.secondary = value;
-    }
-    get isThreeLine() {
-      return this[isThreeLine$];
-    }
-    set isThreeLine(value) {
-      super.isThreeLine = value;
-    }
-    get dense() {
-      return this[dense$];
-    }
-    set dense(value) {
-      super.dense = value;
-    }
-    get contentPadding() {
-      return this[contentPadding$];
-    }
-    set contentPadding(value) {
-      super.contentPadding = value;
-    }
-    get selected() {
-      return this[selected$];
-    }
-    set selected(value) {
-      super.selected = value;
-    }
-    get autofocus() {
-      return this[autofocus$];
-    }
-    set autofocus(value) {
-      super.autofocus = value;
-    }
-    get [_switchListTileType$]() {
-      return this[_switchListTileType];
-    }
-    set [_switchListTileType$](value) {
-      super[_switchListTileType$] = value;
-    }
-    get controlAffinity() {
-      return this[controlAffinity$];
-    }
-    set controlAffinity(value) {
-      super.controlAffinity = value;
-    }
-    get shape() {
-      return this[shape$];
-    }
-    set shape(value) {
-      super.shape = value;
-    }
-    get selectedTileColor() {
-      return this[selectedTileColor$];
-    }
-    set selectedTileColor(value) {
-      super.selectedTileColor = value;
-    }
-    build(context) {
-      let t0;
-      let control = null;
-      switch (this[_switchListTileType$]) {
-        case C[1] || CT.C1:
-        {
-          control = new $switch.Switch.adaptive({value: this.value, onChanged: this.onChanged, activeColor: this.activeColor, activeThumbImage: this.activeThumbImage, inactiveThumbImage: this.inactiveThumbImage, materialTapTargetSize: theme_data.MaterialTapTargetSize.shrinkWrap, activeTrackColor: this.activeTrackColor, inactiveTrackColor: this.inactiveTrackColor, inactiveThumbColor: this.inactiveThumbColor, autofocus: this.autofocus, $creationLocationd_0dea112b090073317d4: C[4] || CT.C4});
-          break;
-        }
-        case C[0] || CT.C0:
-        {
-          control = new $switch.Switch.new({value: this.value, onChanged: this.onChanged, activeColor: this.activeColor, activeThumbImage: this.activeThumbImage, inactiveThumbImage: this.inactiveThumbImage, materialTapTargetSize: theme_data.MaterialTapTargetSize.shrinkWrap, activeTrackColor: this.activeTrackColor, inactiveTrackColor: this.inactiveTrackColor, inactiveThumbColor: this.inactiveThumbColor, autofocus: this.autofocus, $creationLocationd_0dea112b090073317d4: C[16] || CT.C16});
+  sliver_list.RenderSliverList = class RenderSliverList extends sliver_multi_box_adaptor.RenderSliverMultiBoxAdaptor {
+    performLayout() {
+      let constraints = this.constraints;
+      this.childManager.didStartLayout();
+      this.childManager.setDidUnderflow(false);
+      let scrollOffset = constraints.scrollOffset + constraints.cacheOrigin;
+      if (!(scrollOffset >= 0.0)) dart.assertFailed(null, I[0], 52, 12, "scrollOffset >= 0.0");
+      let remainingExtent = constraints.remainingCacheExtent;
+      if (!(remainingExtent >= 0.0)) dart.assertFailed(null, I[0], 54, 12, "remainingExtent >= 0.0");
+      let targetEndScrollOffset = scrollOffset + remainingExtent;
+      let childConstraints = constraints.asBoxConstraints();
+      let leadingGarbage = 0;
+      let trailingGarbage = 0;
+      let reachedEnd = false;
+      if (this.firstChild == null) {
+        if (!this.addInitialChild()) {
+          this.geometry = sliver.SliverGeometry.zero;
+          this.childManager.didFinishLayout();
+          return;
         }
       }
-      let leading = null;
-      let trailing = null;
-      switch (this.controlAffinity) {
-        case C[28] || CT.C28:
-        {
-          leading = control;
-          trailing = this.secondary;
-          break;
+      let leadingChildWithLayout = null;
+      let trailingChildWithLayout = null;
+      let earliestUsefulChild = this.firstChild;
+      if (this.childScrollOffset(dart.nullCheck(this.firstChild)) == null) {
+        let leadingChildrenWithoutLayoutOffset = 0;
+        while (earliestUsefulChild != null && this.childScrollOffset(earliestUsefulChild) == null) {
+          earliestUsefulChild = this.childAfter(earliestUsefulChild);
+          leadingChildrenWithoutLayoutOffset = leadingChildrenWithoutLayoutOffset + 1;
         }
-        case C[29] || CT.C29:
-        case C[3] || CT.C3:
-        {
-          leading = this.secondary;
-          trailing = control;
+        this.collectGarbage(leadingChildrenWithoutLayoutOffset, 0);
+        if (this.firstChild == null) {
+          if (!this.addInitialChild()) {
+            this.geometry = sliver.SliverGeometry.zero;
+            this.childManager.didFinishLayout();
+            return;
+          }
+        }
+      }
+      earliestUsefulChild = this.firstChild;
+      for (let earliestScrollOffset = dart.nullCheck(this.childScrollOffset(dart.nullCheck(earliestUsefulChild))); earliestScrollOffset > scrollOffset; earliestScrollOffset = dart.nullCheck(this.childScrollOffset(earliestUsefulChild))) {
+        earliestUsefulChild = this.insertAndLayoutLeadingChild(childConstraints, {parentUsesSize: true});
+        if (earliestUsefulChild == null) {
+          let childParentData = sliver_multi_box_adaptor.SliverMultiBoxAdaptorParentData.as(dart.nullCheck(dart.nullCheck(this.firstChild).parentData));
+          childParentData.layoutOffset = 0.0;
+          if (scrollOffset === 0.0) {
+            dart.nullCheck(this.firstChild).layout(childConstraints, {parentUsesSize: true});
+            earliestUsefulChild = this.firstChild;
+            leadingChildWithLayout = earliestUsefulChild;
+            trailingChildWithLayout == null ? trailingChildWithLayout = earliestUsefulChild : null;
+            break;
+          } else {
+            this.geometry = new sliver.SliverGeometry.new({scrollOffsetCorrection: -scrollOffset});
+            return;
+          }
+        }
+        let firstChildScrollOffset = earliestScrollOffset - this.paintExtentOf(dart.nullCheck(this.firstChild));
+        if (firstChildScrollOffset < -1e-10) {
+          this.geometry = new sliver.SliverGeometry.new({scrollOffsetCorrection: -firstChildScrollOffset});
+          let childParentData = sliver_multi_box_adaptor.SliverMultiBoxAdaptorParentData.as(dart.nullCheck(dart.nullCheck(this.firstChild).parentData));
+          childParentData.layoutOffset = 0.0;
+          return;
+        }
+        let childParentData = sliver_multi_box_adaptor.SliverMultiBoxAdaptorParentData.as(dart.nullCheck(earliestUsefulChild.parentData));
+        childParentData.layoutOffset = firstChildScrollOffset;
+        if (!dart.equals(earliestUsefulChild, this.firstChild)) dart.assertFailed(null, I[0], 168, 14, "earliestUsefulChild == firstChild");
+        leadingChildWithLayout = earliestUsefulChild;
+        trailingChildWithLayout == null ? trailingChildWithLayout = earliestUsefulChild : null;
+      }
+      if (!(dart.nullCheck(this.childScrollOffset(dart.nullCheck(this.firstChild))) > -1e-10)) dart.assertFailed(null, I[0], 173, 12, "childScrollOffset(firstChild!)! > -precisionErrorTolerance");
+      if (scrollOffset < 1e-10) {
+        while (this.indexOf(dart.nullCheck(this.firstChild)) > 0) {
+          let earliestScrollOffset = dart.nullCheck(this.childScrollOffset(dart.nullCheck(this.firstChild)));
+          earliestUsefulChild = this.insertAndLayoutLeadingChild(childConstraints, {parentUsesSize: true});
+          if (!(earliestUsefulChild != null)) dart.assertFailed(null, I[0], 186, 16, "earliestUsefulChild != null");
+          let firstChildScrollOffset = earliestScrollOffset - this.paintExtentOf(dart.nullCheck(this.firstChild));
+          let childParentData = sliver_multi_box_adaptor.SliverMultiBoxAdaptorParentData.as(dart.nullCheck(dart.nullCheck(this.firstChild).parentData));
+          childParentData.layoutOffset = 0.0;
+          if (firstChildScrollOffset < -1e-10) {
+            this.geometry = new sliver.SliverGeometry.new({scrollOffsetCorrection: -firstChildScrollOffset});
+            return;
+          }
+        }
+      }
+      if (!dart.equals(earliestUsefulChild, this.firstChild)) dart.assertFailed(null, I[0], 208, 12, "earliestUsefulChild == firstChild");
+      if (!(dart.nullCheck(this.childScrollOffset(dart.nullCheck(earliestUsefulChild))) <= scrollOffset)) dart.assertFailed(null, I[0], 209, 12, "childScrollOffset(earliestUsefulChild!)! <= scrollOffset");
+      if (leadingChildWithLayout == null) {
+        dart.nullCheck(earliestUsefulChild).layout(childConstraints, {parentUsesSize: true});
+        leadingChildWithLayout = earliestUsefulChild;
+        trailingChildWithLayout = earliestUsefulChild;
+      }
+      let inLayoutRange = true;
+      let child = earliestUsefulChild;
+      let index = this.indexOf(dart.nullCheck(child));
+      let endScrollOffset = dart.nullCheck(this.childScrollOffset(child)) + this.paintExtentOf(child);
+      const advance = () => {
+        if (!(child != null)) dart.assertFailed(null, I[0], 229, 14, "child != null");
+        if (dart.equals(child, trailingChildWithLayout)) inLayoutRange = false;
+        child = this.childAfter(dart.nullCheck(child));
+        if (child == null) inLayoutRange = false;
+        index = index + 1;
+        if (!inLayoutRange) {
+          if (child == null || this.indexOf(dart.nullCheck(child)) !== index) {
+            child = this.insertAndLayoutChild(childConstraints, {after: trailingChildWithLayout, parentUsesSize: true});
+            if (child == null) {
+              return false;
+            }
+          } else {
+            dart.nullCheck(child).layout(childConstraints, {parentUsesSize: true});
+          }
+          trailingChildWithLayout = child;
+        }
+        if (!(child != null)) dart.assertFailed(null, I[0], 253, 14, "child != null");
+        let childParentData = sliver_multi_box_adaptor.SliverMultiBoxAdaptorParentData.as(dart.nullCheck(dart.nullCheck(child).parentData));
+        childParentData.layoutOffset = endScrollOffset;
+        if (!(childParentData.index === index)) dart.assertFailed(null, I[0], 256, 14, "childParentData.index == index");
+        endScrollOffset = dart.nullCheck(this.childScrollOffset(dart.nullCheck(child))) + this.paintExtentOf(dart.nullCheck(child));
+        return true;
+      };
+      dart.fn(advance, T.VoidTobool());
+      while (endScrollOffset < scrollOffset) {
+        leadingGarbage = leadingGarbage + 1;
+        if (!advance()) {
+          if (!(leadingGarbage === this.childCount)) dart.assertFailed(null, I[0], 265, 16, "leadingGarbage == childCount");
+          if (!(child == null)) dart.assertFailed(null, I[0], 266, 16, "child == null");
+          this.collectGarbage(leadingGarbage - 1, 0);
+          if (!dart.equals(this.firstChild, this.lastChild)) dart.assertFailed(null, I[0], 269, 16, "firstChild == lastChild");
+          let extent = dart.nullCheck(this.childScrollOffset(dart.nullCheck(this.lastChild))) + this.paintExtentOf(dart.nullCheck(this.lastChild));
+          this.geometry = new sliver.SliverGeometry.new({scrollExtent: extent, paintExtent: 0.0, maxPaintExtent: extent});
+          return;
+        }
+      }
+      while (endScrollOffset < targetEndScrollOffset) {
+        if (!advance()) {
+          reachedEnd = true;
           break;
         }
       }
-      return new basic.MergeSemantics.new({child: list_tile.ListTileTheme.merge({selectedColor: (t0 = this.activeColor, t0 == null ? theme.Theme.of(context).toggleableActiveColor : t0), child: new list_tile.ListTile.new({leading: leading, title: this.title, subtitle: this.subtitle, trailing: trailing, isThreeLine: this.isThreeLine, dense: this.dense, contentPadding: this.contentPadding, enabled: this.onChanged != null, onTap: this.onChanged != null ? dart.fn(() => {
-              dart.nullCheck(this.onChanged)(!this.value);
-            }, T.VoidTovoid()) : null, selected: this.selected, selectedTileColor: this.selectedTileColor, autofocus: this.autofocus, shape: this.shape, tileColor: this.tileColor, $creationLocationd_0dea112b090073317d4: C[30] || CT.C30})}), $creationLocationd_0dea112b090073317d4: C[46] || CT.C46});
+      if (child != null) {
+        child = this.childAfter(dart.nullCheck(child));
+        while (child != null) {
+          trailingGarbage = trailingGarbage + 1;
+          child = this.childAfter(dart.nullCheck(child));
+        }
+      }
+      this.collectGarbage(leadingGarbage, trailingGarbage);
+      if (!this.debugAssertChildListIsNonEmptyAndContiguous()) dart.assertFailed(null, I[0], 302, 12, "debugAssertChildListIsNonEmptyAndContiguous()");
+      let estimatedMaxScrollOffset = null;
+      if (reachedEnd) {
+        estimatedMaxScrollOffset = endScrollOffset;
+      } else {
+        estimatedMaxScrollOffset = this.childManager.estimateMaxScrollOffset(constraints, {firstIndex: this.indexOf(dart.nullCheck(this.firstChild)), lastIndex: this.indexOf(dart.nullCheck(this.lastChild)), leadingScrollOffset: this.childScrollOffset(dart.nullCheck(this.firstChild)), trailingScrollOffset: endScrollOffset});
+        if (!(estimatedMaxScrollOffset >= endScrollOffset - dart.nullCheck(this.childScrollOffset(dart.nullCheck(this.firstChild))))) dart.assertFailed(null, I[0], 314, 14, "estimatedMaxScrollOffset >= endScrollOffset - childScrollOffset(firstChild!)!");
+      }
+      let paintExtent = this.calculatePaintOffset(constraints, {from: dart.nullCheck(this.childScrollOffset(dart.nullCheck(this.firstChild))), to: endScrollOffset});
+      let cacheExtent = this.calculateCacheOffset(constraints, {from: dart.nullCheck(this.childScrollOffset(dart.nullCheck(this.firstChild))), to: endScrollOffset});
+      let targetEndScrollOffsetForPaint = constraints.scrollOffset + constraints.remainingPaintExtent;
+      this.geometry = new sliver.SliverGeometry.new({scrollExtent: estimatedMaxScrollOffset, paintExtent: paintExtent, cacheExtent: cacheExtent, maxPaintExtent: estimatedMaxScrollOffset, hasVisualOverflow: endScrollOffset > targetEndScrollOffsetForPaint || constraints.scrollOffset > 0.0});
+      if (estimatedMaxScrollOffset === endScrollOffset) this.childManager.setDidUnderflow(true);
+      this.childManager.didFinishLayout();
     }
   };
-  (switch_list_tile.SwitchListTile.new = function(opts) {
-    let key = opts && 'key' in opts ? opts.key : null;
-    let value = opts && 'value' in opts ? opts.value : null;
-    let onChanged = opts && 'onChanged' in opts ? opts.onChanged : null;
-    let tileColor = opts && 'tileColor' in opts ? opts.tileColor : null;
-    let activeColor = opts && 'activeColor' in opts ? opts.activeColor : null;
-    let activeTrackColor = opts && 'activeTrackColor' in opts ? opts.activeTrackColor : null;
-    let inactiveThumbColor = opts && 'inactiveThumbColor' in opts ? opts.inactiveThumbColor : null;
-    let inactiveTrackColor = opts && 'inactiveTrackColor' in opts ? opts.inactiveTrackColor : null;
-    let activeThumbImage = opts && 'activeThumbImage' in opts ? opts.activeThumbImage : null;
-    let inactiveThumbImage = opts && 'inactiveThumbImage' in opts ? opts.inactiveThumbImage : null;
-    let title = opts && 'title' in opts ? opts.title : null;
-    let subtitle = opts && 'subtitle' in opts ? opts.subtitle : null;
-    let isThreeLine = opts && 'isThreeLine' in opts ? opts.isThreeLine : false;
-    let dense = opts && 'dense' in opts ? opts.dense : null;
-    let contentPadding = opts && 'contentPadding' in opts ? opts.contentPadding : null;
-    let secondary = opts && 'secondary' in opts ? opts.secondary : null;
-    let selected = opts && 'selected' in opts ? opts.selected : false;
-    let autofocus = opts && 'autofocus' in opts ? opts.autofocus : false;
-    let controlAffinity = opts && 'controlAffinity' in opts ? opts.controlAffinity : C[3] || CT.C3;
-    let shape = opts && 'shape' in opts ? opts.shape : null;
-    let selectedTileColor = opts && 'selectedTileColor' in opts ? opts.selectedTileColor : null;
-    let $36creationLocationd_0dea112b090073317d4 = opts && '$creationLocationd_0dea112b090073317d4' in opts ? opts.$creationLocationd_0dea112b090073317d4 : null;
-    this[value$] = value;
-    this[onChanged$] = onChanged;
-    this[tileColor$] = tileColor;
-    this[activeColor$] = activeColor;
-    this[activeTrackColor$] = activeTrackColor;
-    this[inactiveThumbColor$] = inactiveThumbColor;
-    this[inactiveTrackColor$] = inactiveTrackColor;
-    this[activeThumbImage$] = activeThumbImage;
-    this[inactiveThumbImage$] = inactiveThumbImage;
-    this[title$] = title;
-    this[subtitle$] = subtitle;
-    this[isThreeLine$] = isThreeLine;
-    this[dense$] = dense;
-    this[contentPadding$] = contentPadding;
-    this[secondary$] = secondary;
-    this[selected$] = selected;
-    this[autofocus$] = autofocus;
-    this[controlAffinity$] = controlAffinity;
-    this[shape$] = shape;
-    this[selectedTileColor$] = selectedTileColor;
-    this[_switchListTileType] = switch_list_tile._SwitchListTileType.material;
-    if (!(value !== null)) dart.assertFailed(null, I[1], 284, 15, "value != null");
-    if (!(isThreeLine !== null)) dart.assertFailed(null, I[1], 285, 15, "isThreeLine != null");
-    if (!(!isThreeLine || subtitle != null)) dart.assertFailed(null, I[1], 286, 15, "!isThreeLine || subtitle != null");
-    if (!(selected !== null)) dart.assertFailed(null, I[1], 287, 15, "selected != null");
-    if (!(autofocus !== null)) dart.assertFailed(null, I[1], 288, 15, "autofocus != null");
-    switch_list_tile.SwitchListTile.__proto__.new.call(this, {key: key, $creationLocationd_0dea112b090073317d4: $36creationLocationd_0dea112b090073317d4});
+  (sliver_list.RenderSliverList.new = function(opts) {
+    let childManager = opts && 'childManager' in opts ? opts.childManager : null;
+    sliver_list.RenderSliverList.__proto__.new.call(this, {childManager: childManager});
     ;
-  }).prototype = switch_list_tile.SwitchListTile.prototype;
-  (switch_list_tile.SwitchListTile.adaptive = function(opts) {
-    let key = opts && 'key' in opts ? opts.key : null;
-    let value = opts && 'value' in opts ? opts.value : null;
-    let onChanged = opts && 'onChanged' in opts ? opts.onChanged : null;
-    let tileColor = opts && 'tileColor' in opts ? opts.tileColor : null;
-    let activeColor = opts && 'activeColor' in opts ? opts.activeColor : null;
-    let activeTrackColor = opts && 'activeTrackColor' in opts ? opts.activeTrackColor : null;
-    let inactiveThumbColor = opts && 'inactiveThumbColor' in opts ? opts.inactiveThumbColor : null;
-    let inactiveTrackColor = opts && 'inactiveTrackColor' in opts ? opts.inactiveTrackColor : null;
-    let activeThumbImage = opts && 'activeThumbImage' in opts ? opts.activeThumbImage : null;
-    let inactiveThumbImage = opts && 'inactiveThumbImage' in opts ? opts.inactiveThumbImage : null;
-    let title = opts && 'title' in opts ? opts.title : null;
-    let subtitle = opts && 'subtitle' in opts ? opts.subtitle : null;
-    let isThreeLine = opts && 'isThreeLine' in opts ? opts.isThreeLine : false;
-    let dense = opts && 'dense' in opts ? opts.dense : null;
-    let contentPadding = opts && 'contentPadding' in opts ? opts.contentPadding : null;
-    let secondary = opts && 'secondary' in opts ? opts.secondary : null;
-    let selected = opts && 'selected' in opts ? opts.selected : false;
-    let autofocus = opts && 'autofocus' in opts ? opts.autofocus : false;
-    let controlAffinity = opts && 'controlAffinity' in opts ? opts.controlAffinity : C[3] || CT.C3;
-    let shape = opts && 'shape' in opts ? opts.shape : null;
-    let selectedTileColor = opts && 'selectedTileColor' in opts ? opts.selectedTileColor : null;
-    let $36creationLocationd_0dea112b090073317d4 = opts && '$creationLocationd_0dea112b090073317d4' in opts ? opts.$creationLocationd_0dea112b090073317d4 : null;
-    this[value$] = value;
-    this[onChanged$] = onChanged;
-    this[tileColor$] = tileColor;
-    this[activeColor$] = activeColor;
-    this[activeTrackColor$] = activeTrackColor;
-    this[inactiveThumbColor$] = inactiveThumbColor;
-    this[inactiveTrackColor$] = inactiveTrackColor;
-    this[activeThumbImage$] = activeThumbImage;
-    this[inactiveThumbImage$] = inactiveThumbImage;
-    this[title$] = title;
-    this[subtitle$] = subtitle;
-    this[isThreeLine$] = isThreeLine;
-    this[dense$] = dense;
-    this[contentPadding$] = contentPadding;
-    this[secondary$] = secondary;
-    this[selected$] = selected;
-    this[autofocus$] = autofocus;
-    this[controlAffinity$] = controlAffinity;
-    this[shape$] = shape;
-    this[selectedTileColor$] = selectedTileColor;
-    this[_switchListTileType] = switch_list_tile._SwitchListTileType.adaptive;
-    if (!(value !== null)) dart.assertFailed(null, I[1], 326, 15, "value != null");
-    if (!(isThreeLine !== null)) dart.assertFailed(null, I[1], 327, 15, "isThreeLine != null");
-    if (!(!isThreeLine || subtitle != null)) dart.assertFailed(null, I[1], 328, 15, "!isThreeLine || subtitle != null");
-    if (!(selected !== null)) dart.assertFailed(null, I[1], 329, 15, "selected != null");
-    if (!(autofocus !== null)) dart.assertFailed(null, I[1], 330, 15, "autofocus != null");
-    switch_list_tile.SwitchListTile.__proto__.new.call(this, {key: key, $creationLocationd_0dea112b090073317d4: $36creationLocationd_0dea112b090073317d4});
-    ;
-  }).prototype = switch_list_tile.SwitchListTile.prototype;
-  dart.addTypeTests(switch_list_tile.SwitchListTile);
-  dart.addTypeCaches(switch_list_tile.SwitchListTile);
-  dart.setMethodSignature(switch_list_tile.SwitchListTile, () => ({
-    __proto__: dart.getMethods(switch_list_tile.SwitchListTile.__proto__),
-    build: dart.fnType(framework.Widget, [framework.BuildContext])
+  }).prototype = sliver_list.RenderSliverList.prototype;
+  dart.addTypeTests(sliver_list.RenderSliverList);
+  dart.addTypeCaches(sliver_list.RenderSliverList);
+  dart.setMethodSignature(sliver_list.RenderSliverList, () => ({
+    __proto__: dart.getMethods(sliver_list.RenderSliverList.__proto__),
+    performLayout: dart.fnType(dart.void, [])
   }));
-  dart.setLibraryUri(switch_list_tile.SwitchListTile, I[0]);
-  dart.setFieldSignature(switch_list_tile.SwitchListTile, () => ({
-    __proto__: dart.getFields(switch_list_tile.SwitchListTile.__proto__),
-    value: dart.finalFieldType(core.bool),
-    onChanged: dart.finalFieldType(dart.nullable(dart.fnType(dart.void, [core.bool]))),
-    activeColor: dart.finalFieldType(dart.nullable(ui.Color)),
-    activeTrackColor: dart.finalFieldType(dart.nullable(ui.Color)),
-    inactiveThumbColor: dart.finalFieldType(dart.nullable(ui.Color)),
-    inactiveTrackColor: dart.finalFieldType(dart.nullable(ui.Color)),
-    tileColor: dart.finalFieldType(dart.nullable(ui.Color)),
-    activeThumbImage: dart.finalFieldType(dart.nullable(image_provider.ImageProvider$(core.Object))),
-    inactiveThumbImage: dart.finalFieldType(dart.nullable(image_provider.ImageProvider$(core.Object))),
-    title: dart.finalFieldType(dart.nullable(framework.Widget)),
-    subtitle: dart.finalFieldType(dart.nullable(framework.Widget)),
-    secondary: dart.finalFieldType(dart.nullable(framework.Widget)),
-    isThreeLine: dart.finalFieldType(core.bool),
-    dense: dart.finalFieldType(dart.nullable(core.bool)),
-    contentPadding: dart.finalFieldType(dart.nullable(edge_insets.EdgeInsetsGeometry)),
-    selected: dart.finalFieldType(core.bool),
-    autofocus: dart.finalFieldType(core.bool),
-    [_switchListTileType$]: dart.finalFieldType(switch_list_tile._SwitchListTileType),
-    controlAffinity: dart.finalFieldType(list_tile.ListTileControlAffinity),
-    shape: dart.finalFieldType(dart.nullable(borders.ShapeBorder)),
-    selectedTileColor: dart.finalFieldType(dart.nullable(ui.Color))
-  }));
-  dart.trackLibraries("packages/flutter/src/material/switch_list_tile.dart", {
-    "package:flutter/src/material/switch_list_tile.dart": switch_list_tile
+  dart.setLibraryUri(sliver_list.RenderSliverList, I[1]);
+  dart.trackLibraries("packages/flutter/src/rendering/sliver_list.dart", {
+    "package:flutter/src/rendering/sliver_list.dart": sliver_list
   }, {
-  }, '{"version":3,"sourceRoot":"","sources":["switch_list_tile.dart"],"names":[],"mappings":";;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;IAe8C;;8DAAzC;;;;EAAyC;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;IAgUjC;;;;;;IAyBe;;;;;;IAKb;;;;;;IAOA;;;;;;IAOA;;;;;;IAOA;;;;;;IAGA;;;;;;IAGQ;;;;;;IAKA;;;;;;IAKP;;;;;;IAKA;;;;;;IAKA;;;;;;IAMH;;;;;;IAKC;;;;;;IASc;;;;;;IASf;;;;;;IAGA;;;;;;IAGe;;;;;;IAKI;;;;;;IAGX;;;;;;IAGN;;;;;;UAGa;;AACX;AACb,cAAQ;;;AAaH,UAXD,UAAiB,oCACR,uBACI,6BACE,oCACK,2CACE,gDACyB,+DAC3B,2CACE,6CACA,oCACT;AAEb;;;;AAcC,UAXD,UAAU,+BACD,uBACI,6BACE,oCACK,2CACE,gDACyB,+DAC3B,2CACE,6CACA,oCACT;;;AAIT;AAAS;AACjB,cAAQ;;;AAEa,UAAjB,UAAU,OAAO;AACG,UAApB,WAAW;AACX;;;;;AAGmB,UAAnB,UAAU;AACQ,UAAlB,WAAW,OAAO;AAClB;;;AAGJ,YAAO,sCACgB,+CACQ,uBAAZ,aAAqB,AAAY,eAAT,OAAO,sCACvC,qCACI,OAAO,SACT,sBACG,yBACA,QAAQ,eACL,yBACN,4BACS,8BACP,AAAU,+BACZ,AAAU,yBAAU;AAAuB,cAAT,AAAC,eAAV,gBAAW,CAAC;iCAAY,gBAC9C,kCACS,mCACR,uBACJ,uBACI;IAInB;;;QA3QO;QACS;QACA;QACT;QACA;QACA;QACA;QACA;QACA;QACA;QACA;QACA;QACA;QACA;QACA;QACA;QACA;QACA;QACA;QACA;QACA;;IAnBS;IACA;IACT;IACA;IACA;IACA;IACA;IACA;IACA;IACA;IACA;IACA;IACA;IACA;IACA;IACA;IACA;IACA;IACA;IACA;IACkB,4BAAsB;UACnC,AAAM,KAAD;UACL,AAAY,WAAD;UACE,CAAZ,WAAW,IAAI,QAAQ;UACxB,AAAS,QAAD;UACR,AAAU,SAAD;AAChB,mEAAW,GAAG;;EAAC;;QAeb;QACS;QACA;QACT;QACA;QACA;QACA;QACA;QACA;QACA;QACA;QACA;QACA;QACA;QACA;QACA;QACA;QACA;QACA;QACA;QACA;;IAnBS;IACA;IACT;IACA;IACA;IACA;IACA;IACA;IACA;IACA;IACA;IACA;IACA;IACA;IACA;IACA;IACA;IACA;IACA;IACA;IACkB,4BAAsB;UACnC,AAAM,KAAD;UACL,AAAY,WAAD;UACE,CAAZ,WAAW,IAAI,QAAQ;UACxB,AAAS,QAAD;UACR,AAAU,SAAD;AAChB,mEAAW,GAAG;;EAAC","file":"../../../../../../../../packages/flutter/src/material/switch_list_tile.dart.lib.js"}');
+  }, '{"version":3,"sourceRoot":"","sources":["sliver_list.dart"],"names":[],"mappings":"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","file":"../../../../../../../../packages/flutter/src/rendering/sliver_list.dart.lib.js"}');
   // Exports:
   return {
-    src__material__switch_list_tile: switch_list_tile
+    src__rendering__sliver_list: sliver_list
   };
 }));
 
-//# sourceMappingURL=switch_list_tile.dart.lib.js.map
+//# sourceMappingURL=sliver_list.dart.lib.js.map

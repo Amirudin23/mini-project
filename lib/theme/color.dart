@@ -8,4 +8,6 @@ class ColorPalette {
   static const red = Colors.grey;
   static const black = Colors.black;
   static const gray = Color(0xFFF0F0F0);
+
+  static const redBtn = Color(0xFFEF5350);
 }

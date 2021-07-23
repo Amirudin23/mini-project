@@ -19,4 +19,16 @@ class TextPalette {
     fontWeight: FontWeight.bold,
     fontSize: 16,
   );
+
+  static TextStyle titleTextFieldStyle = TextStyle(
+    color: ColorPalette.black,
+    fontWeight: FontWeight.bold,
+    fontSize: 15,
+  );
+
+  static TextStyle checkInputText = TextStyle(
+    color: ColorPalette.black,
+    fontWeight: FontWeight.normal,
+    fontSize: 11,
+  );
 }

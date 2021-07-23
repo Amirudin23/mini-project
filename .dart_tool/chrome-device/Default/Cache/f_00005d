@@ -1,616 +1,869 @@
-define(['dart_sdk', 'packages/intl/src/intl/string_iterator.dart', 'packages/intl/number_symbols_data.dart', 'packages/intl/number_symbols.dart'], (function load__packages__intl__src__intl__number_format_parser_dart(dart_sdk, packages__intl__src__intl__string_iterator$46dart, packages__intl__number_symbols_data$46dart, packages__intl__number_symbols$46dart) {
+define(['dart_sdk', 'packages/flutter/src/foundation/debug.dart', 'packages/collection/src/priority_queue.dart', 'packages/flutter/src/foundation/print.dart', 'packages/flutter/src/scheduler/debug.dart', 'packages/flutter/src/foundation/binding.dart', 'packages/flutter/src/scheduler/priority.dart'], (function load__packages__flutter__src__scheduler__binding_dart(dart_sdk, packages__flutter__src__foundation__debug$46dart, packages__collection__src__priority_queue$46dart, packages__flutter__src__foundation__print$46dart, packages__flutter__src__scheduler__debug$46dart, packages__flutter__src__foundation__binding$46dart, packages__flutter__src__scheduler__priority$46dart) {
   'use strict';
   const core = dart_sdk.core;
-  const math = dart_sdk.math;
+  const async = dart_sdk.async;
+  const _internal = dart_sdk._internal;
+  const developer = dart_sdk.developer;
+  const _interceptors = dart_sdk._interceptors;
+  const ui = dart_sdk.ui;
+  const _js_helper = dart_sdk._js_helper;
+  const collection = dart_sdk.collection;
   const dart = dart_sdk.dart;
   const dartx = dart_sdk.dartx;
-  const string_iterator = packages__intl__src__intl__string_iterator$46dart.src__intl__string_iterator;
-  const number_symbols_data = packages__intl__number_symbols_data$46dart.number_symbols_data;
-  const number_symbols = packages__intl__number_symbols$46dart.number_symbols;
-  var number_format_parser = Object.create(dart.library);
-  var $round = dartx.round;
-  var $toUpperCase = dartx.toUpperCase;
+  const assertions = packages__flutter__src__foundation__debug$46dart.src__foundation__assertions;
+  const diagnostics = packages__flutter__src__foundation__debug$46dart.src__foundation__diagnostics;
+  const debug = packages__flutter__src__foundation__debug$46dart.src__foundation__debug;
+  const priority_queue = packages__collection__src__priority_queue$46dart.src__priority_queue;
+  const print = packages__flutter__src__foundation__print$46dart.src__foundation__print;
+  const debug$ = packages__flutter__src__scheduler__debug$46dart.src__scheduler__debug;
+  const binding = packages__flutter__src__foundation__binding$46dart.src__foundation__binding;
+  const priority$ = packages__flutter__src__scheduler__priority$46dart.src__scheduler__priority;
+  var binding$ = Object.create(dart.library);
+  var $add = dartx.add;
+  var $length = dartx.length;
+  var $contains = dartx.contains;
+  var $remove = dartx.remove;
+  var $isEmpty = dartx.isEmpty;
+  var $compareTo = dartx.compareTo;
+  var $_set = dartx._set;
+  var $keys = dartx.keys;
   var $_get = dartx._get;
+  var $trimRight = dartx.trimRight;
+  var $split = dartx.split;
+  var $join = dartx.join;
+  var $round = dartx.round;
+  var $toString = dartx.toString;
+  var $padRight = dartx.padRight;
+  var $padLeft = dartx.padLeft;
+  var $forEach = dartx.forEach;
+  var $clear = dartx.clear;
+  var $times = dartx['*'];
   dart._checkModuleNullSafetyMode(true);
+  var T$ = {
+    VoidTobool: () => (T$.VoidTobool = dart.constFn(dart.fnType(core.bool, [])))(),
+    VoidToNull: () => (T$.VoidToNull = dart.constFn(dart.fnType(core.Null, [])))(),
+    JSArrayOfDiagnosticsNode: () => (T$.JSArrayOfDiagnosticsNode = dart.constFn(_interceptors.JSArray$(diagnostics.DiagnosticsNode)))(),
+    ListOfFrameTiming: () => (T$.ListOfFrameTiming = dart.constFn(core.List$(ui.FrameTiming)))(),
+    ListOfFrameTimingTovoid: () => (T$.ListOfFrameTimingTovoid = dart.constFn(dart.fnType(dart.void, [T$.ListOfFrameTiming()])))(),
+    JSArrayOfListOfFrameTimingTovoid: () => (T$.JSArrayOfListOfFrameTimingTovoid = dart.constFn(_interceptors.JSArray$(T$.ListOfFrameTimingTovoid())))(),
+    __Tobool: () => (T$.__Tobool = dart.constFn(dart.fnType(core.bool, [], {}, {priority: core.int, scheduler: binding$.SchedulerBinding})))(),
+    HeapPriorityQueueOf_TaskEntry: () => (T$.HeapPriorityQueueOf_TaskEntry = dart.constFn(priority_queue.HeapPriorityQueue$(binding$._TaskEntry)))(),
+    _TaskEntryAnd_TaskEntryToint: () => (T$._TaskEntryAnd_TaskEntryToint = dart.constFn(dart.fnType(core.int, [binding$._TaskEntry, binding$._TaskEntry])))(),
+    IdentityMapOfint$_FrameCallbackEntry: () => (T$.IdentityMapOfint$_FrameCallbackEntry = dart.constFn(_js_helper.IdentityMap$(core.int, binding$._FrameCallbackEntry)))(),
+    _IdentityHashSetOfint: () => (T$._IdentityHashSetOfint = dart.constFn(collection._IdentityHashSet$(core.int)))(),
+    DurationTovoid: () => (T$.DurationTovoid = dart.constFn(dart.fnType(dart.void, [core.Duration])))(),
+    JSArrayOfDurationTovoid: () => (T$.JSArrayOfDurationTovoid = dart.constFn(_interceptors.JSArray$(T$.DurationTovoid())))(),
+    ListOfListOfFrameTimingTovoid: () => (T$.ListOfListOfFrameTimingTovoid = dart.constFn(core.List$(T$.ListOfFrameTimingTovoid())))(),
+    DiagnosticsPropertyOfListOfFrameTimingTovoid: () => (T$.DiagnosticsPropertyOfListOfFrameTimingTovoid = dart.constFn(diagnostics.DiagnosticsProperty$(T$.ListOfFrameTimingTovoid())))(),
+    SyncIterableOfDiagnosticsNode: () => (T$.SyncIterableOfDiagnosticsNode = dart.constFn(_js_helper.SyncIterable$(diagnostics.DiagnosticsNode)))(),
+    IterableOfDiagnosticsNode: () => (T$.IterableOfDiagnosticsNode = dart.constFn(core.Iterable$(diagnostics.DiagnosticsNode)))(),
+    VoidToIterableOfDiagnosticsNode: () => (T$.VoidToIterableOfDiagnosticsNode = dart.constFn(dart.fnType(T$.IterableOfDiagnosticsNode(), [])))(),
+    FutureOfdouble: () => (T$.FutureOfdouble = dart.constFn(async.Future$(core.double)))(),
+    VoidToFutureOfdouble: () => (T$.VoidToFutureOfdouble = dart.constFn(dart.fnType(T$.FutureOfdouble(), [])))(),
+    FutureOfvoid: () => (T$.FutureOfvoid = dart.constFn(async.Future$(dart.void)))(),
+    doubleToFutureOfvoid: () => (T$.doubleToFutureOfvoid = dart.constFn(dart.fnType(T$.FutureOfvoid(), [core.double])))(),
+    LinkedHashMapOfint$_FrameCallbackEntry: () => (T$.LinkedHashMapOfint$_FrameCallbackEntry = dart.constFn(collection.LinkedHashMap$(core.int, binding$._FrameCallbackEntry)))(),
+    CompleterOfvoid: () => (T$.CompleterOfvoid = dart.constFn(async.Completer$(dart.void)))(),
+    VoidTovoid: () => (T$.VoidTovoid = dart.constFn(dart.fnType(dart.void, [])))(),
+    VoidToFutureOfvoid: () => (T$.VoidToFutureOfvoid = dart.constFn(dart.fnType(T$.FutureOfvoid(), [])))(),
+    intAnd_FrameCallbackEntryTovoid: () => (T$.intAnd_FrameCallbackEntryTovoid = dart.constFn(dart.fnType(dart.void, [core.int, binding$._FrameCallbackEntry])))(),
+    ListOfDurationTovoid: () => (T$.ListOfDurationTovoid = dart.constFn(core.List$(T$.DurationTovoid())))(),
+    IdentityMapOfString$dynamic: () => (T$.IdentityMapOfString$dynamic = dart.constFn(_js_helper.IdentityMap$(core.String, dart.dynamic)))()
+  };
   const CT = Object.create({
     _: () => (C, CT)
   });
   dart.defineLazy(CT, {
     get C0() {
       return C[0] = dart.const({
-        __proto__: core.FormatException.prototype,
-        [FormatException_offset]: null,
-        [FormatException_source]: null,
-        [FormatException_message]: "Too many percent/permill"
+        __proto__: binding$.SchedulerPhase.prototype,
+        [_name$]: "SchedulerPhase.idle",
+        index: 0
+      });
+    },
+    get C1() {
+      return C[1] = dart.const({
+        __proto__: binding$.SchedulerPhase.prototype,
+        [_name$]: "SchedulerPhase.transientCallbacks",
+        index: 1
+      });
+    },
+    get C2() {
+      return C[2] = dart.const({
+        __proto__: binding$.SchedulerPhase.prototype,
+        [_name$]: "SchedulerPhase.midFrameMicrotasks",
+        index: 2
+      });
+    },
+    get C3() {
+      return C[3] = dart.const({
+        __proto__: binding$.SchedulerPhase.prototype,
+        [_name$]: "SchedulerPhase.persistentCallbacks",
+        index: 3
+      });
+    },
+    get C4() {
+      return C[4] = dart.const({
+        __proto__: binding$.SchedulerPhase.prototype,
+        [_name$]: "SchedulerPhase.postFrameCallbacks",
+        index: 4
+      });
+    },
+    get C5() {
+      return C[5] = dart.constList([C[0] || CT.C0, C[1] || CT.C1, C[2] || CT.C2, C[3] || CT.C3, C[4] || CT.C4], binding$.SchedulerPhase);
+    },
+    get C6() {
+      return C[6] = dart.fn(binding$.defaultSchedulingStrategy, T$.__Tobool());
+    },
+    get C7() {
+      return C[7] = dart.fn(binding$.SchedulerBinding._taskSorter, T$._TaskEntryAnd_TaskEntryToint());
+    },
+    get C8() {
+      return C[8] = dart.const({
+        __proto__: ui.AppLifecycleState.prototype,
+        [_name]: "AppLifecycleState.resumed",
+        index: 0
+      });
+    },
+    get C9() {
+      return C[9] = dart.const({
+        __proto__: ui.AppLifecycleState.prototype,
+        [_name]: "AppLifecycleState.inactive",
+        index: 1
+      });
+    },
+    get C10() {
+      return C[10] = dart.const({
+        __proto__: ui.AppLifecycleState.prototype,
+        [_name]: "AppLifecycleState.paused",
+        index: 2
+      });
+    },
+    get C11() {
+      return C[11] = dart.const({
+        __proto__: ui.AppLifecycleState.prototype,
+        [_name]: "AppLifecycleState.detached",
+        index: 3
       });
     }
   }, false);
-  var C = [void 0];
-  var I = ["package:intl/src/intl/number_format_parser.dart"];
-  var negativePrefix = dart.privateName(number_format_parser, "NumberFormatParseResult.negativePrefix");
-  var positivePrefix = dart.privateName(number_format_parser, "NumberFormatParseResult.positivePrefix");
-  var negativeSuffix = dart.privateName(number_format_parser, "NumberFormatParseResult.negativeSuffix");
-  var positiveSuffix = dart.privateName(number_format_parser, "NumberFormatParseResult.positiveSuffix");
-  var multiplier = dart.privateName(number_format_parser, "NumberFormatParseResult.multiplier");
-  var minimumExponentDigits = dart.privateName(number_format_parser, "NumberFormatParseResult.minimumExponentDigits");
-  var maximumIntegerDigits = dart.privateName(number_format_parser, "NumberFormatParseResult.maximumIntegerDigits");
-  var minimumIntegerDigits = dart.privateName(number_format_parser, "NumberFormatParseResult.minimumIntegerDigits");
-  var maximumFractionDigits = dart.privateName(number_format_parser, "NumberFormatParseResult.maximumFractionDigits");
-  var minimumFractionDigits = dart.privateName(number_format_parser, "NumberFormatParseResult.minimumFractionDigits");
-  var groupingSize = dart.privateName(number_format_parser, "NumberFormatParseResult.groupingSize");
-  var finalGroupingSize = dart.privateName(number_format_parser, "NumberFormatParseResult.finalGroupingSize");
-  var decimalSeparatorAlwaysShown = dart.privateName(number_format_parser, "NumberFormatParseResult.decimalSeparatorAlwaysShown");
-  var useSignForPositiveExponent = dart.privateName(number_format_parser, "NumberFormatParseResult.useSignForPositiveExponent");
-  var useExponentialNotation = dart.privateName(number_format_parser, "NumberFormatParseResult.useExponentialNotation");
-  var decimalDigits$ = dart.privateName(number_format_parser, "NumberFormatParseResult.decimalDigits");
-  number_format_parser.NumberFormatParseResult = class NumberFormatParseResult extends core.Object {
-    get negativePrefix() {
-      return this[negativePrefix];
+  var C = Array(12).fill(void 0);
+  var I = [
+    "file:///G:/Nitoza/SDK/flutter/packages/flutter/lib/src/scheduler/binding.dart",
+    "package:flutter/src/scheduler/binding.dart"
+  ];
+  var ___TaskEntry_debugStack = dart.privateName(binding$, "_#_TaskEntry#debugStack");
+  const _is__TaskEntry_default = Symbol('_is__TaskEntry_default');
+  binding$._TaskEntry$ = dart.generic(T => {
+    var CompleterOfT = () => (CompleterOfT = dart.constFn(async.Completer$(T)))();
+    class _TaskEntry extends core.Object {
+      get debugStack() {
+        let t0;
+        t0 = this[___TaskEntry_debugStack];
+        return t0 == null ? dart.throw(new _internal.LateError.fieldNI("debugStack")) : t0;
+      }
+      set debugStack(t0) {
+        this[___TaskEntry_debugStack] = t0;
+      }
+      run() {
+        let t1;
+        if (!false) {
+          developer.Timeline.timeSync(core.Null, (t1 = this.debugLabel, t1 == null ? "Scheduled Task" : t1), dart.fn(() => {
+            this.completer.complete(this.task());
+          }, T$.VoidToNull()), {flow: this.flow != null ? developer.Flow.step(dart.nullCheck(this.flow).id) : null});
+        } else {
+          this.completer.complete(this.task());
+        }
+      }
     }
-    set negativePrefix(value) {
-      this[negativePrefix] = value;
-    }
-    get positivePrefix() {
-      return this[positivePrefix];
-    }
-    set positivePrefix(value) {
-      this[positivePrefix] = value;
-    }
-    get negativeSuffix() {
-      return this[negativeSuffix];
-    }
-    set negativeSuffix(value) {
-      this[negativeSuffix] = value;
-    }
-    get positiveSuffix() {
-      return this[positiveSuffix];
-    }
-    set positiveSuffix(value) {
-      this[positiveSuffix] = value;
-    }
-    get multiplier() {
-      return this[multiplier];
-    }
-    set multiplier(value) {
-      this[multiplier] = value;
-    }
-    get minimumExponentDigits() {
-      return this[minimumExponentDigits];
-    }
-    set minimumExponentDigits(value) {
-      this[minimumExponentDigits] = value;
-    }
-    get maximumIntegerDigits() {
-      return this[maximumIntegerDigits];
-    }
-    set maximumIntegerDigits(value) {
-      this[maximumIntegerDigits] = value;
-    }
-    get minimumIntegerDigits() {
-      return this[minimumIntegerDigits];
-    }
-    set minimumIntegerDigits(value) {
-      this[minimumIntegerDigits] = value;
-    }
-    get maximumFractionDigits() {
-      return this[maximumFractionDigits];
-    }
-    set maximumFractionDigits(value) {
-      this[maximumFractionDigits] = value;
-    }
-    get minimumFractionDigits() {
-      return this[minimumFractionDigits];
-    }
-    set minimumFractionDigits(value) {
-      this[minimumFractionDigits] = value;
-    }
-    get groupingSize() {
-      return this[groupingSize];
-    }
-    set groupingSize(value) {
-      this[groupingSize] = value;
-    }
-    get finalGroupingSize() {
-      return this[finalGroupingSize];
-    }
-    set finalGroupingSize(value) {
-      this[finalGroupingSize] = value;
-    }
-    get decimalSeparatorAlwaysShown() {
-      return this[decimalSeparatorAlwaysShown];
-    }
-    set decimalSeparatorAlwaysShown(value) {
-      this[decimalSeparatorAlwaysShown] = value;
-    }
-    get useSignForPositiveExponent() {
-      return this[useSignForPositiveExponent];
-    }
-    set useSignForPositiveExponent(value) {
-      this[useSignForPositiveExponent] = value;
-    }
-    get useExponentialNotation() {
-      return this[useExponentialNotation];
-    }
-    set useExponentialNotation(value) {
-      this[useExponentialNotation] = value;
-    }
-    get decimalDigits() {
-      return this[decimalDigits$];
-    }
-    set decimalDigits(value) {
-      this[decimalDigits$] = value;
-    }
-    get multiplierDigits() {
-      return (math.log(this.multiplier) / number_format_parser._ln10)[$round]();
+    (_TaskEntry.new = function(task, priority, debugLabel, flow) {
+      this[___TaskEntry_debugStack] = null;
+      this.completer = CompleterOfT().new();
+      this.task = task;
+      this.priority = priority;
+      this.debugLabel = debugLabel;
+      this.flow = flow;
+      if (!dart.fn(() => {
+        this.debugStack = core.StackTrace.current;
+        return true;
+      }, T$.VoidTobool())()) dart.assertFailed(null, I[0], 62, 12, "() {\r\n      debugStack = StackTrace.current;\r\n      return true;\r\n    }()");
+    }).prototype = _TaskEntry.prototype;
+    dart.addTypeTests(_TaskEntry);
+    _TaskEntry.prototype[_is__TaskEntry_default] = true;
+    dart.addTypeCaches(_TaskEntry);
+    dart.setMethodSignature(_TaskEntry, () => ({
+      __proto__: dart.getMethods(_TaskEntry.__proto__),
+      run: dart.fnType(dart.void, [])
+    }));
+    dart.setGetterSignature(_TaskEntry, () => ({
+      __proto__: dart.getGetters(_TaskEntry.__proto__),
+      debugStack: core.StackTrace
+    }));
+    dart.setSetterSignature(_TaskEntry, () => ({
+      __proto__: dart.getSetters(_TaskEntry.__proto__),
+      debugStack: core.StackTrace
+    }));
+    dart.setLibraryUri(_TaskEntry, I[1]);
+    dart.setFieldSignature(_TaskEntry, () => ({
+      __proto__: dart.getFields(_TaskEntry.__proto__),
+      task: dart.finalFieldType(dart.fnType(T, [])),
+      priority: dart.finalFieldType(core.int),
+      debugLabel: dart.finalFieldType(dart.nullable(core.String)),
+      flow: dart.finalFieldType(dart.nullable(developer.Flow)),
+      [___TaskEntry_debugStack]: dart.fieldType(dart.nullable(core.StackTrace)),
+      completer: dart.finalFieldType(async.Completer$(T))
+    }));
+    return _TaskEntry;
+  });
+  binding$._TaskEntry = binding$._TaskEntry$();
+  dart.addTypeTests(binding$._TaskEntry, _is__TaskEntry_default);
+  binding$._FrameCallbackEntry = class _FrameCallbackEntry extends core.Object {};
+  (binding$._FrameCallbackEntry.new = function(callback, opts) {
+    let rescheduling = opts && 'rescheduling' in opts ? opts.rescheduling : false;
+    this.debugStack = null;
+    this.callback = callback;
+    if (!dart.fn(() => {
+      if (rescheduling) {
+        if (!dart.fn(() => {
+          if (binding$._FrameCallbackEntry.debugCurrentCallbackStack == null) {
+            dart.throw(new assertions.FlutterError.fromParts(T$.JSArrayOfDiagnosticsNode().of([new assertions.ErrorSummary.new("scheduleFrameCallback called with rescheduling true, but no callback is in scope."), new assertions.ErrorDescription.new("The \"rescheduling\" argument should only be set to true if the " + "callback is being reregistered from within the callback itself, " + "and only then if the callback itself is entirely synchronous."), new assertions.ErrorHint.new("If this is the initial registration of the callback, or if the " + "callback is asynchronous, then do not use the \"rescheduling\" " + "argument.")])));
+          }
+          return true;
+        }, T$.VoidTobool())()) dart.assertFailed(null, I[0], 94, 16, "() {\r\n          if (debugCurrentCallbackStack == null) {\r\n            throw FlutterError.fromParts(<DiagnosticsNode>[\r\n              ErrorSummary('scheduleFrameCallback called with rescheduling true, but no callback is in scope.'),\r\n              ErrorDescription(\r\n                'The \"rescheduling\" argument should only be set to true if the '\r\n                'callback is being reregistered from within the callback itself, '\r\n                'and only then if the callback itself is entirely synchronous.',\r\n              ),\r\n              ErrorHint(\r\n                'If this is the initial registration of the callback, or if the '\r\n                'callback is asynchronous, then do not use the \"rescheduling\" '\r\n                'argument.',\r\n              ),\r\n            ]);\r\n          }\r\n          return true;\r\n        }()");
+        this.debugStack = binding$._FrameCallbackEntry.debugCurrentCallbackStack;
+      } else {
+        this.debugStack = core.StackTrace.current;
+      }
+      return true;
+    }, T$.VoidTobool())()) dart.assertFailed(null, I[0], 92, 12, "() {\r\n      if (rescheduling) {\r\n        assert(() {\r\n          if (debugCurrentCallbackStack == null) {\r\n            throw FlutterError.fromParts(<DiagnosticsNode>[\r\n              ErrorSummary('scheduleFrameCallback called with rescheduling true, but no callback is in scope.'),\r\n              ErrorDescription(\r\n                'The \"rescheduling\" argument should only be set to true if the '\r\n                'callback is being reregistered from within the callback itself, '\r\n                'and only then if the callback itself is entirely synchronous.',\r\n              ),\r\n              ErrorHint(\r\n                'If this is the initial registration of the callback, or if the '\r\n                'callback is asynchronous, then do not use the \"rescheduling\" '\r\n                'argument.',\r\n              ),\r\n            ]);\r\n          }\r\n          return true;\r\n        }());\r\n        debugStack = debugCurrentCallbackStack;\r\n      } else {\r\n        // TODO(ianh): trim the frames from this library, so that the call to scheduleFrameCallback is the top one\r\n        debugStack = StackTrace.current;\r\n      }\r\n      return true;\r\n    }()");
+  }).prototype = binding$._FrameCallbackEntry.prototype;
+  dart.addTypeTests(binding$._FrameCallbackEntry);
+  dart.addTypeCaches(binding$._FrameCallbackEntry);
+  dart.setLibraryUri(binding$._FrameCallbackEntry, I[1]);
+  dart.setFieldSignature(binding$._FrameCallbackEntry, () => ({
+    __proto__: dart.getFields(binding$._FrameCallbackEntry.__proto__),
+    callback: dart.finalFieldType(dart.fnType(dart.void, [core.Duration])),
+    debugStack: dart.fieldType(dart.nullable(core.StackTrace))
+  }));
+  dart.defineLazy(binding$._FrameCallbackEntry, {
+    /*binding$._FrameCallbackEntry.debugCurrentCallbackStack*/get debugCurrentCallbackStack() {
+      return null;
+    },
+    set debugCurrentCallbackStack(_) {}
+  }, false);
+  var _name$ = dart.privateName(binding$, "_name");
+  binding$.SchedulerPhase = class SchedulerPhase extends core.Object {
+    toString() {
+      return this[_name$];
     }
   };
-  (number_format_parser.NumberFormatParseResult.new = function(symbols, decimalDigits) {
-    this[positivePrefix] = "";
-    this[negativeSuffix] = "";
-    this[positiveSuffix] = "";
-    this[multiplier] = 1;
-    this[minimumExponentDigits] = 0;
-    this[maximumIntegerDigits] = 40;
-    this[minimumIntegerDigits] = 1;
-    this[maximumFractionDigits] = 3;
-    this[minimumFractionDigits] = 0;
-    this[groupingSize] = 3;
-    this[finalGroupingSize] = 3;
-    this[decimalSeparatorAlwaysShown] = false;
-    this[useSignForPositiveExponent] = false;
-    this[useExponentialNotation] = false;
-    this[decimalDigits$] = decimalDigits;
-    this[negativePrefix] = symbols.MINUS_SIGN;
+  (binding$.SchedulerPhase.new = function(index, _name) {
+    this.index = index;
+    this[_name$] = _name;
     ;
-  }).prototype = number_format_parser.NumberFormatParseResult.prototype;
-  dart.addTypeTests(number_format_parser.NumberFormatParseResult);
-  dart.addTypeCaches(number_format_parser.NumberFormatParseResult);
-  dart.setGetterSignature(number_format_parser.NumberFormatParseResult, () => ({
-    __proto__: dart.getGetters(number_format_parser.NumberFormatParseResult.__proto__),
-    multiplierDigits: core.int
+  }).prototype = binding$.SchedulerPhase.prototype;
+  dart.addTypeTests(binding$.SchedulerPhase);
+  dart.addTypeCaches(binding$.SchedulerPhase);
+  dart.setLibraryUri(binding$.SchedulerPhase, I[1]);
+  dart.setFieldSignature(binding$.SchedulerPhase, () => ({
+    __proto__: dart.getFields(binding$.SchedulerPhase.__proto__),
+    index: dart.finalFieldType(core.int),
+    [_name$]: dart.finalFieldType(core.String)
   }));
-  dart.setLibraryUri(number_format_parser.NumberFormatParseResult, I[0]);
-  dart.setFieldSignature(number_format_parser.NumberFormatParseResult, () => ({
-    __proto__: dart.getFields(number_format_parser.NumberFormatParseResult.__proto__),
-    negativePrefix: dart.fieldType(core.String),
-    positivePrefix: dart.fieldType(core.String),
-    negativeSuffix: dart.fieldType(core.String),
-    positiveSuffix: dart.fieldType(core.String),
-    multiplier: dart.fieldType(core.int),
-    minimumExponentDigits: dart.fieldType(core.int),
-    maximumIntegerDigits: dart.fieldType(core.int),
-    minimumIntegerDigits: dart.fieldType(core.int),
-    maximumFractionDigits: dart.fieldType(core.int),
-    minimumFractionDigits: dart.fieldType(core.int),
-    groupingSize: dart.fieldType(core.int),
-    finalGroupingSize: dart.fieldType(core.int),
-    decimalSeparatorAlwaysShown: dart.fieldType(core.bool),
-    useSignForPositiveExponent: dart.fieldType(core.bool),
-    useExponentialNotation: dart.fieldType(core.bool),
-    decimalDigits: dart.fieldType(dart.nullable(core.int))
-  }));
-  var symbols$ = dart.privateName(number_format_parser, "NumberFormatParser.symbols");
-  var pattern = dart.privateName(number_format_parser, "NumberFormatParser.pattern");
-  var isForCurrency$ = dart.privateName(number_format_parser, "NumberFormatParser.isForCurrency");
-  var currencySymbol$ = dart.privateName(number_format_parser, "NumberFormatParser.currencySymbol");
-  var currencyName$ = dart.privateName(number_format_parser, "NumberFormatParser.currencyName");
-  var result = dart.privateName(number_format_parser, "NumberFormatParser.result");
-  var groupingSizeSetExplicitly = dart.privateName(number_format_parser, "NumberFormatParser.groupingSizeSetExplicitly");
-  var inQuote = dart.privateName(number_format_parser, "NumberFormatParser.inQuote");
-  var decimalPos = dart.privateName(number_format_parser, "NumberFormatParser.decimalPos");
-  var digitLeftCount = dart.privateName(number_format_parser, "NumberFormatParser.digitLeftCount");
-  var zeroDigitCount = dart.privateName(number_format_parser, "NumberFormatParser.zeroDigitCount");
-  var digitRightCount = dart.privateName(number_format_parser, "NumberFormatParser.digitRightCount");
-  var groupingCount = dart.privateName(number_format_parser, "NumberFormatParser.groupingCount");
-  var _parse = dart.privateName(number_format_parser, "_parse");
-  var _defaultDecimalDigits = dart.privateName(number_format_parser, "_defaultDecimalDigits");
-  var _parseAffix = dart.privateName(number_format_parser, "_parseAffix");
-  var _parseTrunk = dart.privateName(number_format_parser, "_parseTrunk");
-  var FormatException_offset = dart.privateName(core, "FormatException.offset");
-  var FormatException_source = dart.privateName(core, "FormatException.source");
-  var FormatException_message = dart.privateName(core, "FormatException.message");
-  number_format_parser.NumberFormatParser = class NumberFormatParser extends core.Object {
-    get symbols() {
-      return this[symbols$];
+  dart.defineExtensionMethods(binding$.SchedulerPhase, ['toString']);
+  binding$.SchedulerPhase.idle = C[0] || CT.C0;
+  binding$.SchedulerPhase.transientCallbacks = C[1] || CT.C1;
+  binding$.SchedulerPhase.midFrameMicrotasks = C[2] || CT.C2;
+  binding$.SchedulerPhase.persistentCallbacks = C[3] || CT.C3;
+  binding$.SchedulerPhase.postFrameCallbacks = C[4] || CT.C4;
+  binding$.SchedulerPhase.values = C[5] || CT.C5;
+  var schedulingStrategy = dart.privateName(binding$, "SchedulerBinding.schedulingStrategy");
+  var _timingsCallbacks = dart.privateName(binding$, "_timingsCallbacks");
+  var _lifecycleState = dart.privateName(binding$, "_lifecycleState");
+  var _taskQueue = dart.privateName(binding$, "_taskQueue");
+  var _hasRequestedAnEventLoopCallback = dart.privateName(binding$, "_hasRequestedAnEventLoopCallback");
+  var _nextFrameCallbackId = dart.privateName(binding$, "_nextFrameCallbackId");
+  var _transientCallbacks = dart.privateName(binding$, "_transientCallbacks");
+  var _removedIds = dart.privateName(binding$, "_removedIds");
+  var _persistentCallbacks = dart.privateName(binding$, "_persistentCallbacks");
+  var _postFrameCallbacks = dart.privateName(binding$, "_postFrameCallbacks");
+  var _nextFrameCompleter = dart.privateName(binding$, "_nextFrameCompleter");
+  var _hasScheduledFrame = dart.privateName(binding$, "_hasScheduledFrame");
+  var _schedulerPhase = dart.privateName(binding$, "_schedulerPhase");
+  var _framesEnabled = dart.privateName(binding$, "_framesEnabled");
+  var _warmUpFrame = dart.privateName(binding$, "_warmUpFrame");
+  var _firstRawTimeStampInEpoch = dart.privateName(binding$, "_firstRawTimeStampInEpoch");
+  var _epochStart = dart.privateName(binding$, "_epochStart");
+  var _lastRawTimeStamp = dart.privateName(binding$, "_lastRawTimeStamp");
+  var _currentFrameTimeStamp = dart.privateName(binding$, "_currentFrameTimeStamp");
+  var _debugFrameNumber = dart.privateName(binding$, "_debugFrameNumber");
+  var _debugBanner = dart.privateName(binding$, "_debugBanner");
+  var _rescheduleAfterWarmUpFrame = dart.privateName(binding$, "_rescheduleAfterWarmUpFrame");
+  var _profileFramePostEvent = dart.privateName(binding$, "_profileFramePostEvent");
+  var _executeTimingsCallbacks = dart.privateName(binding$, "_executeTimingsCallbacks");
+  var _setFramesEnabledState = dart.privateName(binding$, "_setFramesEnabledState");
+  var _name = dart.privateName(ui, "_name");
+  var _ensureEventLoopCallback = dart.privateName(binding$, "_ensureEventLoopCallback");
+  var _runTasks = dart.privateName(binding$, "_runTasks");
+  var _handleBeginFrame = dart.privateName(binding$, "_handleBeginFrame");
+  var _handleDrawFrame = dart.privateName(binding$, "_handleDrawFrame");
+  var _adjustForEpoch = dart.privateName(binding$, "_adjustForEpoch");
+  var _invokeFrameCallback = dart.privateName(binding$, "_invokeFrameCallback");
+  binding$.SchedulerBinding = class SchedulerBinding extends binding.BindingBase {
+    static get instance() {
+      return binding$.SchedulerBinding._instance;
     }
-    set symbols(value) {
-      super.symbols = value;
+    static _taskSorter(e1, e2) {
+      return -e1.priority[$compareTo](e2.priority);
     }
-    get pattern() {
-      return this[pattern];
-    }
-    set pattern(value) {
-      super.pattern = value;
-    }
-    get isForCurrency() {
-      return this[isForCurrency$];
-    }
-    set isForCurrency(value) {
-      super.isForCurrency = value;
-    }
-    get currencySymbol() {
-      return this[currencySymbol$];
-    }
-    set currencySymbol(value) {
-      super.currencySymbol = value;
-    }
-    get currencyName() {
-      return this[currencyName$];
-    }
-    set currencyName(value) {
-      super.currencyName = value;
-    }
-    get result() {
-      return this[result];
-    }
-    set result(value) {
-      super.result = value;
-    }
-    get groupingSizeSetExplicitly() {
-      return this[groupingSizeSetExplicitly];
-    }
-    set groupingSizeSetExplicitly(value) {
-      this[groupingSizeSetExplicitly] = value;
-    }
-    get inQuote() {
-      return this[inQuote];
-    }
-    set inQuote(value) {
-      this[inQuote] = value;
-    }
-    get decimalPos() {
-      return this[decimalPos];
-    }
-    set decimalPos(value) {
-      this[decimalPos] = value;
-    }
-    get digitLeftCount() {
-      return this[digitLeftCount];
-    }
-    set digitLeftCount(value) {
-      this[digitLeftCount] = value;
-    }
-    get zeroDigitCount() {
-      return this[zeroDigitCount];
-    }
-    set zeroDigitCount(value) {
-      this[zeroDigitCount] = value;
-    }
-    get digitRightCount() {
-      return this[digitRightCount];
-    }
-    set digitRightCount(value) {
-      this[digitRightCount] = value;
-    }
-    get groupingCount() {
-      return this[groupingCount];
-    }
-    set groupingCount(value) {
-      this[groupingCount] = value;
-    }
-    static parse(symbols, input, isForCurrency, currencySymbol, currencyName, decimalDigits) {
-      let t0;
-      return input == null ? new number_format_parser.NumberFormatParseResult.new(symbols, decimalDigits) : (t0 = new number_format_parser.NumberFormatParser.new(symbols, input, isForCurrency, currencySymbol, currencyName, decimalDigits), (() => {
-        t0[_parse]();
-        return t0;
-      })()).result;
-    }
-    get [_defaultDecimalDigits]() {
-      let t0;
-      t0 = number_symbols_data.currencyFractionDigits[$_get](this.currencyName[$toUpperCase]());
-      return t0 == null ? dart.nullCheck(number_symbols_data.currencyFractionDigits[$_get]("DEFAULT")) : t0;
-    }
-    [_parse]() {
-      let t0;
-      this.result.positivePrefix = this[_parseAffix]();
-      let trunk = this[_parseTrunk]();
-      this.result.positiveSuffix = this[_parseAffix]();
-      if (this.pattern.current === ";") {
-        this.pattern.moveNext();
-        this.result.negativePrefix = this[_parseAffix]();
-        let trunkIterator = new string_iterator.StringIterator.new(trunk);
-        while (trunkIterator.moveNext()) {
-          let each = trunkIterator.current;
-          if (this.pattern.current != each && this.pattern.current != null) {
-            dart.throw(new core.FormatException.new("Positive and negative trunks must be the same", trunk));
-          }
-          this.pattern.moveNext();
-        }
-        this.result.negativeSuffix = this[_parseAffix]();
-      } else {
-        this.result.negativePrefix = this.result.negativePrefix + this.result.positivePrefix;
-        this.result.negativeSuffix = this.result.positiveSuffix + this.result.negativeSuffix;
-      }
-      if (this.isForCurrency) {
-        t0 = this.result;
-        t0.decimalDigits == null ? t0.decimalDigits = this[_defaultDecimalDigits] : null;
-      }
-      if (this.result.decimalDigits != null) {
-        this.result.minimumFractionDigits = dart.nullCheck(this.result.decimalDigits);
-        this.result.maximumFractionDigits = dart.nullCheck(this.result.decimalDigits);
-      }
-    }
-    [_parseAffix]() {
-      let affix = new core.StringBuffer.new();
-      this.inQuote = false;
-      while (this.parseCharacterAffix(affix) && this.pattern.moveNext()) {
-      }
-      return affix.toString();
-    }
-    parseCharacterAffix(affix) {
-      let ch = this.pattern.current;
-      if (ch == null) return false;
-      if (ch === "'") {
-        if (this.pattern.peek === "'") {
-          this.pattern.moveNext();
-          affix.write("'");
+    static debugPrintTransientCallbackRegistrationStack() {
+      if (!dart.fn(() => {
+        if (binding$._FrameCallbackEntry.debugCurrentCallbackStack != null) {
+          print.debugPrint("When the current transient callback was registered, this was the stack:");
+          print.debugPrint(assertions.FlutterError.defaultStackFilter(assertions.FlutterError.demangleStackTrace(dart.nullCheck(binding$._FrameCallbackEntry.debugCurrentCallbackStack)).toString()[$trimRight]()[$split]("\n"))[$join]("\n"));
         } else {
-          this.inQuote = !this.inQuote;
+          print.debugPrint("No transient callback is currently executing.");
         }
         return true;
-      }
-      if (this.inQuote) {
-        affix.write(ch);
-      } else {
-        switch (ch) {
-          case "#":
-          case "0":
-          case ",":
-          case ".":
-          case ";":
-          {
-            return false;
-          }
-          case "¤":
-          {
-            affix.write(this.currencySymbol);
-            break;
-          }
-          case "%":
-          {
-            if (this.result.multiplier !== 1 && this.result.multiplier !== 100) {
-              dart.throw(C[0] || CT.C0);
-            }
-            this.result.multiplier = 100;
-            affix.write(this.symbols.PERCENT);
-            break;
-          }
-          case "‰":
-          {
-            if (this.result.multiplier !== 1 && this.result.multiplier !== 1000) {
-              dart.throw(C[0] || CT.C0);
-            }
-            this.result.multiplier = 1000;
-            affix.write(this.symbols.PERMILL);
-            break;
-          }
-          default:
-          {
-            affix.write(ch);
-          }
-        }
-      }
-      return true;
+      }, T$.VoidTobool())()) dart.assertFailed(null, I[0], 616, 12, "() {\r\n      if (_FrameCallbackEntry.debugCurrentCallbackStack != null) {\r\n        debugPrint('When the current transient callback was registered, this was the stack:');\r\n        debugPrint(\r\n          FlutterError.defaultStackFilter(\r\n            FlutterError.demangleStackTrace(\r\n              _FrameCallbackEntry.debugCurrentCallbackStack!,\r\n            ).toString().trimRight().split('\\n'),\r\n          ).join('\\n'),\r\n        );\r\n      } else {\r\n        debugPrint('No transient callback is currently executing.');\r\n      }\r\n      return true;\r\n    }()");
     }
-    [_parseTrunk]() {
-      let loop = true;
-      let trunk = new core.StringBuffer.new();
-      while (this.pattern.current != null && loop) {
-        loop = this.parseTrunkCharacter(trunk);
-      }
-      if (this.zeroDigitCount === 0 && this.digitLeftCount > 0 && this.decimalPos >= 0) {
-        let n = this.decimalPos === 0 ? 1 : this.decimalPos;
-        this.digitRightCount = this.digitLeftCount - n;
-        this.digitLeftCount = n - 1;
-        this.zeroDigitCount = 1;
-      }
-      if (this.decimalPos < 0 && this.digitRightCount > 0 || this.decimalPos >= 0 && (this.decimalPos < this.digitLeftCount || this.decimalPos > this.digitLeftCount + this.zeroDigitCount) || this.groupingCount === 0) {
-        dart.throw(new core.FormatException.new("Malformed pattern \"" + this.pattern.input + "\""));
-      }
-      let totalDigits = this.digitLeftCount + this.zeroDigitCount + this.digitRightCount;
-      this.result.maximumFractionDigits = this.decimalPos >= 0 ? totalDigits - this.decimalPos : 0;
-      if (this.decimalPos >= 0) {
-        this.result.minimumFractionDigits = this.digitLeftCount + this.zeroDigitCount - this.decimalPos;
-        if (this.result.minimumFractionDigits < 0) {
-          this.result.minimumFractionDigits = 0;
-        }
-      }
-      let effectiveDecimalPos = this.decimalPos >= 0 ? this.decimalPos : totalDigits;
-      this.result.minimumIntegerDigits = effectiveDecimalPos - this.digitLeftCount;
-      if (this.result.useExponentialNotation) {
-        this.result.maximumIntegerDigits = this.digitLeftCount + this.result.minimumIntegerDigits;
-        if (this.result.maximumFractionDigits === 0 && this.result.minimumIntegerDigits === 0) {
-          this.result.minimumIntegerDigits = 1;
-        }
-      }
-      this.result.finalGroupingSize = math.max(core.int, 0, this.groupingCount);
-      if (!this.groupingSizeSetExplicitly) {
-        this.result.groupingSize = this.result.finalGroupingSize;
-      }
-      this.result.decimalSeparatorAlwaysShown = this.decimalPos === 0 || this.decimalPos === totalDigits;
-      return trunk.toString();
-    }
-    parseTrunkCharacter(trunk) {
-      let t0;
-      let ch = this.pattern.current;
-      switch (ch) {
-        case "#":
-        {
-          if (this.zeroDigitCount > 0) {
-            this.digitRightCount = this.digitRightCount + 1;
-          } else {
-            this.digitLeftCount = this.digitLeftCount + 1;
-          }
-          if (this.groupingCount >= 0 && this.decimalPos < 0) {
-            this.groupingCount = this.groupingCount + 1;
-          }
-          break;
-        }
-        case "0":
-        {
-          if (this.digitRightCount > 0) {
-            dart.throw(new core.FormatException.new("Unexpected \"0\" in pattern \"" + this.pattern.input));
-          }
-          this.zeroDigitCount = this.zeroDigitCount + 1;
-          if (this.groupingCount >= 0 && this.decimalPos < 0) {
-            this.groupingCount = this.groupingCount + 1;
-          }
-          break;
-        }
-        case ",":
-        {
-          if (this.groupingCount > 0) {
-            this.groupingSizeSetExplicitly = true;
-            this.result.groupingSize = this.groupingCount;
-          }
-          this.groupingCount = 0;
-          break;
-        }
-        case ".":
-        {
-          if (this.decimalPos >= 0) {
-            dart.throw(new core.FormatException.new("Multiple decimal separators in pattern \"" + dart.str(this.pattern) + "\""));
-          }
-          this.decimalPos = this.digitLeftCount + this.zeroDigitCount + this.digitRightCount;
-          break;
-        }
-        case "E":
-        {
-          dart.dsend(trunk, 'write', [ch]);
-          if (this.result.useExponentialNotation) {
-            dart.throw(new core.FormatException.new("Multiple exponential symbols in pattern \"" + dart.str(this.pattern) + "\""));
-          }
-          this.result.useExponentialNotation = true;
-          this.result.minimumExponentDigits = 0;
-          this.pattern.moveNext();
-          let nextChar = this.pattern.current;
-          if (nextChar === "+") {
-            dart.dsend(trunk, 'write', [this.pattern.current]);
-            this.pattern.moveNext();
-            this.result.useSignForPositiveExponent = true;
-          }
-          while (this.pattern.current === "0") {
-            dart.dsend(trunk, 'write', [this.pattern.current]);
-            this.pattern.moveNext();
-            t0 = this.result;
-            t0.minimumExponentDigits = t0.minimumExponentDigits + 1;
-          }
-          if (this.digitLeftCount + this.zeroDigitCount < 1 || this.result.minimumExponentDigits < 1) {
-            dart.throw(new core.FormatException.new("Malformed exponential pattern \"" + dart.str(this.pattern) + "\""));
-          }
-          return false;
-        }
-        default:
-        {
-          return false;
-        }
-      }
-      dart.dsend(trunk, 'write', [ch]);
-      this.pattern.moveNext();
-      return true;
+    static _debugDescribeTimeStamp(timeStamp, buffer) {
+      if (timeStamp.inDays > 0) buffer.write(dart.str(timeStamp.inDays) + "d ");
+      if (timeStamp.inHours > 0) buffer.write(dart.str(timeStamp.inHours - timeStamp.inDays * 24) + "h ");
+      if (timeStamp.inMinutes > 0) buffer.write(dart.str(timeStamp.inMinutes - timeStamp.inHours * 60) + "m ");
+      if (timeStamp.inSeconds > 0) buffer.write(dart.str(timeStamp.inSeconds - timeStamp.inMinutes * 60) + "s ");
+      buffer.write(dart.str(timeStamp.inMilliseconds - timeStamp.inSeconds * 1000));
+      let microseconds = timeStamp.inMicroseconds - timeStamp.inMilliseconds * 1000;
+      if (microseconds > 0) buffer.write("." + microseconds[$toString]()[$padLeft](3, "0"));
+      buffer.write("ms");
     }
   };
-  (number_format_parser.NumberFormatParser.new = function(symbols, input, isForCurrency, currencySymbol, currencyName, decimalDigits) {
-    this[groupingSizeSetExplicitly] = false;
-    this[inQuote] = false;
-    this[decimalPos] = -1;
-    this[digitLeftCount] = 0;
-    this[zeroDigitCount] = 0;
-    this[digitRightCount] = 0;
-    this[groupingCount] = -1;
-    this[symbols$] = symbols;
-    this[isForCurrency$] = isForCurrency;
-    this[currencySymbol$] = currencySymbol;
-    this[currencyName$] = currencyName;
-    this[result] = new number_format_parser.NumberFormatParseResult.new(symbols, decimalDigits);
-    this[pattern] = new string_iterator.StringIterator.new(input);
-    this.pattern.moveNext();
-  }).prototype = number_format_parser.NumberFormatParser.prototype;
-  dart.addTypeTests(number_format_parser.NumberFormatParser);
-  dart.addTypeCaches(number_format_parser.NumberFormatParser);
-  dart.setMethodSignature(number_format_parser.NumberFormatParser, () => ({
-    __proto__: dart.getMethods(number_format_parser.NumberFormatParser.__proto__),
-    [_parse]: dart.fnType(dart.void, []),
-    [_parseAffix]: dart.fnType(core.String, []),
-    parseCharacterAffix: dart.fnType(core.bool, [core.StringBuffer]),
-    [_parseTrunk]: dart.fnType(core.String, []),
-    parseTrunkCharacter: dart.fnType(core.bool, [dart.dynamic])
-  }));
-  dart.setGetterSignature(number_format_parser.NumberFormatParser, () => ({
-    __proto__: dart.getGetters(number_format_parser.NumberFormatParser.__proto__),
-    [_defaultDecimalDigits]: core.int
-  }));
-  dart.setLibraryUri(number_format_parser.NumberFormatParser, I[0]);
-  dart.setFieldSignature(number_format_parser.NumberFormatParser, () => ({
-    __proto__: dart.getFields(number_format_parser.NumberFormatParser.__proto__),
-    symbols: dart.finalFieldType(number_symbols.NumberSymbols),
-    pattern: dart.finalFieldType(string_iterator.StringIterator),
-    isForCurrency: dart.finalFieldType(core.bool),
-    currencySymbol: dart.finalFieldType(core.String),
-    currencyName: dart.finalFieldType(core.String),
-    result: dart.finalFieldType(number_format_parser.NumberFormatParseResult),
-    groupingSizeSetExplicitly: dart.fieldType(core.bool),
-    inQuote: dart.fieldType(core.bool),
-    decimalPos: dart.fieldType(core.int),
-    digitLeftCount: dart.fieldType(core.int),
-    zeroDigitCount: dart.fieldType(core.int),
-    digitRightCount: dart.fieldType(core.int),
-    groupingCount: dart.fieldType(core.int)
-  }));
-  dart.defineLazy(number_format_parser.NumberFormatParser, {
-    /*number_format_parser.NumberFormatParser.PATTERN_SEPARATOR*/get PATTERN_SEPARATOR() {
-      return ";";
-    },
-    /*number_format_parser.NumberFormatParser.QUOTE*/get QUOTE() {
-      return "'";
-    },
-    /*number_format_parser.NumberFormatParser.PATTERN_DIGIT*/get PATTERN_DIGIT() {
-      return "#";
-    },
-    /*number_format_parser.NumberFormatParser.PATTERN_ZERO_DIGIT*/get PATTERN_ZERO_DIGIT() {
-      return "0";
-    },
-    /*number_format_parser.NumberFormatParser.PATTERN_GROUPING_SEPARATOR*/get PATTERN_GROUPING_SEPARATOR() {
-      return ",";
-    },
-    /*number_format_parser.NumberFormatParser.PATTERN_DECIMAL_SEPARATOR*/get PATTERN_DECIMAL_SEPARATOR() {
-      return ".";
-    },
-    /*number_format_parser.NumberFormatParser.PATTERN_CURRENCY_SIGN*/get PATTERN_CURRENCY_SIGN() {
-      return "¤";
-    },
-    /*number_format_parser.NumberFormatParser.PATTERN_PER_MILLE*/get PATTERN_PER_MILLE() {
-      return "‰";
-    },
-    /*number_format_parser.NumberFormatParser.PER_MILLE_SCALE*/get PER_MILLE_SCALE() {
-      return 1000;
-    },
-    /*number_format_parser.NumberFormatParser.PATTERN_PERCENT*/get PATTERN_PERCENT() {
-      return "%";
-    },
-    /*number_format_parser.NumberFormatParser.PERCENT_SCALE*/get PERCENT_SCALE() {
-      return 100;
-    },
-    /*number_format_parser.NumberFormatParser.PATTERN_EXPONENT*/get PATTERN_EXPONENT() {
-      return "E";
-    },
-    /*number_format_parser.NumberFormatParser.PATTERN_PLUS*/get PATTERN_PLUS() {
-      return "+";
+  binding$.SchedulerBinding[dart.mixinOn] = BindingBase => class SchedulerBinding extends BindingBase {
+    get schedulingStrategy() {
+      return this[schedulingStrategy];
     }
-  }, false);
-  dart.defineLazy(number_format_parser, {
-    /*number_format_parser._ln10*/get _ln10() {
-      return math.log(10);
+    set schedulingStrategy(value) {
+      this[schedulingStrategy] = value;
     }
+    initInstances() {
+      super.initInstances();
+      binding$.SchedulerBinding._instance = this;
+      if (!false) {
+        let frameNumber = 0;
+        this.addTimingsCallback(dart.fn(timings => {
+          for (let frameTiming of timings) {
+            frameNumber = frameNumber + 1;
+            this[_profileFramePostEvent](frameNumber, frameTiming);
+          }
+        }, T$.ListOfFrameTimingTovoid()));
+      }
+    }
+    addTimingsCallback(callback) {
+      this[_timingsCallbacks][$add](callback);
+      if (this[_timingsCallbacks][$length] === 1) {
+        if (!(this.window.onReportTimings == null)) dart.assertFailed(null, I[0], 268, 14, "window.onReportTimings == null");
+        this.window.onReportTimings = dart.bind(this, _executeTimingsCallbacks);
+      }
+      if (!dart.equals(this.window.onReportTimings, dart.bind(this, _executeTimingsCallbacks))) dart.assertFailed(null, I[0], 271, 12, "window.onReportTimings == _executeTimingsCallbacks");
+    }
+    removeTimingsCallback(callback) {
+      if (!this[_timingsCallbacks][$contains](callback)) dart.assertFailed(null, I[0], 276, 12, "_timingsCallbacks.contains(callback)");
+      this[_timingsCallbacks][$remove](callback);
+      if (this[_timingsCallbacks][$isEmpty]) {
+        this.window.onReportTimings = null;
+      }
+    }
+    [_executeTimingsCallbacks](timings) {
+      let clonedCallbacks = T$.ListOfListOfFrameTimingTovoid().from(this[_timingsCallbacks]);
+      for (let callback of clonedCallbacks) {
+        try {
+          if (this[_timingsCallbacks][$contains](callback)) {
+            callback(timings);
+          }
+        } catch (e) {
+          let exception = dart.getThrown(e);
+          let stack = dart.stackTrace(e);
+          if (core.Object.is(exception)) {
+            let collector = null;
+            if (!dart.fn(() => {
+              collector = dart.fn(() => new (T$.SyncIterableOfDiagnosticsNode()).new(function*() {
+                yield new (T$.DiagnosticsPropertyOfListOfFrameTimingTovoid()).new("The TimingsCallback that gets executed was", callback, {style: diagnostics.DiagnosticsTreeStyle.errorProperty});
+              }), T$.VoidToIterableOfDiagnosticsNode());
+              return true;
+            }, T$.VoidTobool())()) dart.assertFailed(null, I[0], 293, 16, "() {\r\n          collector = () sync* {\r\n            yield DiagnosticsProperty<TimingsCallback>(\r\n              'The TimingsCallback that gets executed was',\r\n              callback,\r\n              style: DiagnosticsTreeStyle.errorProperty,\r\n            );\r\n          };\r\n          return true;\r\n        }()");
+            assertions.FlutterError.reportError(new assertions.FlutterErrorDetails.new({exception: exception, stack: stack, context: new assertions.ErrorDescription.new("while executing callbacks for FrameTiming"), informationCollector: collector}));
+          } else
+            throw e;
+        }
+      }
+    }
+    initServiceExtensions() {
+      super.initServiceExtensions();
+      if (!false) {
+        this.registerNumericServiceExtension({name: "timeDilation", getter: dart.fn(() => async.async(core.double, function*() {
+            return binding$.timeDilation;
+          }), T$.VoidToFutureOfdouble()), setter: dart.fn(value => async.async(dart.void, function*() {
+            binding$.timeDilation = value;
+          }), T$.doubleToFutureOfvoid())});
+      }
+    }
+    get lifecycleState() {
+      return this[_lifecycleState];
+    }
+    handleAppLifecycleStateChanged(state) {
+      if (!(state !== null)) dart.assertFailed(null, I[0], 352, 12, "state != null");
+      this[_lifecycleState] = state;
+      switch (state) {
+        case C[8] || CT.C8:
+        case C[9] || CT.C9:
+        {
+          this[_setFramesEnabledState](true);
+          break;
+        }
+        case C[10] || CT.C10:
+        case C[11] || CT.C11:
+        {
+          this[_setFramesEnabledState](false);
+          break;
+        }
+      }
+    }
+    scheduleTask(T, task, priority, opts) {
+      let debugLabel = opts && 'debugLabel' in opts ? opts.debugLabel : null;
+      let flow = opts && 'flow' in opts ? opts.flow : null;
+      let isFirstTask = this[_taskQueue].isEmpty;
+      let entry = new (binding$._TaskEntry$(T)).new(task, priority.value, debugLabel, flow);
+      this[_taskQueue].add(entry);
+      if (isFirstTask && !this.locked) this[_ensureEventLoopCallback]();
+      return entry.completer.future;
+    }
+    unlocked() {
+      super.unlocked();
+      if (this[_taskQueue].isNotEmpty) this[_ensureEventLoopCallback]();
+    }
+    [_ensureEventLoopCallback]() {
+      if (!!this.locked) dart.assertFailed(null, I[0], 427, 12, "!locked");
+      if (!this[_taskQueue].isNotEmpty) dart.assertFailed(null, I[0], 428, 12, "_taskQueue.isNotEmpty");
+      if (this[_hasRequestedAnEventLoopCallback]) return;
+      this[_hasRequestedAnEventLoopCallback] = true;
+      async.Timer.run(dart.bind(this, _runTasks));
+    }
+    [_runTasks]() {
+      this[_hasRequestedAnEventLoopCallback] = false;
+      if (this.handleEventLoopCallback()) this[_ensureEventLoopCallback]();
+    }
+    handleEventLoopCallback() {
+      let t2;
+      if (this[_taskQueue].isEmpty || this.locked) return false;
+      let entry = this[_taskQueue].first;
+      if (t2 = entry.priority, this.schedulingStrategy({priority: t2, scheduler: this})) {
+        try {
+          this[_taskQueue].removeFirst();
+          entry.run();
+        } catch (e) {
+          let exception = dart.getThrown(e);
+          let exceptionStack = dart.stackTrace(e);
+          if (core.Object.is(exception)) {
+            let callbackStack = null;
+            if (!dart.fn(() => {
+              callbackStack = entry.debugStack;
+              return true;
+            }, T$.VoidTobool())()) dart.assertFailed(null, I[0], 463, 16, "() {\r\n          callbackStack = entry.debugStack;\r\n          return true;\r\n        }()");
+            assertions.FlutterError.reportError(new assertions.FlutterErrorDetails.new({exception: exception, stack: exceptionStack, library: "scheduler library", context: new assertions.ErrorDescription.new("during a task callback"), informationCollector: callbackStack == null ? null : dart.fn(() => new (T$.SyncIterableOfDiagnosticsNode()).new(function*() {
+                yield new assertions.DiagnosticsStackTrace.new("\nThis exception was thrown in the context of a scheduler callback. " + "When the scheduler callback was _registered_ (as opposed to when the " + "exception was thrown), this was the stack", callbackStack);
+              }), T$.VoidToIterableOfDiagnosticsNode())}));
+          } else
+            throw e;
+        }
+        return this[_taskQueue].isNotEmpty;
+      }
+      return false;
+    }
+    get transientCallbackCount() {
+      return this[_transientCallbacks][$length];
+    }
+    scheduleFrameCallback(callback, opts) {
+      let rescheduling = opts && 'rescheduling' in opts ? opts.rescheduling : false;
+      this.scheduleFrame();
+      this[_nextFrameCallbackId] = this[_nextFrameCallbackId] + 1;
+      this[_transientCallbacks][$_set](this[_nextFrameCallbackId], new binding$._FrameCallbackEntry.new(callback, {rescheduling: rescheduling}));
+      return this[_nextFrameCallbackId];
+    }
+    cancelFrameCallbackWithId(id) {
+      if (!(id > 0)) dart.assertFailed(null, I[0], 535, 12, "id > 0");
+      this[_transientCallbacks][$remove](id);
+      this[_removedIds].add(id);
+    }
+    debugAssertNoTransientCallbacks(reason) {
+      if (!dart.fn(() => {
+        if (this.transientCallbackCount > 0) {
+          let count = this.transientCallbackCount;
+          let callbacks = T$.LinkedHashMapOfint$_FrameCallbackEntry().from(this[_transientCallbacks]);
+          assertions.FlutterError.reportError(new assertions.FlutterErrorDetails.new({exception: reason, library: "scheduler library", informationCollector: dart.fn(() => new (T$.SyncIterableOfDiagnosticsNode()).new(function*() {
+              if (count === 1) {
+                yield new assertions.ErrorDescription.new("There was one transient callback left. " + "The stack trace for when it was registered is as follows:");
+              } else {
+                yield new assertions.ErrorDescription.new("There were " + dart.str(count) + " transient callbacks left. " + "The stack traces for when they were registered are as follows:");
+              }
+              for (let id of callbacks[$keys]) {
+                let entry = dart.nullCheck(callbacks[$_get](id));
+                yield new assertions.DiagnosticsStackTrace.new("── callback " + dart.str(id) + " ──", entry.debugStack, {showSeparator: false});
+              }
+            }), T$.VoidToIterableOfDiagnosticsNode())}));
+        }
+        return true;
+      }, T$.VoidTobool())()) dart.assertFailed(null, I[0], 561, 12, "() {\r\n      if (transientCallbackCount > 0) {\r\n        // We cache the values so that we can produce them later\r\n        // even if the information collector is called after\r\n        // the problem has been resolved.\r\n        final int count = transientCallbackCount;\r\n        final Map<int, _FrameCallbackEntry> callbacks = Map<int, _FrameCallbackEntry>.from(_transientCallbacks);\r\n        FlutterError.reportError(FlutterErrorDetails(\r\n          exception: reason,\r\n          library: 'scheduler library',\r\n          informationCollector: () sync* {\r\n            if (count == 1) {\r\n              // TODO(jacobr): I have added an extra line break in this case.\r\n              yield ErrorDescription(\r\n                'There was one transient callback left. '\r\n                'The stack trace for when it was registered is as follows:',\r\n              );\r\n            } else {\r\n              yield ErrorDescription(\r\n                'There were $count transient callbacks left. '\r\n                'The stack traces for when they were registered are as follows:',\r\n              );\r\n            }\r\n            for (final int id in callbacks.keys) {\r\n              final _FrameCallbackEntry entry = callbacks[id]!;\r\n              yield DiagnosticsStackTrace('── callback $id ──', entry.debugStack, showSeparator: false);\r\n            }\r\n          },\r\n        ));\r\n      }\r\n      return true;\r\n    }()");
+      return true;
+    }
+    addPersistentFrameCallback(callback) {
+      this[_persistentCallbacks][$add](callback);
+    }
+    addPostFrameCallback(callback) {
+      this[_postFrameCallbacks][$add](callback);
+    }
+    get endOfFrame() {
+      if (this[_nextFrameCompleter] == null) {
+        if (this.schedulerPhase === binding$.SchedulerPhase.idle) this.scheduleFrame();
+        this[_nextFrameCompleter] = T$.CompleterOfvoid().new();
+        this.addPostFrameCallback(dart.fn(timeStamp => {
+          dart.nullCheck(this[_nextFrameCompleter]).complete();
+          this[_nextFrameCompleter] = null;
+        }, T$.DurationTovoid()));
+      }
+      return dart.nullCheck(this[_nextFrameCompleter]).future;
+    }
+    get hasScheduledFrame() {
+      return this[_hasScheduledFrame];
+    }
+    get schedulerPhase() {
+      return this[_schedulerPhase];
+    }
+    get framesEnabled() {
+      return this[_framesEnabled];
+    }
+    [_setFramesEnabledState](enabled) {
+      if (this[_framesEnabled] === enabled) return;
+      this[_framesEnabled] = enabled;
+      if (enabled) this.scheduleFrame();
+    }
+    ensureFrameCallbacksRegistered() {
+      let t3, t3$;
+      t3 = this.window;
+      t3.onBeginFrame == null ? t3.onBeginFrame = dart.bind(this, _handleBeginFrame) : null;
+      t3$ = this.window;
+      t3$.onDrawFrame == null ? t3$.onDrawFrame = dart.bind(this, _handleDrawFrame) : null;
+    }
+    ensureVisualUpdate() {
+      switch (this.schedulerPhase) {
+        case C[0] || CT.C0:
+        case C[4] || CT.C4:
+        {
+          this.scheduleFrame();
+          return;
+        }
+        case C[1] || CT.C1:
+        case C[2] || CT.C2:
+        case C[3] || CT.C3:
+        {
+          return;
+        }
+      }
+    }
+    scheduleFrame() {
+      if (this[_hasScheduledFrame] || !this.framesEnabled) return;
+      if (!dart.fn(() => {
+        if (debug$.debugPrintScheduleFrameStacks) assertions.debugPrintStack({label: "scheduleFrame() called. Current phase is " + dart.str(this.schedulerPhase) + "."});
+        return true;
+      }, T$.VoidTobool())()) dart.assertFailed(null, I[0], 787, 12, "() {\r\n      if (debugPrintScheduleFrameStacks)\r\n        debugPrintStack(label: 'scheduleFrame() called. Current phase is $schedulerPhase.');\r\n      return true;\r\n    }()");
+      this.ensureFrameCallbacksRegistered();
+      this.window.scheduleFrame();
+      this[_hasScheduledFrame] = true;
+    }
+    scheduleForcedFrame() {
+      if (!this.framesEnabled) return;
+      if (this[_hasScheduledFrame]) return;
+      if (!dart.fn(() => {
+        if (debug$.debugPrintScheduleFrameStacks) assertions.debugPrintStack({label: "scheduleForcedFrame() called. Current phase is " + dart.str(this.schedulerPhase) + "."});
+        return true;
+      }, T$.VoidTobool())()) dart.assertFailed(null, I[0], 825, 12, "() {\r\n      if (debugPrintScheduleFrameStacks)\r\n        debugPrintStack(label: 'scheduleForcedFrame() called. Current phase is $schedulerPhase.');\r\n      return true;\r\n    }()");
+      this.window.scheduleFrame();
+      this[_hasScheduledFrame] = true;
+    }
+    scheduleWarmUpFrame() {
+      if (this[_warmUpFrame] || this.schedulerPhase !== binding$.SchedulerPhase.idle) return;
+      this[_warmUpFrame] = true;
+      developer.Timeline.startSync("Warm-up frame");
+      let hadScheduledFrame = this[_hasScheduledFrame];
+      async.Timer.run(dart.fn(() => {
+        if (!this[_warmUpFrame]) dart.assertFailed(null, I[0], 860, 14, "_warmUpFrame");
+        this.handleBeginFrame(null);
+      }, T$.VoidTovoid()));
+      async.Timer.run(dart.fn(() => {
+        if (!this[_warmUpFrame]) dart.assertFailed(null, I[0], 864, 14, "_warmUpFrame");
+        this.handleDrawFrame();
+        this.resetEpoch();
+        this[_warmUpFrame] = false;
+        if (hadScheduledFrame) this.scheduleFrame();
+      }, T$.VoidTovoid()));
+      this.lockEvents(dart.fn(() => async.async(dart.void, (function*() {
+        yield this.endOfFrame;
+        developer.Timeline.finishSync();
+      }).bind(this)), T$.VoidToFutureOfvoid()));
+    }
+    resetEpoch() {
+      this[_epochStart] = this[_adjustForEpoch](this[_lastRawTimeStamp]);
+      this[_firstRawTimeStampInEpoch] = null;
+    }
+    [_adjustForEpoch](rawTimeStamp) {
+      let rawDurationSinceEpoch = this[_firstRawTimeStampInEpoch] == null ? core.Duration.zero : rawTimeStamp['-'](dart.nullCheck(this[_firstRawTimeStampInEpoch]));
+      return new core.Duration.new({microseconds: (rawDurationSinceEpoch.inMicroseconds / binding$.timeDilation)[$round]() + this[_epochStart].inMicroseconds});
+    }
+    get currentFrameTimeStamp() {
+      if (!(this[_currentFrameTimeStamp] != null)) dart.assertFailed(null, I[0], 933, 12, "_currentFrameTimeStamp != null");
+      return dart.nullCheck(this[_currentFrameTimeStamp]);
+    }
+    get currentSystemFrameTimeStamp() {
+      if (!(this[_lastRawTimeStamp] !== null)) dart.assertFailed(null, I[0], 951, 12, "_lastRawTimeStamp != null");
+      return this[_lastRawTimeStamp];
+    }
+    [_handleBeginFrame](rawTimeStamp) {
+      if (this[_warmUpFrame]) {
+        if (!!this[_rescheduleAfterWarmUpFrame]) dart.assertFailed(null, I[0], 973, 14, "!_rescheduleAfterWarmUpFrame");
+        this[_rescheduleAfterWarmUpFrame] = true;
+        return;
+      }
+      this.handleBeginFrame(rawTimeStamp);
+    }
+    [_handleDrawFrame]() {
+      if (this[_rescheduleAfterWarmUpFrame]) {
+        this[_rescheduleAfterWarmUpFrame] = false;
+        this.addPostFrameCallback(dart.fn(timeStamp => {
+          this[_hasScheduledFrame] = false;
+          this.scheduleFrame();
+        }, T$.DurationTovoid()));
+        return;
+      }
+      this.handleDrawFrame();
+    }
+    handleBeginFrame(rawTimeStamp) {
+      let t3;
+      developer.Timeline.startSync("Frame", {arguments: debug.timelineArgumentsIndicatingLandmarkEvent});
+      this[_firstRawTimeStampInEpoch] == null ? this[_firstRawTimeStampInEpoch] = rawTimeStamp : null;
+      this[_currentFrameTimeStamp] = this[_adjustForEpoch]((t3 = rawTimeStamp, t3 == null ? this[_lastRawTimeStamp] : t3));
+      if (rawTimeStamp != null) this[_lastRawTimeStamp] = rawTimeStamp;
+      if (!dart.fn(() => {
+        this[_debugFrameNumber] = this[_debugFrameNumber] + 1;
+        if (debug$.debugPrintBeginFrameBanner || debug$.debugPrintEndFrameBanner) {
+          let frameTimeStampDescription = new core.StringBuffer.new();
+          if (rawTimeStamp != null) {
+            binding$.SchedulerBinding._debugDescribeTimeStamp(dart.nullCheck(this[_currentFrameTimeStamp]), frameTimeStampDescription);
+          } else {
+            frameTimeStampDescription.write("(warm-up frame)");
+          }
+          this[_debugBanner] = "▄▄▄▄▄▄▄▄ Frame " + this[_debugFrameNumber][$toString]()[$padRight](7) + "   " + frameTimeStampDescription.toString()[$padLeft](18) + " ▄▄▄▄▄▄▄▄";
+          if (debug$.debugPrintBeginFrameBanner) print.debugPrint(this[_debugBanner]);
+        }
+        return true;
+      }, T$.VoidTobool())()) dart.assertFailed(null, I[0], 1031, 12, "() {\r\n      _debugFrameNumber += 1;\r\n\r\n      if (debugPrintBeginFrameBanner || debugPrintEndFrameBanner) {\r\n        final StringBuffer frameTimeStampDescription = StringBuffer();\r\n        if (rawTimeStamp != null) {\r\n          _debugDescribeTimeStamp(_currentFrameTimeStamp!, frameTimeStampDescription);\r\n        } else {\r\n          frameTimeStampDescription.write('(warm-up frame)');\r\n        }\r\n        _debugBanner = '▄▄▄▄▄▄▄▄ Frame ${_debugFrameNumber.toString().padRight(7)}   ${frameTimeStampDescription.toString().padLeft(18)} ▄▄▄▄▄▄▄▄';\r\n        if (debugPrintBeginFrameBanner)\r\n          debugPrint(_debugBanner);\r\n      }\r\n      return true;\r\n    }()");
+      if (!(this.schedulerPhase === binding$.SchedulerPhase.idle)) dart.assertFailed(null, I[0], 1048, 12, "schedulerPhase == SchedulerPhase.idle");
+      this[_hasScheduledFrame] = false;
+      try {
+        developer.Timeline.startSync("Animate", {arguments: debug.timelineArgumentsIndicatingLandmarkEvent});
+        this[_schedulerPhase] = binding$.SchedulerPhase.transientCallbacks;
+        let callbacks = this[_transientCallbacks];
+        this[_transientCallbacks] = new (T$.IdentityMapOfint$_FrameCallbackEntry()).new();
+        callbacks[$forEach](dart.fn((id, callbackEntry) => {
+          if (!this[_removedIds].contains(id)) this[_invokeFrameCallback](callbackEntry.callback, dart.nullCheck(this[_currentFrameTimeStamp]), callbackEntry.debugStack);
+        }, T$.intAnd_FrameCallbackEntryTovoid()));
+        this[_removedIds].clear();
+      } finally {
+        this[_schedulerPhase] = binding$.SchedulerPhase.midFrameMicrotasks;
+      }
+    }
+    handleDrawFrame() {
+      if (!(this[_schedulerPhase] === binding$.SchedulerPhase.midFrameMicrotasks)) dart.assertFailed(null, I[0], 1076, 12, "_schedulerPhase == SchedulerPhase.midFrameMicrotasks");
+      developer.Timeline.finishSync();
+      try {
+        this[_schedulerPhase] = binding$.SchedulerPhase.persistentCallbacks;
+        for (let callback of this[_persistentCallbacks])
+          this[_invokeFrameCallback](callback, dart.nullCheck(this[_currentFrameTimeStamp]));
+        this[_schedulerPhase] = binding$.SchedulerPhase.postFrameCallbacks;
+        let localPostFrameCallbacks = T$.ListOfDurationTovoid().from(this[_postFrameCallbacks]);
+        this[_postFrameCallbacks][$clear]();
+        for (let callback of localPostFrameCallbacks)
+          this[_invokeFrameCallback](callback, dart.nullCheck(this[_currentFrameTimeStamp]));
+      } finally {
+        this[_schedulerPhase] = binding$.SchedulerPhase.idle;
+        developer.Timeline.finishSync();
+        if (!dart.fn(() => {
+          if (debug$.debugPrintEndFrameBanner) print.debugPrint("▀"[$times](dart.nullCheck(this[_debugBanner]).length));
+          this[_debugBanner] = null;
+          return true;
+        }, T$.VoidTobool())()) dart.assertFailed(null, I[0], 1094, 14, "() {\r\n        if (debugPrintEndFrameBanner)\r\n          debugPrint('▀' * _debugBanner!.length);\r\n        _debugBanner = null;\r\n        return true;\r\n      }()");
+        this[_currentFrameTimeStamp] = null;
+      }
+    }
+    [_profileFramePostEvent](frameNumber, frameTiming) {
+      this.postEvent("Flutter.Frame", new (T$.IdentityMapOfString$dynamic()).from(["number", frameNumber, "startTime", frameTiming.timestampInMicroseconds(ui.FramePhase.buildStart), "elapsed", frameTiming.totalSpan.inMicroseconds, "build", frameTiming.buildDuration.inMicroseconds, "raster", frameTiming.rasterDuration.inMicroseconds, "vsyncOverhead", frameTiming.vsyncOverhead.inMicroseconds]));
+    }
+    [_invokeFrameCallback](callback, timeStamp, callbackStack = null) {
+      if (!(callback !== null)) dart.assertFailed(null, I[0], 1137, 12, "callback != null");
+      if (!(binding$._FrameCallbackEntry.debugCurrentCallbackStack == null)) dart.assertFailed(null, I[0], 1138, 12, "_FrameCallbackEntry.debugCurrentCallbackStack == null");
+      if (!dart.fn(() => {
+        binding$._FrameCallbackEntry.debugCurrentCallbackStack = callbackStack;
+        return true;
+      }, T$.VoidTobool())()) dart.assertFailed(null, I[0], 1139, 12, "() {\r\n      _FrameCallbackEntry.debugCurrentCallbackStack = callbackStack;\r\n      return true;\r\n    }()");
+      try {
+        callback(timeStamp);
+      } catch (e) {
+        let exception = dart.getThrown(e);
+        let exceptionStack = dart.stackTrace(e);
+        if (core.Object.is(exception)) {
+          assertions.FlutterError.reportError(new assertions.FlutterErrorDetails.new({exception: exception, stack: exceptionStack, library: "scheduler library", context: new assertions.ErrorDescription.new("during a scheduler callback"), informationCollector: callbackStack == null ? null : dart.fn(() => new (T$.SyncIterableOfDiagnosticsNode()).new(function*() {
+              yield new assertions.DiagnosticsStackTrace.new("\nThis exception was thrown in the context of a scheduler callback. " + "When the scheduler callback was _registered_ (as opposed to when the " + "exception was thrown), this was the stack", callbackStack);
+            }), T$.VoidToIterableOfDiagnosticsNode())}));
+        } else
+          throw e;
+      }
+      if (!dart.fn(() => {
+        binding$._FrameCallbackEntry.debugCurrentCallbackStack = null;
+        return true;
+      }, T$.VoidTobool())()) dart.assertFailed(null, I[0], 1161, 12, "() {\r\n      _FrameCallbackEntry.debugCurrentCallbackStack = null;\r\n      return true;\r\n    }()");
+    }
+  };
+  (binding$.SchedulerBinding[dart.mixinNew] = function() {
+    this[_timingsCallbacks] = T$.JSArrayOfListOfFrameTimingTovoid().of([]);
+    this[_lifecycleState] = null;
+    this[schedulingStrategy] = C[6] || CT.C6;
+    this[_taskQueue] = new (T$.HeapPriorityQueueOf_TaskEntry()).new(C[7] || CT.C7);
+    this[_hasRequestedAnEventLoopCallback] = false;
+    this[_nextFrameCallbackId] = 0;
+    this[_transientCallbacks] = new (T$.IdentityMapOfint$_FrameCallbackEntry()).new();
+    this[_removedIds] = new (T$._IdentityHashSetOfint()).new();
+    this[_persistentCallbacks] = T$.JSArrayOfDurationTovoid().of([]);
+    this[_postFrameCallbacks] = T$.JSArrayOfDurationTovoid().of([]);
+    this[_nextFrameCompleter] = null;
+    this[_hasScheduledFrame] = false;
+    this[_schedulerPhase] = binding$.SchedulerPhase.idle;
+    this[_framesEnabled] = true;
+    this[_warmUpFrame] = false;
+    this[_firstRawTimeStampInEpoch] = null;
+    this[_epochStart] = core.Duration.zero;
+    this[_lastRawTimeStamp] = core.Duration.zero;
+    this[_currentFrameTimeStamp] = null;
+    this[_debugFrameNumber] = 0;
+    this[_debugBanner] = null;
+    this[_rescheduleAfterWarmUpFrame] = false;
+  }).prototype = binding$.SchedulerBinding.prototype;
+  dart.addTypeTests(binding$.SchedulerBinding);
+  dart.addTypeCaches(binding$.SchedulerBinding);
+  binding$.SchedulerBinding[dart.implements] = () => [binding.BindingBase];
+  dart.setMethodSignature(binding$.SchedulerBinding, () => ({
+    __proto__: dart.getMethods(binding$.SchedulerBinding.__proto__),
+    addTimingsCallback: dart.fnType(dart.void, [dart.fnType(dart.void, [core.List$(ui.FrameTiming)])]),
+    removeTimingsCallback: dart.fnType(dart.void, [dart.fnType(dart.void, [core.List$(ui.FrameTiming)])]),
+    [_executeTimingsCallbacks]: dart.fnType(dart.void, [core.List$(ui.FrameTiming)]),
+    handleAppLifecycleStateChanged: dart.fnType(dart.void, [ui.AppLifecycleState]),
+    scheduleTask: dart.gFnType(T => [async.Future$(T), [dart.fnType(T, []), priority$.Priority], {debugLabel: dart.nullable(core.String), flow: dart.nullable(developer.Flow)}, {}], T => [dart.nullable(core.Object)]),
+    [_ensureEventLoopCallback]: dart.fnType(dart.void, []),
+    [_runTasks]: dart.fnType(dart.void, []),
+    handleEventLoopCallback: dart.fnType(core.bool, []),
+    scheduleFrameCallback: dart.fnType(core.int, [dart.fnType(dart.void, [core.Duration])], {rescheduling: core.bool}, {}),
+    cancelFrameCallbackWithId: dart.fnType(dart.void, [core.int]),
+    debugAssertNoTransientCallbacks: dart.fnType(core.bool, [core.String]),
+    addPersistentFrameCallback: dart.fnType(dart.void, [dart.fnType(dart.void, [core.Duration])]),
+    addPostFrameCallback: dart.fnType(dart.void, [dart.fnType(dart.void, [core.Duration])]),
+    [_setFramesEnabledState]: dart.fnType(dart.void, [core.bool]),
+    ensureFrameCallbacksRegistered: dart.fnType(dart.void, []),
+    ensureVisualUpdate: dart.fnType(dart.void, []),
+    scheduleFrame: dart.fnType(dart.void, []),
+    scheduleForcedFrame: dart.fnType(dart.void, []),
+    scheduleWarmUpFrame: dart.fnType(dart.void, []),
+    resetEpoch: dart.fnType(dart.void, []),
+    [_adjustForEpoch]: dart.fnType(core.Duration, [core.Duration]),
+    [_handleBeginFrame]: dart.fnType(dart.void, [core.Duration]),
+    [_handleDrawFrame]: dart.fnType(dart.void, []),
+    handleBeginFrame: dart.fnType(dart.void, [dart.nullable(core.Duration)]),
+    handleDrawFrame: dart.fnType(dart.void, []),
+    [_profileFramePostEvent]: dart.fnType(dart.void, [core.int, ui.FrameTiming]),
+    [_invokeFrameCallback]: dart.fnType(dart.void, [dart.fnType(dart.void, [core.Duration]), core.Duration], [dart.nullable(core.StackTrace)])
+  }));
+  dart.setGetterSignature(binding$.SchedulerBinding, () => ({
+    __proto__: dart.getGetters(binding$.SchedulerBinding.__proto__),
+    lifecycleState: dart.nullable(ui.AppLifecycleState),
+    transientCallbackCount: core.int,
+    endOfFrame: async.Future$(dart.void),
+    hasScheduledFrame: core.bool,
+    schedulerPhase: binding$.SchedulerPhase,
+    framesEnabled: core.bool,
+    currentFrameTimeStamp: core.Duration,
+    currentSystemFrameTimeStamp: core.Duration
+  }));
+  dart.setLibraryUri(binding$.SchedulerBinding, I[1]);
+  dart.setFieldSignature(binding$.SchedulerBinding, () => ({
+    __proto__: dart.getFields(binding$.SchedulerBinding.__proto__),
+    [_timingsCallbacks]: dart.finalFieldType(core.List$(dart.fnType(dart.void, [core.List$(ui.FrameTiming)]))),
+    [_lifecycleState]: dart.fieldType(dart.nullable(ui.AppLifecycleState)),
+    schedulingStrategy: dart.fieldType(dart.fnType(core.bool, [], {}, {priority: core.int, scheduler: binding$.SchedulerBinding})),
+    [_taskQueue]: dart.finalFieldType(priority_queue.PriorityQueue$(binding$._TaskEntry)),
+    [_hasRequestedAnEventLoopCallback]: dart.fieldType(core.bool),
+    [_nextFrameCallbackId]: dart.fieldType(core.int),
+    [_transientCallbacks]: dart.fieldType(core.Map$(core.int, binding$._FrameCallbackEntry)),
+    [_removedIds]: dart.finalFieldType(core.Set$(core.int)),
+    [_persistentCallbacks]: dart.finalFieldType(core.List$(dart.fnType(dart.void, [core.Duration]))),
+    [_postFrameCallbacks]: dart.finalFieldType(core.List$(dart.fnType(dart.void, [core.Duration]))),
+    [_nextFrameCompleter]: dart.fieldType(dart.nullable(async.Completer$(dart.void))),
+    [_hasScheduledFrame]: dart.fieldType(core.bool),
+    [_schedulerPhase]: dart.fieldType(binding$.SchedulerPhase),
+    [_framesEnabled]: dart.fieldType(core.bool),
+    [_warmUpFrame]: dart.fieldType(core.bool),
+    [_firstRawTimeStampInEpoch]: dart.fieldType(dart.nullable(core.Duration)),
+    [_epochStart]: dart.fieldType(core.Duration),
+    [_lastRawTimeStamp]: dart.fieldType(core.Duration),
+    [_currentFrameTimeStamp]: dart.fieldType(dart.nullable(core.Duration)),
+    [_debugFrameNumber]: dart.fieldType(core.int),
+    [_debugBanner]: dart.fieldType(dart.nullable(core.String)),
+    [_rescheduleAfterWarmUpFrame]: dart.fieldType(core.bool)
+  }));
+  dart.defineLazy(binding$.SchedulerBinding, {
+    /*binding$.SchedulerBinding._instance*/get _instance() {
+      return null;
+    },
+    set _instance(_) {}
   }, false);
-  dart.trackLibraries("packages/intl/src/intl/number_format_parser.dart", {
-    "package:intl/src/intl/number_format_parser.dart": number_format_parser
+  binding$.defaultSchedulingStrategy = function defaultSchedulingStrategy(opts) {
+    let priority = opts && 'priority' in opts ? opts.priority : null;
+    let scheduler = opts && 'scheduler' in opts ? opts.scheduler : null;
+    if (scheduler.transientCallbackCount > 0) return priority >= priority$.Priority.animation.value;
+    return true;
+  };
+  dart.copyProperties(binding$, {
+    get timeDilation() {
+      return binding$._timeDilation;
+    },
+    set timeDilation(value) {
+      let t4;
+      if (!(value > 0.0)) dart.assertFailed(null, I[0], 25, 10, "value > 0.0");
+      if (binding$._timeDilation === value) return;
+      t4 = binding$.SchedulerBinding.instance;
+      t4 == null ? null : t4.resetEpoch();
+      binding$._timeDilation = value;
+    }
+  });
+  dart.defineLazy(binding$, {
+    /*binding$._timeDilation*/get _timeDilation() {
+      return 1.0;
+    },
+    set _timeDilation(_) {}
+  }, false);
+  dart.trackLibraries("packages/flutter/src/scheduler/binding.dart", {
+    "package:flutter/src/scheduler/binding.dart": binding$
   }, {
-  }, '{"version":3,"sourceRoot":"","sources":["number_format_parser.dart"],"names":[],"mappings":"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","file":"../../../../../../../../../../packages/intl/src/intl/number_format_parser.dart.lib.js"}');
+  }, '{"version":3,"sourceRoot":"","sources":["binding.dart"],"names":[],"mappings":"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","file":"../../../../../../../../packages/flutter/src/scheduler/binding.dart.lib.js"}');
   // Exports:
   return {
-    src__intl__number_format_parser: number_format_parser
+    src__scheduler__binding: binding$
   };
 }));
 
-//# sourceMappingURL=number_format_parser.dart.lib.js.map
+//# sourceMappingURL=binding.dart.lib.js.map

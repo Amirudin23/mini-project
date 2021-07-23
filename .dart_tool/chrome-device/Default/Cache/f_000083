@@ -1,385 +1,616 @@
-define(['dart_sdk', 'packages/flutter/src/rendering/layer.dart', 'packages/flutter/src/painting/basic_types.dart', 'packages/flutter/src/foundation/debug.dart'], (function load__packages__flutter__src__rendering__list_body_dart(dart_sdk, packages__flutter__src__rendering__layer$46dart, packages__flutter__src__painting__basic_types$46dart, packages__flutter__src__foundation__debug$46dart) {
+define(['dart_sdk', 'packages/intl/src/intl/string_iterator.dart', 'packages/intl/number_symbols_data.dart', 'packages/intl/number_symbols.dart'], (function load__packages__intl__src__intl__number_format_parser_dart(dart_sdk, packages__intl__src__intl__string_iterator$46dart, packages__intl__number_symbols_data$46dart, packages__intl__number_symbols$46dart) {
   'use strict';
   const core = dart_sdk.core;
-  const ui = dart_sdk.ui;
-  const _interceptors = dart_sdk._interceptors;
   const math = dart_sdk.math;
   const dart = dart_sdk.dart;
   const dartx = dart_sdk.dartx;
-  const box = packages__flutter__src__rendering__layer$46dart.src__rendering__box;
-  const object = packages__flutter__src__rendering__layer$46dart.src__rendering__object;
-  const basic_types = packages__flutter__src__painting__basic_types$46dart.src__painting__basic_types;
-  const assertions = packages__flutter__src__foundation__debug$46dart.src__foundation__assertions;
-  const diagnostics = packages__flutter__src__foundation__debug$46dart.src__foundation__diagnostics;
-  var list_body = Object.create(dart.library);
+  const string_iterator = packages__intl__src__intl__string_iterator$46dart.src__intl__string_iterator;
+  const number_symbols_data = packages__intl__number_symbols_data$46dart.number_symbols_data;
+  const number_symbols = packages__intl__number_symbols$46dart.number_symbols;
+  var number_format_parser = Object.create(dart.library);
+  var $round = dartx.round;
+  var $toUpperCase = dartx.toUpperCase;
+  var $_get = dartx._get;
   dart._checkModuleNullSafetyMode(true);
-  var T = {
-    JSArrayOfDiagnosticsNode: () => (T.JSArrayOfDiagnosticsNode = dart.constFn(_interceptors.JSArray$(diagnostics.DiagnosticsNode)))(),
-    VoidTobool: () => (T.VoidTobool = dart.constFn(dart.fnType(core.bool, [])))(),
-    EnumPropertyOfAxisDirection: () => (T.EnumPropertyOfAxisDirection = dart.constFn(diagnostics.EnumProperty$(basic_types.AxisDirection)))(),
-    RenderBoxTodouble: () => (T.RenderBoxTodouble = dart.constFn(dart.fnType(core.double, [box.RenderBox])))()
-  };
   const CT = Object.create({
     _: () => (C, CT)
   });
   dart.defineLazy(CT, {
     get C0() {
       return C[0] = dart.const({
-        __proto__: basic_types.AxisDirection.prototype,
-        [_name]: "AxisDirection.down",
-        index: 2
-      });
-    },
-    get C1() {
-      return C[1] = dart.const({
-        __proto__: basic_types.AxisDirection.prototype,
-        [_name]: "AxisDirection.right",
-        index: 1
-      });
-    },
-    get C2() {
-      return C[2] = dart.const({
-        __proto__: basic_types.AxisDirection.prototype,
-        [_name]: "AxisDirection.left",
-        index: 3
-      });
-    },
-    get C3() {
-      return C[3] = dart.const({
-        __proto__: basic_types.AxisDirection.prototype,
-        [_name]: "AxisDirection.up",
-        index: 0
-      });
-    },
-    get C4() {
-      return C[4] = dart.const({
-        __proto__: basic_types.Axis.prototype,
-        [_name]: "Axis.horizontal",
-        index: 0
-      });
-    },
-    get C5() {
-      return C[5] = dart.const({
-        __proto__: basic_types.Axis.prototype,
-        [_name]: "Axis.vertical",
-        index: 1
+        __proto__: core.FormatException.prototype,
+        [FormatException_offset]: null,
+        [FormatException_source]: null,
+        [FormatException_message]: "Too many percent/permill"
       });
     }
   }, false);
-  var C = Array(6).fill(void 0);
-  var I = [
-    "package:flutter/src/rendering/list_body.dart",
-    "file:///G:/Nitoza/SDK/flutter/packages/flutter/lib/src/rendering/list_body.dart"
-  ];
-  list_body.ListBodyParentData = class ListBodyParentData extends box.ContainerBoxParentData$(box.RenderBox) {};
-  (list_body.ListBodyParentData.new = function() {
-    list_body.ListBodyParentData.__proto__.new.call(this);
-    ;
-  }).prototype = list_body.ListBodyParentData.prototype;
-  dart.addTypeTests(list_body.ListBodyParentData);
-  dart.addTypeCaches(list_body.ListBodyParentData);
-  dart.setLibraryUri(list_body.ListBodyParentData, I[0]);
-  var _name = dart.privateName(basic_types, "_name");
-  var _axisDirection = dart.privateName(list_body, "_axisDirection");
-  var _debugCheckConstraints = dart.privateName(list_body, "_debugCheckConstraints");
-  var _getIntrinsicCrossAxis = dart.privateName(list_body, "_getIntrinsicCrossAxis");
-  var _getIntrinsicMainAxis = dart.privateName(list_body, "_getIntrinsicMainAxis");
-  const RenderBox_ContainerRenderObjectMixin$36 = class RenderBox_ContainerRenderObjectMixin extends box.RenderBox {};
-  (RenderBox_ContainerRenderObjectMixin$36.new = function() {
-    object.ContainerRenderObjectMixin$(box.RenderBox, list_body.ListBodyParentData)[dart.mixinNew].call(this);
-    RenderBox_ContainerRenderObjectMixin$36.__proto__.new.call(this);
-  }).prototype = RenderBox_ContainerRenderObjectMixin$36.prototype;
-  dart.applyMixin(RenderBox_ContainerRenderObjectMixin$36, object.ContainerRenderObjectMixin$(box.RenderBox, list_body.ListBodyParentData));
-  const RenderBox_RenderBoxContainerDefaultsMixin$36 = class RenderBox_RenderBoxContainerDefaultsMixin extends RenderBox_ContainerRenderObjectMixin$36 {};
-  (RenderBox_RenderBoxContainerDefaultsMixin$36.new = function() {
-    RenderBox_RenderBoxContainerDefaultsMixin$36.__proto__.new.call(this);
-  }).prototype = RenderBox_RenderBoxContainerDefaultsMixin$36.prototype;
-  dart.applyMixin(RenderBox_RenderBoxContainerDefaultsMixin$36, box.RenderBoxContainerDefaultsMixin$(box.RenderBox, list_body.ListBodyParentData));
-  list_body.RenderListBody = class RenderListBody extends RenderBox_RenderBoxContainerDefaultsMixin$36 {
-    setupParentData(child) {
-      box.RenderBox.as(child);
-      if (!list_body.ListBodyParentData.is(child.parentData)) child.parentData = new list_body.ListBodyParentData.new();
+  var C = [void 0];
+  var I = ["package:intl/src/intl/number_format_parser.dart"];
+  var negativePrefix = dart.privateName(number_format_parser, "NumberFormatParseResult.negativePrefix");
+  var positivePrefix = dart.privateName(number_format_parser, "NumberFormatParseResult.positivePrefix");
+  var negativeSuffix = dart.privateName(number_format_parser, "NumberFormatParseResult.negativeSuffix");
+  var positiveSuffix = dart.privateName(number_format_parser, "NumberFormatParseResult.positiveSuffix");
+  var multiplier = dart.privateName(number_format_parser, "NumberFormatParseResult.multiplier");
+  var minimumExponentDigits = dart.privateName(number_format_parser, "NumberFormatParseResult.minimumExponentDigits");
+  var maximumIntegerDigits = dart.privateName(number_format_parser, "NumberFormatParseResult.maximumIntegerDigits");
+  var minimumIntegerDigits = dart.privateName(number_format_parser, "NumberFormatParseResult.minimumIntegerDigits");
+  var maximumFractionDigits = dart.privateName(number_format_parser, "NumberFormatParseResult.maximumFractionDigits");
+  var minimumFractionDigits = dart.privateName(number_format_parser, "NumberFormatParseResult.minimumFractionDigits");
+  var groupingSize = dart.privateName(number_format_parser, "NumberFormatParseResult.groupingSize");
+  var finalGroupingSize = dart.privateName(number_format_parser, "NumberFormatParseResult.finalGroupingSize");
+  var decimalSeparatorAlwaysShown = dart.privateName(number_format_parser, "NumberFormatParseResult.decimalSeparatorAlwaysShown");
+  var useSignForPositiveExponent = dart.privateName(number_format_parser, "NumberFormatParseResult.useSignForPositiveExponent");
+  var useExponentialNotation = dart.privateName(number_format_parser, "NumberFormatParseResult.useExponentialNotation");
+  var decimalDigits$ = dart.privateName(number_format_parser, "NumberFormatParseResult.decimalDigits");
+  number_format_parser.NumberFormatParseResult = class NumberFormatParseResult extends core.Object {
+    get negativePrefix() {
+      return this[negativePrefix];
     }
-    get axisDirection() {
-      return this[_axisDirection];
+    set negativePrefix(value) {
+      this[negativePrefix] = value;
     }
-    set axisDirection(value) {
-      if (!(value !== null)) dart.assertFailed(null, I[1], 53, 12, "value != null");
-      if (this[_axisDirection] === value) return;
-      this[_axisDirection] = value;
-      this.markNeedsLayout();
+    get positivePrefix() {
+      return this[positivePrefix];
     }
-    get mainAxis() {
-      return basic_types.axisDirectionToAxis(this.axisDirection);
+    set positivePrefix(value) {
+      this[positivePrefix] = value;
     }
-    computeDryLayout(constraints) {
-      if (!this[_debugCheckConstraints](constraints)) dart.assertFailed(null, I[1], 66, 12, "_debugCheckConstraints(constraints)");
-      let mainAxisExtent = 0.0;
-      let child = this.firstChild;
-      switch (this.axisDirection) {
-        case C[1] || CT.C1:
-        case C[2] || CT.C2:
-        {
-          let innerConstraints = new box.BoxConstraints.tightFor({height: constraints.maxHeight});
-          while (child != null) {
-            let childSize = child.getDryLayout(innerConstraints);
-            mainAxisExtent = mainAxisExtent + childSize.width;
-            child = this.childAfter(child);
-          }
-          return constraints.constrain(new ui.Size.new(mainAxisExtent, constraints.maxHeight));
-        }
-        case C[3] || CT.C3:
-        case C[0] || CT.C0:
-        {
-          let innerConstraints = new box.BoxConstraints.tightFor({width: constraints.maxWidth});
-          while (child != null) {
-            let childSize = child.getDryLayout(innerConstraints);
-            mainAxisExtent = mainAxisExtent + childSize.height;
-            child = this.childAfter(child);
-          }
-          return constraints.constrain(new ui.Size.new(constraints.maxWidth, mainAxisExtent));
-        }
-      }
+    get negativeSuffix() {
+      return this[negativeSuffix];
     }
-    [_debugCheckConstraints](constraints) {
-      if (!dart.fn(() => {
-        switch (this.mainAxis) {
-          case C[4] || CT.C4:
-          {
-            if (!constraints.hasBoundedWidth) return true;
-            break;
-          }
-          case C[5] || CT.C5:
-          {
-            if (!constraints.hasBoundedHeight) return true;
-            break;
-          }
-        }
-        dart.throw(new assertions.FlutterError.fromParts(T.JSArrayOfDiagnosticsNode().of([new assertions.ErrorSummary.new("RenderListBody must have unlimited space along its main axis."), new assertions.ErrorDescription.new("RenderListBody does not clip or resize its children, so it must be " + "placed in a parent that does not constrain the main " + "axis."), new assertions.ErrorHint.new("You probably want to put the RenderListBody inside a " + "RenderViewport with a matching main axis.")])));
-      }, T.VoidTobool())()) dart.assertFailed(null, I[1], 92, 12, "() {\r\n      switch (mainAxis) {\r\n        case Axis.horizontal:\r\n          if (!constraints.hasBoundedWidth)\r\n            return true;\r\n          break;\r\n        case Axis.vertical:\r\n          if (!constraints.hasBoundedHeight)\r\n            return true;\r\n          break;\r\n      }\r\n      throw FlutterError.fromParts(<DiagnosticsNode>[\r\n        ErrorSummary('RenderListBody must have unlimited space along its main axis.'),\r\n        ErrorDescription(\r\n          'RenderListBody does not clip or resize its children, so it must be '\r\n          'placed in a parent that does not constrain the main '\r\n          'axis.',\r\n        ),\r\n        ErrorHint(\r\n          'You probably want to put the RenderListBody inside a '\r\n          'RenderViewport with a matching main axis.',\r\n        ),\r\n      ]);\r\n    }()");
-      if (!dart.fn(() => {
-        switch (this.mainAxis) {
-          case C[4] || CT.C4:
-          {
-            if (constraints.hasBoundedHeight) return true;
-            break;
-          }
-          case C[5] || CT.C5:
-          {
-            if (constraints.hasBoundedWidth) return true;
-            break;
-          }
-        }
-        dart.throw(new assertions.FlutterError.fromParts(T.JSArrayOfDiagnosticsNode().of([new assertions.ErrorSummary.new("RenderListBody must have a bounded constraint for its cross axis."), new assertions.ErrorDescription.new("RenderListBody forces its children to expand to fit the RenderListBody's container, " + "so it must be placed in a parent that constrains the cross " + "axis to a finite dimension."), new assertions.ErrorHint.new("If you are attempting to nest a RenderListBody with " + "one direction inside one of another direction, you will want to " + "wrap the inner one inside a box that fixes the dimension in that direction, " + "for example, a RenderIntrinsicWidth or RenderIntrinsicHeight object. " + "This is relatively expensive, however.")])));
-      }, T.VoidTobool())()) dart.assertFailed(null, I[1], 116, 12, "() {\r\n      switch (mainAxis) {\r\n        case Axis.horizontal:\r\n          if (constraints.hasBoundedHeight)\r\n            return true;\r\n          break;\r\n        case Axis.vertical:\r\n          if (constraints.hasBoundedWidth)\r\n            return true;\r\n          break;\r\n      }\r\n      // TODO(ianh): Detect if we're actually nested blocks and say something\r\n      // more specific to the exact situation in that case, and don't mention\r\n      // nesting blocks in the negative case.\r\n      throw FlutterError.fromParts(<DiagnosticsNode>[\r\n        ErrorSummary('RenderListBody must have a bounded constraint for its cross axis.'),\r\n        ErrorDescription(\r\n          \"RenderListBody forces its children to expand to fit the RenderListBody's container, \"\r\n          'so it must be placed in a parent that constrains the cross '\r\n          'axis to a finite dimension.',\r\n        ),\r\n        // TODO(jacobr): this hint is a great candidate to promote to being an\r\n        // automated quick fix in the future.\r\n        ErrorHint(\r\n          'If you are attempting to nest a RenderListBody with '\r\n          'one direction inside one of another direction, you will want to '\r\n          'wrap the inner one inside a box that fixes the dimension in that direction, '\r\n          'for example, a RenderIntrinsicWidth or RenderIntrinsicHeight object. '\r\n          'This is relatively expensive, however.', // (that's why we don't do it automatically)\r\n        ),\r\n      ]);\r\n    }()");
-      return true;
+    set negativeSuffix(value) {
+      this[negativeSuffix] = value;
     }
-    performLayout() {
-      let constraints = this.constraints;
-      if (!this[_debugCheckConstraints](constraints)) dart.assertFailed(null, I[1], 154, 12, "_debugCheckConstraints(constraints)");
-      let mainAxisExtent = 0.0;
-      let child = this.firstChild;
-      switch (this.axisDirection) {
-        case C[1] || CT.C1:
-        {
-          let innerConstraints = new box.BoxConstraints.tightFor({height: constraints.maxHeight});
-          while (child != null) {
-            child.layout(innerConstraints, {parentUsesSize: true});
-            let childParentData = list_body.ListBodyParentData.as(dart.nullCheck(child.parentData));
-            childParentData.offset = new ui.Offset.new(mainAxisExtent, 0.0);
-            mainAxisExtent = mainAxisExtent + child.size.width;
-            if (!dart.equals(child.parentData, childParentData)) dart.assertFailed(null, I[1], 165, 18, "child.parentData == childParentData");
-            child = childParentData.nextSibling;
-          }
-          this.size = constraints.constrain(new ui.Size.new(mainAxisExtent, constraints.maxHeight));
-          break;
-        }
-        case C[2] || CT.C2:
-        {
-          let innerConstraints = new box.BoxConstraints.tightFor({height: constraints.maxHeight});
-          while (child != null) {
-            child.layout(innerConstraints, {parentUsesSize: true});
-            let childParentData = list_body.ListBodyParentData.as(dart.nullCheck(child.parentData));
-            mainAxisExtent = mainAxisExtent + child.size.width;
-            if (!dart.equals(child.parentData, childParentData)) dart.assertFailed(null, I[1], 176, 18, "child.parentData == childParentData");
-            child = childParentData.nextSibling;
-          }
-          let position = 0.0;
-          child = this.firstChild;
-          while (child != null) {
-            let childParentData = list_body.ListBodyParentData.as(dart.nullCheck(child.parentData));
-            position = position + child.size.width;
-            childParentData.offset = new ui.Offset.new(mainAxisExtent - position, 0.0);
-            if (!dart.equals(child.parentData, childParentData)) dart.assertFailed(null, I[1], 185, 18, "child.parentData == childParentData");
-            child = childParentData.nextSibling;
-          }
-          this.size = constraints.constrain(new ui.Size.new(mainAxisExtent, constraints.maxHeight));
-          break;
-        }
-        case C[0] || CT.C0:
-        {
-          let innerConstraints = new box.BoxConstraints.tightFor({width: constraints.maxWidth});
-          while (child != null) {
-            child.layout(innerConstraints, {parentUsesSize: true});
-            let childParentData = list_body.ListBodyParentData.as(dart.nullCheck(child.parentData));
-            childParentData.offset = new ui.Offset.new(0.0, mainAxisExtent);
-            mainAxisExtent = mainAxisExtent + child.size.height;
-            if (!dart.equals(child.parentData, childParentData)) dart.assertFailed(null, I[1], 197, 18, "child.parentData == childParentData");
-            child = childParentData.nextSibling;
-          }
-          this.size = constraints.constrain(new ui.Size.new(constraints.maxWidth, mainAxisExtent));
-          break;
-        }
-        case C[3] || CT.C3:
-        {
-          let innerConstraints = new box.BoxConstraints.tightFor({width: constraints.maxWidth});
-          while (child != null) {
-            child.layout(innerConstraints, {parentUsesSize: true});
-            let childParentData = list_body.ListBodyParentData.as(dart.nullCheck(child.parentData));
-            mainAxisExtent = mainAxisExtent + child.size.height;
-            if (!dart.equals(child.parentData, childParentData)) dart.assertFailed(null, I[1], 208, 18, "child.parentData == childParentData");
-            child = childParentData.nextSibling;
-          }
-          let position = 0.0;
-          child = this.firstChild;
-          while (child != null) {
-            let childParentData = list_body.ListBodyParentData.as(dart.nullCheck(child.parentData));
-            position = position + child.size.height;
-            childParentData.offset = new ui.Offset.new(0.0, mainAxisExtent - position);
-            if (!dart.equals(child.parentData, childParentData)) dart.assertFailed(null, I[1], 217, 18, "child.parentData == childParentData");
-            child = childParentData.nextSibling;
-          }
-          this.size = constraints.constrain(new ui.Size.new(constraints.maxWidth, mainAxisExtent));
-          break;
-        }
-      }
-      if (!this.size.isFinite) dart.assertFailed(null, I[1], 223, 12, "size.isFinite");
+    get positiveSuffix() {
+      return this[positiveSuffix];
     }
-    debugFillProperties(properties) {
-      super.debugFillProperties(properties);
-      properties.add(new (T.EnumPropertyOfAxisDirection()).new("axisDirection", this.axisDirection));
+    set positiveSuffix(value) {
+      this[positiveSuffix] = value;
     }
-    [_getIntrinsicCrossAxis](childSize) {
-      let extent = 0.0;
-      let child = this.firstChild;
-      while (child != null) {
-        extent = math.max(core.double, extent, childSize(child));
-        let childParentData = list_body.ListBodyParentData.as(dart.nullCheck(child.parentData));
-        child = childParentData.nextSibling;
-      }
-      return extent;
+    get multiplier() {
+      return this[multiplier];
     }
-    [_getIntrinsicMainAxis](childSize) {
-      let extent = 0.0;
-      let child = this.firstChild;
-      while (child != null) {
-        extent = extent + childSize(child);
-        let childParentData = list_body.ListBodyParentData.as(dart.nullCheck(child.parentData));
-        child = childParentData.nextSibling;
-      }
-      return extent;
+    set multiplier(value) {
+      this[multiplier] = value;
     }
-    computeMinIntrinsicWidth(height) {
-      if (!(this.mainAxis !== null)) dart.assertFailed(null, I[1], 256, 12, "mainAxis != null");
-      switch (this.mainAxis) {
-        case C[4] || CT.C4:
-        {
-          return this[_getIntrinsicMainAxis](dart.fn(child => child.getMinIntrinsicWidth(height), T.RenderBoxTodouble()));
-        }
-        case C[5] || CT.C5:
-        {
-          return this[_getIntrinsicCrossAxis](dart.fn(child => child.getMinIntrinsicWidth(height), T.RenderBoxTodouble()));
-        }
-      }
+    get minimumExponentDigits() {
+      return this[minimumExponentDigits];
     }
-    computeMaxIntrinsicWidth(height) {
-      if (!(this.mainAxis !== null)) dart.assertFailed(null, I[1], 267, 12, "mainAxis != null");
-      switch (this.mainAxis) {
-        case C[4] || CT.C4:
-        {
-          return this[_getIntrinsicMainAxis](dart.fn(child => child.getMaxIntrinsicWidth(height), T.RenderBoxTodouble()));
-        }
-        case C[5] || CT.C5:
-        {
-          return this[_getIntrinsicCrossAxis](dart.fn(child => child.getMaxIntrinsicWidth(height), T.RenderBoxTodouble()));
-        }
-      }
+    set minimumExponentDigits(value) {
+      this[minimumExponentDigits] = value;
     }
-    computeMinIntrinsicHeight(width) {
-      if (!(this.mainAxis !== null)) dart.assertFailed(null, I[1], 278, 12, "mainAxis != null");
-      switch (this.mainAxis) {
-        case C[4] || CT.C4:
-        {
-          return this[_getIntrinsicMainAxis](dart.fn(child => child.getMinIntrinsicHeight(width), T.RenderBoxTodouble()));
-        }
-        case C[5] || CT.C5:
-        {
-          return this[_getIntrinsicCrossAxis](dart.fn(child => child.getMinIntrinsicHeight(width), T.RenderBoxTodouble()));
-        }
-      }
+    get maximumIntegerDigits() {
+      return this[maximumIntegerDigits];
     }
-    computeMaxIntrinsicHeight(width) {
-      if (!(this.mainAxis !== null)) dart.assertFailed(null, I[1], 289, 12, "mainAxis != null");
-      switch (this.mainAxis) {
-        case C[4] || CT.C4:
-        {
-          return this[_getIntrinsicMainAxis](dart.fn(child => child.getMaxIntrinsicHeight(width), T.RenderBoxTodouble()));
-        }
-        case C[5] || CT.C5:
-        {
-          return this[_getIntrinsicCrossAxis](dart.fn(child => child.getMaxIntrinsicHeight(width), T.RenderBoxTodouble()));
-        }
-      }
+    set maximumIntegerDigits(value) {
+      this[maximumIntegerDigits] = value;
     }
-    computeDistanceToActualBaseline(baseline) {
-      return this.defaultComputeDistanceToFirstActualBaseline(baseline);
+    get minimumIntegerDigits() {
+      return this[minimumIntegerDigits];
     }
-    paint(context, offset) {
-      this.defaultPaint(context, offset);
+    set minimumIntegerDigits(value) {
+      this[minimumIntegerDigits] = value;
     }
-    hitTestChildren(result, opts) {
-      let position = opts && 'position' in opts ? opts.position : null;
-      return this.defaultHitTestChildren(result, {position: position});
+    get maximumFractionDigits() {
+      return this[maximumFractionDigits];
+    }
+    set maximumFractionDigits(value) {
+      this[maximumFractionDigits] = value;
+    }
+    get minimumFractionDigits() {
+      return this[minimumFractionDigits];
+    }
+    set minimumFractionDigits(value) {
+      this[minimumFractionDigits] = value;
+    }
+    get groupingSize() {
+      return this[groupingSize];
+    }
+    set groupingSize(value) {
+      this[groupingSize] = value;
+    }
+    get finalGroupingSize() {
+      return this[finalGroupingSize];
+    }
+    set finalGroupingSize(value) {
+      this[finalGroupingSize] = value;
+    }
+    get decimalSeparatorAlwaysShown() {
+      return this[decimalSeparatorAlwaysShown];
+    }
+    set decimalSeparatorAlwaysShown(value) {
+      this[decimalSeparatorAlwaysShown] = value;
+    }
+    get useSignForPositiveExponent() {
+      return this[useSignForPositiveExponent];
+    }
+    set useSignForPositiveExponent(value) {
+      this[useSignForPositiveExponent] = value;
+    }
+    get useExponentialNotation() {
+      return this[useExponentialNotation];
+    }
+    set useExponentialNotation(value) {
+      this[useExponentialNotation] = value;
+    }
+    get decimalDigits() {
+      return this[decimalDigits$];
+    }
+    set decimalDigits(value) {
+      this[decimalDigits$] = value;
+    }
+    get multiplierDigits() {
+      return (math.log(this.multiplier) / number_format_parser._ln10)[$round]();
     }
   };
-  (list_body.RenderListBody.new = function(opts) {
-    let children = opts && 'children' in opts ? opts.children : null;
-    let axisDirection = opts && 'axisDirection' in opts ? opts.axisDirection : C[0] || CT.C0;
-    if (!(axisDirection !== null)) dart.assertFailed(null, I[1], 35, 15, "axisDirection != null");
-    this[_axisDirection] = axisDirection;
-    list_body.RenderListBody.__proto__.new.call(this);
-    this.addAll(children);
-  }).prototype = list_body.RenderListBody.prototype;
-  dart.addTypeTests(list_body.RenderListBody);
-  dart.addTypeCaches(list_body.RenderListBody);
-  dart.setMethodSignature(list_body.RenderListBody, () => ({
-    __proto__: dart.getMethods(list_body.RenderListBody.__proto__),
-    [_debugCheckConstraints]: dart.fnType(core.bool, [box.BoxConstraints]),
-    [_getIntrinsicCrossAxis]: dart.fnType(core.double, [dart.fnType(core.double, [box.RenderBox])]),
-    [_getIntrinsicMainAxis]: dart.fnType(core.double, [dart.fnType(core.double, [box.RenderBox])])
+  (number_format_parser.NumberFormatParseResult.new = function(symbols, decimalDigits) {
+    this[positivePrefix] = "";
+    this[negativeSuffix] = "";
+    this[positiveSuffix] = "";
+    this[multiplier] = 1;
+    this[minimumExponentDigits] = 0;
+    this[maximumIntegerDigits] = 40;
+    this[minimumIntegerDigits] = 1;
+    this[maximumFractionDigits] = 3;
+    this[minimumFractionDigits] = 0;
+    this[groupingSize] = 3;
+    this[finalGroupingSize] = 3;
+    this[decimalSeparatorAlwaysShown] = false;
+    this[useSignForPositiveExponent] = false;
+    this[useExponentialNotation] = false;
+    this[decimalDigits$] = decimalDigits;
+    this[negativePrefix] = symbols.MINUS_SIGN;
+    ;
+  }).prototype = number_format_parser.NumberFormatParseResult.prototype;
+  dart.addTypeTests(number_format_parser.NumberFormatParseResult);
+  dart.addTypeCaches(number_format_parser.NumberFormatParseResult);
+  dart.setGetterSignature(number_format_parser.NumberFormatParseResult, () => ({
+    __proto__: dart.getGetters(number_format_parser.NumberFormatParseResult.__proto__),
+    multiplierDigits: core.int
   }));
-  dart.setGetterSignature(list_body.RenderListBody, () => ({
-    __proto__: dart.getGetters(list_body.RenderListBody.__proto__),
-    axisDirection: basic_types.AxisDirection,
-    mainAxis: basic_types.Axis
+  dart.setLibraryUri(number_format_parser.NumberFormatParseResult, I[0]);
+  dart.setFieldSignature(number_format_parser.NumberFormatParseResult, () => ({
+    __proto__: dart.getFields(number_format_parser.NumberFormatParseResult.__proto__),
+    negativePrefix: dart.fieldType(core.String),
+    positivePrefix: dart.fieldType(core.String),
+    negativeSuffix: dart.fieldType(core.String),
+    positiveSuffix: dart.fieldType(core.String),
+    multiplier: dart.fieldType(core.int),
+    minimumExponentDigits: dart.fieldType(core.int),
+    maximumIntegerDigits: dart.fieldType(core.int),
+    minimumIntegerDigits: dart.fieldType(core.int),
+    maximumFractionDigits: dart.fieldType(core.int),
+    minimumFractionDigits: dart.fieldType(core.int),
+    groupingSize: dart.fieldType(core.int),
+    finalGroupingSize: dart.fieldType(core.int),
+    decimalSeparatorAlwaysShown: dart.fieldType(core.bool),
+    useSignForPositiveExponent: dart.fieldType(core.bool),
+    useExponentialNotation: dart.fieldType(core.bool),
+    decimalDigits: dart.fieldType(dart.nullable(core.int))
   }));
-  dart.setSetterSignature(list_body.RenderListBody, () => ({
-    __proto__: dart.getSetters(list_body.RenderListBody.__proto__),
-    axisDirection: basic_types.AxisDirection
+  var symbols$ = dart.privateName(number_format_parser, "NumberFormatParser.symbols");
+  var pattern = dart.privateName(number_format_parser, "NumberFormatParser.pattern");
+  var isForCurrency$ = dart.privateName(number_format_parser, "NumberFormatParser.isForCurrency");
+  var currencySymbol$ = dart.privateName(number_format_parser, "NumberFormatParser.currencySymbol");
+  var currencyName$ = dart.privateName(number_format_parser, "NumberFormatParser.currencyName");
+  var result = dart.privateName(number_format_parser, "NumberFormatParser.result");
+  var groupingSizeSetExplicitly = dart.privateName(number_format_parser, "NumberFormatParser.groupingSizeSetExplicitly");
+  var inQuote = dart.privateName(number_format_parser, "NumberFormatParser.inQuote");
+  var decimalPos = dart.privateName(number_format_parser, "NumberFormatParser.decimalPos");
+  var digitLeftCount = dart.privateName(number_format_parser, "NumberFormatParser.digitLeftCount");
+  var zeroDigitCount = dart.privateName(number_format_parser, "NumberFormatParser.zeroDigitCount");
+  var digitRightCount = dart.privateName(number_format_parser, "NumberFormatParser.digitRightCount");
+  var groupingCount = dart.privateName(number_format_parser, "NumberFormatParser.groupingCount");
+  var _parse = dart.privateName(number_format_parser, "_parse");
+  var _defaultDecimalDigits = dart.privateName(number_format_parser, "_defaultDecimalDigits");
+  var _parseAffix = dart.privateName(number_format_parser, "_parseAffix");
+  var _parseTrunk = dart.privateName(number_format_parser, "_parseTrunk");
+  var FormatException_offset = dart.privateName(core, "FormatException.offset");
+  var FormatException_source = dart.privateName(core, "FormatException.source");
+  var FormatException_message = dart.privateName(core, "FormatException.message");
+  number_format_parser.NumberFormatParser = class NumberFormatParser extends core.Object {
+    get symbols() {
+      return this[symbols$];
+    }
+    set symbols(value) {
+      super.symbols = value;
+    }
+    get pattern() {
+      return this[pattern];
+    }
+    set pattern(value) {
+      super.pattern = value;
+    }
+    get isForCurrency() {
+      return this[isForCurrency$];
+    }
+    set isForCurrency(value) {
+      super.isForCurrency = value;
+    }
+    get currencySymbol() {
+      return this[currencySymbol$];
+    }
+    set currencySymbol(value) {
+      super.currencySymbol = value;
+    }
+    get currencyName() {
+      return this[currencyName$];
+    }
+    set currencyName(value) {
+      super.currencyName = value;
+    }
+    get result() {
+      return this[result];
+    }
+    set result(value) {
+      super.result = value;
+    }
+    get groupingSizeSetExplicitly() {
+      return this[groupingSizeSetExplicitly];
+    }
+    set groupingSizeSetExplicitly(value) {
+      this[groupingSizeSetExplicitly] = value;
+    }
+    get inQuote() {
+      return this[inQuote];
+    }
+    set inQuote(value) {
+      this[inQuote] = value;
+    }
+    get decimalPos() {
+      return this[decimalPos];
+    }
+    set decimalPos(value) {
+      this[decimalPos] = value;
+    }
+    get digitLeftCount() {
+      return this[digitLeftCount];
+    }
+    set digitLeftCount(value) {
+      this[digitLeftCount] = value;
+    }
+    get zeroDigitCount() {
+      return this[zeroDigitCount];
+    }
+    set zeroDigitCount(value) {
+      this[zeroDigitCount] = value;
+    }
+    get digitRightCount() {
+      return this[digitRightCount];
+    }
+    set digitRightCount(value) {
+      this[digitRightCount] = value;
+    }
+    get groupingCount() {
+      return this[groupingCount];
+    }
+    set groupingCount(value) {
+      this[groupingCount] = value;
+    }
+    static parse(symbols, input, isForCurrency, currencySymbol, currencyName, decimalDigits) {
+      let t0;
+      return input == null ? new number_format_parser.NumberFormatParseResult.new(symbols, decimalDigits) : (t0 = new number_format_parser.NumberFormatParser.new(symbols, input, isForCurrency, currencySymbol, currencyName, decimalDigits), (() => {
+        t0[_parse]();
+        return t0;
+      })()).result;
+    }
+    get [_defaultDecimalDigits]() {
+      let t0;
+      t0 = number_symbols_data.currencyFractionDigits[$_get](this.currencyName[$toUpperCase]());
+      return t0 == null ? dart.nullCheck(number_symbols_data.currencyFractionDigits[$_get]("DEFAULT")) : t0;
+    }
+    [_parse]() {
+      let t0;
+      this.result.positivePrefix = this[_parseAffix]();
+      let trunk = this[_parseTrunk]();
+      this.result.positiveSuffix = this[_parseAffix]();
+      if (this.pattern.current === ";") {
+        this.pattern.moveNext();
+        this.result.negativePrefix = this[_parseAffix]();
+        let trunkIterator = new string_iterator.StringIterator.new(trunk);
+        while (trunkIterator.moveNext()) {
+          let each = trunkIterator.current;
+          if (this.pattern.current != each && this.pattern.current != null) {
+            dart.throw(new core.FormatException.new("Positive and negative trunks must be the same", trunk));
+          }
+          this.pattern.moveNext();
+        }
+        this.result.negativeSuffix = this[_parseAffix]();
+      } else {
+        this.result.negativePrefix = this.result.negativePrefix + this.result.positivePrefix;
+        this.result.negativeSuffix = this.result.positiveSuffix + this.result.negativeSuffix;
+      }
+      if (this.isForCurrency) {
+        t0 = this.result;
+        t0.decimalDigits == null ? t0.decimalDigits = this[_defaultDecimalDigits] : null;
+      }
+      if (this.result.decimalDigits != null) {
+        this.result.minimumFractionDigits = dart.nullCheck(this.result.decimalDigits);
+        this.result.maximumFractionDigits = dart.nullCheck(this.result.decimalDigits);
+      }
+    }
+    [_parseAffix]() {
+      let affix = new core.StringBuffer.new();
+      this.inQuote = false;
+      while (this.parseCharacterAffix(affix) && this.pattern.moveNext()) {
+      }
+      return affix.toString();
+    }
+    parseCharacterAffix(affix) {
+      let ch = this.pattern.current;
+      if (ch == null) return false;
+      if (ch === "'") {
+        if (this.pattern.peek === "'") {
+          this.pattern.moveNext();
+          affix.write("'");
+        } else {
+          this.inQuote = !this.inQuote;
+        }
+        return true;
+      }
+      if (this.inQuote) {
+        affix.write(ch);
+      } else {
+        switch (ch) {
+          case "#":
+          case "0":
+          case ",":
+          case ".":
+          case ";":
+          {
+            return false;
+          }
+          case "¤":
+          {
+            affix.write(this.currencySymbol);
+            break;
+          }
+          case "%":
+          {
+            if (this.result.multiplier !== 1 && this.result.multiplier !== 100) {
+              dart.throw(C[0] || CT.C0);
+            }
+            this.result.multiplier = 100;
+            affix.write(this.symbols.PERCENT);
+            break;
+          }
+          case "‰":
+          {
+            if (this.result.multiplier !== 1 && this.result.multiplier !== 1000) {
+              dart.throw(C[0] || CT.C0);
+            }
+            this.result.multiplier = 1000;
+            affix.write(this.symbols.PERMILL);
+            break;
+          }
+          default:
+          {
+            affix.write(ch);
+          }
+        }
+      }
+      return true;
+    }
+    [_parseTrunk]() {
+      let loop = true;
+      let trunk = new core.StringBuffer.new();
+      while (this.pattern.current != null && loop) {
+        loop = this.parseTrunkCharacter(trunk);
+      }
+      if (this.zeroDigitCount === 0 && this.digitLeftCount > 0 && this.decimalPos >= 0) {
+        let n = this.decimalPos === 0 ? 1 : this.decimalPos;
+        this.digitRightCount = this.digitLeftCount - n;
+        this.digitLeftCount = n - 1;
+        this.zeroDigitCount = 1;
+      }
+      if (this.decimalPos < 0 && this.digitRightCount > 0 || this.decimalPos >= 0 && (this.decimalPos < this.digitLeftCount || this.decimalPos > this.digitLeftCount + this.zeroDigitCount) || this.groupingCount === 0) {
+        dart.throw(new core.FormatException.new("Malformed pattern \"" + this.pattern.input + "\""));
+      }
+      let totalDigits = this.digitLeftCount + this.zeroDigitCount + this.digitRightCount;
+      this.result.maximumFractionDigits = this.decimalPos >= 0 ? totalDigits - this.decimalPos : 0;
+      if (this.decimalPos >= 0) {
+        this.result.minimumFractionDigits = this.digitLeftCount + this.zeroDigitCount - this.decimalPos;
+        if (this.result.minimumFractionDigits < 0) {
+          this.result.minimumFractionDigits = 0;
+        }
+      }
+      let effectiveDecimalPos = this.decimalPos >= 0 ? this.decimalPos : totalDigits;
+      this.result.minimumIntegerDigits = effectiveDecimalPos - this.digitLeftCount;
+      if (this.result.useExponentialNotation) {
+        this.result.maximumIntegerDigits = this.digitLeftCount + this.result.minimumIntegerDigits;
+        if (this.result.maximumFractionDigits === 0 && this.result.minimumIntegerDigits === 0) {
+          this.result.minimumIntegerDigits = 1;
+        }
+      }
+      this.result.finalGroupingSize = math.max(core.int, 0, this.groupingCount);
+      if (!this.groupingSizeSetExplicitly) {
+        this.result.groupingSize = this.result.finalGroupingSize;
+      }
+      this.result.decimalSeparatorAlwaysShown = this.decimalPos === 0 || this.decimalPos === totalDigits;
+      return trunk.toString();
+    }
+    parseTrunkCharacter(trunk) {
+      let t0;
+      let ch = this.pattern.current;
+      switch (ch) {
+        case "#":
+        {
+          if (this.zeroDigitCount > 0) {
+            this.digitRightCount = this.digitRightCount + 1;
+          } else {
+            this.digitLeftCount = this.digitLeftCount + 1;
+          }
+          if (this.groupingCount >= 0 && this.decimalPos < 0) {
+            this.groupingCount = this.groupingCount + 1;
+          }
+          break;
+        }
+        case "0":
+        {
+          if (this.digitRightCount > 0) {
+            dart.throw(new core.FormatException.new("Unexpected \"0\" in pattern \"" + this.pattern.input));
+          }
+          this.zeroDigitCount = this.zeroDigitCount + 1;
+          if (this.groupingCount >= 0 && this.decimalPos < 0) {
+            this.groupingCount = this.groupingCount + 1;
+          }
+          break;
+        }
+        case ",":
+        {
+          if (this.groupingCount > 0) {
+            this.groupingSizeSetExplicitly = true;
+            this.result.groupingSize = this.groupingCount;
+          }
+          this.groupingCount = 0;
+          break;
+        }
+        case ".":
+        {
+          if (this.decimalPos >= 0) {
+            dart.throw(new core.FormatException.new("Multiple decimal separators in pattern \"" + dart.str(this.pattern) + "\""));
+          }
+          this.decimalPos = this.digitLeftCount + this.zeroDigitCount + this.digitRightCount;
+          break;
+        }
+        case "E":
+        {
+          dart.dsend(trunk, 'write', [ch]);
+          if (this.result.useExponentialNotation) {
+            dart.throw(new core.FormatException.new("Multiple exponential symbols in pattern \"" + dart.str(this.pattern) + "\""));
+          }
+          this.result.useExponentialNotation = true;
+          this.result.minimumExponentDigits = 0;
+          this.pattern.moveNext();
+          let nextChar = this.pattern.current;
+          if (nextChar === "+") {
+            dart.dsend(trunk, 'write', [this.pattern.current]);
+            this.pattern.moveNext();
+            this.result.useSignForPositiveExponent = true;
+          }
+          while (this.pattern.current === "0") {
+            dart.dsend(trunk, 'write', [this.pattern.current]);
+            this.pattern.moveNext();
+            t0 = this.result;
+            t0.minimumExponentDigits = t0.minimumExponentDigits + 1;
+          }
+          if (this.digitLeftCount + this.zeroDigitCount < 1 || this.result.minimumExponentDigits < 1) {
+            dart.throw(new core.FormatException.new("Malformed exponential pattern \"" + dart.str(this.pattern) + "\""));
+          }
+          return false;
+        }
+        default:
+        {
+          return false;
+        }
+      }
+      dart.dsend(trunk, 'write', [ch]);
+      this.pattern.moveNext();
+      return true;
+    }
+  };
+  (number_format_parser.NumberFormatParser.new = function(symbols, input, isForCurrency, currencySymbol, currencyName, decimalDigits) {
+    this[groupingSizeSetExplicitly] = false;
+    this[inQuote] = false;
+    this[decimalPos] = -1;
+    this[digitLeftCount] = 0;
+    this[zeroDigitCount] = 0;
+    this[digitRightCount] = 0;
+    this[groupingCount] = -1;
+    this[symbols$] = symbols;
+    this[isForCurrency$] = isForCurrency;
+    this[currencySymbol$] = currencySymbol;
+    this[currencyName$] = currencyName;
+    this[result] = new number_format_parser.NumberFormatParseResult.new(symbols, decimalDigits);
+    this[pattern] = new string_iterator.StringIterator.new(input);
+    this.pattern.moveNext();
+  }).prototype = number_format_parser.NumberFormatParser.prototype;
+  dart.addTypeTests(number_format_parser.NumberFormatParser);
+  dart.addTypeCaches(number_format_parser.NumberFormatParser);
+  dart.setMethodSignature(number_format_parser.NumberFormatParser, () => ({
+    __proto__: dart.getMethods(number_format_parser.NumberFormatParser.__proto__),
+    [_parse]: dart.fnType(dart.void, []),
+    [_parseAffix]: dart.fnType(core.String, []),
+    parseCharacterAffix: dart.fnType(core.bool, [core.StringBuffer]),
+    [_parseTrunk]: dart.fnType(core.String, []),
+    parseTrunkCharacter: dart.fnType(core.bool, [dart.dynamic])
   }));
-  dart.setLibraryUri(list_body.RenderListBody, I[0]);
-  dart.setFieldSignature(list_body.RenderListBody, () => ({
-    __proto__: dart.getFields(list_body.RenderListBody.__proto__),
-    [_axisDirection]: dart.fieldType(basic_types.AxisDirection)
+  dart.setGetterSignature(number_format_parser.NumberFormatParser, () => ({
+    __proto__: dart.getGetters(number_format_parser.NumberFormatParser.__proto__),
+    [_defaultDecimalDigits]: core.int
   }));
-  dart.trackLibraries("packages/flutter/src/rendering/list_body.dart", {
-    "package:flutter/src/rendering/list_body.dart": list_body
+  dart.setLibraryUri(number_format_parser.NumberFormatParser, I[0]);
+  dart.setFieldSignature(number_format_parser.NumberFormatParser, () => ({
+    __proto__: dart.getFields(number_format_parser.NumberFormatParser.__proto__),
+    symbols: dart.finalFieldType(number_symbols.NumberSymbols),
+    pattern: dart.finalFieldType(string_iterator.StringIterator),
+    isForCurrency: dart.finalFieldType(core.bool),
+    currencySymbol: dart.finalFieldType(core.String),
+    currencyName: dart.finalFieldType(core.String),
+    result: dart.finalFieldType(number_format_parser.NumberFormatParseResult),
+    groupingSizeSetExplicitly: dart.fieldType(core.bool),
+    inQuote: dart.fieldType(core.bool),
+    decimalPos: dart.fieldType(core.int),
+    digitLeftCount: dart.fieldType(core.int),
+    zeroDigitCount: dart.fieldType(core.int),
+    digitRightCount: dart.fieldType(core.int),
+    groupingCount: dart.fieldType(core.int)
+  }));
+  dart.defineLazy(number_format_parser.NumberFormatParser, {
+    /*number_format_parser.NumberFormatParser.PATTERN_SEPARATOR*/get PATTERN_SEPARATOR() {
+      return ";";
+    },
+    /*number_format_parser.NumberFormatParser.QUOTE*/get QUOTE() {
+      return "'";
+    },
+    /*number_format_parser.NumberFormatParser.PATTERN_DIGIT*/get PATTERN_DIGIT() {
+      return "#";
+    },
+    /*number_format_parser.NumberFormatParser.PATTERN_ZERO_DIGIT*/get PATTERN_ZERO_DIGIT() {
+      return "0";
+    },
+    /*number_format_parser.NumberFormatParser.PATTERN_GROUPING_SEPARATOR*/get PATTERN_GROUPING_SEPARATOR() {
+      return ",";
+    },
+    /*number_format_parser.NumberFormatParser.PATTERN_DECIMAL_SEPARATOR*/get PATTERN_DECIMAL_SEPARATOR() {
+      return ".";
+    },
+    /*number_format_parser.NumberFormatParser.PATTERN_CURRENCY_SIGN*/get PATTERN_CURRENCY_SIGN() {
+      return "¤";
+    },
+    /*number_format_parser.NumberFormatParser.PATTERN_PER_MILLE*/get PATTERN_PER_MILLE() {
+      return "‰";
+    },
+    /*number_format_parser.NumberFormatParser.PER_MILLE_SCALE*/get PER_MILLE_SCALE() {
+      return 1000;
+    },
+    /*number_format_parser.NumberFormatParser.PATTERN_PERCENT*/get PATTERN_PERCENT() {
+      return "%";
+    },
+    /*number_format_parser.NumberFormatParser.PERCENT_SCALE*/get PERCENT_SCALE() {
+      return 100;
+    },
+    /*number_format_parser.NumberFormatParser.PATTERN_EXPONENT*/get PATTERN_EXPONENT() {
+      return "E";
+    },
+    /*number_format_parser.NumberFormatParser.PATTERN_PLUS*/get PATTERN_PLUS() {
+      return "+";
+    }
+  }, false);
+  dart.defineLazy(number_format_parser, {
+    /*number_format_parser._ln10*/get _ln10() {
+      return math.log(10);
+    }
+  }, false);
+  dart.trackLibraries("packages/intl/src/intl/number_format_parser.dart", {
+    "package:intl/src/intl/number_format_parser.dart": number_format_parser
   }, {
-  }, '{"version":3,"sourceRoot":"","sources":["list_body.dart"],"names":[],"mappings":"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","file":"../../../../../../../../packages/flutter/src/rendering/list_body.dart.lib.js"}');
+  }, '{"version":3,"sourceRoot":"","sources":["number_format_parser.dart"],"names":[],"mappings":"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","file":"../../../../../../../../../../packages/intl/src/intl/number_format_parser.dart.lib.js"}');
   // Exports:
   return {
-    src__rendering__list_body: list_body
+    src__intl__number_format_parser: number_format_parser
   };
 }));
 
-//# sourceMappingURL=list_body.dart.lib.js.map
+//# sourceMappingURL=number_format_parser.dart.lib.js.map
