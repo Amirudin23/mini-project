@@ -1,1344 +1,577 @@
-define(['dart_sdk', 'packages/intl/src/intl/intl_stream.dart', 'packages/intl/src/intl/constants.dart', 'packages/intl/number_symbols.dart', 'packages/intl/src/intl_helpers.dart', 'packages/intl/number_symbols_data.dart', 'packages/intl/src/intl/number_format_parser.dart'], (function load__packages__intl__src__intl__number_parser_dart(dart_sdk, packages__intl__src__intl__intl_stream$46dart, packages__intl__src__intl__constants$46dart, packages__intl__number_symbols$46dart, packages__intl__src__intl_helpers$46dart, packages__intl__number_symbols_data$46dart, packages__intl__src__intl__number_format_parser$46dart) {
+define(['dart_sdk', 'packages/flutter/src/rendering/layer.dart', 'packages/flutter/src/rendering/sliver.dart', 'packages/flutter/src/painting/basic_types.dart', 'packages/flutter/src/rendering/sliver_multi_box_adaptor.dart'], (function load__packages__flutter__src__rendering__sliver_grid_dart(dart_sdk, packages__flutter__src__rendering__layer$46dart, packages__flutter__src__rendering__sliver$46dart, packages__flutter__src__painting__basic_types$46dart, packages__flutter__src__rendering__sliver_multi_box_adaptor$46dart) {
   'use strict';
   const core = dart_sdk.core;
-  const _js_helper = dart_sdk._js_helper;
-  const math = dart_sdk.math;
   const _interceptors = dart_sdk._interceptors;
+  const math = dart_sdk.math;
   const dart = dart_sdk.dart;
   const dartx = dart_sdk.dartx;
-  const intl_stream = packages__intl__src__intl__intl_stream$46dart.src__intl__intl_stream;
-  const constants = packages__intl__src__intl__constants$46dart.src__intl__constants;
-  const number_symbols = packages__intl__number_symbols$46dart.number_symbols;
-  const intl_helpers = packages__intl__src__intl_helpers$46dart.src__intl_helpers;
-  const number_symbols_data = packages__intl__number_symbols_data$46dart.number_symbols_data;
-  const number_format_parser = packages__intl__src__intl__number_format_parser$46dart.src__intl__number_format_parser;
-  var number_parser = Object.create(dart.library);
-  var number_format = Object.create(dart.library);
-  var $codeUnitAt = dartx.codeUnitAt;
-  var $isNotEmpty = dartx.isNotEmpty;
-  var $keys = dartx.keys;
-  var $_get = dartx._get;
-  var $containsKey = dartx.containsKey;
-  var $floor = dartx.floor;
-  var $modulo = dartx['%'];
-  var $toString = dartx.toString;
-  var $isInfinite = dartx.isInfinite;
-  var $isNaN = dartx.isNaN;
-  var $round = dartx.round;
-  var $ceil = dartx.ceil;
-  var $times = dartx['*'];
-  var $toInt = dartx.toInt;
+  const box = packages__flutter__src__rendering__layer$46dart.src__rendering__box;
+  const object = packages__flutter__src__rendering__layer$46dart.src__rendering__object;
+  const sliver = packages__flutter__src__rendering__sliver$46dart.src__rendering__sliver;
+  const basic_types = packages__flutter__src__painting__basic_types$46dart.src__painting__basic_types;
+  const sliver_multi_box_adaptor = packages__flutter__src__rendering__sliver_multi_box_adaptor$46dart.src__rendering__sliver_multi_box_adaptor;
+  var sliver_grid = Object.create(dart.library);
+  var $join = dartx.join;
   var $truncate = dartx.truncate;
-  var $isEmpty = dartx.isEmpty;
-  var $padLeft = dartx.padLeft;
-  var $substring = dartx.substring;
-  var $startsWith = dartx.startsWith;
-  var $replaceAll = dartx.replaceAll;
-  var $contains = dartx.contains;
-  var $split = dartx.split;
-  var $first = dartx.first;
-  var $last = dartx.last;
-  var $add = dartx.add;
-  var $forEach = dartx.forEach;
-  var $reversed = dartx.reversed;
-  var $toList = dartx.toList;
-  var $replaceFirst = dartx.replaceFirst;
-  var $trim = dartx.trim;
-  var $expand = dartx.expand;
-  var $endsWith = dartx.endsWith;
+  var $ceil = dartx.ceil;
+  var $modulo = dartx['%'];
+  var $_equals = dartx._equals;
+  var $runtimeType = dartx.runtimeType;
+  var $isFinite = dartx.isFinite;
+  var $clamp = dartx.clamp;
   dart._checkModuleNullSafetyMode(true);
   var T = {
-    VoidToString: () => (T.VoidToString = dart.constFn(dart.fnType(core.String, [])))(),
-    IdentityMapOfString$Function: () => (T.IdentityMapOfString$Function = dart.constFn(_js_helper.IdentityMap$(core.String, core.Function)))(),
-    StringTobool: () => (T.StringTobool = dart.constFn(dart.fnType(core.bool, [core.String])))(),
-    StringN: () => (T.StringN = dart.constFn(dart.nullable(core.String)))(),
-    NumberSymbolsToStringN: () => (T.NumberSymbolsToStringN = dart.constFn(dart.fnType(T.StringN(), [number_symbols.NumberSymbols])))(),
-    NumberSymbolsToString: () => (T.NumberSymbolsToString = dart.constFn(dart.fnType(core.String, [number_symbols.NumberSymbols])))(),
-    dynamicTobool: () => (T.dynamicTobool = dart.constFn(dart.fnType(core.bool, [dart.dynamic])))(),
-    JSArrayOf_CompactStyle: () => (T.JSArrayOf_CompactStyle = dart.constFn(_interceptors.JSArray$(number_format._CompactStyle)))(),
-    JSArrayOf_CompactStyleBase: () => (T.JSArrayOf_CompactStyleBase = dart.constFn(_interceptors.JSArray$(number_format._CompactStyleBase)))(),
-    intAndStringTovoid: () => (T.intAndStringTovoid = dart.constFn(dart.fnType(dart.void, [core.int, core.String])))(),
-    IterableOf_CompactStyle: () => (T.IterableOf_CompactStyle = dart.constFn(core.Iterable$(number_format._CompactStyle)))(),
-    _CompactStyleBaseToIterableOf_CompactStyle: () => (T._CompactStyleBaseToIterableOf_CompactStyle = dart.constFn(dart.fnType(T.IterableOf_CompactStyle(), [number_format._CompactStyleBase])))()
+    JSArrayOfString: () => (T.JSArrayOfString = dart.constFn(_interceptors.JSArray$(core.String)))()
   };
   const CT = Object.create({
     _: () => (C, CT)
   });
-  dart.defineLazy(CT, {
-    get C0() {
-      return C[0] = dart.fn(number_format.NumberFormat.localeExists, T.dynamicTobool());
-    },
-    get C1() {
-      return C[1] = dart.const({
-        __proto__: number_format._CompactFormatType.prototype,
-        [_name$]: "_CompactFormatType.COMPACT_DECIMAL_SHORT_PATTERN",
-        index: 0
-      });
-    },
-    get C2() {
-      return C[2] = dart.const({
-        __proto__: number_format._CompactFormatType.prototype,
-        [_name$]: "_CompactFormatType.COMPACT_DECIMAL_LONG_PATTERN",
-        index: 1
-      });
-    },
-    get C3() {
-      return C[3] = dart.const({
-        __proto__: number_format._CompactFormatType.prototype,
-        [_name$]: "_CompactFormatType.COMPACT_DECIMAL_SHORT_CURRENCY_PATTERN",
-        index: 2
-      });
-    },
-    get C4() {
-      return C[4] = dart.constList([C[1] || CT.C1, C[2] || CT.C2, C[3] || CT.C3], number_format._CompactFormatType);
-    },
-    get C5() {
-      return C[5] = dart.fn(number_format._CompactNumberFormat._forDecimal, T.NumberSymbolsToString());
-    }
-  }, false);
-  var C = Array(6).fill(void 0);
   var I = [
-    "package:intl/src/intl/number_parser.dart",
-    "package:intl/src/intl/number_format.dart"
+    "package:flutter/src/rendering/sliver_grid.dart",
+    "file:///G:/Nitoza/SDK/flutter/packages/flutter/lib/src/rendering/sliver_grid.dart"
   ];
-  var format$ = dart.privateName(number_parser, "NumberParser.format");
-  var text$ = dart.privateName(number_parser, "NumberParser.text");
-  var input = dart.privateName(number_parser, "NumberParser.input");
-  var value$ = dart.privateName(number_parser, "NumberParser.value");
-  var gotPositive = dart.privateName(number_parser, "NumberParser.gotPositive");
-  var gotNegative = dart.privateName(number_parser, "NumberParser.gotNegative");
-  var gotPositiveSuffix = dart.privateName(number_parser, "NumberParser.gotPositiveSuffix");
-  var gotNegativeSuffix = dart.privateName(number_parser, "NumberParser.gotNegativeSuffix");
-  var done = dart.privateName(number_parser, "NumberParser.done");
-  var prefixesSkipped = dart.privateName(number_parser, "NumberParser.prefixesSkipped");
-  var scale = dart.privateName(number_parser, "NumberParser.scale");
-  var _normalized = dart.privateName(number_parser, "_normalized");
-  var _replacements = dart.privateName(number_parser, "_replacements");
-  var _positivePrefix = dart.privateName(number_parser, "_positivePrefix");
-  var _negativePrefix = dart.privateName(number_parser, "_negativePrefix");
-  var _positiveSuffix = dart.privateName(number_parser, "_positiveSuffix");
-  var _negativeSuffix = dart.privateName(number_parser, "_negativeSuffix");
-  var _localeZero = dart.privateName(number_parser, "_localeZero");
-  var _initializeReplacements = dart.privateName(number_parser, "_initializeReplacements");
-  number_parser.NumberParser = class NumberParser extends core.Object {
-    get format() {
-      return this[format$];
+  var scrollOffset$ = dart.privateName(sliver_grid, "SliverGridGeometry.scrollOffset");
+  var crossAxisOffset$ = dart.privateName(sliver_grid, "SliverGridGeometry.crossAxisOffset");
+  var mainAxisExtent$ = dart.privateName(sliver_grid, "SliverGridGeometry.mainAxisExtent");
+  var crossAxisExtent$ = dart.privateName(sliver_grid, "SliverGridGeometry.crossAxisExtent");
+  sliver_grid.SliverGridGeometry = class SliverGridGeometry extends core.Object {
+    get scrollOffset() {
+      return this[scrollOffset$];
     }
-    set format(value) {
-      super.format = value;
+    set scrollOffset(value) {
+      super.scrollOffset = value;
     }
-    get text() {
-      return this[text$];
+    get crossAxisOffset() {
+      return this[crossAxisOffset$];
     }
-    set text(value) {
-      super.text = value;
+    set crossAxisOffset(value) {
+      super.crossAxisOffset = value;
     }
-    get input() {
-      return this[input];
+    get mainAxisExtent() {
+      return this[mainAxisExtent$];
     }
-    set input(value) {
-      super.input = value;
+    set mainAxisExtent(value) {
+      super.mainAxisExtent = value;
     }
-    get value() {
-      return this[value$];
+    get crossAxisExtent() {
+      return this[crossAxisExtent$];
     }
-    set value(value) {
-      this[value$] = value;
+    set crossAxisExtent(value) {
+      super.crossAxisExtent = value;
     }
-    get gotPositive() {
-      return this[gotPositive];
+    get trailingScrollOffset() {
+      return this.scrollOffset + this.mainAxisExtent;
     }
-    set gotPositive(value) {
-      this[gotPositive] = value;
+    getBoxConstraints(constraints) {
+      return constraints.asBoxConstraints({minExtent: this.mainAxisExtent, maxExtent: this.mainAxisExtent, crossAxisExtent: this.crossAxisExtent});
     }
-    get gotNegative() {
-      return this[gotNegative];
+    toString() {
+      let properties = T.JSArrayOfString().of(["scrollOffset: " + dart.str(this.scrollOffset), "crossAxisOffset: " + dart.str(this.crossAxisOffset), "mainAxisExtent: " + dart.str(this.mainAxisExtent), "crossAxisExtent: " + dart.str(this.crossAxisExtent)]);
+      return "SliverGridGeometry(" + properties[$join](", ") + ")";
     }
-    set gotNegative(value) {
-      this[gotNegative] = value;
+  };
+  (sliver_grid.SliverGridGeometry.new = function(opts) {
+    let scrollOffset = opts && 'scrollOffset' in opts ? opts.scrollOffset : null;
+    let crossAxisOffset = opts && 'crossAxisOffset' in opts ? opts.crossAxisOffset : null;
+    let mainAxisExtent = opts && 'mainAxisExtent' in opts ? opts.mainAxisExtent : null;
+    let crossAxisExtent = opts && 'crossAxisExtent' in opts ? opts.crossAxisExtent : null;
+    this[scrollOffset$] = scrollOffset;
+    this[crossAxisOffset$] = crossAxisOffset;
+    this[mainAxisExtent$] = mainAxisExtent;
+    this[crossAxisExtent$] = crossAxisExtent;
+    ;
+  }).prototype = sliver_grid.SliverGridGeometry.prototype;
+  dart.addTypeTests(sliver_grid.SliverGridGeometry);
+  dart.addTypeCaches(sliver_grid.SliverGridGeometry);
+  dart.setMethodSignature(sliver_grid.SliverGridGeometry, () => ({
+    __proto__: dart.getMethods(sliver_grid.SliverGridGeometry.__proto__),
+    getBoxConstraints: dart.fnType(box.BoxConstraints, [sliver.SliverConstraints])
+  }));
+  dart.setGetterSignature(sliver_grid.SliverGridGeometry, () => ({
+    __proto__: dart.getGetters(sliver_grid.SliverGridGeometry.__proto__),
+    trailingScrollOffset: core.double
+  }));
+  dart.setLibraryUri(sliver_grid.SliverGridGeometry, I[0]);
+  dart.setFieldSignature(sliver_grid.SliverGridGeometry, () => ({
+    __proto__: dart.getFields(sliver_grid.SliverGridGeometry.__proto__),
+    scrollOffset: dart.finalFieldType(core.double),
+    crossAxisOffset: dart.finalFieldType(core.double),
+    mainAxisExtent: dart.finalFieldType(core.double),
+    crossAxisExtent: dart.finalFieldType(core.double)
+  }));
+  dart.defineExtensionMethods(sliver_grid.SliverGridGeometry, ['toString']);
+  sliver_grid.SliverGridLayout = class SliverGridLayout extends core.Object {};
+  (sliver_grid.SliverGridLayout.new = function() {
+    ;
+  }).prototype = sliver_grid.SliverGridLayout.prototype;
+  dart.addTypeTests(sliver_grid.SliverGridLayout);
+  dart.addTypeCaches(sliver_grid.SliverGridLayout);
+  dart.setLibraryUri(sliver_grid.SliverGridLayout, I[0]);
+  var crossAxisCount$ = dart.privateName(sliver_grid, "SliverGridRegularTileLayout.crossAxisCount");
+  var mainAxisStride$ = dart.privateName(sliver_grid, "SliverGridRegularTileLayout.mainAxisStride");
+  var crossAxisStride$ = dart.privateName(sliver_grid, "SliverGridRegularTileLayout.crossAxisStride");
+  var childMainAxisExtent$ = dart.privateName(sliver_grid, "SliverGridRegularTileLayout.childMainAxisExtent");
+  var childCrossAxisExtent$ = dart.privateName(sliver_grid, "SliverGridRegularTileLayout.childCrossAxisExtent");
+  var reverseCrossAxis$ = dart.privateName(sliver_grid, "SliverGridRegularTileLayout.reverseCrossAxis");
+  var _getOffsetFromStartInCrossAxis = dart.privateName(sliver_grid, "_getOffsetFromStartInCrossAxis");
+  sliver_grid.SliverGridRegularTileLayout = class SliverGridRegularTileLayout extends sliver_grid.SliverGridLayout {
+    get crossAxisCount() {
+      return this[crossAxisCount$];
     }
-    get gotPositiveSuffix() {
-      return this[gotPositiveSuffix];
+    set crossAxisCount(value) {
+      super.crossAxisCount = value;
     }
-    set gotPositiveSuffix(value) {
-      this[gotPositiveSuffix] = value;
+    get mainAxisStride() {
+      return this[mainAxisStride$];
     }
-    get gotNegativeSuffix() {
-      return this[gotNegativeSuffix];
+    set mainAxisStride(value) {
+      super.mainAxisStride = value;
     }
-    set gotNegativeSuffix(value) {
-      this[gotNegativeSuffix] = value;
+    get crossAxisStride() {
+      return this[crossAxisStride$];
     }
-    get done() {
-      return this[done];
+    set crossAxisStride(value) {
+      super.crossAxisStride = value;
     }
-    set done(value) {
-      this[done] = value;
+    get childMainAxisExtent() {
+      return this[childMainAxisExtent$];
     }
-    get prefixesSkipped() {
-      return this[prefixesSkipped];
+    set childMainAxisExtent(value) {
+      super.childMainAxisExtent = value;
     }
-    set prefixesSkipped(value) {
-      this[prefixesSkipped] = value;
+    get childCrossAxisExtent() {
+      return this[childCrossAxisExtent$];
     }
-    get scale() {
-      return this[scale];
+    set childCrossAxisExtent(value) {
+      super.childCrossAxisExtent = value;
     }
-    set scale(value) {
-      this[scale] = value;
+    get reverseCrossAxis() {
+      return this[reverseCrossAxis$];
     }
-    get symbols() {
-      return this.format.symbols;
+    set reverseCrossAxis(value) {
+      super.reverseCrossAxis = value;
     }
-    get [_positivePrefix]() {
-      return this.format.positivePrefix;
+    getMinChildIndexForScrollOffset(scrollOffset) {
+      return this.mainAxisStride > 1e-10 ? this.crossAxisCount * (scrollOffset / this.mainAxisStride)[$truncate]() : 0;
     }
-    get [_negativePrefix]() {
-      return this.format.negativePrefix;
+    getMaxChildIndexForScrollOffset(scrollOffset) {
+      if (this.mainAxisStride > 0.0) {
+        let mainAxisCount = (scrollOffset / this.mainAxisStride)[$ceil]();
+        return math.max(core.int, 0, this.crossAxisCount * mainAxisCount - 1);
+      }
+      return 0;
     }
-    get [_positiveSuffix]() {
-      return this.format.positiveSuffix;
+    [_getOffsetFromStartInCrossAxis](crossAxisStart) {
+      if (this.reverseCrossAxis) return this.crossAxisCount * this.crossAxisStride - crossAxisStart - this.childCrossAxisExtent - (this.crossAxisStride - this.childCrossAxisExtent);
+      return crossAxisStart;
     }
-    get [_negativeSuffix]() {
-      return this.format.negativeSuffix;
+    getGeometryForChildIndex(index) {
+      let crossAxisStart = index[$modulo](this.crossAxisCount) * this.crossAxisStride;
+      return new sliver_grid.SliverGridGeometry.new({scrollOffset: (index / this.crossAxisCount)[$truncate]() * this.mainAxisStride, crossAxisOffset: this[_getOffsetFromStartInCrossAxis](crossAxisStart), mainAxisExtent: this.childMainAxisExtent, crossAxisExtent: this.childCrossAxisExtent});
     }
-    get [_localeZero]() {
-      return this.format.localeZero;
+    computeMaxScrollOffset(childCount) {
+      if (!(childCount !== null)) dart.assertFailed(null, I[1], 228, 12, "childCount != null");
+      let mainAxisCount = ((childCount - 1) / this.crossAxisCount)[$truncate]() + 1;
+      let mainAxisSpacing = this.mainAxisStride - this.childMainAxisExtent;
+      return this.mainAxisStride * mainAxisCount - mainAxisSpacing;
     }
-    get replacements() {
+  };
+  (sliver_grid.SliverGridRegularTileLayout.new = function(opts) {
+    let crossAxisCount = opts && 'crossAxisCount' in opts ? opts.crossAxisCount : null;
+    let mainAxisStride = opts && 'mainAxisStride' in opts ? opts.mainAxisStride : null;
+    let crossAxisStride = opts && 'crossAxisStride' in opts ? opts.crossAxisStride : null;
+    let childMainAxisExtent = opts && 'childMainAxisExtent' in opts ? opts.childMainAxisExtent : null;
+    let childCrossAxisExtent = opts && 'childCrossAxisExtent' in opts ? opts.childCrossAxisExtent : null;
+    let reverseCrossAxis = opts && 'reverseCrossAxis' in opts ? opts.reverseCrossAxis : null;
+    this[crossAxisCount$] = crossAxisCount;
+    this[mainAxisStride$] = mainAxisStride;
+    this[crossAxisStride$] = crossAxisStride;
+    this[childMainAxisExtent$] = childMainAxisExtent;
+    this[childCrossAxisExtent$] = childCrossAxisExtent;
+    this[reverseCrossAxis$] = reverseCrossAxis;
+    if (!(crossAxisCount !== null && crossAxisCount > 0)) dart.assertFailed(null, I[1], 158, 15, "crossAxisCount != null && crossAxisCount > 0");
+    if (!(mainAxisStride !== null && mainAxisStride >= 0)) dart.assertFailed(null, I[1], 159, 15, "mainAxisStride != null && mainAxisStride >= 0");
+    if (!(crossAxisStride !== null && crossAxisStride >= 0)) dart.assertFailed(null, I[1], 160, 15, "crossAxisStride != null && crossAxisStride >= 0");
+    if (!(childMainAxisExtent !== null && childMainAxisExtent >= 0)) dart.assertFailed(null, I[1], 161, 15, "childMainAxisExtent != null && childMainAxisExtent >= 0");
+    if (!(childCrossAxisExtent !== null && childCrossAxisExtent >= 0)) dart.assertFailed(null, I[1], 162, 15, "childCrossAxisExtent != null && childCrossAxisExtent >= 0");
+    if (!(reverseCrossAxis !== null)) dart.assertFailed(null, I[1], 163, 15, "reverseCrossAxis != null");
+    sliver_grid.SliverGridRegularTileLayout.__proto__.new.call(this);
+    ;
+  }).prototype = sliver_grid.SliverGridRegularTileLayout.prototype;
+  dart.addTypeTests(sliver_grid.SliverGridRegularTileLayout);
+  dart.addTypeCaches(sliver_grid.SliverGridRegularTileLayout);
+  dart.setMethodSignature(sliver_grid.SliverGridRegularTileLayout, () => ({
+    __proto__: dart.getMethods(sliver_grid.SliverGridRegularTileLayout.__proto__),
+    getMinChildIndexForScrollOffset: dart.fnType(core.int, [core.double]),
+    getMaxChildIndexForScrollOffset: dart.fnType(core.int, [core.double]),
+    [_getOffsetFromStartInCrossAxis]: dart.fnType(core.double, [core.double]),
+    getGeometryForChildIndex: dart.fnType(sliver_grid.SliverGridGeometry, [core.int]),
+    computeMaxScrollOffset: dart.fnType(core.double, [core.int])
+  }));
+  dart.setLibraryUri(sliver_grid.SliverGridRegularTileLayout, I[0]);
+  dart.setFieldSignature(sliver_grid.SliverGridRegularTileLayout, () => ({
+    __proto__: dart.getFields(sliver_grid.SliverGridRegularTileLayout.__proto__),
+    crossAxisCount: dart.finalFieldType(core.int),
+    mainAxisStride: dart.finalFieldType(core.double),
+    crossAxisStride: dart.finalFieldType(core.double),
+    childMainAxisExtent: dart.finalFieldType(core.double),
+    childCrossAxisExtent: dart.finalFieldType(core.double),
+    reverseCrossAxis: dart.finalFieldType(core.bool)
+  }));
+  sliver_grid.SliverGridDelegate = class SliverGridDelegate extends core.Object {};
+  (sliver_grid.SliverGridDelegate.new = function() {
+    ;
+  }).prototype = sliver_grid.SliverGridDelegate.prototype;
+  dart.addTypeTests(sliver_grid.SliverGridDelegate);
+  dart.addTypeCaches(sliver_grid.SliverGridDelegate);
+  dart.setLibraryUri(sliver_grid.SliverGridDelegate, I[0]);
+  var crossAxisCount$0 = dart.privateName(sliver_grid, "SliverGridDelegateWithFixedCrossAxisCount.crossAxisCount");
+  var mainAxisSpacing$ = dart.privateName(sliver_grid, "SliverGridDelegateWithFixedCrossAxisCount.mainAxisSpacing");
+  var crossAxisSpacing$ = dart.privateName(sliver_grid, "SliverGridDelegateWithFixedCrossAxisCount.crossAxisSpacing");
+  var childAspectRatio$ = dart.privateName(sliver_grid, "SliverGridDelegateWithFixedCrossAxisCount.childAspectRatio");
+  var mainAxisExtent$0 = dart.privateName(sliver_grid, "SliverGridDelegateWithFixedCrossAxisCount.mainAxisExtent");
+  var _debugAssertIsValid = dart.privateName(sliver_grid, "_debugAssertIsValid");
+  sliver_grid.SliverGridDelegateWithFixedCrossAxisCount = class SliverGridDelegateWithFixedCrossAxisCount extends sliver_grid.SliverGridDelegate {
+    get crossAxisCount() {
+      return this[crossAxisCount$0];
+    }
+    set crossAxisCount(value) {
+      super.crossAxisCount = value;
+    }
+    get mainAxisSpacing() {
+      return this[mainAxisSpacing$];
+    }
+    set mainAxisSpacing(value) {
+      super.mainAxisSpacing = value;
+    }
+    get crossAxisSpacing() {
+      return this[crossAxisSpacing$];
+    }
+    set crossAxisSpacing(value) {
+      super.crossAxisSpacing = value;
+    }
+    get childAspectRatio() {
+      return this[childAspectRatio$];
+    }
+    set childAspectRatio(value) {
+      super.childAspectRatio = value;
+    }
+    get mainAxisExtent() {
+      return this[mainAxisExtent$0];
+    }
+    set mainAxisExtent(value) {
+      super.mainAxisExtent = value;
+    }
+    [_debugAssertIsValid]() {
+      if (!(this.crossAxisCount > 0)) dart.assertFailed(null, I[1], 373, 12, "crossAxisCount > 0");
+      if (!(this.mainAxisSpacing >= 0.0)) dart.assertFailed(null, I[1], 374, 12, "mainAxisSpacing >= 0.0");
+      if (!(this.crossAxisSpacing >= 0.0)) dart.assertFailed(null, I[1], 375, 12, "crossAxisSpacing >= 0.0");
+      if (!(this.childAspectRatio > 0.0)) dart.assertFailed(null, I[1], 376, 12, "childAspectRatio > 0.0");
+      return true;
+    }
+    getLayout(constraints) {
       let t0;
-      t0 = this[_replacements];
-      return t0 == null ? this[_replacements] = this[_initializeReplacements]() : t0;
+      if (!this[_debugAssertIsValid]()) dart.assertFailed(null, I[1], 382, 12, "_debugAssertIsValid()");
+      let usableCrossAxisExtent = math.max(core.double, 0.0, constraints.crossAxisExtent - this.crossAxisSpacing * (this.crossAxisCount - 1));
+      let childCrossAxisExtent = usableCrossAxisExtent / this.crossAxisCount;
+      let childMainAxisExtent = (t0 = this.mainAxisExtent, t0 == null ? childCrossAxisExtent / this.childAspectRatio : t0);
+      return new sliver_grid.SliverGridRegularTileLayout.new({crossAxisCount: this.crossAxisCount, mainAxisStride: childMainAxisExtent + this.mainAxisSpacing, crossAxisStride: childCrossAxisExtent + this.crossAxisSpacing, childMainAxisExtent: childMainAxisExtent, childCrossAxisExtent: childCrossAxisExtent, reverseCrossAxis: basic_types.axisDirectionIsReversed(constraints.crossAxisDirection)});
     }
-    [_initializeReplacements]() {
-      return new (T.IdentityMapOfString$Function()).from([this.symbols.DECIMAL_SEP, dart.fn(() => ".", T.VoidToString()), this.symbols.EXP_SYMBOL, dart.fn(() => "E", T.VoidToString()), this.symbols.GROUP_SEP, dart.bind(this, 'handleSpace'), this.symbols.PERCENT, dart.fn(() => {
-          this.scale = 100;
-          return "";
-        }, T.VoidToString()), this.symbols.PERMILL, dart.fn(() => {
-          this.scale = 1000;
-          return "";
-        }, T.VoidToString()), " ", dart.bind(this, 'handleSpace'), " ", dart.bind(this, 'handleSpace'), "+", dart.fn(() => "+", T.VoidToString()), "-", dart.fn(() => "-", T.VoidToString())]);
+    shouldRelayout(oldDelegate) {
+      sliver_grid.SliverGridDelegateWithFixedCrossAxisCount.as(oldDelegate);
+      return oldDelegate.crossAxisCount !== this.crossAxisCount || oldDelegate.mainAxisSpacing !== this.mainAxisSpacing || oldDelegate.crossAxisSpacing !== this.crossAxisSpacing || oldDelegate.childAspectRatio !== this.childAspectRatio || oldDelegate.mainAxisExtent != this.mainAxisExtent;
     }
-    invalidFormat() {
-      return dart.throw(new core.FormatException.new("Invalid number: " + dart.str(this.input.contents)));
+  };
+  (sliver_grid.SliverGridDelegateWithFixedCrossAxisCount.new = function(opts) {
+    let crossAxisCount = opts && 'crossAxisCount' in opts ? opts.crossAxisCount : null;
+    let mainAxisSpacing = opts && 'mainAxisSpacing' in opts ? opts.mainAxisSpacing : 0;
+    let crossAxisSpacing = opts && 'crossAxisSpacing' in opts ? opts.crossAxisSpacing : 0;
+    let childAspectRatio = opts && 'childAspectRatio' in opts ? opts.childAspectRatio : 1;
+    let mainAxisExtent = opts && 'mainAxisExtent' in opts ? opts.mainAxisExtent : null;
+    this[crossAxisCount$0] = crossAxisCount;
+    this[mainAxisSpacing$] = mainAxisSpacing;
+    this[crossAxisSpacing$] = crossAxisSpacing;
+    this[childAspectRatio$] = childAspectRatio;
+    this[mainAxisExtent$0] = mainAxisExtent;
+    if (!(crossAxisCount !== null && crossAxisCount > 0)) dart.assertFailed(null, I[1], 349, 15, "crossAxisCount != null && crossAxisCount > 0");
+    if (!(mainAxisSpacing !== null && mainAxisSpacing >= 0)) dart.assertFailed(null, I[1], 350, 15, "mainAxisSpacing != null && mainAxisSpacing >= 0");
+    if (!(crossAxisSpacing !== null && crossAxisSpacing >= 0)) dart.assertFailed(null, I[1], 351, 15, "crossAxisSpacing != null && crossAxisSpacing >= 0");
+    if (!(childAspectRatio !== null && childAspectRatio > 0)) dart.assertFailed(null, I[1], 352, 15, "childAspectRatio != null && childAspectRatio > 0");
+    sliver_grid.SliverGridDelegateWithFixedCrossAxisCount.__proto__.new.call(this);
+    ;
+  }).prototype = sliver_grid.SliverGridDelegateWithFixedCrossAxisCount.prototype;
+  dart.addTypeTests(sliver_grid.SliverGridDelegateWithFixedCrossAxisCount);
+  dart.addTypeCaches(sliver_grid.SliverGridDelegateWithFixedCrossAxisCount);
+  dart.setMethodSignature(sliver_grid.SliverGridDelegateWithFixedCrossAxisCount, () => ({
+    __proto__: dart.getMethods(sliver_grid.SliverGridDelegateWithFixedCrossAxisCount.__proto__),
+    [_debugAssertIsValid]: dart.fnType(core.bool, []),
+    getLayout: dart.fnType(sliver_grid.SliverGridLayout, [sliver.SliverConstraints]),
+    shouldRelayout: dart.fnType(core.bool, [dart.nullable(core.Object)])
+  }));
+  dart.setLibraryUri(sliver_grid.SliverGridDelegateWithFixedCrossAxisCount, I[0]);
+  dart.setFieldSignature(sliver_grid.SliverGridDelegateWithFixedCrossAxisCount, () => ({
+    __proto__: dart.getFields(sliver_grid.SliverGridDelegateWithFixedCrossAxisCount.__proto__),
+    crossAxisCount: dart.finalFieldType(core.int),
+    mainAxisSpacing: dart.finalFieldType(core.double),
+    crossAxisSpacing: dart.finalFieldType(core.double),
+    childAspectRatio: dart.finalFieldType(core.double),
+    mainAxisExtent: dart.finalFieldType(dart.nullable(core.double))
+  }));
+  var maxCrossAxisExtent$ = dart.privateName(sliver_grid, "SliverGridDelegateWithMaxCrossAxisExtent.maxCrossAxisExtent");
+  var mainAxisSpacing$0 = dart.privateName(sliver_grid, "SliverGridDelegateWithMaxCrossAxisExtent.mainAxisSpacing");
+  var crossAxisSpacing$0 = dart.privateName(sliver_grid, "SliverGridDelegateWithMaxCrossAxisExtent.crossAxisSpacing");
+  var childAspectRatio$0 = dart.privateName(sliver_grid, "SliverGridDelegateWithMaxCrossAxisExtent.childAspectRatio");
+  var mainAxisExtent$1 = dart.privateName(sliver_grid, "SliverGridDelegateWithMaxCrossAxisExtent.mainAxisExtent");
+  sliver_grid.SliverGridDelegateWithMaxCrossAxisExtent = class SliverGridDelegateWithMaxCrossAxisExtent extends sliver_grid.SliverGridDelegate {
+    get maxCrossAxisExtent() {
+      return this[maxCrossAxisExtent$];
     }
-    handleSpace() {
-      return this.groupingIsNotASpaceOrElseItIsSpaceFollowedByADigit ? "" : this.invalidFormat();
+    set maxCrossAxisExtent(value) {
+      super.maxCrossAxisExtent = value;
     }
-    get groupingIsNotASpaceOrElseItIsSpaceFollowedByADigit() {
-      if (this.symbols.GROUP_SEP !== " " || this.symbols.GROUP_SEP !== " ") return true;
-      let peeked = this.input.peek(this.symbols.GROUP_SEP.length + 1);
-      return this.asDigit(core.String.as(dart.dsend(peeked, '_get', [dart.dsend(dart.dload(peeked, 'length'), '-', [1])]))) != null;
+    get mainAxisSpacing() {
+      return this[mainAxisSpacing$0];
     }
-    asDigit(char) {
-      let charCode = char[$codeUnitAt](0);
-      let digitValue = charCode - this[_localeZero];
-      if (digitValue >= 0 && digitValue < 10) {
-        return digitValue;
+    set mainAxisSpacing(value) {
+      super.mainAxisSpacing = value;
+    }
+    get crossAxisSpacing() {
+      return this[crossAxisSpacing$0];
+    }
+    set crossAxisSpacing(value) {
+      super.crossAxisSpacing = value;
+    }
+    get childAspectRatio() {
+      return this[childAspectRatio$0];
+    }
+    set childAspectRatio(value) {
+      super.childAspectRatio = value;
+    }
+    get mainAxisExtent() {
+      return this[mainAxisExtent$1];
+    }
+    set mainAxisExtent(value) {
+      super.mainAxisExtent = value;
+    }
+    [_debugAssertIsValid](crossAxisExtent) {
+      if (!(crossAxisExtent > 0.0)) dart.assertFailed(null, I[1], 482, 12, "crossAxisExtent > 0.0");
+      if (!(this.maxCrossAxisExtent > 0.0)) dart.assertFailed(null, I[1], 483, 12, "maxCrossAxisExtent > 0.0");
+      if (!(this.mainAxisSpacing >= 0.0)) dart.assertFailed(null, I[1], 484, 12, "mainAxisSpacing >= 0.0");
+      if (!(this.crossAxisSpacing >= 0.0)) dart.assertFailed(null, I[1], 485, 12, "crossAxisSpacing >= 0.0");
+      if (!(this.childAspectRatio > 0.0)) dart.assertFailed(null, I[1], 486, 12, "childAspectRatio > 0.0");
+      return true;
+    }
+    getLayout(constraints) {
+      let t0;
+      if (!this[_debugAssertIsValid](constraints.crossAxisExtent)) dart.assertFailed(null, I[1], 492, 12, "_debugAssertIsValid(constraints.crossAxisExtent)");
+      let crossAxisCount = (constraints.crossAxisExtent / (this.maxCrossAxisExtent + this.crossAxisSpacing))[$ceil]();
+      let usableCrossAxisExtent = math.max(core.double, 0.0, constraints.crossAxisExtent - this.crossAxisSpacing * (crossAxisCount - 1));
+      let childCrossAxisExtent = usableCrossAxisExtent / crossAxisCount;
+      let childMainAxisExtent = (t0 = this.mainAxisExtent, t0 == null ? childCrossAxisExtent / this.childAspectRatio : t0);
+      return new sliver_grid.SliverGridRegularTileLayout.new({crossAxisCount: crossAxisCount, mainAxisStride: childMainAxisExtent + this.mainAxisSpacing, crossAxisStride: childCrossAxisExtent + this.crossAxisSpacing, childMainAxisExtent: childMainAxisExtent, childCrossAxisExtent: childCrossAxisExtent, reverseCrossAxis: basic_types.axisDirectionIsReversed(constraints.crossAxisDirection)});
+    }
+    shouldRelayout(oldDelegate) {
+      sliver_grid.SliverGridDelegateWithMaxCrossAxisExtent.as(oldDelegate);
+      return oldDelegate.maxCrossAxisExtent !== this.maxCrossAxisExtent || oldDelegate.mainAxisSpacing !== this.mainAxisSpacing || oldDelegate.crossAxisSpacing !== this.crossAxisSpacing || oldDelegate.childAspectRatio !== this.childAspectRatio || oldDelegate.mainAxisExtent != this.mainAxisExtent;
+    }
+  };
+  (sliver_grid.SliverGridDelegateWithMaxCrossAxisExtent.new = function(opts) {
+    let maxCrossAxisExtent = opts && 'maxCrossAxisExtent' in opts ? opts.maxCrossAxisExtent : null;
+    let mainAxisSpacing = opts && 'mainAxisSpacing' in opts ? opts.mainAxisSpacing : 0;
+    let crossAxisSpacing = opts && 'crossAxisSpacing' in opts ? opts.crossAxisSpacing : 0;
+    let childAspectRatio = opts && 'childAspectRatio' in opts ? opts.childAspectRatio : 1;
+    let mainAxisExtent = opts && 'mainAxisExtent' in opts ? opts.mainAxisExtent : null;
+    this[maxCrossAxisExtent$] = maxCrossAxisExtent;
+    this[mainAxisSpacing$0] = mainAxisSpacing;
+    this[crossAxisSpacing$0] = crossAxisSpacing;
+    this[childAspectRatio$0] = childAspectRatio;
+    this[mainAxisExtent$1] = mainAxisExtent;
+    if (!(maxCrossAxisExtent !== null && maxCrossAxisExtent > 0)) dart.assertFailed(null, I[1], 448, 15, "maxCrossAxisExtent != null && maxCrossAxisExtent > 0");
+    if (!(mainAxisSpacing !== null && mainAxisSpacing >= 0)) dart.assertFailed(null, I[1], 449, 15, "mainAxisSpacing != null && mainAxisSpacing >= 0");
+    if (!(crossAxisSpacing !== null && crossAxisSpacing >= 0)) dart.assertFailed(null, I[1], 450, 15, "crossAxisSpacing != null && crossAxisSpacing >= 0");
+    if (!(childAspectRatio !== null && childAspectRatio > 0)) dart.assertFailed(null, I[1], 451, 15, "childAspectRatio != null && childAspectRatio > 0");
+    sliver_grid.SliverGridDelegateWithMaxCrossAxisExtent.__proto__.new.call(this);
+    ;
+  }).prototype = sliver_grid.SliverGridDelegateWithMaxCrossAxisExtent.prototype;
+  dart.addTypeTests(sliver_grid.SliverGridDelegateWithMaxCrossAxisExtent);
+  dart.addTypeCaches(sliver_grid.SliverGridDelegateWithMaxCrossAxisExtent);
+  dart.setMethodSignature(sliver_grid.SliverGridDelegateWithMaxCrossAxisExtent, () => ({
+    __proto__: dart.getMethods(sliver_grid.SliverGridDelegateWithMaxCrossAxisExtent.__proto__),
+    [_debugAssertIsValid]: dart.fnType(core.bool, [core.double]),
+    getLayout: dart.fnType(sliver_grid.SliverGridLayout, [sliver.SliverConstraints]),
+    shouldRelayout: dart.fnType(core.bool, [dart.nullable(core.Object)])
+  }));
+  dart.setLibraryUri(sliver_grid.SliverGridDelegateWithMaxCrossAxisExtent, I[0]);
+  dart.setFieldSignature(sliver_grid.SliverGridDelegateWithMaxCrossAxisExtent, () => ({
+    __proto__: dart.getFields(sliver_grid.SliverGridDelegateWithMaxCrossAxisExtent.__proto__),
+    maxCrossAxisExtent: dart.finalFieldType(core.double),
+    mainAxisSpacing: dart.finalFieldType(core.double),
+    crossAxisSpacing: dart.finalFieldType(core.double),
+    childAspectRatio: dart.finalFieldType(core.double),
+    mainAxisExtent: dart.finalFieldType(dart.nullable(core.double))
+  }));
+  var crossAxisOffset = dart.privateName(sliver_grid, "SliverGridParentData.crossAxisOffset");
+  sliver_grid.SliverGridParentData = class SliverGridParentData extends sliver_multi_box_adaptor.SliverMultiBoxAdaptorParentData {
+    get crossAxisOffset() {
+      return this[crossAxisOffset];
+    }
+    set crossAxisOffset(value) {
+      this[crossAxisOffset] = value;
+    }
+    toString() {
+      return "crossAxisOffset=" + dart.str(this.crossAxisOffset) + "; " + super.toString();
+    }
+  };
+  (sliver_grid.SliverGridParentData.new = function() {
+    this[crossAxisOffset] = null;
+    sliver_grid.SliverGridParentData.__proto__.new.call(this);
+    ;
+  }).prototype = sliver_grid.SliverGridParentData.prototype;
+  dart.addTypeTests(sliver_grid.SliverGridParentData);
+  dart.addTypeCaches(sliver_grid.SliverGridParentData);
+  dart.setLibraryUri(sliver_grid.SliverGridParentData, I[0]);
+  dart.setFieldSignature(sliver_grid.SliverGridParentData, () => ({
+    __proto__: dart.getFields(sliver_grid.SliverGridParentData.__proto__),
+    crossAxisOffset: dart.fieldType(dart.nullable(core.double))
+  }));
+  dart.defineExtensionMethods(sliver_grid.SliverGridParentData, ['toString']);
+  var _gridDelegate = dart.privateName(sliver_grid, "_gridDelegate");
+  sliver_grid.RenderSliverGrid = class RenderSliverGrid extends sliver_multi_box_adaptor.RenderSliverMultiBoxAdaptor {
+    setupParentData(child) {
+      object.RenderObject.as(child);
+      if (!sliver_grid.SliverGridParentData.is(child.parentData)) child.parentData = new sliver_grid.SliverGridParentData.new();
+    }
+    get gridDelegate() {
+      return this[_gridDelegate];
+    }
+    set gridDelegate(value) {
+      if (!(value !== null)) dart.assertFailed(null, I[1], 568, 12, "value != null");
+      if (this[_gridDelegate][$_equals](value)) return;
+      if (!value[$runtimeType]._equals(this[_gridDelegate][$runtimeType]) || value.shouldRelayout(this[_gridDelegate])) this.markNeedsLayout();
+      this[_gridDelegate] = value;
+    }
+    childCrossAxisPosition(child) {
+      box.RenderBox.as(child);
+      let childParentData = sliver_grid.SliverGridParentData.as(dart.nullCheck(child.parentData));
+      return dart.nullCheck(childParentData.crossAxisOffset);
+    }
+    performLayout() {
+      let constraints = this.constraints;
+      this.childManager.didStartLayout();
+      this.childManager.setDidUnderflow(false);
+      let scrollOffset = constraints.scrollOffset + constraints.cacheOrigin;
+      if (!(scrollOffset >= 0.0)) dart.assertFailed(null, I[1], 590, 12, "scrollOffset >= 0.0");
+      let remainingExtent = constraints.remainingCacheExtent;
+      if (!(remainingExtent >= 0.0)) dart.assertFailed(null, I[1], 592, 12, "remainingExtent >= 0.0");
+      let targetEndScrollOffset = scrollOffset + remainingExtent;
+      let layout = this[_gridDelegate].getLayout(constraints);
+      let firstIndex = layout.getMinChildIndexForScrollOffset(scrollOffset);
+      let targetLastIndex = targetEndScrollOffset[$isFinite] ? layout.getMaxChildIndexForScrollOffset(targetEndScrollOffset) : null;
+      if (this.firstChild != null) {
+        let oldFirstIndex = this.indexOf(dart.nullCheck(this.firstChild));
+        let oldLastIndex = this.indexOf(dart.nullCheck(this.lastChild));
+        let leadingGarbage = (firstIndex - oldFirstIndex)[$clamp](0, this.childCount);
+        let trailingGarbage = targetLastIndex == null ? 0 : (oldLastIndex - dart.notNull(targetLastIndex))[$clamp](0, this.childCount);
+        this.collectGarbage(leadingGarbage, trailingGarbage);
       } else {
-        return null;
+        this.collectGarbage(0, 0);
       }
-    }
-    checkPrefixes(opts) {
-      let skip = opts && 'skip' in opts ? opts.skip : false;
-      const checkPrefix = prefix => {
-        return prefix[$isNotEmpty] && this.input.startsWith(prefix);
-      };
-      dart.fn(checkPrefix, T.StringTobool());
-      if (checkPrefix(this[_positivePrefix])) this.gotPositive = true;
-      if (checkPrefix(this[_negativePrefix])) this.gotNegative = true;
-      if (this.gotPositive && this.gotNegative) {
-        if (this[_positivePrefix].length > this[_negativePrefix].length) {
-          this.gotNegative = false;
-        } else if (this[_negativePrefix].length > this[_positivePrefix].length) {
-          this.gotPositive = false;
-        }
-      }
-      if (skip) {
-        if (this.gotPositive) this.input.read(this[_positivePrefix].length);
-        if (this.gotNegative) this.input.read(this[_negativePrefix].length);
-      }
-    }
-    checkSuffixes() {
-      let remainder = this.input.rest();
-      if (dart.equals(remainder, this[_positiveSuffix])) this.gotPositiveSuffix = true;
-      if (dart.equals(remainder, this[_negativeSuffix])) this.gotNegativeSuffix = true;
-    }
-    processNonDigit() {
-      let foundAnInterpretation = false;
-      if (this.input.index === 0 && !this.prefixesSkipped) {
-        this.prefixesSkipped = true;
-        this.checkPrefixes({skip: true});
-        foundAnInterpretation = true;
-      }
-      for (let key of this.replacements[$keys]) {
-        if (this.input.startsWith(key)) {
-          this[_normalized].write(dart.dcall(dart.nullCheck(this.replacements[$_get](key)), []));
-          this.input.read(key.length);
+      let firstChildGridGeometry = layout.getGeometryForChildIndex(firstIndex);
+      let leadingScrollOffset = firstChildGridGeometry.scrollOffset;
+      let trailingScrollOffset = firstChildGridGeometry.trailingScrollOffset;
+      if (this.firstChild == null) {
+        if (!this.addInitialChild({index: firstIndex, layoutOffset: firstChildGridGeometry.scrollOffset})) {
+          let max = layout.computeMaxScrollOffset(this.childManager.childCount);
+          this.geometry = new sliver.SliverGeometry.new({scrollExtent: max, maxPaintExtent: max});
+          this.childManager.didFinishLayout();
           return;
         }
       }
-      if (!foundAnInterpretation) {
-        this.done = true;
+      let trailingChildWithLayout = null;
+      for (let index = this.indexOf(dart.nullCheck(this.firstChild)) - 1; index >= firstIndex; index = index - 1) {
+        let gridGeometry = layout.getGeometryForChildIndex(index);
+        let child = dart.nullCheck(this.insertAndLayoutLeadingChild(gridGeometry.getBoxConstraints(constraints)));
+        let childParentData = sliver_grid.SliverGridParentData.as(dart.nullCheck(child.parentData));
+        childParentData.layoutOffset = gridGeometry.scrollOffset;
+        childParentData.crossAxisOffset = gridGeometry.crossAxisOffset;
+        if (!(childParentData.index === index)) dart.assertFailed(null, I[1], 640, 14, "childParentData.index == index");
+        trailingChildWithLayout == null ? trailingChildWithLayout = child : null;
+        trailingScrollOffset = math.max(core.double, trailingScrollOffset, gridGeometry.trailingScrollOffset);
       }
-    }
-    parse() {
-      if (this.text === this.symbols.NAN) return 0.0 / 0.0;
-      if (this.text === this[_positivePrefix] + this.symbols.INFINITY + this[_positiveSuffix]) {
-        return 1.0 / 0.0;
+      if (trailingChildWithLayout == null) {
+        dart.nullCheck(this.firstChild).layout(firstChildGridGeometry.getBoxConstraints(constraints));
+        let childParentData = sliver_grid.SliverGridParentData.as(dart.nullCheck(dart.nullCheck(this.firstChild).parentData));
+        childParentData.layoutOffset = firstChildGridGeometry.scrollOffset;
+        childParentData.crossAxisOffset = firstChildGridGeometry.crossAxisOffset;
+        trailingChildWithLayout = this.firstChild;
       }
-      if (this.text === this[_negativePrefix] + this.symbols.INFINITY + this[_negativeSuffix]) {
-        return -1.0 / 0.0;
-      }
-      this.checkPrefixes();
-      let parsed = this.parseNumber(this.input);
-      if (this.gotPositive && !this.gotPositiveSuffix) this.invalidNumber();
-      if (this.gotNegative && !this.gotNegativeSuffix) this.invalidNumber();
-      if (!this.input.atEnd()) this.invalidNumber();
-      return parsed;
-    }
-    invalidNumber() {
-      return dart.throw(new core.FormatException.new("Invalid Number: " + dart.str(this.input.contents)));
-    }
-    parseNumber(input) {
-      if (this.gotNegative) {
-        this[_normalized].write("-");
-      }
-      while (!this.done && !input.atEnd()) {
-        let digit = this.asDigit(core.String.as(input.peek()));
-        if (digit != null) {
-          this[_normalized].writeCharCode(constants.asciiZeroCodeUnit + dart.notNull(digit));
-          input.next();
-        } else {
-          this.processNonDigit();
-        }
-        this.checkSuffixes();
-      }
-      let normalizedText = this[_normalized].toString();
-      let parsed = core.int.tryParse(normalizedText);
-      parsed == null ? parsed = core.double.parse(normalizedText) : null;
-      return dart.notNull(parsed) / this.scale;
-    }
-  };
-  (number_parser.NumberParser.new = function(format, text) {
-    this[value$] = null;
-    this[_normalized] = new core.StringBuffer.new();
-    this[gotPositive] = false;
-    this[gotNegative] = false;
-    this[gotPositiveSuffix] = false;
-    this[gotNegativeSuffix] = false;
-    this[done] = false;
-    this[prefixesSkipped] = false;
-    this[scale] = 1;
-    this[_replacements] = null;
-    this[format$] = format;
-    this[text$] = text;
-    this[input] = new intl_stream.IntlStream.new(text);
-    this.scale = this.format.multiplier;
-    this.value = this.parse();
-  }).prototype = number_parser.NumberParser.prototype;
-  dart.addTypeTests(number_parser.NumberParser);
-  dart.addTypeCaches(number_parser.NumberParser);
-  dart.setMethodSignature(number_parser.NumberParser, () => ({
-    __proto__: dart.getMethods(number_parser.NumberParser.__proto__),
-    [_initializeReplacements]: dart.fnType(core.Map$(core.String, core.Function), []),
-    invalidFormat: dart.fnType(dart.void, []),
-    handleSpace: dart.fnType(dart.void, []),
-    asDigit: dart.fnType(dart.nullable(core.int), [core.String]),
-    checkPrefixes: dart.fnType(dart.void, [], {skip: core.bool}, {}),
-    checkSuffixes: dart.fnType(dart.void, []),
-    processNonDigit: dart.fnType(dart.void, []),
-    parse: dart.fnType(core.num, []),
-    invalidNumber: dart.fnType(dart.void, []),
-    parseNumber: dart.fnType(core.num, [intl_stream.IntlStream])
-  }));
-  dart.setGetterSignature(number_parser.NumberParser, () => ({
-    __proto__: dart.getGetters(number_parser.NumberParser.__proto__),
-    symbols: number_symbols.NumberSymbols,
-    [_positivePrefix]: core.String,
-    [_negativePrefix]: core.String,
-    [_positiveSuffix]: core.String,
-    [_negativeSuffix]: core.String,
-    [_localeZero]: core.int,
-    replacements: core.Map$(core.String, core.Function),
-    groupingIsNotASpaceOrElseItIsSpaceFollowedByADigit: core.bool
-  }));
-  dart.setLibraryUri(number_parser.NumberParser, I[0]);
-  dart.setFieldSignature(number_parser.NumberParser, () => ({
-    __proto__: dart.getFields(number_parser.NumberParser.__proto__),
-    format: dart.finalFieldType(number_format.NumberFormat),
-    text: dart.finalFieldType(core.String),
-    input: dart.finalFieldType(intl_stream.IntlStream),
-    value: dart.fieldType(dart.nullable(core.num)),
-    [_normalized]: dart.finalFieldType(core.StringBuffer),
-    gotPositive: dart.fieldType(core.bool),
-    gotNegative: dart.fieldType(core.bool),
-    gotPositiveSuffix: dart.fieldType(core.bool),
-    gotNegativeSuffix: dart.fieldType(core.bool),
-    done: dart.fieldType(core.bool),
-    prefixesSkipped: dart.fieldType(core.bool),
-    scale: dart.fieldType(core.int),
-    [_replacements]: dart.fieldType(dart.nullable(core.Map$(core.String, core.Function)))
-  }));
-  var negativePrefix = dart.privateName(number_format, "NumberFormat.negativePrefix");
-  var positivePrefix = dart.privateName(number_format, "NumberFormat.positivePrefix");
-  var negativeSuffix = dart.privateName(number_format, "NumberFormat.negativeSuffix");
-  var positiveSuffix = dart.privateName(number_format, "NumberFormat.positiveSuffix");
-  var maximumIntegerDigits = dart.privateName(number_format, "NumberFormat.maximumIntegerDigits");
-  var minimumIntegerDigits = dart.privateName(number_format, "NumberFormat.minimumIntegerDigits");
-  var maximumFractionDigits = dart.privateName(number_format, "NumberFormat.maximumFractionDigits");
-  var minimumFractionDigits = dart.privateName(number_format, "NumberFormat.minimumFractionDigits");
-  var minimumExponentDigits = dart.privateName(number_format, "NumberFormat.minimumExponentDigits");
-  var significantDigitsInUse = dart.privateName(number_format, "NumberFormat.significantDigitsInUse");
-  var multiplier = dart.privateName(number_format, "NumberFormat.multiplier");
-  var currencyName$ = dart.privateName(number_format, "NumberFormat.currencyName");
-  var currencySymbol$ = dart.privateName(number_format, "NumberFormat.currencySymbol");
-  var decimalDigits = dart.privateName(number_format, "NumberFormat.decimalDigits");
-  var localeZero$ = dart.privateName(number_format, "NumberFormat.localeZero");
-  var _significantDigits = dart.privateName(number_format, "_significantDigits");
-  var _buffer = dart.privateName(number_format, "_buffer");
-  var _isForCurrency$ = dart.privateName(number_format, "_isForCurrency");
-  var _locale$ = dart.privateName(number_format, "_locale");
-  var _pattern$ = dart.privateName(number_format, "_pattern");
-  var _symbols$ = dart.privateName(number_format, "_symbols");
-  var _zeroOffset$ = dart.privateName(number_format, "_zeroOffset");
-  var _multiplierDigits = dart.privateName(number_format, "_multiplierDigits");
-  var _useExponentialNotation = dart.privateName(number_format, "_useExponentialNotation");
-  var _groupingSize = dart.privateName(number_format, "_groupingSize");
-  var _finalGroupingSize = dart.privateName(number_format, "_finalGroupingSize");
-  var _useSignForPositiveExponent = dart.privateName(number_format, "_useSignForPositiveExponent");
-  var _decimalSeparatorAlwaysShown = dart.privateName(number_format, "_decimalSeparatorAlwaysShown");
-  var _isNaN = dart.privateName(number_format, "_isNaN");
-  var _isInfinite = dart.privateName(number_format, "_isInfinite");
-  var _signPrefix = dart.privateName(number_format, "_signPrefix");
-  var _add = dart.privateName(number_format, "_add");
-  var _formatNumber = dart.privateName(number_format, "_formatNumber");
-  var _signSuffix = dart.privateName(number_format, "_signSuffix");
-  var _formatExponential = dart.privateName(number_format, "_formatExponential");
-  var _formatFixed = dart.privateName(number_format, "_formatFixed");
-  var _formatExponent = dart.privateName(number_format, "_formatExponent");
-  var _pad = dart.privateName(number_format, "_pad");
-  var _floor = dart.privateName(number_format, "_floor");
-  var _round = dart.privateName(number_format, "_round");
-  var _fractionDigitsAfter = dart.privateName(number_format, "_fractionDigitsAfter");
-  var _integerDigits = dart.privateName(number_format, "_integerDigits");
-  var _hasIntegerDigits = dart.privateName(number_format, "_hasIntegerDigits");
-  var _addDigit = dart.privateName(number_format, "_addDigit");
-  var _group = dart.privateName(number_format, "_group");
-  var _addZero = dart.privateName(number_format, "_addZero");
-  var _decimalSeparator = dart.privateName(number_format, "_decimalSeparator");
-  var _formatFractionPart = dart.privateName(number_format, "_formatFractionPart");
-  var _mainIntegerDigits = dart.privateName(number_format, "_mainIntegerDigits");
-  var _slowPad = dart.privateName(number_format, "_slowPad");
-  number_format.NumberFormat = class NumberFormat extends core.Object {
-    get negativePrefix() {
-      return this[negativePrefix];
-    }
-    set negativePrefix(value) {
-      super.negativePrefix = value;
-    }
-    get positivePrefix() {
-      return this[positivePrefix];
-    }
-    set positivePrefix(value) {
-      super.positivePrefix = value;
-    }
-    get negativeSuffix() {
-      return this[negativeSuffix];
-    }
-    set negativeSuffix(value) {
-      super.negativeSuffix = value;
-    }
-    get positiveSuffix() {
-      return this[positiveSuffix];
-    }
-    set positiveSuffix(value) {
-      super.positiveSuffix = value;
-    }
-    get maximumIntegerDigits() {
-      return this[maximumIntegerDigits];
-    }
-    set maximumIntegerDigits(value) {
-      this[maximumIntegerDigits] = value;
-    }
-    get minimumIntegerDigits() {
-      return this[minimumIntegerDigits];
-    }
-    set minimumIntegerDigits(value) {
-      this[minimumIntegerDigits] = value;
-    }
-    get maximumFractionDigits() {
-      return this[maximumFractionDigits];
-    }
-    set maximumFractionDigits(value) {
-      this[maximumFractionDigits] = value;
-    }
-    get minimumFractionDigits() {
-      return this[minimumFractionDigits];
-    }
-    set minimumFractionDigits(value) {
-      this[minimumFractionDigits] = value;
-    }
-    get minimumExponentDigits() {
-      return this[minimumExponentDigits];
-    }
-    set minimumExponentDigits(value) {
-      this[minimumExponentDigits] = value;
-    }
-    get significantDigitsInUse() {
-      return this[significantDigitsInUse];
-    }
-    set significantDigitsInUse(value) {
-      this[significantDigitsInUse] = value;
-    }
-    get multiplier() {
-      return this[multiplier];
-    }
-    set multiplier(value) {
-      super.multiplier = value;
-    }
-    get currencyName() {
-      return this[currencyName$];
-    }
-    set currencyName(value) {
-      this[currencyName$] = value;
-    }
-    get currencySymbol() {
-      return this[currencySymbol$];
-    }
-    set currencySymbol(value) {
-      super.currencySymbol = value;
-    }
-    get decimalDigits() {
-      return this[decimalDigits];
-    }
-    set decimalDigits(value) {
-      super.decimalDigits = value;
-    }
-    get localeZero() {
-      return this[localeZero$];
-    }
-    set localeZero(value) {
-      super.localeZero = value;
-    }
-    get significantDigits() {
-      return this[_significantDigits];
-    }
-    set significantDigits(x) {
-      this[_significantDigits] = x;
-      this.significantDigitsInUse = true;
-    }
-    static new(newPattern = null, locale = null) {
-      return number_format.NumberFormat._forPattern(locale, dart.fn(x => newPattern, T.NumberSymbolsToStringN()));
-    }
-    static decimalPattern(locale = null) {
-      return number_format.NumberFormat._forPattern(locale, dart.fn(x => x.DECIMAL_PATTERN, T.NumberSymbolsToString()));
-    }
-    static percentPattern(locale = null) {
-      return number_format.NumberFormat._forPattern(locale, dart.fn(x => x.PERCENT_PATTERN, T.NumberSymbolsToString()));
-    }
-    static decimalPercentPattern(opts) {
-      let locale = opts && 'locale' in opts ? opts.locale : null;
-      let decimalDigits = opts && 'decimalDigits' in opts ? opts.decimalDigits : null;
-      return number_format.NumberFormat._forPattern(locale, dart.fn(x => x.PERCENT_PATTERN, T.NumberSymbolsToString()), {decimalDigits: decimalDigits});
-    }
-    static scientificPattern(locale = null) {
-      return number_format.NumberFormat._forPattern(locale, dart.fn(x => x.SCIENTIFIC_PATTERN, T.NumberSymbolsToString()));
-    }
-    static currencyPattern(locale = null, currencyNameOrSymbol = null) {
-      if (currencyNameOrSymbol != null && number_format.NumberFormat._checkCurrencyName.hasMatch(currencyNameOrSymbol)) {
-        return number_format.NumberFormat.currency({locale: locale, name: currencyNameOrSymbol});
-      } else {
-        return number_format.NumberFormat.currency({locale: locale, symbol: currencyNameOrSymbol});
-      }
-    }
-    static currency(opts) {
-      let locale = opts && 'locale' in opts ? opts.locale : null;
-      let name = opts && 'name' in opts ? opts.name : null;
-      let symbol = opts && 'symbol' in opts ? opts.symbol : null;
-      let decimalDigits = opts && 'decimalDigits' in opts ? opts.decimalDigits : null;
-      let customPattern = opts && 'customPattern' in opts ? opts.customPattern : null;
-      return number_format.NumberFormat._forPattern(locale, dart.fn(x => {
-        let t0;
-        t0 = customPattern;
-        return t0 == null ? x.CURRENCY_PATTERN : t0;
-      }, T.NumberSymbolsToString()), {name: name, currencySymbol: symbol, decimalDigits: decimalDigits, isForCurrency: true});
-    }
-    static simpleCurrency(opts) {
-      let locale = opts && 'locale' in opts ? opts.locale : null;
-      let name = opts && 'name' in opts ? opts.name : null;
-      let decimalDigits = opts && 'decimalDigits' in opts ? opts.decimalDigits : null;
-      return number_format.NumberFormat._forPattern(locale, dart.fn(x => x.CURRENCY_PATTERN, T.NumberSymbolsToString()), {name: name, decimalDigits: decimalDigits, lookupSimpleCurrencySymbol: true, isForCurrency: true});
-    }
-    simpleCurrencySymbol(currencyCode) {
-      let t0;
-      t0 = constants.simpleCurrencySymbols[$_get](currencyCode);
-      return t0 == null ? currencyCode : t0;
-    }
-    static _forPattern(locale, getPattern, opts) {
-      let name = opts && 'name' in opts ? opts.name : null;
-      let currencySymbol = opts && 'currencySymbol' in opts ? opts.currencySymbol : null;
-      let decimalDigits = opts && 'decimalDigits' in opts ? opts.decimalDigits : null;
-      let lookupSimpleCurrencySymbol = opts && 'lookupSimpleCurrencySymbol' in opts ? opts.lookupSimpleCurrencySymbol : false;
-      let isForCurrency = opts && 'isForCurrency' in opts ? opts.isForCurrency : false;
-      locale = dart.nullCheck(intl_helpers.verifiedLocale(locale, C[0] || CT.C0, null));
-      let symbols = number_symbols.NumberSymbols.as(number_symbols_data.numberFormatSymbols[$_get](locale));
-      let localeZero = symbols.ZERO_DIGIT[$codeUnitAt](0);
-      let zeroOffset = localeZero - constants.asciiZeroCodeUnit;
-      name == null ? name = symbols.DEF_CURRENCY_CODE : null;
-      if (currencySymbol == null && lookupSimpleCurrencySymbol) {
-        currencySymbol = constants.simpleCurrencySymbols[$_get](name);
-      }
-      currencySymbol == null ? currencySymbol = name : null;
-      let pattern = getPattern(symbols);
-      return new number_format.NumberFormat.__(name, currencySymbol, isForCurrency, locale, localeZero, pattern, symbols, zeroOffset, number_format_parser.NumberFormatParser.parse(symbols, pattern, isForCurrency, currencySymbol, name, decimalDigits));
-    }
-    static compact(opts) {
-      let locale = opts && 'locale' in opts ? opts.locale : null;
-      return number_format._CompactNumberFormat.new({locale: locale, formatType: number_format._CompactFormatType.COMPACT_DECIMAL_SHORT_PATTERN});
-    }
-    static compactLong(opts) {
-      let locale = opts && 'locale' in opts ? opts.locale : null;
-      return number_format._CompactNumberFormat.new({locale: locale, formatType: number_format._CompactFormatType.COMPACT_DECIMAL_LONG_PATTERN});
-    }
-    static compactSimpleCurrency(opts) {
-      let locale = opts && 'locale' in opts ? opts.locale : null;
-      let name = opts && 'name' in opts ? opts.name : null;
-      let decimalDigits = opts && 'decimalDigits' in opts ? opts.decimalDigits : null;
-      return number_format._CompactNumberFormat.new({locale: locale, formatType: number_format._CompactFormatType.COMPACT_DECIMAL_SHORT_CURRENCY_PATTERN, name: name, getPattern: dart.fn(symbols => symbols.CURRENCY_PATTERN, T.NumberSymbolsToString()), decimalDigits: decimalDigits, lookupSimpleCurrencySymbol: true, isForCurrency: true});
-    }
-    static compactCurrency(opts) {
-      let locale = opts && 'locale' in opts ? opts.locale : null;
-      let name = opts && 'name' in opts ? opts.name : null;
-      let symbol = opts && 'symbol' in opts ? opts.symbol : null;
-      let decimalDigits = opts && 'decimalDigits' in opts ? opts.decimalDigits : null;
-      return number_format._CompactNumberFormat.new({locale: locale, formatType: number_format._CompactFormatType.COMPACT_DECIMAL_SHORT_CURRENCY_PATTERN, name: name, getPattern: dart.fn(symbols => symbols.CURRENCY_PATTERN, T.NumberSymbolsToString()), currencySymbol: symbol, decimalDigits: decimalDigits, isForCurrency: true});
-    }
-    get locale() {
-      return this[_locale$];
-    }
-    static localeExists(localeName) {
-      if (localeName == null) return false;
-      return number_symbols_data.numberFormatSymbols[$containsKey](localeName);
-    }
-    get symbols() {
-      return this[_symbols$];
-    }
-    format(number) {
-      if (this[_isNaN](number)) return this.symbols.NAN;
-      if (this[_isInfinite](number)) return this[_signPrefix](number) + this.symbols.INFINITY;
-      this[_add](this[_signPrefix](number));
-      this[_formatNumber](dart.dsend(number, 'abs', []));
-      this[_add](this[_signSuffix](number));
-      let result = this[_buffer].toString();
-      this[_buffer].clear();
-      return result;
-    }
-    parse(text) {
-      return dart.nullCheck(new number_parser.NumberParser.new(this, text).value);
-    }
-    [_formatNumber](number) {
-      if (this[_useExponentialNotation]) {
-        this[_formatExponential](core.num.as(number));
-      } else {
-        this[_formatFixed](number);
-      }
-    }
-    [_formatExponential](number) {
-      if (number === 0.0) {
-        this[_formatFixed](number);
-        this[_formatExponent](0);
-        return;
-      }
-      let exponent = (math.log(number) / number_format._ln10)[$floor]();
-      let mantissa = number / math.pow(10.0, exponent);
-      if (this.maximumIntegerDigits > 1 && this.maximumIntegerDigits > this.minimumIntegerDigits) {
-        while (exponent[$modulo](this.maximumIntegerDigits) !== 0) {
-          mantissa = mantissa * 10;
-          exponent = exponent - 1;
-        }
-      } else {
-        if (this.minimumIntegerDigits < 1) {
-          exponent = exponent + 1;
-          mantissa = mantissa / 10;
-        } else {
-          exponent = exponent - (this.minimumIntegerDigits - 1);
-          mantissa = mantissa * math.pow(10, this.minimumIntegerDigits - 1);
-        }
-      }
-      this[_formatFixed](mantissa);
-      this[_formatExponent](exponent);
-    }
-    [_formatExponent](exponent) {
-      this[_add](this.symbols.EXP_SYMBOL);
-      if (exponent < 0) {
-        exponent = -exponent;
-        this[_add](this.symbols.MINUS_SIGN);
-      } else if (this[_useSignForPositiveExponent]) {
-        this[_add](this.symbols.PLUS_SIGN);
-      }
-      this[_pad](this.minimumExponentDigits, exponent[$toString]());
-    }
-    [_isInfinite](number) {
-      return typeof number == 'number' ? number[$isInfinite] : false;
-    }
-    [_isNaN](number) {
-      return typeof number == 'number' ? number[$isNaN] : false;
-    }
-    [_floor](number) {
-      if (dart.dtest(dart.dload(number, 'isNegative')) && !dart.dtest(dart.dload(dart.dsend(number, 'abs', []), 'isNegative'))) {
-        dart.throw(new core.ArgumentError.new("Internal error: expected positive number, got " + dart.str(number)));
-      }
-      return typeof number == 'number' ? number[$floor]() : dart.dsend(number, '~/', [1]);
-    }
-    [_round](number) {
-      if (typeof number == 'number') {
-        if (number[$isInfinite]) {
-          return number_format.NumberFormat._maxInt;
-        } else {
-          return number[$round]();
-        }
-      } else if (dart.equals(dart.dsend(number, 'remainder', [1]), 0)) {
-        return number;
-      } else {
-        let basic = this[_floor](number);
-        let fraction = dart.dsend(dart.dsend(dart.dsend(number, '-', [basic]), 'toDouble', []), 'round', []);
-        return dart.equals(fraction, 0) ? number : dart.dsend(number, '+', [fraction]);
-      }
-    }
-    static numberOfIntegerDigits(number) {
-      let simpleNumber = dart.dsend(dart.dsend(number, 'toDouble', []), 'abs', []);
-      if (dart.dtest(dart.dsend(simpleNumber, '<', [10]))) return 1;
-      if (dart.dtest(dart.dsend(simpleNumber, '<', [100]))) return 2;
-      if (dart.dtest(dart.dsend(simpleNumber, '<', [1000]))) return 3;
-      if (dart.dtest(dart.dsend(simpleNumber, '<', [10000]))) return 4;
-      if (dart.dtest(dart.dsend(simpleNumber, '<', [100000]))) return 5;
-      if (dart.dtest(dart.dsend(simpleNumber, '<', [1000000]))) return 6;
-      if (dart.dtest(dart.dsend(simpleNumber, '<', [10000000]))) return 7;
-      if (dart.dtest(dart.dsend(simpleNumber, '<', [100000000]))) return 8;
-      if (dart.dtest(dart.dsend(simpleNumber, '<', [1000000000]))) return 9;
-      if (dart.dtest(dart.dsend(simpleNumber, '<', [10000000000]))) return 10;
-      if (dart.dtest(dart.dsend(simpleNumber, '<', [100000000000]))) return 11;
-      if (dart.dtest(dart.dsend(simpleNumber, '<', [1000000000000]))) return 12;
-      if (dart.dtest(dart.dsend(simpleNumber, '<', [10000000000000]))) return 13;
-      if (dart.dtest(dart.dsend(simpleNumber, '<', [100000000000000]))) return 14;
-      if (dart.dtest(dart.dsend(simpleNumber, '<', [1000000000000000]))) return 15;
-      if (dart.dtest(dart.dsend(simpleNumber, '<', [10000000000000000]))) return 16;
-      return math.max(core.int, 1, (math.log(core.num.as(simpleNumber)) / number_format._ln10)[$ceil]());
-    }
-    [_fractionDigitsAfter](remainingSignificantDigits) {
-      return math.max(core.int, 0, remainingSignificantDigits);
-    }
-    [_formatFixed](number) {
-      let integerPart = null;
-      let fractionPart = null;
-      let extraIntegerDigits = null;
-      let fractionDigits = this.maximumFractionDigits;
-      let power = 0;
-      let digitMultiplier = null;
-      if (this[_isInfinite](number)) {
-        integerPart = dart.dsend(number, 'toInt', []);
-        extraIntegerDigits = 0;
-        fractionPart = 0;
-      } else {
-        integerPart = this[_floor](number);
-        let fraction = dart.dsend(number, '-', [integerPart]);
-        if (!dart.equals(dart.dsend(fraction, 'toInt', []), 0)) {
-          integerPart = number;
-          fraction = 0;
-        }
-        if (this.significantDigitsInUse) {
-          let significantDigits = dart.nullCheck(this.significantDigits);
-          let integerLength = number_format.NumberFormat.numberOfIntegerDigits(integerPart);
-          let remainingSignificantDigits = significantDigits - this[_multiplierDigits] - integerLength;
-          fractionDigits = this[_fractionDigitsAfter](remainingSignificantDigits);
-          if (remainingSignificantDigits < 0) {
-            let divideBy = math.pow(10, integerLength - significantDigits);
-            integerPart = dart.dsend(dart.dsend(dart.dsend(integerPart, '/', [divideBy]), 'round', []), '*', [divideBy]);
+      for (let index = this.indexOf(dart.nullCheck(trailingChildWithLayout)) + 1; targetLastIndex == null || index <= dart.notNull(targetLastIndex); index = index + 1) {
+        let gridGeometry = layout.getGeometryForChildIndex(index);
+        let childConstraints = gridGeometry.getBoxConstraints(constraints);
+        let child = this.childAfter(dart.nullCheck(trailingChildWithLayout));
+        if (child == null || this.indexOf(child) !== index) {
+          child = this.insertAndLayoutChild(childConstraints, {after: trailingChildWithLayout});
+          if (child == null) {
+            break;
           }
-        }
-        power = dart.asInt(math.pow(10, fractionDigits));
-        digitMultiplier = power * this.multiplier;
-        let remainingDigits = dart.dsend(this[_round](dart.dsend(fraction, '*', [digitMultiplier])), 'toInt', []);
-        if (dart.dtest(dart.dsend(remainingDigits, '>=', [digitMultiplier]))) {
-          integerPart = dart.dsend(integerPart, '+', [1]);
-          remainingDigits = dart.dsend(remainingDigits, '-', [digitMultiplier]);
-        }
-        extraIntegerDigits = core.int.as(dart.dsend(remainingDigits, '~/', [power]));
-        fractionPart = core.int.as(dart.dsend(remainingDigits, '%', [power]));
-      }
-      let integerDigits = this[_integerDigits](integerPart, extraIntegerDigits);
-      let digitLength = integerDigits.length;
-      let fractionPresent = fractionDigits > 0 && (this.minimumFractionDigits > 0 || fractionPart > 0);
-      if (this[_hasIntegerDigits](integerDigits)) {
-        let padding = "0"[$times](this.minimumIntegerDigits - digitLength);
-        integerDigits = padding + integerDigits;
-        digitLength = integerDigits.length;
-        for (let i = 0; i < digitLength; i = i + 1) {
-          this[_addDigit](integerDigits[$codeUnitAt](i));
-          this[_group](digitLength, i);
-        }
-      } else if (!fractionPresent) {
-        this[_addZero]();
-      }
-      this[_decimalSeparator](fractionPresent);
-      this[_formatFractionPart]((fractionPart + power)[$toString]());
-    }
-    [_integerDigits](integerPart, extraIntegerDigits) {
-      let paddingDigits = "";
-      if (typeof integerPart == 'number' && dart.notNull(integerPart) > number_format.NumberFormat._maxInt) {
-        let howManyDigitsTooBig = (math.log(integerPart) / number_format._ln10)[$ceil]() - number_format.NumberFormat._maxDigits;
-        let divisor = math.pow(10, howManyDigitsTooBig)[$round]();
-        if (divisor === 0) divisor = math.pow(10.0, howManyDigitsTooBig);
-        paddingDigits = "0"[$times](howManyDigitsTooBig[$toInt]());
-        integerPart = (dart.notNull(integerPart) / divisor)[$truncate]();
-      }
-      let extra = dart.equals(extraIntegerDigits, 0) ? "" : dart.toString(extraIntegerDigits);
-      let intDigits = this[_mainIntegerDigits](integerPart);
-      let paddedExtra = intDigits[$isEmpty] ? extra : extra[$padLeft](this[_multiplierDigits], "0");
-      return intDigits + paddedExtra + paddingDigits;
-    }
-    [_mainIntegerDigits](integer) {
-      if (dart.equals(integer, 0)) return "";
-      let digits = dart.toString(integer);
-      if (this.significantDigitsInUse && digits.length > dart.nullCheck(this.significantDigits)) {
-        digits = digits[$substring](0, this.significantDigits) + ""[$padLeft](digits.length - dart.nullCheck(this.significantDigits), "0");
-      }
-      return digits[$startsWith]("-") ? digits[$substring](1) : digits;
-    }
-    [_formatFractionPart](fractionPart) {
-      let fractionLength = fractionPart.length;
-      while (fractionPart[$codeUnitAt](fractionLength - 1) === constants.asciiZeroCodeUnit && fractionLength > this.minimumFractionDigits + 1) {
-        fractionLength = fractionLength - 1;
-      }
-      for (let i = 1; i < fractionLength; i = i + 1) {
-        this[_addDigit](fractionPart[$codeUnitAt](i));
-      }
-    }
-    [_decimalSeparator](fractionPresent) {
-      if (this[_decimalSeparatorAlwaysShown] || fractionPresent) {
-        this[_add](this.symbols.DECIMAL_SEP);
-      }
-    }
-    [_hasIntegerDigits](digits) {
-      return digits[$isNotEmpty] || this.minimumIntegerDigits > 0;
-    }
-    [_add](x) {
-      this[_buffer].write(x);
-    }
-    [_addZero]() {
-      this[_buffer].write(this.symbols.ZERO_DIGIT);
-    }
-    [_addDigit](x) {
-      this[_buffer].writeCharCode(x + this[_zeroOffset$]);
-    }
-    [_pad](numberOfDigits, basic) {
-      if (this[_zeroOffset$] === 0) {
-        this[_buffer].write(basic[$padLeft](numberOfDigits, "0"));
-      } else {
-        this[_slowPad](numberOfDigits, basic);
-      }
-    }
-    [_slowPad](numberOfDigits, basic) {
-      for (let i = 0; i < numberOfDigits - basic.length; i = i + 1) {
-        this[_add](this.symbols.ZERO_DIGIT);
-      }
-      for (let i = 0; i < basic.length; i = i + 1) {
-        this[_addDigit](basic[$codeUnitAt](i));
-      }
-    }
-    [_group](totalLength, position) {
-      let distanceFromEnd = totalLength - position;
-      if (distanceFromEnd <= 1 || this[_groupingSize] <= 0) return;
-      if (distanceFromEnd === this[_finalGroupingSize] + 1) {
-        this[_add](this.symbols.GROUP_SEP);
-      } else if (distanceFromEnd > this[_finalGroupingSize] && (distanceFromEnd - this[_finalGroupingSize])[$modulo](this[_groupingSize]) === 1) {
-        this[_add](this.symbols.GROUP_SEP);
-      }
-    }
-    [_signPrefix](x) {
-      return dart.dtest(dart.dload(x, 'isNegative')) ? this.negativePrefix : this.positivePrefix;
-    }
-    [_signSuffix](x) {
-      return dart.dtest(dart.dload(x, 'isNegative')) ? this.negativeSuffix : this.positiveSuffix;
-    }
-    turnOffGrouping() {
-      this[_groupingSize] = 0;
-      this[_finalGroupingSize] = 0;
-    }
-    toString() {
-      return "NumberFormat(" + this[_locale$] + ", " + dart.str(this[_pattern$]) + ")";
-    }
-  };
-  (number_format.NumberFormat.__ = function(currencyName, currencySymbol, _isForCurrency, _locale, localeZero, _pattern, _symbols, _zeroOffset, result) {
-    this[_significantDigits] = null;
-    this[significantDigitsInUse] = false;
-    this[_buffer] = new core.StringBuffer.new();
-    this[currencyName$] = currencyName;
-    this[currencySymbol$] = currencySymbol;
-    this[_isForCurrency$] = _isForCurrency;
-    this[_locale$] = _locale;
-    this[localeZero$] = localeZero;
-    this[_pattern$] = _pattern;
-    this[_symbols$] = _symbols;
-    this[_zeroOffset$] = _zeroOffset;
-    this[positivePrefix] = result.positivePrefix;
-    this[negativePrefix] = result.negativePrefix;
-    this[positiveSuffix] = result.positiveSuffix;
-    this[negativeSuffix] = result.negativeSuffix;
-    this[multiplier] = result.multiplier;
-    this[_multiplierDigits] = result.multiplierDigits;
-    this[_useExponentialNotation] = result.useExponentialNotation;
-    this[minimumExponentDigits] = result.minimumExponentDigits;
-    this[maximumIntegerDigits] = result.maximumIntegerDigits;
-    this[minimumIntegerDigits] = result.minimumIntegerDigits;
-    this[maximumFractionDigits] = result.maximumFractionDigits;
-    this[minimumFractionDigits] = result.minimumFractionDigits;
-    this[_groupingSize] = result.groupingSize;
-    this[_finalGroupingSize] = result.finalGroupingSize;
-    this[_useSignForPositiveExponent] = result.useSignForPositiveExponent;
-    this[_decimalSeparatorAlwaysShown] = result.decimalSeparatorAlwaysShown;
-    this[decimalDigits] = result.decimalDigits;
-    ;
-  }).prototype = number_format.NumberFormat.prototype;
-  dart.addTypeTests(number_format.NumberFormat);
-  dart.addTypeCaches(number_format.NumberFormat);
-  dart.setMethodSignature(number_format.NumberFormat, () => ({
-    __proto__: dart.getMethods(number_format.NumberFormat.__proto__),
-    simpleCurrencySymbol: dart.fnType(core.String, [core.String]),
-    format: dart.fnType(core.String, [dart.dynamic]),
-    parse: dart.fnType(core.num, [core.String]),
-    [_formatNumber]: dart.fnType(dart.void, [dart.dynamic]),
-    [_formatExponential]: dart.fnType(dart.void, [core.num]),
-    [_formatExponent]: dart.fnType(dart.void, [core.num]),
-    [_isInfinite]: dart.fnType(core.bool, [dart.dynamic]),
-    [_isNaN]: dart.fnType(core.bool, [dart.dynamic]),
-    [_floor]: dart.fnType(dart.dynamic, [dart.dynamic]),
-    [_round]: dart.fnType(dart.dynamic, [dart.dynamic]),
-    [_fractionDigitsAfter]: dart.fnType(core.int, [core.int]),
-    [_formatFixed]: dart.fnType(dart.void, [dart.dynamic]),
-    [_integerDigits]: dart.fnType(core.String, [dart.dynamic, dart.dynamic]),
-    [_mainIntegerDigits]: dart.fnType(core.String, [dart.dynamic]),
-    [_formatFractionPart]: dart.fnType(dart.void, [core.String]),
-    [_decimalSeparator]: dart.fnType(dart.void, [core.bool]),
-    [_hasIntegerDigits]: dart.fnType(core.bool, [core.String]),
-    [_add]: dart.fnType(dart.void, [core.String]),
-    [_addZero]: dart.fnType(dart.void, []),
-    [_addDigit]: dart.fnType(dart.void, [core.int]),
-    [_pad]: dart.fnType(dart.void, [core.int, core.String]),
-    [_slowPad]: dart.fnType(dart.void, [core.int, core.String]),
-    [_group]: dart.fnType(dart.void, [core.int, core.int]),
-    [_signPrefix]: dart.fnType(core.String, [dart.dynamic]),
-    [_signSuffix]: dart.fnType(core.String, [dart.dynamic]),
-    turnOffGrouping: dart.fnType(dart.void, [])
-  }));
-  dart.setGetterSignature(number_format.NumberFormat, () => ({
-    __proto__: dart.getGetters(number_format.NumberFormat.__proto__),
-    significantDigits: dart.nullable(core.int),
-    locale: core.String,
-    symbols: number_symbols.NumberSymbols
-  }));
-  dart.setSetterSignature(number_format.NumberFormat, () => ({
-    __proto__: dart.getSetters(number_format.NumberFormat.__proto__),
-    significantDigits: dart.nullable(core.int)
-  }));
-  dart.setLibraryUri(number_format.NumberFormat, I[1]);
-  dart.setFieldSignature(number_format.NumberFormat, () => ({
-    __proto__: dart.getFields(number_format.NumberFormat.__proto__),
-    negativePrefix: dart.finalFieldType(core.String),
-    positivePrefix: dart.finalFieldType(core.String),
-    negativeSuffix: dart.finalFieldType(core.String),
-    positiveSuffix: dart.finalFieldType(core.String),
-    [_groupingSize]: dart.fieldType(core.int),
-    [_finalGroupingSize]: dart.fieldType(core.int),
-    [_decimalSeparatorAlwaysShown]: dart.finalFieldType(core.bool),
-    [_useSignForPositiveExponent]: dart.finalFieldType(core.bool),
-    [_useExponentialNotation]: dart.finalFieldType(core.bool),
-    [_isForCurrency$]: dart.finalFieldType(core.bool),
-    maximumIntegerDigits: dart.fieldType(core.int),
-    minimumIntegerDigits: dart.fieldType(core.int),
-    maximumFractionDigits: dart.fieldType(core.int),
-    minimumFractionDigits: dart.fieldType(core.int),
-    minimumExponentDigits: dart.fieldType(core.int),
-    [_significantDigits]: dart.fieldType(dart.nullable(core.int)),
-    significantDigitsInUse: dart.fieldType(core.bool),
-    multiplier: dart.finalFieldType(core.int),
-    [_multiplierDigits]: dart.finalFieldType(core.int),
-    [_pattern$]: dart.finalFieldType(dart.nullable(core.String)),
-    [_locale$]: dart.finalFieldType(core.String),
-    [_symbols$]: dart.finalFieldType(number_symbols.NumberSymbols),
-    currencyName: dart.fieldType(dart.nullable(core.String)),
-    currencySymbol: dart.finalFieldType(core.String),
-    decimalDigits: dart.finalFieldType(dart.nullable(core.int)),
-    [_buffer]: dart.finalFieldType(core.StringBuffer),
-    localeZero: dart.finalFieldType(core.int),
-    [_zeroOffset$]: dart.finalFieldType(core.int)
-  }));
-  dart.defineExtensionMethods(number_format.NumberFormat, ['toString']);
-  dart.defineLazy(number_format.NumberFormat, {
-    /*number_format.NumberFormat._checkCurrencyName*/get _checkCurrencyName() {
-      return core.RegExp.new("^[a-zA-Z]{3}$");
-    },
-    /*number_format.NumberFormat._maxInt*/get _maxInt() {
-      return typeof 1 == 'number' ? math.pow(2, 52) : (1e+300)[$floor]();
-    },
-    /*number_format.NumberFormat._maxDigits*/get _maxDigits() {
-      return (math.log(number_format.NumberFormat._maxInt) / math.log(10))[$ceil]();
-    }
-  }, false);
-  number_format._CompactStyleBase = class _CompactStyleBase extends core.Object {};
-  (number_format._CompactStyleBase.new = function() {
-    ;
-  }).prototype = number_format._CompactStyleBase.prototype;
-  dart.addTypeTests(number_format._CompactStyleBase);
-  dart.addTypeCaches(number_format._CompactStyleBase);
-  dart.setLibraryUri(number_format._CompactStyleBase, I[1]);
-  number_format._CompactStyleWithNegative = class _CompactStyleWithNegative extends number_format._CompactStyleBase {
-    styleForSign(number) {
-      return dart.dtest(dart.dsend(number, '<', [0])) ? this.negativeStyle : this.positiveStyle;
-    }
-    get totalDigits() {
-      return this.positiveStyle.totalDigits;
-    }
-    get divisor() {
-      return this.positiveStyle.divisor;
-    }
-    get allStyles() {
-      return T.JSArrayOf_CompactStyle().of([this.positiveStyle, this.negativeStyle]);
-    }
-  };
-  (number_format._CompactStyleWithNegative.new = function(positiveStyle, negativeStyle) {
-    this.positiveStyle = positiveStyle;
-    this.negativeStyle = negativeStyle;
-    ;
-  }).prototype = number_format._CompactStyleWithNegative.prototype;
-  dart.addTypeTests(number_format._CompactStyleWithNegative);
-  dart.addTypeCaches(number_format._CompactStyleWithNegative);
-  dart.setMethodSignature(number_format._CompactStyleWithNegative, () => ({
-    __proto__: dart.getMethods(number_format._CompactStyleWithNegative.__proto__),
-    styleForSign: dart.fnType(number_format._CompactStyle, [dart.dynamic])
-  }));
-  dart.setGetterSignature(number_format._CompactStyleWithNegative, () => ({
-    __proto__: dart.getGetters(number_format._CompactStyleWithNegative.__proto__),
-    totalDigits: core.int,
-    divisor: core.int,
-    allStyles: core.List$(number_format._CompactStyle)
-  }));
-  dart.setLibraryUri(number_format._CompactStyleWithNegative, I[1]);
-  dart.setFieldSignature(number_format._CompactStyleWithNegative, () => ({
-    __proto__: dart.getFields(number_format._CompactStyleWithNegative.__proto__),
-    positiveStyle: dart.finalFieldType(number_format._CompactStyle),
-    negativeStyle: dart.finalFieldType(number_format._CompactStyle)
-  }));
-  var divisor$ = dart.privateName(number_format, "_CompactStyle.divisor");
-  number_format._CompactStyle = class _CompactStyle extends number_format._CompactStyleBase {
-    get divisor() {
-      return this[divisor$];
-    }
-    set divisor(value) {
-      this[divisor$] = value;
-    }
-    get totalDigits() {
-      return this.normalizedExponent + this.expectedDigits - 1;
-    }
-    get isFallback() {
-      return this.pattern == null || this.pattern === "0";
-    }
-    get printsAsIs() {
-      return this.isFallback || dart.nullCheck(this.pattern)[$replaceAll](core.RegExp.new("[0 ¤]"), "")[$isEmpty];
-    }
-    styleForSign(number) {
-      return this;
-    }
-    get allStyles() {
-      return T.JSArrayOf_CompactStyle().of([this]);
-    }
-    static _hasNonZeroContent(pattern) {
-      return !number_format._CompactStyle._justZeros.hasMatch(pattern);
-    }
-    static createStyle(pattern, normalizedExponent) {
-      let match = number_format._CompactStyle._regex.firstMatch(pattern);
-      let integerDigits = dart.nullCheck(dart.nullCheck(match).group(2)).length;
-      let prefix = dart.nullCheck(match.group(1));
-      let suffix = dart.nullCheck(match.group(3));
-      let divisor = 1;
-      if (number_format._CompactStyle._hasNonZeroContent(pattern)) {
-        divisor = dart.asInt(math.pow(10, normalizedExponent - integerDigits + 1));
-      }
-      return new number_format._CompactStyle.new({pattern: pattern, normalizedExponent: normalizedExponent, expectedDigits: integerDigits, prefix: prefix, suffix: suffix, divisor: divisor});
-    }
-  };
-  (number_format._CompactStyle.new = function(opts) {
-    let pattern = opts && 'pattern' in opts ? opts.pattern : null;
-    let normalizedExponent = opts && 'normalizedExponent' in opts ? opts.normalizedExponent : 0;
-    let divisor = opts && 'divisor' in opts ? opts.divisor : 1;
-    let expectedDigits = opts && 'expectedDigits' in opts ? opts.expectedDigits : 1;
-    let prefix = opts && 'prefix' in opts ? opts.prefix : "";
-    let suffix = opts && 'suffix' in opts ? opts.suffix : "";
-    this.pattern = pattern;
-    this.normalizedExponent = normalizedExponent;
-    this[divisor$] = divisor;
-    this.expectedDigits = expectedDigits;
-    this.prefix = prefix;
-    this.suffix = suffix;
-    ;
-  }).prototype = number_format._CompactStyle.prototype;
-  dart.addTypeTests(number_format._CompactStyle);
-  dart.addTypeCaches(number_format._CompactStyle);
-  dart.setMethodSignature(number_format._CompactStyle, () => ({
-    __proto__: dart.getMethods(number_format._CompactStyle.__proto__),
-    styleForSign: dart.fnType(number_format._CompactStyle, [dart.dynamic])
-  }));
-  dart.setGetterSignature(number_format._CompactStyle, () => ({
-    __proto__: dart.getGetters(number_format._CompactStyle.__proto__),
-    totalDigits: core.int,
-    isFallback: core.bool,
-    printsAsIs: core.bool,
-    allStyles: core.List$(number_format._CompactStyle)
-  }));
-  dart.setLibraryUri(number_format._CompactStyle, I[1]);
-  dart.setFieldSignature(number_format._CompactStyle, () => ({
-    __proto__: dart.getFields(number_format._CompactStyle.__proto__),
-    pattern: dart.fieldType(dart.nullable(core.String)),
-    normalizedExponent: dart.fieldType(core.int),
-    divisor: dart.fieldType(core.int),
-    expectedDigits: dart.fieldType(core.int),
-    prefix: dart.fieldType(core.String),
-    suffix: dart.fieldType(core.String)
-  }));
-  dart.defineLazy(number_format._CompactStyle, {
-    /*number_format._CompactStyle._regex*/get _regex() {
-      return core.RegExp.new("([^0]*)(0+)(.*)");
-    },
-    /*number_format._CompactStyle._justZeros*/get _justZeros() {
-      return core.RegExp.new("^0*$");
-    }
-  }, false);
-  var _name$ = dart.privateName(number_format, "_name");
-  number_format._CompactFormatType = class _CompactFormatType extends core.Object {
-    toString() {
-      return this[_name$];
-    }
-  };
-  (number_format._CompactFormatType.new = function(index, _name) {
-    this.index = index;
-    this[_name$] = _name;
-    ;
-  }).prototype = number_format._CompactFormatType.prototype;
-  dart.addTypeTests(number_format._CompactFormatType);
-  dart.addTypeCaches(number_format._CompactFormatType);
-  dart.setLibraryUri(number_format._CompactFormatType, I[1]);
-  dart.setFieldSignature(number_format._CompactFormatType, () => ({
-    __proto__: dart.getFields(number_format._CompactFormatType.__proto__),
-    index: dart.finalFieldType(core.int),
-    [_name$]: dart.finalFieldType(core.String)
-  }));
-  dart.defineExtensionMethods(number_format._CompactFormatType, ['toString']);
-  number_format._CompactFormatType.COMPACT_DECIMAL_SHORT_PATTERN = C[1] || CT.C1;
-  number_format._CompactFormatType.COMPACT_DECIMAL_LONG_PATTERN = C[2] || CT.C2;
-  number_format._CompactFormatType.COMPACT_DECIMAL_SHORT_CURRENCY_PATTERN = C[3] || CT.C3;
-  number_format._CompactFormatType.values = C[4] || CT.C4;
-  var _style = dart.privateName(number_format, "_style");
-  var _styles$ = dart.privateName(number_format, "_styles");
-  var _styleFor = dart.privateName(number_format, "_styleFor");
-  var _divide = dart.privateName(number_format, "_divide");
-  var _stylesForSearching = dart.privateName(number_format, "_stylesForSearching");
-  var _tryParsing = dart.privateName(number_format, "_tryParsing");
-  number_format._CompactNumberFormat = class _CompactNumberFormat extends number_format.NumberFormat {
-    static _forDecimal(symbols) {
-      return symbols.DECIMAL_PATTERN;
-    }
-    static new(opts) {
-      let t0;
-      let locale = opts && 'locale' in opts ? opts.locale : null;
-      let formatType = opts && 'formatType' in opts ? opts.formatType : null;
-      let name = opts && 'name' in opts ? opts.name : null;
-      let currencySymbol = opts && 'currencySymbol' in opts ? opts.currencySymbol : null;
-      let getPattern = opts && 'getPattern' in opts ? opts.getPattern : C[5] || CT.C5;
-      let decimalDigits = opts && 'decimalDigits' in opts ? opts.decimalDigits : null;
-      let lookupSimpleCurrencySymbol = opts && 'lookupSimpleCurrencySymbol' in opts ? opts.lookupSimpleCurrencySymbol : false;
-      let isForCurrency = opts && 'isForCurrency' in opts ? opts.isForCurrency : false;
-      locale = dart.nullCheck(intl_helpers.verifiedLocale(locale, C[0] || CT.C0, null));
-      let symbols = number_symbols.NumberSymbols.as(number_symbols_data.numberFormatSymbols[$_get](locale));
-      let localeZero = symbols.ZERO_DIGIT[$codeUnitAt](0);
-      let zeroOffset = localeZero - constants.asciiZeroCodeUnit;
-      name == null ? name = symbols.DEF_CURRENCY_CODE : null;
-      if (currencySymbol == null && lookupSimpleCurrencySymbol) {
-        currencySymbol = constants.simpleCurrencySymbols[$_get](name);
-      }
-      currencySymbol == null ? currencySymbol = name : null;
-      let pattern = getPattern(symbols);
-      let patterns = null;
-      let compactSymbols = dart.nullCheck(number_symbols_data.compactNumberSymbols[$_get](locale));
-      let styles = T.JSArrayOf_CompactStyleBase().of([]);
-      switch (formatType) {
-        case C[1] || CT.C1:
-        {
-          patterns = compactSymbols.COMPACT_DECIMAL_SHORT_PATTERN;
-          break;
-        }
-        case C[2] || CT.C2:
-        {
-          patterns = (t0 = compactSymbols.COMPACT_DECIMAL_LONG_PATTERN, t0 == null ? compactSymbols.COMPACT_DECIMAL_SHORT_PATTERN : t0);
-          break;
-        }
-        case C[3] || CT.C3:
-        {
-          patterns = compactSymbols.COMPACT_DECIMAL_SHORT_CURRENCY_PATTERN;
-          break;
-        }
-        default:
-        {
-          dart.throw(new core.ArgumentError.notNull("formatType"));
-        }
-      }
-      patterns[$forEach](dart.fn((exponent, pattern) => {
-        if (pattern[$contains](";")) {
-          let patterns = pattern[$split](";");
-          styles[$add](new number_format._CompactStyleWithNegative.new(number_format._CompactStyle.createStyle(patterns[$first], exponent), number_format._CompactStyle.createStyle(patterns[$last], exponent)));
         } else {
-          styles[$add](number_format._CompactStyle.createStyle(pattern, exponent));
+          child.layout(childConstraints);
         }
-      }, T.intAndStringTovoid()));
-      styles = styles[$reversed][$toList]();
-      styles[$add](new number_format._CompactStyle.new());
-      return new number_format._CompactNumberFormat.__(name, currencySymbol, isForCurrency, locale, localeZero, pattern, symbols, zeroOffset, number_format_parser.NumberFormatParser.parse(symbols, pattern, isForCurrency, currencySymbol, name, decimalDigits), styles);
-    }
-    format(number) {
-      let style = this[_styleFor](number);
-      this[_style] = style;
-      let divisor = style.printsAsIs ? 1 : style.divisor;
-      let numberToFormat = this[_divide](number, divisor);
-      let formatted = super.format(numberToFormat);
-      let prefix = style.prefix;
-      let suffix = style.suffix;
-      if (this[_isForCurrency$] && !style.isFallback) {
-        formatted = formatted[$replaceFirst](this.currencySymbol, "")[$trim]();
-        prefix = prefix[$replaceFirst]("¤", this.currencySymbol);
-        suffix = suffix[$replaceFirst]("¤", this.currencySymbol);
+        trailingChildWithLayout = child;
+        if (!(child != null)) dart.assertFailed(null, I[1], 667, 14, "child != null");
+        let childParentData = sliver_grid.SliverGridParentData.as(dart.nullCheck(child.parentData));
+        childParentData.layoutOffset = gridGeometry.scrollOffset;
+        childParentData.crossAxisOffset = gridGeometry.crossAxisOffset;
+        if (!(childParentData.index === index)) dart.assertFailed(null, I[1], 671, 14, "childParentData.index == index");
+        trailingScrollOffset = math.max(core.double, trailingScrollOffset, gridGeometry.trailingScrollOffset);
       }
-      let withExtras = prefix + formatted + suffix;
-      this[_style] = null;
-      return withExtras;
-    }
-    [_fractionDigitsAfter](remainingSignificantDigits) {
-      let newFractionDigits = super[_fractionDigitsAfter](remainingSignificantDigits);
-      if (!this[_isForCurrency$] || !dart.nullCheck(this[_style]).isFallback) return newFractionDigits;
-      if (newFractionDigits > 0 && newFractionDigits < dart.nullCheck(this.decimalDigits)) {
-        return dart.nullCheck(this.decimalDigits);
-      } else {
-        return math.min(core.int, newFractionDigits, dart.nullCheck(this.decimalDigits));
-      }
-    }
-    get minimumFractionDigits() {
-      if (!this[_isForCurrency$] || !this.significantDigitsInUse || this[_style] == null || dart.nullCheck(this[_style]).isFallback) {
-        return super.minimumFractionDigits;
-      } else {
-        return 0;
-      }
-    }
-    set minimumFractionDigits(value) {
-      super.minimumFractionDigits = value;
-    }
-    [_divide](numerator, denominator) {
-      if (typeof numerator == 'number') {
-        return dart.notNull(numerator) / denominator;
-      }
-      let divided = dart.dsend(numerator, '~/', [denominator]);
-      let integerPart = dart.dsend(divided, 'toInt', []);
-      if (!dart.equals(divided, integerPart)) {
-        dart.throw(new core.FormatException.new("Number too big to use with compact format", numerator));
-      }
-      let remainder = dart.dsend(dart.dsend(numerator, 'remainder', [denominator]), 'toInt', []);
-      let originalFraction = dart.dsend(numerator, '-', [dart.dsend(numerator, '~/', [1])]);
-      let fraction = dart.equals(originalFraction, 0) ? 0 : dart.dsend(originalFraction, '/', [denominator]);
-      return core.num.as(dart.dsend(dart.dsend(integerPart, '+', [dart.dsend(remainder, '/', [denominator])]), '+', [fraction]));
-    }
-    [_styleFor](number) {
-      let originalLength = number_format.NumberFormat.numberOfIntegerDigits(number);
-      let additionalDigits = originalLength - dart.nullCheck(this.significantDigits);
-      let digitLength = originalLength;
-      if (additionalDigits > 0) {
-        let divisor = math.pow(10, additionalDigits);
-        let rounded = dart.dsend(dart.dsend(dart.dsend(dart.dsend(number, 'toDouble', []), '/', [divisor]), 'round', []), '*', [divisor]);
-        digitLength = number_format.NumberFormat.numberOfIntegerDigits(rounded);
-      }
-      for (let style of this[_styles$]) {
-        if (digitLength > style.totalDigits) {
-          return style.styleForSign(number);
-        }
-      }
-      dart.throw(new core.FormatException.new("No compact style found for number. This should not happen", number));
-    }
-    get [_stylesForSearching]() {
-      return this[_styles$][$reversed][$expand](number_format._CompactStyle, dart.fn(x => x.allStyles, T._CompactStyleBaseToIterableOf_CompactStyle()));
-    }
-    parse(text) {
-      for (let style of this[_stylesForSearching]) {
-        if (text[$startsWith](style.prefix) && text[$endsWith](style.suffix)) {
-          let numberText = text[$substring](style.prefix.length, text.length - style.suffix.length);
-          let number = this[_tryParsing](numberText);
-          if (number != null) {
-            return dart.notNull(number) * style.divisor;
-          }
-        }
-      }
-      dart.throw(new core.FormatException.new("Cannot parse compact number in locale '" + this.locale + "'", text));
-    }
-    [_tryParsing](text) {
-      try {
-        return super.parse(text);
-      } catch (e) {
-        let ex = dart.getThrown(e);
-        if (core.FormatException.is(ex)) {
-          return null;
-        } else
-          throw e;
-      }
+      let lastIndex = this.indexOf(dart.nullCheck(this.lastChild));
+      if (!this.debugAssertChildListIsNonEmptyAndContiguous()) dart.assertFailed(null, I[1], 677, 12, "debugAssertChildListIsNonEmptyAndContiguous()");
+      if (!(this.indexOf(dart.nullCheck(this.firstChild)) === firstIndex)) dart.assertFailed(null, I[1], 678, 12, "indexOf(firstChild!) == firstIndex");
+      if (!(targetLastIndex == null || lastIndex <= dart.notNull(targetLastIndex))) dart.assertFailed(null, I[1], 679, 12, "targetLastIndex == null || lastIndex <= targetLastIndex");
+      let estimatedTotalExtent = this.childManager.estimateMaxScrollOffset(constraints, {firstIndex: firstIndex, lastIndex: lastIndex, leadingScrollOffset: leadingScrollOffset, trailingScrollOffset: trailingScrollOffset});
+      let paintExtent = this.calculatePaintOffset(constraints, {from: math.min(core.double, constraints.scrollOffset, leadingScrollOffset), to: trailingScrollOffset});
+      let cacheExtent = this.calculateCacheOffset(constraints, {from: leadingScrollOffset, to: trailingScrollOffset});
+      this.geometry = new sliver.SliverGeometry.new({scrollExtent: estimatedTotalExtent, paintExtent: paintExtent, maxPaintExtent: estimatedTotalExtent, cacheExtent: cacheExtent, hasVisualOverflow: true});
+      if (estimatedTotalExtent === trailingScrollOffset) this.childManager.setDidUnderflow(true);
+      this.childManager.didFinishLayout();
     }
   };
-  (number_format._CompactNumberFormat.__ = function(currencyName, currencySymbol, isForCurrency, locale, localeZero, pattern, symbols, zeroOffset, result, _styles) {
-    this[_style] = null;
-    this[_styles$] = _styles;
-    number_format._CompactNumberFormat.__proto__.__.call(this, currencyName, currencySymbol, isForCurrency, locale, localeZero, pattern, symbols, zeroOffset, result);
-    this.significantDigits = 3;
-    this.turnOffGrouping();
-  }).prototype = number_format._CompactNumberFormat.prototype;
-  dart.addTypeTests(number_format._CompactNumberFormat);
-  dart.addTypeCaches(number_format._CompactNumberFormat);
-  dart.setMethodSignature(number_format._CompactNumberFormat, () => ({
-    __proto__: dart.getMethods(number_format._CompactNumberFormat.__proto__),
-    [_divide]: dart.fnType(core.num, [dart.dynamic, core.int]),
-    [_styleFor]: dart.fnType(number_format._CompactStyle, [dart.dynamic]),
-    [_tryParsing]: dart.fnType(dart.nullable(core.num), [core.String])
+  (sliver_grid.RenderSliverGrid.new = function(opts) {
+    let childManager = opts && 'childManager' in opts ? opts.childManager : null;
+    let gridDelegate = opts && 'gridDelegate' in opts ? opts.gridDelegate : null;
+    if (!(gridDelegate !== null)) dart.assertFailed(null, I[1], 554, 15, "gridDelegate != null");
+    this[_gridDelegate] = gridDelegate;
+    sliver_grid.RenderSliverGrid.__proto__.new.call(this, {childManager: childManager});
+    ;
+  }).prototype = sliver_grid.RenderSliverGrid.prototype;
+  dart.addTypeTests(sliver_grid.RenderSliverGrid);
+  dart.addTypeCaches(sliver_grid.RenderSliverGrid);
+  dart.setMethodSignature(sliver_grid.RenderSliverGrid, () => ({
+    __proto__: dart.getMethods(sliver_grid.RenderSliverGrid.__proto__),
+    performLayout: dart.fnType(dart.void, [])
   }));
-  dart.setGetterSignature(number_format._CompactNumberFormat, () => ({
-    __proto__: dart.getGetters(number_format._CompactNumberFormat.__proto__),
-    minimumFractionDigits: core.int,
-    [_stylesForSearching]: core.Iterable$(number_format._CompactStyle)
+  dart.setGetterSignature(sliver_grid.RenderSliverGrid, () => ({
+    __proto__: dart.getGetters(sliver_grid.RenderSliverGrid.__proto__),
+    gridDelegate: sliver_grid.SliverGridDelegate
   }));
-  dart.setLibraryUri(number_format._CompactNumberFormat, I[1]);
-  dart.setFieldSignature(number_format._CompactNumberFormat, () => ({
-    __proto__: dart.getFields(number_format._CompactNumberFormat.__proto__),
-    [_styles$]: dart.finalFieldType(core.List$(number_format._CompactStyleBase)),
-    [_style]: dart.fieldType(dart.nullable(number_format._CompactStyle))
+  dart.setSetterSignature(sliver_grid.RenderSliverGrid, () => ({
+    __proto__: dart.getSetters(sliver_grid.RenderSliverGrid.__proto__),
+    gridDelegate: sliver_grid.SliverGridDelegate
   }));
-  dart.defineLazy(number_format, {
-    /*number_format._ln10*/get _ln10() {
-      return math.log(10);
-    }
-  }, false);
-  dart.trackLibraries("packages/intl/src/intl/number_parser.dart", {
-    "package:intl/src/intl/number_parser.dart": number_parser,
-    "package:intl/src/intl/number_format.dart": number_format
+  dart.setLibraryUri(sliver_grid.RenderSliverGrid, I[0]);
+  dart.setFieldSignature(sliver_grid.RenderSliverGrid, () => ({
+    __proto__: dart.getFields(sliver_grid.RenderSliverGrid.__proto__),
+    [_gridDelegate]: dart.fieldType(sliver_grid.SliverGridDelegate)
+  }));
+  dart.trackLibraries("packages/flutter/src/rendering/sliver_grid.dart", {
+    "package:flutter/src/rendering/sliver_grid.dart": sliver_grid
   }, {
-    "package:intl/src/intl/number_format.dart": ["compact_number_format.dart"]
-  }, '{"version":3,"sourceRoot":"","sources":["number_parser.dart","number_format.dart","compact_number_format.dart"],"names":[],"mappings":"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","file":"../../../../../../../../../../packages/intl/src/intl/number_parser.dart.lib.js"}');
+  }, '{"version":3,"sourceRoot":"","sources":["sliver_grid.dart"],"names":[],"mappings":"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","file":"../../../../../../../../packages/flutter/src/rendering/sliver_grid.dart.lib.js"}');
   // Exports:
   return {
-    src__intl__number_parser: number_parser,
-    src__intl__number_format: number_format
+    src__rendering__sliver_grid: sliver_grid
   };
 }));
 
-//# sourceMappingURL=number_parser.dart.lib.js.map
+//# sourceMappingURL=sliver_grid.dart.lib.js.map

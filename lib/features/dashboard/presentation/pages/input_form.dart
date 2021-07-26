@@ -28,7 +28,7 @@ class _InputFormState extends State<InputForm> {
   String ert = "";
   String erw = "";
 
-  late var pvc = [];
+  late String pvc = "";
 
   var provMenu = ["Jawa Tengah", "Jawa Timur", "Jawa Barat"];
   var kabMenu = ["Purbalingga", "Banyumas", "Cilacap"];
@@ -225,22 +225,22 @@ class _InputFormState extends State<InputForm> {
   }
 
   Widget inputttl() {
-    return Padding(
-      padding: const EdgeInsets.fromLTRB(20, 0, 20, 10),
-      child: Row(
-        children: [
-          Flexible(
-            child: Column(
-              children: [
-                Padding(
-                  padding: const EdgeInsets.fromLTRB(10, 5, 85, 10),
-                  // padding: const EdgeInsets.fromLTRB(left, top, right, bottom)
-                  child: Text(
-                    "Tempat",
-                    style: TextPalette.titleTextFieldStyle,
-                  ),
+    return Row(
+      children: [
+        Flexible(
+          child: Column(
+            children: [
+              Padding(
+                padding: const EdgeInsets.fromLTRB(10, 5, 85, 10),
+                // padding: const EdgeInsets.fromLTRB(left, top, right, bottom)
+                child: Text(
+                  "Tempat",
+                  style: TextPalette.titleTextFieldStyle,
                 ),
-                FormBuilderTextField(
+              ),
+              Padding(
+                padding: const EdgeInsets.fromLTRB(20, 0, 0, 10),
+                child: FormBuilderTextField(
                   name: 'tempatLhr',
                   controller: place,
                   decoration: new InputDecoration(
@@ -267,32 +267,35 @@ class _InputFormState extends State<InputForm> {
                   ]),
                   keyboardType: TextInputType.text,
                 ),
-              ],
-            ),
+              ),
+            ],
           ),
-          SizedBox(
-            width: 15.0,
-            height: 20.0,
-          ),
-          Flexible(
-            child: Column(
-              children: [
-                Padding(
-                  padding: const EdgeInsets.fromLTRB(10, 10, 40, 10),
-                  // padding: const EdgeInsets.fromLTRB(left, top, right, bottom)
-                  child: Text(
-                    "Tanggal Lahir",
-                    style: TextPalette.titleTextFieldStyle,
-                  ),
+        ),
+        SizedBox(
+          width: 15.0,
+          height: 20.0,
+        ),
+        Flexible(
+          child: Column(
+            children: [
+              Padding(
+                padding: const EdgeInsets.fromLTRB(10, 0, 40, 10),
+                // padding: const EdgeInsets.fromLTRB(left, top, right, bottom)
+                child: Text(
+                  "Tanggal Lahir",
+                  style: TextPalette.titleTextFieldStyle,
                 ),
-                FormBuilderDateTimePicker(
+              ),
+              Padding(
+                padding: const EdgeInsets.fromLTRB(0, 0, 20, 0),
+                child: FormBuilderDateTimePicker(
                   name: 'tglLahir',
                   controller: bdate,
                   // onChanged: _onChanged,
                   inputType: InputType.date,
                   decoration: InputDecoration(
                     suffixIcon: Icon(Icons.calendar_today),
-                    contentPadding: EdgeInsets.fromLTRB(30, 10, 10, 10),
+                    contentPadding: EdgeInsets.fromLTRB(30, 10, 10, 0),
                     focusedBorder: OutlineInputBorder(
                       borderSide: BorderSide(
                         color: ColorPalette.gray,
@@ -309,14 +312,14 @@ class _InputFormState extends State<InputForm> {
                     filled: true,
                   ),
                 ),
-              ],
-            ),
+              ),
+            ],
           ),
-          SizedBox(
-            width: 20.0,
-          ),
-        ],
-      ),
+        ),
+        SizedBox(
+          width: 20.0,
+        ),
+      ],
     );
   }
 
@@ -777,7 +780,7 @@ class _InputFormState extends State<InputForm> {
           onChanged: (checkalamat) {
             if (checkalamat == true) {
               jalan.text = street.text;
-              
+              pvc = provinsi;
             }
           },
         ),
@@ -853,6 +856,9 @@ class _InputFormState extends State<InputForm> {
               // padding: const EdgeInsets.fromLTRB(left, top, right, bottom),
               child: FormBuilderDropdown(
                 name: 'prov',
+                onChanged: (provMenu) {
+                  pvc = provMenu.toString();
+                },
                 decoration: InputDecoration(
                   focusedBorder: OutlineInputBorder(
                     borderSide: BorderSide(
@@ -1250,6 +1256,100 @@ class _InputFormState extends State<InputForm> {
                                     ),
                                     Text(
                                       provinsi,
+                                      style: TextPalette.biodataTextStyle,
+                                    ),
+                                  ],
+                                ),
+                                Row(
+                                  children: [
+                                    Text(
+                                      "Kabupaten : ",
+                                      style: TextPalette.biodataTextStyle,
+                                    ),
+                                    Text(
+                                      kabupaten,
+                                      style: TextPalette.biodataTextStyle,
+                                    ),
+                                  ],
+                                ),
+                                Row(
+                                  children: [
+                                    Text(
+                                      "Kecamatan : ",
+                                      style: TextPalette.biodataTextStyle,
+                                    ),
+                                    Text(
+                                      kecamatan,
+                                      style: TextPalette.biodataTextStyle,
+                                    ),
+                                  ],
+                                ),
+                                Row(
+                                  children: [
+                                    Text(
+                                      "Kelurahan : ",
+                                      style: TextPalette.biodataTextStyle,
+                                    ),
+                                    Text(
+                                      kelurahan,
+                                      style: TextPalette.biodataTextStyle,
+                                    ),
+                                  ],
+                                ),
+                                Row(
+                                  children: [
+                                    Text(
+                                      "RT : ",
+                                      style: TextPalette.biodataTextStyle,
+                                    ),
+                                    Text(
+                                      ert,
+                                      style: TextPalette.biodataTextStyle,
+                                    ),
+                                  ],
+                                ),
+                                Row(
+                                  children: [
+                                    Text(
+                                      "RW : ",
+                                      style: TextPalette.biodataTextStyle,
+                                    ),
+                                    Text(
+                                      erw,
+                                      style: TextPalette.biodataTextStyle,
+                                    ),
+                                  ],
+                                )
+                              ],
+                            ),
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                SizedBox(
+                                  height: 10,
+                                ),
+                                Text("Alamat Tempat Tinggal",
+                                    style: TextPalette.poptext),
+                                Row(
+                                  children: [
+                                    Text(
+                                      "Jalan : ",
+                                      style: TextPalette.biodataTextStyle,
+                                    ),
+                                    Text(
+                                      jalan.text,
+                                      style: TextPalette.biodataTextStyle,
+                                    ),
+                                  ],
+                                ),
+                                Row(
+                                  children: [
+                                    Text(
+                                      "Provinsi : ",
+                                      style: TextPalette.biodataTextStyle,
+                                    ),
+                                    Text(
+                                      pvc,
                                       style: TextPalette.biodataTextStyle,
                                     ),
                                   ],
