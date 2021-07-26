@@ -34,7 +34,7 @@ class TextPalette {
 
   static TextStyle biodataTextStyle = TextStyle(
     color: ColorPalette.black,
-    fontWeight: FontWeight.w500,
+    fontWeight: FontWeight.w300,
     fontSize: 14,
   );
 

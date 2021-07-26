@@ -30,6 +30,10 @@ class _InputFormState extends State<InputForm> {
 
   late String pvc = "";
 
+  var prv = [
+    "lorem"
+  ];
+
   var provMenu = ["Jawa Tengah", "Jawa Timur", "Jawa Barat"];
   var kabMenu = ["Purbalingga", "Banyumas", "Cilacap"];
   var kecMenu = ["Kutasari", "Bojongsari", "Padamara"];
@@ -418,7 +422,9 @@ class _InputFormState extends State<InputForm> {
               child: FormBuilderDropdown(
                 name: 'province',
                 onChanged: (provMenu) {
-                  provinsi = provMenu.toString();
+                  setState(() {
+                    provinsi = provMenu.toString();
+                  });
                 },
                 decoration: InputDecoration(
                   focusedBorder: OutlineInputBorder(
@@ -740,21 +746,15 @@ class _InputFormState extends State<InputForm> {
               style: TextPalette.titleTextFieldStyle,
             ),
           ),
-          SizedBox(
-            width: 10.0,
-            // height: 20.0,
-          ),
-          Flexible(
-            child: FormBuilderTextField(
-              name: 'alamat_rmh',
-              // onChanged: _onChanged,
-              // valueTransformer: (text) => num.tryParse(text),
-              validator: FormBuilderValidators.compose([
-                FormBuilderValidators.required(context),
-              ]),
-              keyboardType: TextInputType.text,
+          Expanded(
+              child: Center(
+            child: Divider(
+              color: ColorPalette.grayline,
+              thickness: 2,
+              indent: 20,
+              endIndent: 0,
             ),
-          ),
+          ))
         ],
       ),
     );
@@ -780,7 +780,18 @@ class _InputFormState extends State<InputForm> {
           onChanged: (checkalamat) {
             if (checkalamat == true) {
               jalan.text = street.text;
+
+              setState(() {
+                pvc = provinsi.toString();
+              });
+
+
               pvc = provinsi;
+
+              // prv.removeLast();
+              // prv.add(provinsi);
+
+              print(prv);
             }
           },
         ),
@@ -856,6 +867,7 @@ class _InputFormState extends State<InputForm> {
               // padding: const EdgeInsets.fromLTRB(left, top, right, bottom),
               child: FormBuilderDropdown(
                 name: 'prov',
+                initialValue: provinsi.toString(),
                 onChanged: (provMenu) {
                   pvc = provMenu.toString();
                 },
