@@ -15,24 +15,25 @@ class _InputFormState extends State<InputForm> {
   final _formKey = GlobalKey<FormBuilderState>();
 
   TextEditingController name = new TextEditingController();
-  TextEditingController place = new TextEditingController();
-  TextEditingController bdate = new TextEditingController();
-  TextEditingController street = new TextEditingController();
-  TextEditingController jalan = new TextEditingController();
+  TextEditingController placeOfBirth = new TextEditingController();
+  TextEditingController dateOfBirth = new TextEditingController();
+  TextEditingController streetKtp = new TextEditingController();
+  TextEditingController streetHome = new TextEditingController();
 
-  String jenkel = "";
-  String provinsi = "";
-  String kabupaten = "";
-  String kecamatan = "";
-  String kelurahan = "";
-  String ert = "";
-  String erw = "";
+  String genderFirst = "";
+  String provinceSecond = "";
+  String districtFirst = "";
+  String subdistrictFirst = "";
+  String wardFirst = "";
+  String rtFirst = "";
+  String rwFirst = "";
 
-  late String pvc = "";
-
-  var prv = [
-    "lorem"
-  ];
+  String provinceFirst = "";
+  String districtSecond = "";
+  String subdistrictSecond = "";
+  String wardSecond = "";
+  String rtSecond = "";
+  String rwSecond = "";
 
   var provMenu = ["Jawa Tengah", "Jawa Timur", "Jawa Barat"];
   var kabMenu = ["Purbalingga", "Banyumas", "Cilacap"];
@@ -143,7 +144,7 @@ class _InputFormState extends State<InputForm> {
               padding: const EdgeInsets.fromLTRB(20, 10, 20, 10),
               // padding: const EdgeInsets.fromLTRB(left, top, right, bottom),
               child: FormBuilderTextField(
-                name: 'nama',
+                name: 'name',
                 controller: name,
                 decoration: new InputDecoration(
                   focusedBorder: OutlineInputBorder(
@@ -191,7 +192,6 @@ class _InputFormState extends State<InputForm> {
             width: 950,
             child: Padding(
               padding: const EdgeInsets.fromLTRB(20, 10, 20, 10),
-              // padding: const EdgeInsets.fromLTRB(left, top, right, bottom),
               child: FormBuilderRadioGroup(
                 decoration: new InputDecoration(
                   focusedBorder: OutlineInputBorder(
@@ -210,14 +210,14 @@ class _InputFormState extends State<InputForm> {
                   fillColor: ColorPalette.gray,
                   filled: true,
                 ),
-                name: 'jenKel',
+                name: 'gender',
                 validator: FormBuilderValidators.required(context),
                 options: ['Laki - Laki', 'Perempuan']
                     .map((lang) => FormBuilderFieldOption(value: lang))
                     .toList(growable: false),
                 onChanged: (lang) {
                   setState(() {
-                    jenkel = lang.toString();
+                    genderFirst = lang.toString();
                   });
                 },
               ),
@@ -245,8 +245,8 @@ class _InputFormState extends State<InputForm> {
               Padding(
                 padding: const EdgeInsets.fromLTRB(20, 0, 0, 10),
                 child: FormBuilderTextField(
-                  name: 'tempatLhr',
-                  controller: place,
+                  name: 'placeBirth',
+                  controller: placeOfBirth,
                   decoration: new InputDecoration(
                     focusedBorder: OutlineInputBorder(
                       borderSide: BorderSide(
@@ -263,8 +263,6 @@ class _InputFormState extends State<InputForm> {
                     fillColor: ColorPalette.gray,
                     filled: true,
                   ),
-                  // onChanged: _onChanged,
-                  // valueTransformer: (text) => num.tryParse(text),
                   validator: FormBuilderValidators.compose([
                     FormBuilderValidators.required(context),
                     FormBuilderValidators.maxLength(context, 25),
@@ -293,8 +291,8 @@ class _InputFormState extends State<InputForm> {
               Padding(
                 padding: const EdgeInsets.fromLTRB(0, 0, 20, 0),
                 child: FormBuilderDateTimePicker(
-                  name: 'tglLahir',
-                  controller: bdate,
+                  name: 'dateBirth',
+                  controller: dateOfBirth,
                   // onChanged: _onChanged,
                   inputType: InputType.date,
                   decoration: InputDecoration(
@@ -368,10 +366,9 @@ class _InputFormState extends State<InputForm> {
             width: 950,
             child: Padding(
               padding: const EdgeInsets.fromLTRB(20, 10, 20, 10),
-              // padding: const EdgeInsets.fromLTRB(left, top, right, bottom),
               child: FormBuilderTextField(
-                name: 'jalan',
-                controller: street,
+                name: 'streetKtp',
+                controller: streetKtp,
                 decoration: new InputDecoration(
                   focusedBorder: OutlineInputBorder(
                     borderSide: BorderSide(
@@ -388,8 +385,6 @@ class _InputFormState extends State<InputForm> {
                   fillColor: ColorPalette.gray,
                   filled: true,
                 ),
-                // onChanged: _onChanged,
-                // valueTransformer: (text) => num.tryParse(text),
                 validator: FormBuilderValidators.compose([
                   FormBuilderValidators.required(context),
                   FormBuilderValidators.maxLength(context, 25),
@@ -418,13 +413,10 @@ class _InputFormState extends State<InputForm> {
             width: 950,
             child: Padding(
               padding: const EdgeInsets.fromLTRB(20, 10, 20, 10),
-              // padding: const EdgeInsets.fromLTRB(left, top, right, bottom),
               child: FormBuilderDropdown(
-                name: 'province',
+                name: 'provincePrimary',
                 onChanged: (provMenu) {
-                  setState(() {
-                    provinsi = provMenu.toString();
-                  });
+                  provinceFirst = provMenu.toString();
                 },
                 decoration: InputDecoration(
                   focusedBorder: OutlineInputBorder(
@@ -475,11 +467,10 @@ class _InputFormState extends State<InputForm> {
             width: 950,
             child: Padding(
               padding: const EdgeInsets.fromLTRB(20, 10, 20, 10),
-              // padding: const EdgeInsets.fromLTRB(left, top, right, bottom),
               child: FormBuilderDropdown(
-                name: 'city',
+                name: 'districtPrimary',
                 onChanged: (kabMenu) {
-                  kabupaten = kabMenu.toString();
+                  districtFirst = kabMenu.toString();
                 },
                 decoration: InputDecoration(
                   focusedBorder: OutlineInputBorder(
@@ -530,11 +521,10 @@ class _InputFormState extends State<InputForm> {
             width: 950,
             child: Padding(
               padding: const EdgeInsets.fromLTRB(20, 10, 20, 10),
-              // padding: const EdgeInsets.fromLTRB(left, top, right, bottom),
               child: FormBuilderDropdown(
-                name: 'subdistrict',
+                name: 'subdistrictPrimary',
                 onChanged: (kecMenu) {
-                  kecamatan = kecMenu.toString();
+                  subdistrictFirst = kecMenu.toString();
                 },
                 decoration: InputDecoration(
                   focusedBorder: OutlineInputBorder(
@@ -585,11 +575,10 @@ class _InputFormState extends State<InputForm> {
             width: 950,
             child: Padding(
               padding: const EdgeInsets.fromLTRB(20, 10, 20, 10),
-              // padding: const EdgeInsets.fromLTRB(left, top, right, bottom),
               child: FormBuilderDropdown(
-                name: 'village',
+                name: 'wardPrimary',
                 onChanged: (desMenu) {
-                  kelurahan = desMenu.toString();
+                  wardFirst = desMenu.toString();
                 },
                 decoration: InputDecoration(
                   focusedBorder: OutlineInputBorder(
@@ -635,16 +624,15 @@ class _InputFormState extends State<InputForm> {
               children: [
                 Padding(
                   padding: const EdgeInsets.fromLTRB(10, 5, 110, 10),
-                  // padding: const EdgeInsets.fromLTRB(left, top, right, bottom)
                   child: Text(
                     "RT",
                     style: TextPalette.titleTextFieldStyle,
                   ),
                 ),
                 FormBuilderDropdown(
-                  name: 'rt',
+                  name: 'rtPrimary',
                   onChanged: (rtMenu) {
-                    ert = rtMenu.toString();
+                    rtFirst = rtMenu.toString();
                   },
                   decoration: InputDecoration(
                     focusedBorder: OutlineInputBorder(
@@ -685,16 +673,15 @@ class _InputFormState extends State<InputForm> {
               children: [
                 Padding(
                   padding: const EdgeInsets.fromLTRB(10, 10, 110, 10),
-                  // padding: const EdgeInsets.fromLTRB(left, top, right, bottom)
                   child: Text(
                     "RW",
                     style: TextPalette.titleTextFieldStyle,
                   ),
                 ),
                 FormBuilderDropdown(
-                  name: 'rw',
+                  name: 'rwPrimary',
                   onChanged: (rwMenu) {
-                    erw = rwMenu.toString();
+                    rwFirst = rwMenu.toString();
                   },
                   decoration: InputDecoration(
                     focusedBorder: OutlineInputBorder(
@@ -763,38 +750,24 @@ class _InputFormState extends State<InputForm> {
   Widget inputcheck() {
     return Padding(
       padding: const EdgeInsets.fromLTRB(10, 10, 0, 10),
-      child: Flexible(
-        child: FormBuilderCheckbox(
-          name: 'checkalamat',
-          initialValue: false,
-          // onChanged: _onChanged,
-          title: RichText(
-            text: TextSpan(
-              children: [
-                TextSpan(
-                    text: 'Samakan Dengan Alamat KTP',
-                    style: TextPalette.checkInputText),
-              ],
-            ),
+      child: FormBuilderCheckbox(
+        name: 'checkAddress',
+        initialValue: false,
+        // onChanged: _onChanged,
+        title: RichText(
+          text: TextSpan(
+            children: [
+              TextSpan(
+                  text: 'Samakan Dengan Alamat KTP',
+                  style: TextPalette.checkInputText),
+            ],
           ),
-          onChanged: (checkalamat) {
-            if (checkalamat == true) {
-              jalan.text = street.text;
-
-              setState(() {
-                pvc = provinsi.toString();
-              });
-
-
-              pvc = provinsi;
-
-              // prv.removeLast();
-              // prv.add(provinsi);
-
-              print(prv);
-            }
-          },
         ),
+        onChanged: (checkalamat) {
+          if (checkalamat == true) {
+            streetHome.text = streetKtp.text;
+          }
+        },
       ),
     );
   }
@@ -816,8 +789,8 @@ class _InputFormState extends State<InputForm> {
               padding: const EdgeInsets.fromLTRB(20, 10, 20, 10),
               // padding: const EdgeInsets.fromLTRB(left, top, right, bottom),
               child: FormBuilderTextField(
-                name: 'jln_baru',
-                controller: jalan,
+                name: 'streetHome',
+                controller: streetHome,
                 decoration: new InputDecoration(
                   focusedBorder: OutlineInputBorder(
                     borderSide: BorderSide(
@@ -864,12 +837,11 @@ class _InputFormState extends State<InputForm> {
             width: 950,
             child: Padding(
               padding: const EdgeInsets.fromLTRB(20, 10, 20, 10),
-              // padding: const EdgeInsets.fromLTRB(left, top, right, bottom),
               child: FormBuilderDropdown(
-                name: 'prov',
-                initialValue: provinsi.toString(),
+                name: 'provinceSecondary',
+                // initialValue: provinsi.toString(),
                 onChanged: (provMenu) {
-                  pvc = provMenu.toString();
+                  provinceSecond = provMenu.toString();
                 },
                 decoration: InputDecoration(
                   focusedBorder: OutlineInputBorder(
@@ -887,7 +859,6 @@ class _InputFormState extends State<InputForm> {
                   fillColor: ColorPalette.gray,
                   filled: true,
                 ),
-                // initialValue: 'Male',
                 allowClear: true,
                 validator: FormBuilderValidators.compose(
                     [FormBuilderValidators.required(context)]),
@@ -920,9 +891,11 @@ class _InputFormState extends State<InputForm> {
             width: 950,
             child: Padding(
               padding: const EdgeInsets.fromLTRB(20, 10, 20, 10),
-              // padding: const EdgeInsets.fromLTRB(left, top, right, bottom),
               child: FormBuilderDropdown(
-                name: 'kota',
+                name: 'districtSecondary',
+                onChanged: (kabMenu) {
+                  districtSecond = kabMenu.toString();
+                },
                 decoration: InputDecoration(
                   focusedBorder: OutlineInputBorder(
                     borderSide: BorderSide(
@@ -972,9 +945,11 @@ class _InputFormState extends State<InputForm> {
             width: 950,
             child: Padding(
               padding: const EdgeInsets.fromLTRB(20, 10, 20, 10),
-              // padding: const EdgeInsets.fromLTRB(left, top, right, bottom),
               child: FormBuilderDropdown(
-                name: 'kecamatan',
+                name: 'subdistrictSecondary',
+                onChanged: (kecMenu) {
+                  subdistrictSecond = kecMenu.toString();
+                },
                 decoration: InputDecoration(
                   focusedBorder: OutlineInputBorder(
                     borderSide: BorderSide(
@@ -1026,7 +1001,10 @@ class _InputFormState extends State<InputForm> {
               padding: const EdgeInsets.fromLTRB(20, 10, 20, 10),
               // padding: const EdgeInsets.fromLTRB(left, top, right, bottom),
               child: FormBuilderDropdown(
-                name: 'desa',
+                name: 'wardSecondary',
+                onChanged: (desMenu) {
+                  wardSecond = desMenu.toString();
+                },
                 decoration: InputDecoration(
                   focusedBorder: OutlineInputBorder(
                     borderSide: BorderSide(
@@ -1078,7 +1056,10 @@ class _InputFormState extends State<InputForm> {
                   ),
                 ),
                 FormBuilderDropdown(
-                  name: 'rt_1',
+                  name: 'rtSecondary',
+                  onChanged: (rtMenu) {
+                    rtSecond = rtMenu.toString();
+                  },
                   decoration: InputDecoration(
                     focusedBorder: OutlineInputBorder(
                       borderSide: BorderSide(
@@ -1125,7 +1106,10 @@ class _InputFormState extends State<InputForm> {
                   ),
                 ),
                 FormBuilderDropdown(
-                  name: 'rw_1',
+                  name: 'rwSecondary',
+                  onChanged: (rwMenu) {
+                    rwSecond = rwMenu.toString();
+                  },
                   decoration: InputDecoration(
                     focusedBorder: OutlineInputBorder(
                       borderSide: BorderSide(
@@ -1210,7 +1194,7 @@ class _InputFormState extends State<InputForm> {
                                       style: TextPalette.biodataTextStyle,
                                     ),
                                     Text(
-                                      place.text,
+                                      placeOfBirth.text,
                                       style: TextPalette.biodataTextStyle,
                                     ),
                                   ],
@@ -1222,7 +1206,7 @@ class _InputFormState extends State<InputForm> {
                                       style: TextPalette.biodataTextStyle,
                                     ),
                                     Text(
-                                      bdate.text,
+                                      dateOfBirth.text,
                                       style: TextPalette.biodataTextStyle,
                                     ),
                                   ],
@@ -1234,7 +1218,7 @@ class _InputFormState extends State<InputForm> {
                                       style: TextPalette.biodataTextStyle,
                                     ),
                                     Text(
-                                      jenkel,
+                                      genderFirst,
                                       style: TextPalette.biodataTextStyle,
                                     ),
                                   ],
@@ -1255,7 +1239,7 @@ class _InputFormState extends State<InputForm> {
                                       style: TextPalette.biodataTextStyle,
                                     ),
                                     Text(
-                                      street.text,
+                                      streetKtp.text,
                                       style: TextPalette.biodataTextStyle,
                                     ),
                                   ],
@@ -1267,7 +1251,7 @@ class _InputFormState extends State<InputForm> {
                                       style: TextPalette.biodataTextStyle,
                                     ),
                                     Text(
-                                      provinsi,
+                                      provinceFirst,
                                       style: TextPalette.biodataTextStyle,
                                     ),
                                   ],
@@ -1279,7 +1263,7 @@ class _InputFormState extends State<InputForm> {
                                       style: TextPalette.biodataTextStyle,
                                     ),
                                     Text(
-                                      kabupaten,
+                                      districtFirst,
                                       style: TextPalette.biodataTextStyle,
                                     ),
                                   ],
@@ -1291,7 +1275,7 @@ class _InputFormState extends State<InputForm> {
                                       style: TextPalette.biodataTextStyle,
                                     ),
                                     Text(
-                                      kecamatan,
+                                      subdistrictFirst,
                                       style: TextPalette.biodataTextStyle,
                                     ),
                                   ],
@@ -1303,7 +1287,7 @@ class _InputFormState extends State<InputForm> {
                                       style: TextPalette.biodataTextStyle,
                                     ),
                                     Text(
-                                      kelurahan,
+                                      wardFirst,
                                       style: TextPalette.biodataTextStyle,
                                     ),
                                   ],
@@ -1315,7 +1299,7 @@ class _InputFormState extends State<InputForm> {
                                       style: TextPalette.biodataTextStyle,
                                     ),
                                     Text(
-                                      ert,
+                                      rtFirst,
                                       style: TextPalette.biodataTextStyle,
                                     ),
                                   ],
@@ -1327,7 +1311,7 @@ class _InputFormState extends State<InputForm> {
                                       style: TextPalette.biodataTextStyle,
                                     ),
                                     Text(
-                                      erw,
+                                      rwFirst,
                                       style: TextPalette.biodataTextStyle,
                                     ),
                                   ],
@@ -1349,7 +1333,7 @@ class _InputFormState extends State<InputForm> {
                                       style: TextPalette.biodataTextStyle,
                                     ),
                                     Text(
-                                      jalan.text,
+                                      streetHome.text,
                                       style: TextPalette.biodataTextStyle,
                                     ),
                                   ],
@@ -1361,7 +1345,7 @@ class _InputFormState extends State<InputForm> {
                                       style: TextPalette.biodataTextStyle,
                                     ),
                                     Text(
-                                      pvc,
+                                      provinceSecond,
                                       style: TextPalette.biodataTextStyle,
                                     ),
                                   ],
@@ -1373,7 +1357,7 @@ class _InputFormState extends State<InputForm> {
                                       style: TextPalette.biodataTextStyle,
                                     ),
                                     Text(
-                                      kabupaten,
+                                      districtSecond,
                                       style: TextPalette.biodataTextStyle,
                                     ),
                                   ],
@@ -1385,7 +1369,7 @@ class _InputFormState extends State<InputForm> {
                                       style: TextPalette.biodataTextStyle,
                                     ),
                                     Text(
-                                      kecamatan,
+                                      subdistrictSecond,
                                       style: TextPalette.biodataTextStyle,
                                     ),
                                   ],
@@ -1397,7 +1381,7 @@ class _InputFormState extends State<InputForm> {
                                       style: TextPalette.biodataTextStyle,
                                     ),
                                     Text(
-                                      kelurahan,
+                                      wardSecond,
                                       style: TextPalette.biodataTextStyle,
                                     ),
                                   ],
@@ -1409,7 +1393,7 @@ class _InputFormState extends State<InputForm> {
                                       style: TextPalette.biodataTextStyle,
                                     ),
                                     Text(
-                                      ert,
+                                      rtSecond,
                                       style: TextPalette.biodataTextStyle,
                                     ),
                                   ],
@@ -1421,7 +1405,7 @@ class _InputFormState extends State<InputForm> {
                                       style: TextPalette.biodataTextStyle,
                                     ),
                                     Text(
-                                      erw,
+                                      rwSecond,
                                       style: TextPalette.biodataTextStyle,
                                     ),
                                   ],
