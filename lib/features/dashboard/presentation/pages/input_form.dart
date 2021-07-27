@@ -44,6 +44,7 @@ class _InputFormState extends State<InputForm> {
 
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
       body: SafeArea(
         child: FormBuilder(
@@ -83,7 +84,6 @@ class _InputFormState extends State<InputForm> {
       height: 170,
       color: ColorPalette.gray,
       child: Column(
-        // crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Padding(
             padding: const EdgeInsets.all(15),
@@ -310,7 +310,7 @@ class _InputFormState extends State<InputForm> {
                       ),
                       borderRadius: BorderRadius.circular(20.0),
                     ),
-                    fillColor: ColorPalette.gray,
+                    // fillColor: ColorPalette.gray,
                     filled: true,
                   ),
                 ),
@@ -434,8 +434,8 @@ class _InputFormState extends State<InputForm> {
                   fillColor: ColorPalette.gray,
                   filled: true,
                 ),
-                // initialValue: 'Male',
                 allowClear: true,
+
                 validator: FormBuilderValidators.compose(
                     [FormBuilderValidators.required(context)]),
                 items: provMenu
@@ -766,6 +766,29 @@ class _InputFormState extends State<InputForm> {
         onChanged: (checkalamat) {
           if (checkalamat == true) {
             streetHome.text = streetKtp.text;
+
+            provinceSecond = provinceFirst;
+            districtSecond = districtFirst;
+            subdistrictSecond = subdistrictFirst;
+            wardSecond = wardFirst;
+            rtSecond = rtFirst;
+            rwSecond = rwFirst;
+
+            _formKey.currentState?.fields['provinceSecondary']
+                ?.didChange(provinceSecond);
+
+            _formKey.currentState?.fields['districtSecondary']
+                ?.didChange(districtSecond);
+
+            _formKey.currentState?.fields['subdistrictSecondary']
+                ?.didChange(subdistrictSecond);
+
+            _formKey.currentState?.fields['wardSecondary']
+                ?.didChange(wardSecond);
+
+            _formKey.currentState?.fields['rtSecondary']?.didChange(rtSecond);
+
+            _formKey.currentState?.fields['rwSecondary']?.didChange(rwSecond);
           }
         },
       ),
@@ -787,7 +810,6 @@ class _InputFormState extends State<InputForm> {
             width: 950,
             child: Padding(
               padding: const EdgeInsets.fromLTRB(20, 10, 20, 10),
-              // padding: const EdgeInsets.fromLTRB(left, top, right, bottom),
               child: FormBuilderTextField(
                 name: 'streetHome',
                 controller: streetHome,
@@ -807,8 +829,6 @@ class _InputFormState extends State<InputForm> {
                   fillColor: ColorPalette.gray,
                   filled: true,
                 ),
-                // onChanged: _onChanged,
-                // valueTransformer: (text) => num.tryParse(text),
                 validator: FormBuilderValidators.compose([
                   FormBuilderValidators.required(context),
                   FormBuilderValidators.maxLength(context, 25),
@@ -839,7 +859,6 @@ class _InputFormState extends State<InputForm> {
               padding: const EdgeInsets.fromLTRB(20, 10, 20, 10),
               child: FormBuilderDropdown(
                 name: 'provinceSecondary',
-                // initialValue: provinsi.toString(),
                 onChanged: (provMenu) {
                   provinceSecond = provMenu.toString();
                 },
@@ -1099,7 +1118,6 @@ class _InputFormState extends State<InputForm> {
               children: [
                 Padding(
                   padding: const EdgeInsets.fromLTRB(10, 10, 110, 10),
-                  // padding: const EdgeInsets.fromLTRB(left, top, right, bottom)
                   child: Text(
                     "RW",
                     style: TextPalette.titleTextFieldStyle,
@@ -1438,4 +1456,5 @@ class _InputFormState extends State<InputForm> {
       ),
     );
   }
+
 }
