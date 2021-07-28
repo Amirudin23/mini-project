@@ -11,7 +11,8 @@ class InputForm extends StatefulWidget {
   _InputFormState createState() => _InputFormState();
 }
 
-class _InputFormState extends State<InputForm> {
+class _InputFormState extends State<InputForm>
+    with AutomaticKeepAliveClientMixin {
   final _formKey = GlobalKey<FormBuilderState>();
 
   TextEditingController name = new TextEditingController();
@@ -44,6 +45,8 @@ class _InputFormState extends State<InputForm> {
 
   @override
   Widget build(BuildContext context) {
+
+    super.build(context);
 
     return Scaffold(
       body: SafeArea(
@@ -435,7 +438,6 @@ class _InputFormState extends State<InputForm> {
                   filled: true,
                 ),
                 allowClear: true,
-
                 validator: FormBuilderValidators.compose(
                     [FormBuilderValidators.required(context)]),
                 items: provMenu
@@ -1457,4 +1459,6 @@ class _InputFormState extends State<InputForm> {
     );
   }
 
+  @override
+  bool get wantKeepAlive => true;
 }
