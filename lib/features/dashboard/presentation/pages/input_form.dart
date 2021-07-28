@@ -46,7 +46,7 @@ class _InputFormState extends State<InputForm>
   @override
   Widget build(BuildContext context) {
 
-    super.build(context);
+  super.build(context);
 
     return Scaffold(
       body: SafeArea(
