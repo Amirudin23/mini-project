@@ -9,6 +9,7 @@ import 'package:mini_project/features/dashboard/presentation/bloc/dashboard_stat
 import 'package:mini_project/features/dashboard/presentation/bloc/bloc.dart';
 import 'package:mini_project/features/dashboard/domain/entities/datadiri.dart';
 import 'package:flash/flash.dart';
+import 'package:rflutter_alert/rflutter_alert.dart';
 
 class EditDataDiriForm extends StatefulWidget {
   final String? nama;
@@ -61,12 +62,10 @@ class EditDataDiriForm extends StatefulWidget {
 class _EditDataDiriFormState extends State<EditDataDiriForm> {
   final _formKey = GlobalKey<FormBuilderState>();
 
-  // TextEditingController _keyController = new TextEditingController();
   TextEditingController _namaController = new TextEditingController();
   TextEditingController _tempatController = new TextEditingController();
   TextEditingController jalanController = new TextEditingController();
   TextEditingController _getJalanController = new TextEditingController();
-  // TextEditingController tglController = new TextEditingController();
 
   var provinsi = ["Jawa Tengah", "Jawa Timur", "Jawa Barat"];
   var kota = ["Purbalingga", "Purwokerto", "Kebumen"];
@@ -101,15 +100,8 @@ class _EditDataDiriFormState extends State<EditDataDiriForm> {
     _getJalanController.text = widget.jlnKedua.toString();
     _tempatController.text = widget.tempLahir.toString();
     tglController = DateTime.parse(widget.tglLahir.toString());
-    // var tanggal = DateTime.parse(tglLahir.toString());
-    // tglController.text = DateTime.parse();
     jenisKelamin = widget.gender.toString();
-    // _formKey.currentState?.fields['provinsi']?.value(provPertama.toString());
-    // if (provinsi != Null) {
-    //   setState(() {
-    //     _formKey.currentState?.fields['provinsi']?.didChange(provPertama);
-    //   });
-    // }
+
     if (provinsiPertama == "") {
       provinsiPertama = widget.provPertama.toString();
     }
@@ -152,22 +144,6 @@ class _EditDataDiriFormState extends State<EditDataDiriForm> {
     if (getRw == null) {
       getRw = widget.erwKedua.toString();
     }
-
-    // setState(() {
-    // _formKey.currentState?.fields['provinsi']?.didChange(provPertama);
-    //   _formKey.currentState?.fields['kota']?.didChange(kabPertama);
-    //   _formKey.currentState?.fields['kecamatan']?.didChange(kecPertama);
-    //   _formKey.currentState?.fields['kelurahan']?.didChange(desaPertama);
-    //   _formKey.currentState?.fields['rt']?.didChange(ertPertama);
-    //   _formKey.currentState?.fields['rw']?.didChange(erwPertama);
-
-    //   _formKey.currentState?.fields['getProvinsi']?.didChange(provKedua);
-    //   _formKey.currentState?.fields['getKota']?.didChange(kabKedua);
-    //   _formKey.currentState?.fields['getKecamatan']?.didChange(kecKedua);
-    //   _formKey.currentState?.fields['getKelurahan']?.didChange(desaKedua);
-    //   _formKey.currentState?.fields['getRt']?.didChange(ertKedua);
-    //   _formKey.currentState?.fields['getRw']?.didChange(erwKedua);
-    // });
   }
 
   @override
@@ -191,7 +167,6 @@ class _EditDataDiriFormState extends State<EditDataDiriForm> {
             children: [
               header(),
               setNama(),
-              // setProvinsi(),
               setJk(),
               setTtl(),
               setAlamatKtp(),
@@ -210,24 +185,6 @@ class _EditDataDiriFormState extends State<EditDataDiriForm> {
               setKelurahanDesaFix(),
               setRtRwFix(),
 
-              // Text(nama.toString()),
-              // Text(gender.toString()),
-              // Text(tempLahir.toString()),
-              // Text(tglLahir.toString()),
-              // Text(jlnPertama.toString()),
-              // Text(provPertama.toString()),
-              // Text(kabPertama.toString()),
-              // Text(kecPertama.toString()),
-              // Text(desaPertama.toString()),
-              // Text(ertPertama.toString()),
-              // Text(erwPertama.toString()),
-              // Text(jlnKedua.toString()),
-              // Text(provKedua.toString()),
-              // Text(kabKedua.toString()),
-              // Text(kecKedua.toString()),
-              // Text(desaKedua.toString()),
-              // Text(ertKedua.toString()),
-              // Text(erwKedua.toString()),
               // btn
               setSimpan(),
             ],
@@ -1336,38 +1293,75 @@ class _EditDataDiriFormState extends State<EditDataDiriForm> {
                 shadowColor: MaterialStateProperty.all(Colors.transparent),
               ),
               onPressed: () {
-                // if (provinsiPertama == "") {
-                //   provinsiPertama = widget.provPertama.toString();
-                //   print(provinsiPertama);
+                if (_formKey.currentState!.validate()) {
+                  var data = DataDiri(
+                      index: widget.index,
+                      name: _namaController.text,
+                      tempat: _tempatController.text,
+                      jalan: _getJalanController.text,
+                      jenisKelamin: jenisKelamin,
+                      tanggalLahir: tglController!,
+                      provinsiKtp: provinsiPertama,
+                      kabupatenKtp: kotaPertama,
+                      kecamatanKtp: kecamatanPertama,
+                      desaKtp: kelurahanPertama,
+                      rtKtp: rtPertama,
+                      rwKtp: rwPertama,
+                      provinsiRumah: getProvinsi.toString(),
+                      kabupatenRumah: getKota.toString(),
+                      kecamatanRumah: getKecamatan.toString(),
+                      desaRumah: getKelurahan.toString(),
+                      rtRumah: getRt.toString(),
+                      rwRumah: getRw.toString(),
+                      jalanRumah: _getJalanController.text);
 
-                // }
-                var data = DataDiri(
-                    index: widget.index,
-                    name: _namaController.text,
-                    tempat: _tempatController.text,
-                    jalan: _getJalanController.text,
-                    jenisKelamin: jenisKelamin,
-                    tanggalLahir: tglController!,
-                    provinsiKtp: provinsiPertama,
-                    kabupatenKtp: kotaPertama,
-                    kecamatanKtp: kecamatanPertama,
-                    desaKtp: kelurahanPertama,
-                    rtKtp: rtPertama,
-                    rwKtp: rwPertama,
-                    provinsiRumah: getProvinsi.toString(),
-                    kabupatenRumah: getKota.toString(),
-                    kecamatanRumah: getKecamatan.toString(),
-                    desaRumah: getKelurahan.toString(),
-                    rtRumah: getRt.toString(),
-                    rwRumah: getRw.toString(),
-                    jalanRumah: _getJalanController.text);
-                print(data);
-
-                BlocProvider.of<DashboardBloc>(context).add(
-                  EditDashboard(
-                    data: data,
-                  ),
-                );
+                  BlocProvider.of<DashboardBloc>(context).add(
+                    EditDashboard(
+                      data: data,
+                    ),
+                  );
+                  Navigator.pushReplacement(context,
+                      MaterialPageRoute(builder: (context) {
+                    return DashboardPage();
+                  }));
+                } else {
+                  var alertStyle = AlertStyle(
+                      animationType: AnimationType.fromTop,
+                      isCloseButton: false,
+                      isOverlayTapDismiss: false,
+                      descStyle: TextStyle(fontWeight: FontWeight.bold),
+                      descTextAlign: TextAlign.start,
+                      animationDuration: Duration(milliseconds: 400),
+                      alertBorder: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(0.0),
+                        side: BorderSide(
+                          color: Colors.grey,
+                        ),
+                      ),
+                      titleStyle: TextStyle(
+                        color: Colors.red,
+                      ),
+                      alertAlignment: Alignment.center,
+                    );
+                  Alert(
+                    context: context,
+                    style: alertStyle,
+                    type: AlertType.error,
+                    title: "Error",
+                    desc: "Data Harus Diisi Semua",
+                    buttons: [
+                      DialogButton(
+                        child: Text(
+                          "Ok",
+                          style: TextStyle(color: Colors.white, fontSize: 20),
+                        ),
+                        onPressed: () => Navigator.pop(context),
+                        color: Color.fromRGBO(0, 179, 134, 1.0),
+                        radius: BorderRadius.circular(0.0),
+                      ),
+                    ],
+                  ).show();
+                }
               },
               child: Text(
                 StringResources.BTN_SEND_APP_TITLE,

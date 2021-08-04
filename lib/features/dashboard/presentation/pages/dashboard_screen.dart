@@ -28,7 +28,6 @@ class _DashboardScreenState extends State<DashboardScreen> {
     BlocProvider.of<DashboardBloc>(context).add(GetDashboard());
   }
 
-  final _formKey = GlobalKey<FormState>();
 
   late String nm;
   late String gender;
@@ -211,33 +210,35 @@ class _DashboardScreenState extends State<DashboardScreen> {
                               });
 
                               Navigator.pushReplacement(context,
-                                  MaterialPageRoute(builder: (context) {
-                                return BlocProvider(
-                                  create: (_) =>
-                                      serviceLocator.get<DashboardBloc>(),
-                                  child: EditDataDiriForm(
-                                    index: indeks,
-                                    nama: nm,
-                                    gender: gender,
-                                    tempLahir: tempLahir,
-                                    tglLahir: tglLahir,
-                                    jlnPertama: jlnPertama,
-                                    provPertama: provinsiPertama,
-                                    kabPertama: kabupatenPertama,
-                                    kecPertama: kecamatanPertama,
-                                    desaPertama: desaPertama,
-                                    ertPertama: rtPertama,
-                                    erwPertama: rwPertama,
-                                    jlnKedua: jlnKedua,
-                                    provKedua: provinsiKedua,
-                                    kabKedua: kabupatenKedua,
-                                    kecKedua: kecamatanKedua,
-                                    desaKedua: desaKedua,
-                                    ertKedua: rtKedua,
-                                    erwKedua: rwKedua,
-                                  ),
-                                );
-                              }));
+                                MaterialPageRoute(builder: (context) {
+                                  return BlocProvider(
+                                    create: (_) =>
+                                        serviceLocator.get<DashboardBloc>(),
+                                    child: EditDataDiriForm(
+                                      index: indeks,
+                                      nama: nm,
+                                      gender: gender,
+                                      tempLahir: tempLahir,
+                                      tglLahir: tglLahir,
+                                      jlnPertama: jlnPertama,
+                                      provPertama: provinsiPertama,
+                                      kabPertama: kabupatenPertama,
+                                      kecPertama: kecamatanPertama,
+                                      desaPertama: desaPertama,
+                                      ertPertama: rtPertama,
+                                      erwPertama: rwPertama,
+                                      jlnKedua: jlnKedua,
+                                      provKedua: provinsiKedua,
+                                      kabKedua: kabupatenKedua,
+                                      kecKedua: kecamatanKedua,
+                                      desaKedua: desaKedua,
+                                      ertKedua: rtKedua,
+                                      erwKedua: rwKedua,
+                                    ),
+                                  );
+                                }
+                                  )
+                              );
                             },
                             icon: Icon(Icons.edit))
                       ],

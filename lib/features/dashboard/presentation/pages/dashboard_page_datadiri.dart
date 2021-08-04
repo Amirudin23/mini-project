@@ -8,6 +8,7 @@ import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:mini_project/features/dashboard/presentation/bloc/dashboard_state.dart';
 import 'package:mini_project/features/dashboard/presentation/bloc/bloc.dart';
 import 'package:mini_project/features/dashboard/domain/entities/datadiri.dart';
+import 'package:rflutter_alert/rflutter_alert.dart';
 import 'package:flash/flash.dart';
 
 class PageDataDiri extends StatefulWidget {
@@ -1187,30 +1188,73 @@ class _PageDataDiriState extends State<PageDataDiri> {
                 shadowColor: MaterialStateProperty.all(Colors.transparent),
               ),
               onPressed: () {
-                BlocProvider.of<DashboardBloc>(context).add(
-                  SaveDashboard(
-                    data: DataDiri(
-                      name: _namaController.text,
-                      tempat: _tempatController.text,
-                      jalan: jalanController.text,
-                      jenisKelamin: jenisKelamin,
-                      tanggalLahir: tglController!,
-                      provinsiKtp: provinsiPertama,
-                      kabupatenKtp: kotaPertama,
-                      kecamatanKtp: kecamatanPertama,
-                      desaKtp: kelurahanPertama,
-                      rtKtp: rtPertama,
-                      rwKtp: rwPertama,
-                      jalanRumah: _getJalanController.text,
-                      provinsiRumah: getProvinsi.toString(),
-                      kabupatenRumah: getKota.toString(),
-                      kecamatanRumah: getKecamatan.toString(),
-                      desaRumah: getKelurahan.toString(),
-                      rtRumah: getRt.toString(),
-                      rwRumah: getRw.toString(),
+                if (_formKey.currentState!.validate()) {
+                  BlocProvider.of<DashboardBloc>(context).add(
+                    SaveDashboard(
+                      data: DataDiri(
+                        name: _namaController.text,
+                        tempat: _tempatController.text,
+                        jalan: jalanController.text,
+                        jenisKelamin: jenisKelamin,
+                        tanggalLahir: tglController!,
+                        provinsiKtp: provinsiPertama,
+                        kabupatenKtp: kotaPertama,
+                        kecamatanKtp: kecamatanPertama,
+                        desaKtp: kelurahanPertama,
+                        rtKtp: rtPertama,
+                        rwKtp: rwPertama,
+                        jalanRumah: _getJalanController.text,
+                        provinsiRumah: getProvinsi.toString(),
+                        kabupatenRumah: getKota.toString(),
+                        kecamatanRumah: getKecamatan.toString(),
+                        desaRumah: getKelurahan.toString(),
+                        rtRumah: getRt.toString(),
+                        rwRumah: getRw.toString(),
+                      ),
                     ),
-                  ),
-                );
+                  );
+                  Navigator.pushReplacement(context,
+                      MaterialPageRoute(builder: (context) {
+                    return DashboardPage();
+                  }));
+                } else {
+                  var alertStyle = AlertStyle(
+                    animationType: AnimationType.fromTop,
+                    isCloseButton: false,
+                    isOverlayTapDismiss: false,
+                    descStyle: TextStyle(fontWeight: FontWeight.bold),
+                    descTextAlign: TextAlign.start,
+                    animationDuration: Duration(milliseconds: 400),
+                    alertBorder: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(0.0),
+                      side: BorderSide(
+                        color: Colors.grey,
+                      ),
+                    ),
+                    titleStyle: TextStyle(
+                      color: Colors.red,
+                    ),
+                    alertAlignment: Alignment.center,
+                  );
+                  Alert(
+                    context: context,
+                    style: alertStyle,
+                    type: AlertType.error,
+                    title: "Error",
+                    desc: "Data Harus Diisi Semua",
+                    buttons: [
+                      DialogButton(
+                        child: Text(
+                          "Ok",
+                          style: TextStyle(color: Colors.white, fontSize: 20),
+                        ),
+                        onPressed: () => Navigator.pop(context),
+                        color: Color.fromRGBO(0, 179, 134, 1.0),
+                        radius: BorderRadius.circular(0.0),
+                      ),
+                    ],
+                  ).show();
+                }
               },
               child: Text(
                 StringResources.BTN_SEND_APP_TITLE,

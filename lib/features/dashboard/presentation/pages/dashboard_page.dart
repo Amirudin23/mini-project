@@ -33,18 +33,22 @@ class _DashboardPageState extends State<DashboardPage> {
           title: '',
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          Navigator.pushReplacement(context,
-              MaterialPageRoute(builder: (context) {
-            return BlocProvider(
-              create: (_) => serviceLocator.get<DashboardBloc>(),
-              child: PageDataDiri(),
-            );
-          }));
-        },
-        tooltip: 'Increment',
-        child: Icon(Icons.add),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+      floatingActionButton: Padding(
+        padding: const EdgeInsets.only(bottom: 15),
+        child: FloatingActionButton(
+          onPressed: () {
+            Navigator.pushReplacement(context,
+                MaterialPageRoute(builder: (context) {
+              return BlocProvider(
+                create: (_) => serviceLocator.get<DashboardBloc>(),
+                child: PageDataDiri(),
+              );
+            }));
+          },
+          tooltip: 'Increment',
+          child: Icon(Icons.add),
+        ),
       ),
     );
   }
