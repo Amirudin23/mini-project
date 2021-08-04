@@ -866,16 +866,11 @@ class _EditDataDiriFormState extends State<EditDataDiriForm> {
                       ],
                     ),
                   ),
-                  validator: FormBuilderValidators.equal(
-                    context,
-                    true,
-                  ),
                   onChanged: (checkbox) {
                     if (checkbox == true) {
                       _getJalanController.text = jalanController.text;
 
                       getProvinsi = provinsiPertama;
-                      // getProvinsi = provPertama;
                       getKota = kotaPertama;
                       getKecamatan = kecamatanPertama;
                       getKelurahan = kelurahanPertama;
