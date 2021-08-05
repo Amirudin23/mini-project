@@ -1293,7 +1293,7 @@ class _EditDataDiriFormState extends State<EditDataDiriForm> {
                       index: widget.index,
                       name: _namaController.text,
                       tempat: _tempatController.text,
-                      jalan: _getJalanController.text,
+                      jalan: jalanController.text,
                       jenisKelamin: jenisKelamin,
                       tanggalLahir: tglController!,
                       provinsiKtp: provinsiPertama,

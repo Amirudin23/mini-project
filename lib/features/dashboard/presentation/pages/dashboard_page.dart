@@ -33,7 +33,7 @@ class _DashboardPageState extends State<DashboardPage> {
           title: '',
         ),
       ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+      // floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       floatingActionButton: Padding(
         padding: const EdgeInsets.only(bottom: 15),
         child: FloatingActionButton(
@@ -47,7 +47,7 @@ class _DashboardPageState extends State<DashboardPage> {
             }));
           },
           tooltip: 'Increment',
-          child: Icon(Icons.add),
+          child: Icon(Icons.person_add)
         ),
       ),
     );

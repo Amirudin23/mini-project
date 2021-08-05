@@ -766,10 +766,6 @@ class _PageDataDiriState extends State<PageDataDiri> {
                       ],
                     ),
                   ),
-                  validator: FormBuilderValidators.equal(
-                    context,
-                    true,
-                  ),
                   onChanged: (checkbox) {
                     if (checkbox == true) {
                       _getJalanController.text = jalanController.text;
